@@ -1,0 +1,7 @@
+.create-form {
+    background-color: rgb(236, 236, 236);
+    max-width: 600px;
+    border: 1px solid rgb(161, 158, 158);
+    padding: 20px;
+    border-radius: 5px;
+}
