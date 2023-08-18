@@ -2,11 +2,11 @@
 
 /* variables */
 :root {
-  --heading-color: #444;
-  --text-color: #999;
-  --primary-color: #8d69f1;
+  --heading-color: #454545;
+  --text-color: #676767;
+  --primary-color: #369be3;
   --highlight-color: #d13267;
-  --bg-color: #f4f4f4;
+  --bg-color: #ffffff;
 }
 
 /* base styles */
@@ -66,9 +66,8 @@ textarea {
   min-height: 160px;
 }
 .error {
-  color: red;
-  background: pink;
-  border: 1px solid red;
+  color: rgb(255, 255, 255);
+  background: rgb(246, 113, 113);
   border-radius: 4px;
   padding: 8px;
   margin: 10px 0;
