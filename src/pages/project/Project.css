@@ -1,12 +1,13 @@
 .project-details {
     display: grid;
-    grid-template-columns: 3fr 2fr;
+    /* grid-template-columns: 3fr 1.5fr; */
     align-items: start;
     grid-gap: 60px;
 }
 
 .project-summary {
-    background-color: #e7e7e7;
+    margin-top: 50px;
+    background-color: var(--primary-color);
     padding: 30px;
     border-radius: 4px;
 }
@@ -36,10 +37,21 @@
 
 .project-summary .assigned-users .avatar {
     margin-right: 10px;
+    width: 30px;
+    height: 30px;
 }
 
 .project-summary+.btn {
     margin-top: 20px;
+}
+
+.project-comment{
+    max-width: 500px;
+    color: var(--background-color);
+    background-color: rgb(222, 222, 222);
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 3px;
 }
 
 .project-comments label {
@@ -47,6 +59,54 @@
 }
 
 .project-comments textarea {
+    max-width: 520px;
     min-height: 40px;
     font-size: 1.5em;
 }
+
+.project-comments h4 {
+    color: var(--heading-color);
+}
+
+.projects-comments li {
+    padding: 16px;
+    border-radius: 4px;
+    border: 1px solid black;
+    margin-top: 20px;
+    box-shadow: 3px 3px 5px black;
+    background: grey;
+}
+
+.project-comment p {
+    color: var(--bg-color);
+}
+
+.comment-author {
+    display: flex;
+    align-items: center;
+    color: var(--title-color);
+}
+
+.comment-author .avatar {
+    width: 30px;
+    height: 30px;
+    margin-right: 5px;
+}
+
+.comment-date {
+    color: var(--text-color);
+    font-size: 0.9em;
+    margin: 4px 0 10px;
+}
+
+.comment-content {
+    color: var(--text-color);
+    font-size: 0.9em;
+}
+
+.custom-textarea::placeholder {
+    font-family:  Poppins, sans-serif; /* Change "Your Font Name" to your desired font */
+    font-size: 14px; /* Change the font size as needed */
+    color: grey; /* Change the color as needed */
+}
+

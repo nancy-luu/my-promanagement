@@ -2,11 +2,12 @@
 
 /* variables */
 :root {
-  --heading-color: #454545;
-  --text-color: #676767;
-  --primary-color: #369be3;
-  --highlight-color: #d13267;
-  --bg-color: #ffffff;
+  --heading-color: #d5d5d5;
+  --text-color: #a9a9a9;
+  --primary-color: #4b4b4b;
+  --secondary-color: #ff9f21;
+  --highlight-color: #ff9f21;
+  --bg-color: #27272c;
 }
 
 /* base styles */
@@ -17,6 +18,7 @@ body {
   background: var(--bg-color);
 }
 ul, li, p, h1, h2, h3, h4 {
+  color: #d5d5d5;
   margin: 0;
   padding: 0;
 }
@@ -31,17 +33,19 @@ ul {
   display: inline-block;
 }
 .btn {
-  background: #fff;
+  background: #121420;
   padding: 8px 12px;
   border-radius: 4px;
-  color: var(--primary-color);
+  color: #fff;
   cursor: pointer;
   font-size: 1em;
   border: 1px solid var(--primary-color);
 }
 .btn:hover {
   color: #fff;
-  background-color: var(--primary-color);
+  background-color: var(--highlight-color);
+  border: 1px solid var(--highlight-color);
+
 }
 
 /* forms */

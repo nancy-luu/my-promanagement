@@ -20,37 +20,43 @@ function App() {
   return (
     <div className="App">
       {/* we'll only render when authIsReady from userAuthContext */}
-      {authIsReady && (
-        <BrowserRouter>
-          {user && <Sidebar />}
-          <div className="container">
-            <Navbar />
-            <Switch>
-              <Route exact path="/">
-                {!user && <Redirect to="/login" />}
-                {user && <Dashboard />}
-              </Route>
-              <Route path="/create">
-                {!user && <Redirect to="/login" />}
-                {user && <Create />}
-              </Route>
-              <Route path="/projects/:id">
-                {!user && <Redirect to="/login" />}
-                {user && <Project />}
-              </Route>
-              <Route path="/login">
-                {user && <Redirect to="/" /> }
-                {!user && <Login /> }
-              </Route>
-              <Route path="/signup">
-                {user && <Redirect to="/" /> }
-                {!user && <Signup /> }
-              </Route>
-            </Switch>
+        {authIsReady && (
+          <BrowserRouter>
+          {authIsReady && <Navbar />}
+          <div className="main-content">
+            {user && <Sidebar />}
+            <div className="container">
+              <Switch>
+                <Route exact path="/">
+                  {!user && <Redirect to="/login" />}
+                  {user && <Dashboard />}
+                </Route>
+                <Route path="/create">
+                  {!user && <Redirect to="/login" />}
+                  {user && <Create />}
+                </Route>
+                <Route path="/users">
+                  {!user && <Redirect to="/login" />}
+                  {user && <OnlineUsers />}
+                </Route>
+                <Route path="/projects/:id">
+                  {!user && <Redirect to="/login" />}
+                  {user && <Project />}
+                </Route>
+                <Route path="/login">
+                  {user && <Redirect to="/" />}
+                  {!user && <Login />}
+                </Route>
+                <Route path="/signup">
+                  {user && <Redirect to="/" />}
+                  {!user && <Signup />}
+                </Route>
+              </Switch>
+            </div>
+            {/* {user && <OnlineUsers />} */}
           </div>
-          {user && <OnlineUsers />}
-        </BrowserRouter>
-      )}
+          </BrowserRouter>
+        )}
     </div>
   );
 }

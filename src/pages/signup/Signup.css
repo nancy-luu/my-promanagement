@@ -2,7 +2,12 @@
     max-width: 360px;
     margin: 60px auto;
     padding: 40px;
-    border: 1px solid #ddd;
+    border: 0.5px solid #a3a3a3;
     box-shadow: 10px 10px 5px rgba(0, 0, 0, 0.05);
-    background: #fff;
+    border-radius: 3px;
+    background: #3d3c45;
+}
+
+.auth-form label span {
+    color: var(--heading-color);
 }

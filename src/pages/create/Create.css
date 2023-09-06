@@ -1,7 +1,10 @@
+
 .create-form {
-    background-color: rgb(236, 236, 236);
+    margin-top: 50px;
+    background-color: var(--primary-color);
+    color: var(--text-color);
     max-width: 600px;
-    border: 1px solid rgb(161, 158, 158);
     padding: 20px;
     border-radius: 5px;
 }
+

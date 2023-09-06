@@ -1,8 +1,25 @@
 .navbar {
     width: 100%;
-    padding: 30px 0;
+    padding: 20px;
     box-sizing: border-box;
-    margin-bottom: 80px;
+    border-bottom: 1px solid rgb(139, 139, 139);
+    background-color: var(--bg-color); /* Set the background color you want */
+    z-index: 2; /* Ensure the Navbar is on top of other components */
+    position: sticky;
+    top: 0;
+}
+
+.left-nav-container {
+    display: flex;
+    align-items: center;
+}
+
+.left-nav-container .avatar {
+    margin-right: 10px;
+}
+
+.left-nav-container h4 {
+    margin-right: 20px;
 }
 
 .navbar ul {
@@ -29,7 +46,7 @@
 }
 
 .navbar a {
-    color: #333;
+    color: var(--heading-color);
     text-decoration: none;
     margin-right: 20px;
 }

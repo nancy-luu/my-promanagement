@@ -7,6 +7,7 @@ import { useAuthContext } from "../hooks/useAuthContext";
 // styles and images
 import './Navbar.css'
 import Logo from '../assets/logo.png'
+import Avatar from './Avatar';
 
 export default function Navbar() {
   const { logout, isPending } = useLogout();
@@ -24,10 +25,14 @@ export default function Navbar() {
         {!user && <Link to="/signup">Signup</Link>}
 
         {user && (
-          <li>
-              {!isPending && <button className="btn" onClick={logout}>Logout</button>}
-              {isPending && <button className="btn" disable>Logging out..</button>}
-          </li>
+          <div className="left-nav-container">
+            <Avatar src={user.photoURL}/>
+            <h4>{user.displayName}</h4>
+            <li>
+                {!isPending && <button className="btn" onClick={logout}>Logout</button>}
+                {isPending && <button className="btn" disable>Logging out..</button>}
+            </li>
+          </div>
         )}
       </ul>
     </div>

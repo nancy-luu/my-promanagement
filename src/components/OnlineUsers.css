@@ -1,9 +1,16 @@
+.users-container {
+    margin-top: 50px;
+    display: flex;
+}
+
 .user-list {
+    margin-right: 50px;
     width: 250px;
     min-width: 250px;
     padding: 30px;
     box-sizing: border-box;
-    background: #fff;
+    border-radius: 5px;
+    background: var(--primary-color);
     color: var(--heading-color);
 }
 
@@ -17,7 +24,6 @@
 
 .user-list .user-list-item {
     display: flex;
-    justify-content: flex-start;
     align-items: center;
     margin: 20px auto;
 }
@@ -42,4 +48,57 @@
     background: rgb(112, 241, 112);
     border-radius: 50%;
     margin: 2px; /* Adjust margin for spacing */
-  }
+}
+
+
+
+
+/* Team */
+
+.team-list {
+    margin-right: 50px;
+    width: 250px;
+    min-width: 250px;
+    padding: 30px;
+    box-sizing: border-box;
+    color: var(--heading-color);
+}
+
+.team-list h2 {
+    text-align: left;
+    margin-bottom: 40px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #eee;
+    font-size: 1.2em;
+}
+
+.team-list .team-list-item {
+    display: flex;
+    align-items: center;
+    margin: 20px auto;
+    background: var(--primary-color);
+    padding: 20px;
+    border-radius: 5px;
+}
+
+.team-list .avatar {
+    margin-right: 10px;
+    width: 40px;
+    height: 40px;
+}
+
+.avatar-online-container {
+    position: relative; /* Add relative positioning */
+    display: inline-block;
+}
+
+.team-list .online-user {
+    position: absolute; /* Position absolutely within the container */
+    bottom: 3px; /* Align to the bottom edge */
+    right: 7px; /* Align to the right edge */
+    width: 12px;
+    height: 12px;
+    background: rgb(112, 241, 112);
+    border-radius: 50%;
+    margin: 2px; /* Adjust margin for spacing */
+}
