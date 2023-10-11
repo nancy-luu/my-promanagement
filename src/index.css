@@ -2,8 +2,8 @@
 
 /* variables */
 :root {
-  --heading-color: #d5d5d5;
-  --text-color: #a9a9a9;
+  --heading-color: #a9a9a9;
+  --text-color: #dddddd;
   --primary-color: #4b4b4b;
   --secondary-color: #ff9f21;
   --highlight-color: #ff9f21;
@@ -18,7 +18,7 @@ body {
   background: var(--bg-color);
 }
 ul, li, p, h1, h2, h3, h4 {
-  color: #d5d5d5;
+  color: var(--text-color);
   margin: 0;
   padding: 0;
 }

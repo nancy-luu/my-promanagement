@@ -35,7 +35,7 @@
     padding: 10px;
     text-decoration: none;
     width: 100%;
-    color: #ffffff;
+    color: var(--text-color);
     box-sizing: border-box;
     align-items: center;
 }

@@ -1,33 +1,36 @@
 import { useAuthContext } from '../hooks/useAuthContext'
 import { useCollection } from '../hooks/useCollection'
+import { useMyProjects } from '../hooks/useMyProjects';
+
+
 import Avatar from './Avatar'
 
 // styles
-import './OnlineUsers.css'
+import './Team.css'
 
 export default function OnlineUsers() {
     const { user } = useAuthContext();
     const { error: userError, documents: userDocuments} = useCollection('users');
     const { error: projectError, documents: projectDocuments} = useCollection('projects');
 
-    const myTeamProjects = projectDocuments
-    ? projectDocuments.filter(projectDoc => 
-        projectDoc.assignedUsersList.some(userObj => userObj.displayName === user.displayName)
-      )
-    : [];
+    const { myProjects } = useMyProjects();
 
-    // flatMap flattens these arrays of display names into a single array instead of 3 arrays
-    const assignedUsersDisplayNames = myTeamProjects.flatMap(projectDoc => 
+    // getting all the names of assigned user for each project
+    // flatMap flattens these arrays of display names into a single array instead of multiple arrays
+    const assignedUsersDisplayNames = myProjects.flatMap(projectDoc => 
       projectDoc.assignedUsersList.map(userObj => userObj.displayName)
     );
 
+    // taking out user's name from the list
     const teamMembers = Array.from(assignedUsersDisplayNames).filter(
       displayName => displayName !== user.displayName
     );    
 
+    // creating a list of nonrepeated names
     const uniqueTeamMembers = [...new Set(teamMembers)];
-    console.log(uniqueTeamMembers)
+    // console.log(uniqueTeamMembers)
 
+    // getting the full team members object by filtering through user Docs 
     const uniqueTeamMembersObject = userDocuments
       ? userDocuments.filter(user => uniqueTeamMembers.includes(user.displayName))
       : [];

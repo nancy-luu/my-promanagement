@@ -1,19 +1,16 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
-import { useAuthContext } from "../hooks/useAuthContext";
-import Avatar from './Avatar'
-
 
 // styles
 import "./Sidebar.css";
 import DashboardIcon from "../assets/dashboard_icon.png";
+import ProjectsIcon from "../assets/projects_icon.png";
 import ArrowIcon from "../assets/arrowright.png";
 import AddIcon from "../assets/add_icon.png";
-import UsersIcon from "../assets/user.png";
+import TeamIcon from "../assets/user.png";
 
 
 export default function Sidebar() {
-  const { user } = useAuthContext();
 
   return (
     <div className="sidebar">
@@ -28,16 +25,23 @@ export default function Sidebar() {
               </NavLink>
             </li>
             <li>
+              <NavLink exact to="/projects">
+                <img src={ProjectsIcon} alt="projects icon" />
+                <span>Projects</span>
+                <img className="arrow" src={ArrowIcon} alt="arrow icon" />
+              </NavLink>
+            </li>
+            <li>
               <NavLink to="/create">
                 <img src={AddIcon} alt="add icon" />
                 <span>New Project</span>
                 <img className="arrow" src={ArrowIcon} alt="arrow icon" />
               </NavLink>
             </li>
-            <li className="users-section">
-              <NavLink to="/users">
-                <img src={UsersIcon} alt="add icon" />
-                <span>Users</span>
+            <li className="team-section">
+              <NavLink to="/team">
+                <img src={TeamIcon} alt="team icon" />
+                <span>Team</span>
                 <img className="arrow" src={ArrowIcon} alt="arrow icon" />
               </NavLink>
             </li>
