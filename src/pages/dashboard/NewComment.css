@@ -23,7 +23,7 @@
 .comment-form {
     background-color: var(--primary-color);
     margin: 10px;
-    padding: 10px;
+    padding: 20px;
     border-radius: var(--inner-radius);
     display: flex;
     flex-direction: row;
@@ -31,4 +31,10 @@
 
 .comment-info {
     margin-left: 10px;
+}
+
+.comment-arrow {
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }

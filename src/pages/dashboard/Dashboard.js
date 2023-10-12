@@ -6,12 +6,14 @@ import Collaborators from './Collaborators'
 
 // styles
 import './Dashboard.css'
+import SmallCalendar from './SmallCalendar'
 
 const Dashboard = () => {
   return (
     <div className="dashboard-container">
       <div className="dashboard-left">
         <Overview /> 
+        <SmallCalendar />
       </div>
       <div className="dashboard-right">
         <div className="dashboard-right-top">

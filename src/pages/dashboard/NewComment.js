@@ -2,6 +2,8 @@ import { useAuthContext } from '../../hooks/useAuthContext'
 import { useMyProjects } from "../../hooks/useMyProjects";
 import Avatar from "../../components/Avatar"
 
+import ArrowIcon from "../../assets/arrowright.png";
+
 
 
 const NewComment = ({ comment }) => {
@@ -11,6 +13,8 @@ const NewComment = ({ comment }) => {
     const commentProject = myProjects.find(project =>
         project.comments.some(commentItem => commentItem.id === comment.id)
       );
+
+    const commentPreview = [...comment.content].slice(0, 30);
 
 
   return (
@@ -22,11 +26,14 @@ const NewComment = ({ comment }) => {
                 </div>
                 <div className="comment-info">
                     <div className="comment-createdBy">
-                        {comment.displayName} from {commentProject && <>{commentProject.name}</>}
+                        {comment.displayName} - {commentProject && <>{commentProject.name}</>}
                     </div>
                     <div className="comment-content">
-                        {comment.content}
+                        {commentPreview}...
                     </div>
+                </div>
+                <div className="comment-arrow">
+                    <img className="arrow" src={ArrowIcon} alt="arrow icon" />
                 </div>
             </div>
         )}

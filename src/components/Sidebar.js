@@ -26,6 +26,13 @@ export default function Sidebar() {
               </NavLink>
             </li>
             <li>
+              <NavLink to="/calendar">
+                <img src={CalendarIcon} alt="calendar icon" />
+                <span>Calendar</span>
+                <img className="arrow" src={ArrowIcon} alt="arrow icon" />
+              </NavLink>
+            </li>
+            <li>
               <NavLink exact to="/projects">
                 <img src={ProjectsIcon} alt="projects icon" />
                 <span>Projects</span>
@@ -36,13 +43,6 @@ export default function Sidebar() {
               <NavLink to="/create">
                 <img src={AddIcon} alt="add icon" />
                 <span>New Project</span>
-                <img className="arrow" src={ArrowIcon} alt="arrow icon" />
-              </NavLink>
-            </li>
-            <li>
-              <NavLink to="/calendar">
-                <img src={CalendarIcon} alt="calendar icon" />
-                <span>Calendar</span>
                 <img className="arrow" src={ArrowIcon} alt="arrow icon" />
               </NavLink>
             </li>

@@ -39,7 +39,7 @@ const Collaborators = () => {
   return (
     <>
         <div className="collaborators-container">
-            <h3>Collaborators:</h3>
+            <h3>Collaborators</h3>
             {/* {error & <div className="error">{error}</div>} */}
             {/* Need to ensure document is not null first */}
             <div className="collaborators-form">    
