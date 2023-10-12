@@ -7,7 +7,7 @@
 .main-content {
   display: flex;
   flex-grow: 1; /* Allow the content to grow and take remaining space */
-  overflow: hidden; /* Hide any overflowing content */
+  /* overflow: hidden; Hide any overflowing content */
 }
 
 .App .container{
