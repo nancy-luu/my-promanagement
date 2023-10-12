@@ -3,20 +3,22 @@
     padding: 10px;
     background-color: var(--form-background-color);
     border-radius: var(--outer-radius);
-    display: flex; 
-    flex-direction: column;
 }
 
 .collaborators-form {
     display: flex;
     flex-direction: row;
+    flex-wrap: wrap; /* Ensure items wrap to the next line */
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* 2 columns */
+    grid-auto-rows: minmax(150px, auto);
 }
 
 .collaborator-card {
-    width: 200px;
+    width: 150px;
     height: 150px;
     background-color: var(--primary-color);
-    margin: 10px;
+    margin: 5px;
     border-radius: var(--inner-radius);
     display: flex;
     flex-direction: column;

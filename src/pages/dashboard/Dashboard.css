@@ -1,5 +1,5 @@
 .dashboard-container {
-    width: 100%;
+    overflow: hidden;
     display: flex;
 }
 
@@ -9,5 +9,6 @@
 }
 
 .dashboard-right-bottom {
-    display: flex;
+    display: grid;
+    grid-template-columns: 1fr 1fr
 }
