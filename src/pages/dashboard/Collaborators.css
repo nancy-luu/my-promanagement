@@ -1,0 +1,40 @@
+.collaborators-container {
+    margin: 10px;
+    padding: 10px;
+    background-color: var(--form-background-color);
+    border-radius: var(--outer-radius);
+    display: flex; 
+    flex-direction: column;
+}
+
+.collaborators-form {
+    display: flex;
+    flex-direction: row;
+}
+
+.collaborator-card {
+    width: 200px;
+    height: 150px;
+    background-color: var(--primary-color);
+    margin: 10px;
+    border-radius: var(--inner-radius);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.collaborator-avatar,
+.user-displayname,
+.uesr-role {
+    align-items: center;
+}
+
+.user-displayname {
+    font-weight: 600;
+}
+
+.collaborators-container h3 {
+    padding-left: 10px;
+}

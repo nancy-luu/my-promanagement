@@ -2,6 +2,7 @@ import React from 'react'
 import Overview from './Overview'
 import PriorityTasks from './PriorityTasksList'
 import NewComments from './NewCommentsList'
+import Collaborators from './Collaborators'
 
 
 const Dashboard = () => {
@@ -10,6 +11,7 @@ const Dashboard = () => {
       <Overview />
       <PriorityTasks />
       <NewComments />
+      <Collaborators />
     </div>
   )
 }

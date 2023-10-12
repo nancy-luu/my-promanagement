@@ -13,12 +13,13 @@ const NewComment = ({ comment }) => {
       );
 
 
-
   return (
     <>
         {comment.photoURL !== user.photoURL && (
             <div className="comment-form">
-                <Avatar src={comment.photoURL} /> 
+                <div className="comment-avatar">
+                    <Avatar src={comment.photoURL} /> 
+                </div>
                 <div className="comment-info">
                     <div className="comment-createdBy">
                         {comment.displayName} from {commentProject && <>{commentProject.name}</>}

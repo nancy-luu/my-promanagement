@@ -5,6 +5,10 @@
     border-radius: var(--outer-radius);
 }
 
+.new-comments-container h3 {
+    padding-left: 10px;
+}
+
 .comment-form {
     background-color: var(--primary-color);
     margin: 10px;

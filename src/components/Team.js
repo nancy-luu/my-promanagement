@@ -1,8 +1,6 @@
 import { useAuthContext } from '../hooks/useAuthContext'
 import { useCollection } from '../hooks/useCollection'
 import { useMyProjects } from '../hooks/useMyProjects';
-
-
 import Avatar from './Avatar'
 
 // styles

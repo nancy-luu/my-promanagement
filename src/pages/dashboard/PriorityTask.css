@@ -5,6 +5,10 @@
     border-radius: var(--outer-radius);
 }
 
+.prioritylist-container h3 {
+    padding-left: 10px;
+}
+
 .task-form {
     background-color: var(--primary-color);
     margin: 10px;
