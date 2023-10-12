@@ -21,7 +21,7 @@ const NewComments = () => {
 
   let sortedComments = allComments.flat().sort((a, b) => b.createdAt - a.createdAt);
 
-  console.log(sortedComments);
+  // console.log(sortedComments);
   
 
   return (
