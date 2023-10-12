@@ -6,7 +6,7 @@ import './SmallCalendar.css'
 const SmallCalendar = () => {
   return (
     <div className="small-calendar-container">
-      OCTOBER
+      {/* <h1 className='text-xl'>HELLO</h1> */}
     </div>
   )
 }

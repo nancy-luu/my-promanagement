@@ -1,12 +1,12 @@
-import React from 'react'
 import Overview from './Overview'
+import MeetingsList from './MeetingsList'
+import SmallCalendar from './SmallCalendar'
 import PriorityTasks from './PriorityTasksList'
 import NewComments from './NewCommentsList'
 import Collaborators from './Collaborators'
 
 // styles
 import './Dashboard.css'
-import SmallCalendar from './SmallCalendar'
 
 const Dashboard = () => {
   return (
@@ -14,6 +14,7 @@ const Dashboard = () => {
       <div className="dashboard-left">
         <Overview /> 
         <SmallCalendar />
+        <MeetingsList />
       </div>
       <div className="dashboard-right">
         <div className="dashboard-right-top">

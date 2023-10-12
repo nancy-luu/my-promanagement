@@ -1,0 +1,6 @@
+.meetings-container{
+    background-color: var(--form-background-color);
+    border-radius: var(--outer-radius);
+    display: flex;
+    margin: 10px;
+}
