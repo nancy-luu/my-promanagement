@@ -1,9 +1,5 @@
 import React from 'react'
 
-
-// styles
-import './PriorityTask.css'
-
 const PriorityTask = ({ project }) => {
 
   return (

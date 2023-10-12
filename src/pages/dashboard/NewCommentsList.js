@@ -2,6 +2,9 @@ import React from "react";
 import { useMyProjects } from "../../hooks/useMyProjects";
 import NewComment from "./NewComment";
 
+// styles
+import './NewComment.css'
+
 const NewComments = () => {
   const { myProjects } = useMyProjects();
 
