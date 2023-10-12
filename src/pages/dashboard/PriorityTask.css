@@ -1,0 +1,18 @@
+.prioritylist-container {
+    padding: 10px;
+    background-color: var(--form-background-color);
+    border-radius: var(--outer-radius);
+}
+
+.task-form {
+    background-color: var(--primary-color);
+    margin: 10px;
+    padding: 10px;
+    border-radius: var(--inner-radius);
+}
+
+/* style for the link */
+.task-container a {
+    text-decoration: none;
+    color: inherit;
+}

@@ -5,16 +5,19 @@
   --heading-color: #a9a9a9;
   --text-color: #dddddd;
   --primary-color: #4b4b4b;
+  --form-background-color: #4b4b4b50;
   --secondary-color: #ff9f21;
   --highlight-color: #ff9f21;
   --bg-color: #27272c;
+  --outer-radius: 10px;
+  --inner-radius: 5px;
 }
 
 /* base styles */
 body {
   font-family: Poppins, sans-serif;
   margin: 0;
-  font-size: 1.1em;
+  font-size: 1em;
   background: var(--bg-color);
 }
 ul, li, p, h1, h2, h3, h4 {

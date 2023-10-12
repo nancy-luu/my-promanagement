@@ -1,10 +1,11 @@
 
 
 .overview-container {
-    background-color: #4B4B4B;
+    background-color: var(--form-background-color);
     display: flex;
-    padding: 10px;
+    padding: 20px;
     margin: 10px;
+    border-radius: var(--outer-radius);
 }
 
 .total-stack,
