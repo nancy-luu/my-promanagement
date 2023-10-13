@@ -8,9 +8,7 @@ import "./Collaborators.css";
 
 const Collaborators = () => {
   const { user } = useAuthContext();
-  const { error: userError, documents: userDocuments } = useCollection("users");
-  const { error: projectError, documents: projectDocuments } =
-    useCollection("projects");
+  const { documents: userDocuments } = useCollection("users");
 
   const { myProjects } = useMyProjects();
 

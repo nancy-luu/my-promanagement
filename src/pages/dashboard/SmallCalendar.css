@@ -1,6 +1,93 @@
 .small-calendar-container{
     background-color: var(--form-background-color);
     border-radius: var(--outer-radius);
+    margin: 20px 10px;
+    padding: 10px 10px 10px 10px;
+}
+
+.month-name-form {
     display: flex;
-    margin: 10px;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 10px 10px 20px;
+}
+
+.cal-arrow-form {
+    display: flex;
+}
+
+.cal-arrow-left,
+.cal-arrow-right {
+    width: 20px;
+    height: 20px;
+    padding: 0px 5px;
+    filter: grayscale(1);
+    cursor: pointer;
+}
+
+
+.cal-arrow-left:hover,
+.cal-arrow-right:hover {
+    cursor: pointer;
+    filter: grayscale(0);
+}
+
+.cal-arrow-right {
+    transform: rotateY(180deg);
+}
+
+
+.day-name-form {
+    display: grid;
+    grid-template-columns: repeat(7, minmax(0, 1fr));
+    padding: 0px 10px 0px 10px;
+}
+
+.day-name {
+    width: 20px;
+    height: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+}
+
+.days-form {
+    display: grid;
+    grid-template-columns: repeat(7, minmax(0, 1fr));
+    padding: 10px 10px 10px 10px;
+}
+
+.day,
+.day-outside-month,
+.day-current {
+    width: 20px;
+    height: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    cursor: pointer;
+}
+
+.day {
+    color: var(--text-color);
+}
+
+.day-outside-month{
+    color: rgb(106, 106, 106);
+}
+
+.day-current {
+    color: var(--bg-color);
+    background-color: var( --secondary-color);
+    border-radius: 50%;
+}
+
+
+.day-selected {
+    color: var(--text-color);
+    background-color: var( --bg-color);
+    border-radius: 50%;
+    font: bold;
 }
