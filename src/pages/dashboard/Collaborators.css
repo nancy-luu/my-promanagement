@@ -1,7 +1,10 @@
 .collaborators-container {
     margin: 10px;
     padding: 10px 15px 15px 15px;
-    background-color: var(--form-background-color);
+    border-style: solid;
+    background: linear-gradient(to bottom, #27272c, #27272c3e) padding-box,
+    linear-gradient(to top, #4f4f4f7a, #ffffff25) border-box;
+    border: .75px solid transparent;    
     border-radius: var(--outer-radius);
 }
 

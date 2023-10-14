@@ -9,7 +9,7 @@ const Meeting = ({ selectedMonth, calendarDays, selectedDay }) => {
 
   return (
     <div className="meeting">
-        <div>No meetings for today.</div>
+        <div>Meetings Info</div>
     </div>
   )
 }

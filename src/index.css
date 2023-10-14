@@ -9,7 +9,9 @@
   --bg-color: #27272c;
   --bg-secondary-color: #4b4b4b;
   --form-background-color: #4b4b4b50;
-  --secondary-color: #ff9f21;
+  --primary-color: #ff9f21;
+  --secondary-color: #FFEE53;
+  --third-color: #601C96;
   --highlight-color: #ff9f21;
   --heading-color: #a9a9a9;
   --text-color: #dddddd;
@@ -25,6 +27,8 @@ body {
   margin: 0;
   font-size: 1em;
   background: var(--bg-color);
+  background-size: 100%;
+  background-repeat: no-repeat;
 }
 ul, li, p, h1, h2, h3, h4 {
   color: var(--text-color);

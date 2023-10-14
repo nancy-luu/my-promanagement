@@ -3,10 +3,10 @@
     border-radius: var(--outer-radius);
     margin: 20px 10px;
     padding: 10px 10px 10px 10px;
-    /* border-style: solid;
+    border-style: solid;
     background: linear-gradient(to bottom, #27272c, #27272c3e) padding-box,
-    linear-gradient(to top, #ffffff9e, #ffffff9e) border-box;
-    border: .75px solid transparent; */
+    linear-gradient(to top, #4f4f4f7a, #ffffff25) border-box;
+    border: .75px solid transparent;
 }
 
 .month-name-form {
@@ -14,6 +14,7 @@
     justify-content: space-between;
     align-items: center;
     padding: 10px 10px 10px 20px;
+    border-bottom: solid 1px #ffffff25;
 }
 
 .cal-arrow-form {
@@ -21,7 +22,7 @@
 }
 
 .cal-arrow-form h4:hover {
-    color: var(--secondary-color)
+    color: var(--primary-color)
 }
 
 .cal-arrow-left,
@@ -47,7 +48,7 @@
 
 .day-name-form {
     display: grid;
-    grid-template-columns: repeat(7, minmax(0, 1fr));
+    grid-template-columns: repeat(7, minmax(0, 1fr)); 
     padding: 0px 10px 0px 10px;
 }
 
@@ -88,7 +89,7 @@
 
 .day-current {
     color: var(--bg-color);
-    background-color: var( --secondary-color);
+    background-color: var( --primary-color);
     border-radius: 50%;
 }
 

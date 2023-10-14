@@ -1,37 +1,38 @@
 .prioritylist-container {
-    margin: 10px;
-    padding: 10px;
-    background-color: var(--form-background-color);
-    border-radius: var(--outer-radius);
+  margin: 10px;
+  padding: 10px;
+  border-radius: var(--outer-radius);
+  border-style: solid;
+  background: linear-gradient(to bottom, #27272c, #27272c3e) padding-box,
+    linear-gradient(to top, #4f4f4f7a, #ffffff25) border-box;
+  border: .75px solid transparent;
+  color: var(--text-color);
 }
 
 .prioritylist-container h3 {
-    padding-left: 10px;
+  padding-left: 10px;
 }
 
 .task-form {
-    background-color: var(--bg-secondary-color);
-    margin: 10px;
-    padding: 10px;
-    border-radius: var(--inner-radius);
-    display: flex;
-    justify-content: space-between;
-  }
-  
-  .task-form .pastDue {
-    font-weight: bold;
-    color: rgb(255, 120, 120);
-  }
+  background-color: var(--bg-secondary-color);
+  margin: 10px;
+  padding: 10px;
+  border-radius: var(--inner-radius);
+  display: flex;
+  justify-content: space-between;
+}
 
-  .task-form .inProgress {
-    color: var(--text-color);
-  }
-  
-  /* style for the link */
-  .task-container a {
-    text-decoration: none;
-    color: inherit;
-  }
-  
-  
-  
+.task-form .pastDue {
+  font-weight: bold;
+  color: rgb(255, 120, 120);
+}
+
+.task-form .inProgress {
+  color: var(--text-color);
+}
+
+/* style for the link */
+.task-container a {
+  text-decoration: none;
+  color: inherit;
+}

@@ -8,9 +8,7 @@ const MeetingsList = ({ selectedDateObj, calendarDays }) => {
 
   return (
     <div className="meetings-container">
-      <div className="meeting">
-        <h4>Schedule for {selectedDateObj.month} {selectedDateObj.day}, {selectedDateObj.year}</h4>
-      </div>
+      <h4>Schedule for {selectedDateObj.month} {selectedDateObj.day}, {selectedDateObj.year}</h4>
       <div className="meetings-form">
         <Meeting 
           // thisMonth={thisMonth} 

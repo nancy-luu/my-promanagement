@@ -23,7 +23,7 @@ export default function Project() {
   return (
     <div className="project-details">
       <ProjectSummary  project={document} />
-      <ProjectComments project={document} />
+      <ProjectComments project={document} />s
     </div>
   )
 }
