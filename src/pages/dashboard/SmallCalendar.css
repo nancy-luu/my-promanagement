@@ -5,8 +5,6 @@
     padding: 10px 10px 10px 10px;
     background: linear-gradient(to bottom, #2929297f, #2929297f) padding-box,
     linear-gradient(to top, #6262623b, #03000e22) border-box;
-    /* border: 1px solid rgba(255, 255, 255, 0.367); */
-    /* border-style: solid; */
 }
 
 .month-name-form {

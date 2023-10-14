@@ -1,6 +1,6 @@
 .navbar {
     width: 100%;
-    padding: 10px;
+    padding: 20px;
     box-sizing: border-box;
     border-bottom: 1px solid rgb(139, 139, 139);
     background-color: var(--bg-color); /* Set the background color you want */

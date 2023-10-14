@@ -20,6 +20,8 @@
   background: linear-gradient(to bottom, #29292938, #2929297f) padding-box,
   linear-gradient(to top, #6262623b, #03000e22) border-box;
   border: 1px solid transparent;
+  border-image: linear-gradient(white, transparent) ;
+  border-image-slice: 1;
   border-style: solid;
 }
 
