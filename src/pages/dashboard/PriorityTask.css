@@ -2,11 +2,9 @@
   margin: 10px;
   padding: 10px;
   border-radius: var(--outer-radius);
-  border-style: solid;
-  background: linear-gradient(to bottom, #27272c, #27272c3e) padding-box,
-    linear-gradient(to top, #4f4f4f7a, #ffffff25) border-box;
-  border: .75px solid transparent;
   color: var(--text-color);
+  background: linear-gradient(to bottom, #2929297f, #2929297f) padding-box,
+  linear-gradient(to top, #6262623b, #03000e22) border-box;
 }
 
 .prioritylist-container h3 {
@@ -14,12 +12,15 @@
 }
 
 .task-form {
-  background-color: var(--bg-secondary-color);
   margin: 10px;
   padding: 10px;
   border-radius: var(--inner-radius);
   display: flex;
   justify-content: space-between;
+  background: linear-gradient(to bottom, #29292938, #2929297f) padding-box,
+  linear-gradient(to top, #6262623b, #03000e22) border-box;
+  border: 1px solid transparent;
+  border-style: solid;
 }
 
 .task-form .pastDue {

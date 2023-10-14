@@ -6,12 +6,12 @@
 
 /* variables */
 :root {
-  --bg-color: #27272c;
+  --bg-color: #03000E;
   --bg-secondary-color: #4b4b4b;
   --form-background-color: #4b4b4b50;
   --primary-color: #ff9f21;
   --secondary-color: #FFEE53;
-  --third-color: #601C96;
+  --third-color: #7521FF;
   --highlight-color: #ff9f21;
   --heading-color: #a9a9a9;
   --text-color: #dddddd;
@@ -26,8 +26,12 @@ body {
   font-family: Poppins, sans-serif;
   margin: 0;
   font-size: 1em;
-  background: var(--bg-color);
   background-size: 100%;
+  /* background: var(--bg-color); */
+  background: radial-gradient(circle at left, #69410d, #03000E, #03000E), 
+  radial-gradient(circle at right, #25094f, #03000E, #03000E);
+  background-size: 50% 100%, 50% 100%;
+  background-position: left, right;
   background-repeat: no-repeat;
 }
 ul, li, p, h1, h2, h3, h4 {

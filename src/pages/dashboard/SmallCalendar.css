@@ -3,10 +3,10 @@
     border-radius: var(--outer-radius);
     margin: 20px 10px;
     padding: 10px 10px 10px 10px;
-    border-style: solid;
-    background: linear-gradient(to bottom, #27272c, #27272c3e) padding-box,
-    linear-gradient(to top, #4f4f4f7a, #ffffff25) border-box;
-    border: .75px solid transparent;
+    background: linear-gradient(to bottom, #2929297f, #2929297f) padding-box,
+    linear-gradient(to top, #6262623b, #03000e22) border-box;
+    /* border: 1px solid rgba(255, 255, 255, 0.367); */
+    /* border-style: solid; */
 }
 
 .month-name-form {
