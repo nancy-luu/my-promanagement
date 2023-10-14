@@ -89,6 +89,12 @@ const SmallCalendar = () => {
             </div>
             <div className="days-form">
                 {calendarDays.map(({ date, currentMonth, today }, index) => {
+
+                    const isSelected =
+                    date.$D === selectedDay &&
+                    months[date.$M] === selectedMonth && // Compare the selected month
+                    date.$y === selectedYear; // Compare the selected ye
+
                 return (
                     <>
                         {currentMonth ? 
@@ -97,7 +103,7 @@ const SmallCalendar = () => {
                             className={classNameHelper(
                                 currentMonth ? "day" : "day-outside-month",
                                 today ? "day-current" : " ",
-                                currentMonth && date.$D === selectedDay ? "day-selected" : ""
+                                isSelected ? "day-selected" : ""
                             )}
                             onClick={(e) => changeSelectedDate(date)}
                             // onClick={(e) => console.log(date)}
@@ -111,7 +117,6 @@ const SmallCalendar = () => {
                             className={classNameHelper(
                                 currentMonth ? "day" : "day-outside-month",
                                 today ? "day-current" : " ",
-                                currentMonth && date.$D === selectedMonth && selectedDay ? "day-selected" : ""
                             )}
                             >
                             {date.date()}
