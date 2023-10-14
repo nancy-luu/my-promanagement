@@ -5,7 +5,7 @@
 // styles
 import './Meeting.css';
 
-const Meeting = ({ thisMonth, calendarDays, selectedDay }) => {
+const Meeting = ({ selectedMonth, calendarDays, selectedDay }) => {
 
   return (
     <div className="meeting">

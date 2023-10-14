@@ -3,6 +3,10 @@
     border-radius: var(--outer-radius);
     margin: 20px 10px;
     padding: 10px 10px 10px 10px;
+    /* border-style: solid;
+    background: linear-gradient(to bottom, #27272c, #27272c3e) padding-box,
+    linear-gradient(to top, #ffffff9e, #ffffff9e) border-box;
+    border: .75px solid transparent; */
 }
 
 .month-name-form {
@@ -14,6 +18,10 @@
 
 .cal-arrow-form {
     display: flex;
+}
+
+.cal-arrow-form h4:hover {
+    color: var(--secondary-color)
 }
 
 .cal-arrow-left,
@@ -67,10 +75,10 @@
     justify-content: center;
     align-items: center;
     padding: 10px;
-    cursor: pointer;
 }
 
 .day {
+    cursor: pointer;
     color: var(--text-color);
 }
 
@@ -87,7 +95,7 @@
 
 .day-selected {
     color: var(--text-color);
-    background-color: var( --bg-color);
+    background-color: var( --bg-secondary-color);
     border-radius: 50%;
     font: bold;
 }

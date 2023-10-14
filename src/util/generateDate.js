@@ -29,7 +29,8 @@ export const generateDate = (
             currentMonth: true,
             date: firstDateOfMonth.date(i),
             // check if one of the days matches dayjs current day
-            today: firstDateOfMonth.date(i).toDate().toDateString() === dayjs().toDate().toDateString(),
+            // today: firstDateOfMonth.date(i).toDate().toDateString() === dayjs().toDate().toDateString(),
+            today: firstDateOfMonth.date(i).isSame(dayjs(), 'day')
         });
     }
 
