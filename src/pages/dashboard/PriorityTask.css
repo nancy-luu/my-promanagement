@@ -17,12 +17,11 @@
   border-radius: var(--inner-radius);
   display: flex;
   justify-content: space-between;
-  background: linear-gradient(to bottom, #29292938, #2929297f) padding-box,
+  background: linear-gradient(to bottom, #29292938, #03000e22) padding-box,
   linear-gradient(to top, #6262623b, #03000e22) border-box;
-  border: 1px solid transparent;
-  border-image: linear-gradient(white, transparent) ;
-  border-image-slice: 1;
-  border-style: solid;
+  border-top: solid 1px rgba(115, 115, 115, 0.5);
+  border-left: solid 1px rgba(115, 115, 115, 0.5);
+  border-right: solid 1px rgba(115, 115, 115, 0.5);
 }
 
 .task-form .pastDue {
