@@ -28,8 +28,8 @@ body {
   font-size: 1em;
   background-size: 100%;
   /* background: var(--bg-color); */
-  background: radial-gradient(circle at left, #FF6525, #0b0707, #0b0707), 
-  radial-gradient(circle at right, #25094f, #0b0707, #0b0707);
+  background: radial-gradient(circle at left, #ae4619, #5e260e, #0b0707, #0b0707), 
+  radial-gradient(circle at bottom right, #25086d, #100431, #0b0707, #0b0707);
   background-size: 50% 100%, 50% 100%;
   background-position: left, right;
   background-repeat: no-repeat;

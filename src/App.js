@@ -14,6 +14,7 @@ import Team from "./components/Team";
 //styles
 import "./App.css";
 import Dashboard from "./pages/dashboard/Dashboard";
+import CalendarDash from "./pages/calendar/CalendarDash";
 
 function App() {
   const { user, authIsReady } = useAuthContext();
@@ -31,6 +32,10 @@ function App() {
                 <Route exact path="/">
                   {!user && <Redirect to="/login" />}
                   {user && <Dashboard />}
+                </Route>
+                <Route exact path="/calendar">
+                  {!user && <Redirect to="/login" />}
+                  {user && <CalendarDash />}
                 </Route>
                 <Route exact path="/projects">
                   {!user && <Redirect to="/login" />}

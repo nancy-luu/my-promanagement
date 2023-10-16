@@ -4,8 +4,8 @@
     padding: 20px 10px 20px 20px;
     margin: 10px;
     border-radius: var(--outer-radius);
-    background: linear-gradient(to bottom, #2929297f, #2929297f) padding-box,
-    linear-gradient(to top, #6262623b, #03000e22) border-box;
+      background: linear-gradient(to bottom, #2929297f, #2929297f) padding-box,
+  linear-gradient(to top, #6262623b, #03000e22) border-box;
 }
 
 .total-stack,
