@@ -1,13 +1,11 @@
 .overview-container {
-    border-style: solid;
-    background: linear-gradient(to bottom, #27272c, #27272c3e) padding-box,
-    linear-gradient(to top, #4f4f4f7a, #ffffff25) border-box;
-    border: .75px solid transparent;    
     width: 350px;
     display: flex;
     padding: 20px 10px 20px 20px;
     margin: 10px;
     border-radius: var(--outer-radius);
+    background: linear-gradient(to bottom, #2929297f, #2929297f) padding-box,
+    linear-gradient(to top, #6262623b, #03000e22) border-box;
 }
 
 .total-stack,

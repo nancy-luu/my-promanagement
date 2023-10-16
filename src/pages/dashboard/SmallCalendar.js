@@ -23,9 +23,7 @@ const SmallCalendar = () => {
   const [selectedDay, setSelectedDay] = useState();
   const [selectedMonth, setSelectedMonth] = useState();
   const [selectedYear, setSelectedYear] = useState();
-  const [selectedDateObj, setSelectedDateObj] = useState({day: currentDate.day(), month: months[currentDate.month()], year: currentDate.year()});    
-
-    // console.log(selectedDateObj)
+  const [selectedDateObj, setSelectedDateObj] = useState({day: currentDate.$D, month: months[currentDate.month()], year: currentDate.$y});    
 
   const changeCalendar = (x) => {
     let newMonth = thisMonth.month() + x;

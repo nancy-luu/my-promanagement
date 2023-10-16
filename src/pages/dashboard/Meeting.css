@@ -1,12 +1,10 @@
 .meetings-container{
-    border-style: solid;
-    background: linear-gradient(to bottom, #27272c, #27272c3e) padding-box,
-    linear-gradient(to top, #4f4f4f7a, #ffffff25) border-box;
-    border: .75px solid transparent;    
-    border-radius: var(--outer-radius);
     display: flex;
     flex-direction: column;
     margin: 10px;
+    border-radius: var(--outer-radius);
+    background: linear-gradient(to bottom, #2929297f, #2929297f) padding-box,
+    linear-gradient(to top, #6262623b, #03000e22) border-box;
 }
 
 .meetings-container h4 {
