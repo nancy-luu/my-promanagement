@@ -91,6 +91,9 @@ export default function Create() {
     }
   }
 
+  console.log('\n')
+  console.log(users)
+
   return (
     <div className="create-container">
       <div className="create-form">
@@ -132,11 +135,23 @@ export default function Create() {
           </label>
           <label>
             <span>Assign to:</span>
-            <Select 
-              onChange={(option) => setAssignedUsers(option)}
-              options={users}
-              isMulti
-            />
+            <Select
+                onChange={(option) => setAssignedUsers(option)}
+                options={users.map((user) => ({
+                  value: user.value.displayName,
+                  label: (
+                    <div className="select-option">
+                      <img
+                        src={user.value.photoURL}
+                        alt={user.value.displayName}
+                        className="avatar"
+                      />
+                      {user.value.displayName}
+                    </div>
+                  ),
+                }))}
+                isMulti
+              />
           </label>
 
           <button className="btn">Add</button>

@@ -1,0 +1,52 @@
+.calendar-dash-container{
+    background: linear-gradient(to bottom, #2929297f, #2929297f) padding-box,
+    linear-gradient(to top, #ffffff2b, #03000e22) border-box;
+    border-radius: var(--outer-radius);
+    padding: 20px;
+    margin: 20px;
+    color: white;
+    font-family: Poppins, sans-serif !important;
+    /* font-size: bold; */
+}
+
+.rbc-header {
+    background: rgba(50, 17, 168, 0.612);
+    font-family: Poppins, sans-serif;
+    font-weight: bold;
+}
+
+.rbc-month-view {
+    border: 1px solid rgba(255, 255, 255, 0.253) !important;
+}
+
+.rbc-event {
+    background-color: orange !important; /* !important to override */ 
+}
+
+.rbc-today {
+    background-color: rgba(148, 148, 148, 0.367) !important; 
+}
+
+.rbc-show-more{
+    background-color: transparent !important;
+    color: white !important;
+}
+
+.rbc-off-range-bg {
+    background-color: rgba(11, 6, 31, 0.395) !important;
+}
+
+.rbc-day-slot .rbc-events-container {
+    margin-right: 0px !important;
+}
+
+
+.rbc-toolbar button {
+    font-family: 'Poppins', sans-serif;
+    color: var(--text-color) !important;
+}
+
+.rbc-toolbar button:active, .rbc-toolbar button.rbc-active {
+    background-color: rgba(255, 153, 0, 0.937) !important;
+}
+

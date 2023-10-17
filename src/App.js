@@ -15,6 +15,7 @@ import Team from "./components/Team";
 import "./App.css";
 import Dashboard from "./pages/dashboard/Dashboard";
 import CalendarDash from "./pages/calendar/CalendarDash";
+import CreateEvent from "./pages/calendar/CreateEvent";
 
 function App() {
   const { user, authIsReady } = useAuthContext();
@@ -44,6 +45,10 @@ function App() {
                 <Route path="/create">
                   {!user && <Redirect to="/login" />}
                   {user && <Create />}
+                </Route>
+                <Route path="/createEvent">
+                  {!user && <Redirect to="/login" />}
+                  {user && <CreateEvent />}
                 </Route>
                 <Route path="/team">
                   {!user && <Redirect to="/login" />}
