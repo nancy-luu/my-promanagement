@@ -26,6 +26,7 @@ export default function Create() {
   const [dueDate, setDueDate] = useState('')
   const [category, setCategory] = useState('')
   const [assignedUsers, setAssignedUsers] = useState([])
+  const [isCompleted, setIsCompleted] = useState(false)
   const [formError, setFormError] = useState(null)
 
   const { documents } = useCollection('users');
@@ -79,7 +80,8 @@ export default function Create() {
       dueDate: timestamp.fromDate(new Date(dueDate)),
       comments: [],
       createdBy,
-      assignedUsersList
+      assignedUsersList,
+      isCompleted: isCompleted
     }
     
     // waits to add document before moving on
@@ -87,6 +89,7 @@ export default function Create() {
 
     // if there is no response the user will be redirected the the dashboard
     if(!response.error) {
+      console.log(response)
       history.push('/');
     }
   }
@@ -137,6 +140,7 @@ export default function Create() {
             <span>Assign to:</span>
             <Select
                 onChange={(option) => setAssignedUsers(option)}
+                // options={users}
                 options={users.map((user) => ({
                   value: user.value.displayName,
                   label: (

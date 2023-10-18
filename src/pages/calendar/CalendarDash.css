@@ -50,3 +50,13 @@
     background-color: rgba(255, 153, 0, 0.937) !important;
 }
 
+
+.start-end-input-container {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.start-end-input-container p{
+    margin: 0px 10px;
+}
