@@ -140,11 +140,13 @@ export default function Create() {
             <Select
               value={assignedUsers}
               onChange={(option) => setAssignedUsers(option)}
-              // options={users}
-              options={users.map((user) => ({
-                value: user,
-                label: user.label
-              }))}
+              options={users}
+              formatOptionLabel={user => (
+                <div className="country-option">
+                  <img src={user.img} className="avatar" alt="user-avatar" />
+                  <span>{user.label}</span>
+                </div>
+              )}
               isMulti
             />
           </label>
