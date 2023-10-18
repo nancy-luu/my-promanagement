@@ -47,6 +47,7 @@ const CreateEvent = () => {
                     <DateTimePicker
                         value={dayjs(start)}
                         onChange={(newValue) => setStart(newValue.toDate())}
+                        InputProps={{ sx: { "& .MuiSvgIcon-root": { color: "blue" } } }}
                     />
                     <p>to</p>
                     <DateTimePicker

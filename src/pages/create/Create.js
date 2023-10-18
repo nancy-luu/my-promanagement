@@ -1,77 +1,76 @@
-import React, { useState, useEffect } from 'react'
-import { useCollection } from '../../hooks/useCollection'
-import { timestamp } from '../../firebase/config'
-import { useAuthContext } from '../../hooks/useAuthContext'
-import { useFirestore } from '../../hooks/useFirestore'
-import { useHistory } from 'react-router-dom'
-import Select from 'react-select'
+import React, { useState, useEffect } from "react";
+import { useCollection } from "../../hooks/useCollection";
+import { timestamp } from "../../firebase/config";
+import { useAuthContext } from "../../hooks/useAuthContext";
+import { useFirestore } from "../../hooks/useFirestore";
+import { useHistory } from "react-router-dom";
+import Select from "react-select";
 
 //styles
-import './Create.css'
+import "./Create.css";
 
 const categories = [
-  { value: 'development', label: 'Development' },
-  { value: 'design', label: 'Design' },
-  { value: 'marketing', label: 'Marketing' },
-  { value: 'product', label: 'Product' },
-  { value: 'research', label: 'Research' },
-  { value: 'sales', label: 'Sales' }
-]
-
+  { value: "development", label: "Development" },
+  { value: "design", label: "Design" },
+  { value: "marketing", label: "Marketing" },
+  { value: "product", label: "Product" },
+  { value: "research", label: "Research" },
+  { value: "sales", label: "Sales" },
+];
 
 export default function Create() {
+  const [name, setName] = useState("");
+  const [details, setDetails] = useState("");
+  const [dueDate, setDueDate] = useState("");
+  const [category, setCategory] = useState("");
+  const [assignedUsers, setAssignedUsers] = useState([]);
+  const [isCompleted, setIsCompleted] = useState(false);
+  const [formError, setFormError] = useState(null);
 
-  const [name, setName] = useState('');
-  const [details, setDetails] = useState('')
-  const [dueDate, setDueDate] = useState('')
-  const [category, setCategory] = useState('')
-  const [assignedUsers, setAssignedUsers] = useState([])
-  const [isCompleted, setIsCompleted] = useState(false)
-  const [formError, setFormError] = useState(null)
-
-  const { documents } = useCollection('users');
+  const { documents } = useCollection("users");
   const [users, setUsers] = useState([]);
-  const { user } = useAuthContext()
+  const { user } = useAuthContext();
 
-  // first time we save to projects if it doesnt exist it will be created 
-  const { addDocument, response } = useFirestore('projects');
+  // first time we save to projects if it doesnt exist it will be created
+  const { addDocument, response } = useFirestore("projects");
   const history = useHistory();
 
   useEffect(() => {
-    if(documents) {
+    if (documents) {
       const options = documents.map((user) => {
-        return { value: user, label: user.displayName }
-      })
+        return { value: user, label: user.displayName, img: user.photoURL };
+      });
       setUsers(options);
     }
-  }, [documents])
+  }, [documents]);
+
 
   const handleSubmit = async (e) => {
-    e.preventDefault()
-    setFormError(null)
+    e.preventDefault();
+    setFormError(null);
 
-    if(!category) {
-      setFormError('Please select category.');
-      return
+    if (!category) {
+      setFormError("Please select category.");
+      return;
     }
-    if(assignedUsers.length < 1){
-      setFormError('Please assign to at least 1 team member.')
+    if (assignedUsers.length < 1) {
+      setFormError("Please assign to at least 1 team member.");
     }
 
     const createdBy = {
       displayName: user.displayName,
-      photoURL : user.photoURL,
-      id: user.uid
-    }
+      photoURL: user.photoURL,
+      id: user.uid,
+    };
 
     // creating a simplified array of obects from useAuthContext with the properties we want
     const assignedUsersList = assignedUsers.map((u) => {
-      return { 
+      return {
         displayName: u.value.displayName,
         photoURL: u.value.photoURL,
-        id: u.value.id
-      }
-    })
+        id: u.value.id,
+      };
+    });
 
     const project = {
       name,
@@ -81,21 +80,21 @@ export default function Create() {
       comments: [],
       createdBy,
       assignedUsersList,
-      isCompleted: isCompleted
-    }
-    
+      isCompleted: isCompleted,
+    };
+
     // waits to add document before moving on
     await addDocument(project);
 
     // if there is no response the user will be redirected the the dashboard
-    if(!response.error) {
-      console.log(response)
-      history.push('/');
+    if (!response.error) {
+      console.log(response);
+      history.push("/");
     }
-  }
+  };
 
-  console.log('\n')
-  console.log(users)
+  console.log("\n");
+  console.log(users);
 
   return (
     <div className="create-container">
@@ -104,7 +103,7 @@ export default function Create() {
         <form onSubmit={handleSubmit}>
           <label>
             <span>Name:</span>
-            <input 
+            <input
               required
               type="text"
               onChange={(e) => setName(e.target.value)}
@@ -113,7 +112,7 @@ export default function Create() {
           </label>
           <label>
             <span>Details:</span>
-            <textarea 
+            <textarea
               required
               type="text"
               onChange={(e) => setDetails(e.target.value)}
@@ -122,7 +121,7 @@ export default function Create() {
           </label>
           <label>
             <span>Due Date:</span>
-            <input 
+            <input
               required
               type="date"
               onChange={(e) => setDueDate(e.target.value)}
@@ -131,7 +130,7 @@ export default function Create() {
           </label>
           <label>
             <span>Category:</span>
-            <Select 
+            <Select
               options={categories}
               onChange={(option) => setCategory(option)}
             />
@@ -139,23 +138,15 @@ export default function Create() {
           <label>
             <span>Assign to:</span>
             <Select
-                onChange={(option) => setAssignedUsers(option)}
-                // options={users}
-                options={users.map((user) => ({
-                  value: user.value.displayName,
-                  label: (
-                    <div className="select-option">
-                      <img
-                        src={user.value.photoURL}
-                        alt={user.value.displayName}
-                        className="avatar"
-                      />
-                      {user.value.displayName}
-                    </div>
-                  ),
-                }))}
-                isMulti
-              />
+              value={assignedUsers}
+              onChange={(option) => setAssignedUsers(option)}
+              // options={users}
+              options={users.map((user) => ({
+                value: user,
+                label: user.label
+              }))}
+              isMulti
+            />
           </label>
 
           <button className="btn">Add</button>
@@ -164,5 +155,5 @@ export default function Create() {
         </form>
       </div>
     </div>
-  )
+  );
 }
