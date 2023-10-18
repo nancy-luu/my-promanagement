@@ -1,6 +1,6 @@
-.calendar-dash-container{
+.calendar-dash-container {
     background: linear-gradient(to bottom, #2929297f, #2929297f) padding-box,
-    linear-gradient(to top, #ffffff2b, #03000e22) border-box;
+        linear-gradient(to top, #ffffff2b, #03000e22) border-box;
     border-radius: var(--outer-radius);
     padding: 20px;
     margin: 20px;
@@ -20,14 +20,15 @@
 }
 
 .rbc-event {
-    background-color: orange !important; /* !important to override */ 
+    background-color: orange !important;
+    /* !important to override */
 }
 
 .rbc-today {
-    background-color: rgba(148, 148, 148, 0.367) !important; 
+    background-color: rgba(148, 148, 148, 0.367) !important;
 }
 
-.rbc-show-more{
+.rbc-show-more {
     background-color: transparent !important;
     color: white !important;
 }
@@ -46,7 +47,8 @@
     color: var(--text-color) !important;
 }
 
-.rbc-toolbar button:active, .rbc-toolbar button.rbc-active {
+.rbc-toolbar button:active,
+.rbc-toolbar button.rbc-active {
     background-color: rgba(255, 153, 0, 0.937) !important;
 }
 
@@ -57,6 +59,33 @@
     align-items: center;
 }
 
-.start-end-input-container p{
+.start-end-input-container p {
     margin: 0px 10px;
+}
+
+
+
+/* FLATPICKER STTYLES */
+
+.flatpickr-calendar {
+    background-color: #7d7d7de5 !important ;
+    backdrop-filter: blur(5px);
+    font-family: Poppins, sans-serif !important;
+}
+
+.flatpickr-month {
+    font-family: Poppins, sans-serif !important;
+    color: white !important;
+}
+
+.flatpickr-day.selected {
+    background-color: var(--primary-color) !important;
+    border-color: var(--primary-color) !important;
+    color: #fff;
+}
+
+.flatpickr-monthDropdown-months {
+    font-family: 'Poppins', sans-serif !important;
+    font-size: 14px;
+    /* Adjust the font size as needed */
 }

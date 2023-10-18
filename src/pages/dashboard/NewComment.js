@@ -14,7 +14,7 @@ const NewComment = ({ comment }) => {
         project.comments.some(commentItem => commentItem.id === comment.id)
       );
 
-    const commentPreview = [...comment.content].slice(0, 30);
+    const commentPreview = [...comment.content].slice(0, 40);
 
 
   return (
@@ -29,7 +29,7 @@ const NewComment = ({ comment }) => {
                         {comment.displayName} - {commentProject && <>{commentProject.name}</>}
                     </div>
                     <div className="comment-content">
-                        {commentPreview}...
+                        "{commentPreview}..."
                     </div>
                 </div>
                 <div className="comment-arrow">

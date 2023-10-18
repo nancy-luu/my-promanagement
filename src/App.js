@@ -10,12 +10,12 @@ import Login from "./pages/login/Login";
 import Signup from "./pages/signup/Signup";
 import Project from "./pages/project/Project";
 import Team from "./components/Team";
-
-//styles
-import "./App.css";
 import Dashboard from "./pages/dashboard/Dashboard";
 import CalendarDash from "./pages/calendar/CalendarDash";
 import CreateEvent from "./pages/calendar/CreateEvent";
+
+//styles
+import "./App.css";
 
 function App() {
   const { user, authIsReady } = useAuthContext();
