@@ -1,4 +1,3 @@
-
 .create-form {
     margin-top: 50px;
     background-color: var(--primary-color);
@@ -8,3 +7,18 @@
     border-radius: 5px;
 }
 
+.assigned-user-option {
+    display: flex;
+    /* justify-content: center; */
+    align-items: center;
+}
+
+.assigned-user-option img {
+    width: 30px;
+    height: 30px;
+}
+
+.assigned-user-option p {
+    padding-left: 10px;
+    color: black;
+}

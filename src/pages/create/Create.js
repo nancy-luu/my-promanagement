@@ -142,9 +142,9 @@ export default function Create() {
               onChange={(option) => setAssignedUsers(option)}
               options={users}
               formatOptionLabel={user => (
-                <div className="country-option">
+                <div className="assigned-user-option">
                   <img src={user.img} className="avatar" alt="user-avatar" />
-                  <span>{user.label}</span>
+                  <p>{user.label}</p>
                 </div>
               )}
               isMulti
