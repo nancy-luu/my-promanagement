@@ -9,9 +9,9 @@ import './PriorityTask.css'
 
 
 const PriorityTasks = () => {
-  const { openProjects } = useMyProjects();
+  const { inProgressProjects } = useMyProjects();
 
-  const sortedProjects = [...openProjects].sort((a, b) => a.dueDate - b.dueDate);
+  const sortedProjects = [...inProgressProjects].sort((a, b) => a.dueDate - b.dueDate);
   const topProjects= sortedProjects.slice(0, 3);
   // console.log(sortedProjects.forEach(project => console.log(project.dueDate.toDate().toDateString())))
 

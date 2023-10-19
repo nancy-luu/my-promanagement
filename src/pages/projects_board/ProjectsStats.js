@@ -1,28 +1,18 @@
-import { useState } from "react";
-import { useCollection } from "../../hooks/useCollection";
-import { useAuthContext } from "../../hooks/useAuthContext";
-import { useMyProjects } from '../../hooks/useMyProjects';
+import { useProjectStats } from '../../hooks/useProjectStats';
 
 
-const ProjectsStats = () => {
-    const { myProjects, openProjects, inProgressProjects, completedProject, projectCount } = useMyProjects();
-    const { user } = useAuthContext();
-
-    console.log('MY PROJECTS -------------')
-
-    let openPercent = (openProjects.length / projectCount) * 100;
-    let inProgressPercent = (inProgressProjects.length / projectCount) * 100;
-    let completedPercent = (completedProject.length / projectCount) * 100;
+const ProjectsStats = ({ currFilter, setCurrFilter, changeFilter, projects, error, documents }) => {
+    const { openPercent, inProgressPercent, completedPercent } = useProjectStats(projects);
 
   return (
     <div className="status-container">
-      <h3>Status</h3>
+      <h3>Status of {currFilter}</h3>
       <h4>Open:</h4>
-      <div>{openPercent}%</div>
+      <p>{openPercent}%</p>
       <h4>In Progress:</h4>
-      <div>{inProgressPercent}%</div>
+      <p>{inProgressPercent}%</p>
       <h4>Completed:</h4>
-      <div>{completedPercent}%</div>
+      <p>{completedPercent}%</p>
     </div>
   )
 }

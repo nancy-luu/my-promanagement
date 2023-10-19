@@ -16,10 +16,13 @@ export const useMyProjects = () => {
     const openProjects = myProjects.filter(project => {return project.isCompleted === false && project.comments.length === 0});
     
     const inProgressProjects = myProjects.filter(project => project.comments && project.comments.length > 0);
-    
     const completedProject = myProjects.filter(project => project.isCompleted)
-    
     const projectCount = myProjects.length;
+
+
+    let openPercent = (openProjects.length / projectCount) * 100;
+    let inProgressPercent = (inProgressProjects.length / projectCount) * 100;
+    let completedPercent = (completedProject.length / projectCount) * 100;
         
     return {
         myProjects, 
@@ -27,6 +30,9 @@ export const useMyProjects = () => {
         inProgressProjects, 
         completedProject, 
         projectCount, 
+        openPercent,
+        inProgressPercent,
+        completedPercent,
         loading, 
         projectError 
     };

@@ -41,11 +41,6 @@ const BigCalendar = () => {
     console.log(event.attendees);
   };
 
-  const handleAddEvent = () => {
-    // Handle the click of your custom button here
-    console.log('Adding new event...');
-  };
-
   const EventDisplay = ({ event }) => (
     <div>
       <strong>{event.title}</strong>
@@ -62,9 +57,6 @@ const BigCalendar = () => {
     return (
       <div className="rbc-toolbar">
         <span className="rbc-btn-group">
-          <NavLink exact to="/createEvent">
-            <button type="button" onClick={handleAddEvent}>Create</button>
-          </NavLink>
           <span className="rbc-btn-today">
             <button type="button" onClick={() => toolbar.onNavigate('TODAY')}>Today</button>
           </span>
