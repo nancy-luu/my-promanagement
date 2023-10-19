@@ -1,13 +1,15 @@
 import { useState } from "react";
 import { useCollection } from "../../hooks/useCollection";
 import { useAuthContext } from "../../hooks/useAuthContext";
-import ProjectList from "../../components/ProjectList";
+
+// components
+import ProjectList from "./ProjectList";
 import ProjectFilter from "./ProjectFilter";
 
 // styles
-import "./ProjectsBoard.css";
+import "./Projects.css";
 
-export default function Project() {
+export default function ProjectsCollection() {
   const [currFilter, setCurrFilter] = useState("all");
   const { documents, error } = useCollection("projects");
   const { user } = useAuthContext();
@@ -43,7 +45,7 @@ export default function Project() {
 
   return (
     <div className="project-container">
-      <h2 className="page-title">Projects</h2>
+      <h3>Projects</h3>
       {error && <p className="error">{error}</p>}
       {documents && (
         <ProjectFilter currFilter={currFilter} changeFilter={changeFilter}/>

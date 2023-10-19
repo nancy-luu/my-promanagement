@@ -3,7 +3,8 @@
     padding: 20px;
     box-sizing: border-box;
     border-bottom: 1px solid rgb(139, 139, 139);
-    background-color: var(--bg-color); /* Set the background color you want */
+    background-color: #03000ebb; /* Set the background color you want */
+    backdrop-filter: blur(20px);
     z-index: 2; /* Ensure the Navbar is on top of other components */
     position: sticky;
     top: 0;

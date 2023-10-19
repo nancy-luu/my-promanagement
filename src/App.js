@@ -1,10 +1,10 @@
 import { BrowserRouter, Route, Switch, Redirect } from "react-router-dom";
 import { useAuthContext } from "./hooks/useAuthContext";
 
-//pages and components
+// components
 import Navbar from "./components/Navbar";
 import Sidebar from "./components/Sidebar";
-import ProjectsBoard from "./pages/projects_board/ProjectsBoard";
+import ProjectsDash from "./pages/projects_board/ProjectsDash";
 import Create from "./pages/create/Create";
 import Login from "./pages/login/Login";
 import Signup from "./pages/signup/Signup";
@@ -12,7 +12,7 @@ import Project from "./pages/project/Project";
 import Team from "./components/Team";
 import Dashboard from "./pages/dashboard/Dashboard";
 import CalendarDash from "./pages/calendar/CalendarDash";
-import CreateEvent from "./pages/calendar/CreateEvent";
+import CreateMeeting from "./pages/calendar/CreateMeeting";
 
 //styles
 import "./App.css";
@@ -40,7 +40,7 @@ function App() {
                 </Route>
                 <Route exact path="/projects">
                   {!user && <Redirect to="/login" />}
-                  {user && <ProjectsBoard />}
+                  {user && <ProjectsDash />}
                 </Route>
                 <Route path="/create">
                   {!user && <Redirect to="/login" />}
@@ -48,7 +48,7 @@ function App() {
                 </Route>
                 <Route path="/createEvent">
                   {!user && <Redirect to="/login" />}
-                  {user && <CreateEvent />}
+                  {user && <CreateMeeting />}
                 </Route>
                 <Route path="/team">
                   {!user && <Redirect to="/login" />}

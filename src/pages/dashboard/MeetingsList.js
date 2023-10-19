@@ -1,4 +1,4 @@
-
+// components
 import Meeting from './Meeting'
 
 // styles

@@ -1,9 +1,9 @@
 import { useAuthContext } from '../../hooks/useAuthContext'
 import { useMyProjects } from "../../hooks/useMyProjects";
+
+// components
 import Avatar from "../../components/Avatar"
-
 import ArrowIcon from "../../assets/arrowright.png";
-
 
 
 const NewComment = ({ comment }) => {

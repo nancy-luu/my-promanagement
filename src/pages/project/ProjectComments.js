@@ -4,6 +4,7 @@ import { useAuthContext } from '../../hooks/useAuthContext'
 import { useFirestore } from "../../hooks/useFirestore"
 import formatDistanceToNow from 'date-fns/formatDistanceToNow'
 
+// components
 import Avatar from '../../components/Avatar'
 
 export default function ProjectComments({ project }) {

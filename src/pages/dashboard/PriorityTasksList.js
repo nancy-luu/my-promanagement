@@ -1,5 +1,7 @@
 import { useMyProjects } from '../../hooks/useMyProjects';
 import { Link } from 'react-router-dom'
+
+// components
 import PriorityTask from './PriorityTask';
 
 // styles
@@ -7,9 +9,7 @@ import './PriorityTask.css'
 
 
 const PriorityTasks = () => {
-  const { myProjects } = useMyProjects();
-
-  const openProjects = myProjects.filter(project => project.isCompleted !== true);
+  const { openProjects } = useMyProjects();
 
   const sortedProjects = [...openProjects].sort((a, b) => a.dueDate - b.dueDate);
   const topProjects= sortedProjects.slice(0, 3);

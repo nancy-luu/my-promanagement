@@ -63,7 +63,7 @@ const BigCalendar = () => {
       <div className="rbc-toolbar">
         <span className="rbc-btn-group">
           <NavLink exact to="/createEvent">
-            <button type="button" onClick={handleAddEvent}>+</button>
+            <button type="button" onClick={handleAddEvent}>Create</button>
           </NavLink>
           <span className="rbc-btn-today">
             <button type="button" onClick={() => toolbar.onNavigate('TODAY')}>Today</button>

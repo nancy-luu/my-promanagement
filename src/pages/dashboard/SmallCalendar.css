@@ -4,6 +4,8 @@
     margin: 20px 10px;
     padding: 10px 10px 10px 10px;
     background: linear-gradient(to bottom, #2929297f, #2929297f) padding-box, linear-gradient(to top, #6262623b, #03000e22) border-box;
+    border-style: solid;
+    border: .75px solid rgba(79, 79, 79, 0.444);
 }
 
 .month-name-form {
@@ -78,6 +80,12 @@
 .day {
     cursor: pointer;
     color: var(--text-color);
+}
+.day:hover{
+    color: var(--text-color);
+    background-color: var( --bg-secondary-color);
+    border-radius: 50%;
+    font: bold;
 }
 
 .day-outside-month{

@@ -1,4 +1,4 @@
-import React from 'react'
+// components
 import BigCalendar from './BigCalendar'
 
 // styles

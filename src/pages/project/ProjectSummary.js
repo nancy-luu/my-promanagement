@@ -1,6 +1,8 @@
 import { useFirestore } from '../../hooks/useFirestore'
 import { useAuthContext } from '../../hooks/useAuthContext'
 import { useHistory } from 'react-router-dom'
+
+// components
 import Avatar from "../../components/Avatar"
 
 export default function ProjectSummary({ project }) {

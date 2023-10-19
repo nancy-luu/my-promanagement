@@ -1,3 +1,4 @@
+// components
 import Overview from './Overview'
 import SmallCalendar from './SmallCalendar'
 import PriorityTasks from './PriorityTasksList'

@@ -7,14 +7,8 @@ import { useMyProjects } from '../../hooks/useMyProjects';
 import './Overview.css'
 
 const Overview = () => {    
-    const { myProjects } = useMyProjects();
-    // console.log(myProjects)
+    const { completedProject, inProgressProjects, projectCount } = useMyProjects();
     
-    const projectCount = myProjects.length;
-    const completedProject = myProjects.filter(project => project.isCompleted)
-    const inProgressProjects = myProjects.filter(project => project.comments && project.comments.length > 0);
-
-
   return (
     <div className="overview-container">
         <div className="total-stack">

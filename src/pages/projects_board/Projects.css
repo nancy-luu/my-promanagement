@@ -1,0 +1,116 @@
+.projects-dash-container {
+    display:flex;
+    flex-direction: column;
+}
+
+/* PROJECT STATS ------------- */
+.status-container {
+    margin: 10px;
+    padding: 20px;
+    border-radius: var(--outer-radius);
+    background: linear-gradient(to bottom, #2929297f, #2929297f) padding-box,
+      linear-gradient(to top, #6262623b, #03000e22) border-box;
+    border-style: solid;
+    border: .75px solid rgba(79, 79, 79, 0.444);
+}
+
+
+/* PROJECT COLLECTIONS -------------- */
+.project-container {
+    margin: 10px;
+    padding: 20px;
+    border-radius: var(--outer-radius);
+    background: linear-gradient(to bottom, #2929297f, #2929297f) padding-box,
+      linear-gradient(to top, #6262623b, #03000e22) border-box;
+    border-style: solid;
+    border: .75px solid rgba(79, 79, 79, 0.444);
+}
+
+.project-list {
+    margin-top: 10px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    grid-gap: 20px;
+}
+
+.project-list a {
+    background: linear-gradient(to bottom, #29292938, #03000e22) padding-box,
+    linear-gradient(to top, #5e5e5e75, #03000e22) border-box;
+    border-top: solid 1px rgba(115, 115, 115, 0.5);
+    border-left: solid 1px rgba(115, 115, 115, 0.5);
+    border-right: solid 1px rgba(115, 115, 115, 0.5);
+    box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.05);
+    padding: 16px;
+    border-radius: 6px;
+    text-decoration: none;
+    color: inherit;
+}
+
+.project-list h4 {
+    font-size: 0.9em;
+    color: var(--heading-color);
+}
+
+.project-list p {
+    color: var(--text-color);
+    font-size: 0.9em;
+}
+
+.project-list .assigned-to {
+    margin-top: 20px;
+    padding-top: 10px;
+    border-top: 1px solid #eee;
+}
+
+.project-list ul {
+    margin: 10px 0;
+    display: flex;
+}
+
+.project-list li {
+    margin-right: 10px;
+}
+
+.project-list .avatar {
+    width: 25px;
+    height: 25px;
+}
+
+/* PROJECT FILTER ---------------- */
+
+.project-filter {
+    /* margin: 30px auto; */
+}
+
+.project-filter nav {
+    display: flex;
+    padding: 10px;
+    background-color: var(--background-color);
+    border-radius: 4px;
+}
+
+.project-filter p {
+    font-size: 0.9em;
+    margin-right: 10px;
+}
+
+.project-filter button {
+    background: var(--primary-color);
+    padding: 5px 20px;
+    margin-right: 20px;
+    border: 0;
+    border-radius: 15px;
+    font-family: inherit;
+    font-weight: bold;
+    color: var(--text-color);
+    cursor: pointer;
+    font-size: 0.9em;
+}
+
+.project-filter button:last-child {
+    border: 0;
+}
+
+.project-filter button.active {
+    color: var(--secondary-color);
+}

@@ -138,6 +138,7 @@ export default function Create() {
           <label>
             <span>Assign to:</span>
             <Select
+              isMulti
               value={assignedUsers}
               onChange={(option) => setAssignedUsers(option)}
               options={users}
@@ -147,7 +148,17 @@ export default function Create() {
                   <p>{user.label}</p>
                 </div>
               )}
-              isMulti
+              // select customize only here - not in css 
+              theme={(theme) => ({
+                ...theme,
+                borderRadius: '5px',
+                colors: {
+                ...theme.colors,
+                  text: 'orangered',
+                  primary25: 'orange',
+                  primary: 'orange',
+                },
+              })}
             />
           </label>
 

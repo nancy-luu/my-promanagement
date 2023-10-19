@@ -1,9 +1,11 @@
 .calendar-dash-container {
     background: linear-gradient(to bottom, #2929297f, #2929297f) padding-box,
-        linear-gradient(to top, #ffffff2b, #03000e22) border-box;
+    linear-gradient(to top, #6262623b, #03000e22) border-box;
+    border-style: solid;
+    border: .75px solid rgba(79, 79, 79, 0.444);
     border-radius: var(--outer-radius);
     padding: 20px;
-    margin: 20px;
+    margin: 10px;
     color: white;
     font-family: Poppins, sans-serif !important;
     /* font-size: bold; */
@@ -63,19 +65,39 @@
     margin: 0px 10px;
 }
 
+/* CREATE EVENT FORM ----------------------- */
+
+.create-event-container {
+    margin: 10px;
+    padding: 20px;
+    border-radius: var(--outer-radius);
+    background: linear-gradient(to bottom, #2929297f, #2929297f) padding-box,
+    linear-gradient(to top, #6262623b, #03000e22) border-box;
+    border-style: solid;
+    border: .75px solid rgba(79, 79, 79, 0.444);
+}
+
 
 
 /* FLATPICKER STTYLES */
 
 .flatpickr-calendar {
-    background-color: #7d7d7de5 !important ;
-    backdrop-filter: blur(5px);
+    background-color: #1e1e1ee8 !important;
+    /* Set the background color you want */
+    backdrop-filter: blur(20px) !important;
     font-family: Poppins, sans-serif !important;
+    border: none !important;
+    box-shadow: 1px 0 0 #545454, -1px 0 0 #545454, 0 1px 0 #545454, 0 -1px 0 #545454, 0 3px 13px rgba(0, 0, 0, 0.08) !important;
 }
 
-.flatpickr-month {
+.flatpickr-month,
+.flatpickr-day {
     font-family: Poppins, sans-serif !important;
     color: white !important;
+}
+
+.flatpickr-day:hover {
+    color: black !important;
 }
 
 .flatpickr-day.selected {
@@ -84,8 +106,44 @@
     color: #fff;
 }
 
+
 .flatpickr-monthDropdown-months {
     font-family: 'Poppins', sans-serif !important;
     font-size: 14px;
-    /* Adjust the font size as needed */
+}
+
+.flatpickr-weekday {
+    color: white !important;
+}
+
+.flatpickr-next-month svg,
+.flatpickr-prev-month svg {
+    fill: white !important;
+}
+
+.flatpickr-next-month svg:hover,
+.flatpickr-prev-month svg:hover {
+    fill: var(--primary-color) !important;
+}
+
+.flatpickr-calendar.hasTime .flatpickr-time {
+    border-top: 1px solid #545454 !important;
+}
+
+.flatpickr-time input,
+.flatpickr-time-separator,
+.flatpickr-am-pm
+ {
+    color: white !important;
+}
+
+
+.flatpickr-time input:hover,
+.flatpickr-time-separator:hover,
+.flatpickr-am-pm:hover {
+    background-color: var(--primary-color) !important;
+}
+
+.flatpickr-am-pm {
+    background-color: var(--primary-background-color) !important;
 }

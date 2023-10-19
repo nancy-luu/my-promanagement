@@ -1,4 +1,3 @@
-import React from "react";
 
 const PriorityTask = ({ project }) => {
   const currDate = new Date();

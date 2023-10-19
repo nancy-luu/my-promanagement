@@ -1,8 +1,10 @@
-import React from 'react'
 import { Link } from 'react-router-dom'
-import Avatar from './Avatar'
+
+// components
+import Avatar from '../../components/Avatar'
+
 // styles
-import './ProjectList.css'
+import './Projects.css'
 
 
 export default function ProjectList({ projects }) {

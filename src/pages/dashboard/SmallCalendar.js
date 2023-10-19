@@ -1,15 +1,14 @@
-import dayjs from "dayjs";
 import { useState } from "react";
 import { generateDate, months } from "../../util/generateDate";
 import { classNameHelper } from "../../util/classNameHelper";
-import CalArrow from '../../assets/cal-arrow-hover.png';
+import dayjs from "dayjs";
 
-
+// components
 import MeetingsList from './MeetingsList'
 
-
-// styles
+// styles and images
 import "./SmallCalendar.css";
+import CalArrow from '../../assets/cal-arrow-hover.png';
 
 const SmallCalendar = () => {
 //   console.log(generateDate());

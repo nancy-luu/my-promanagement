@@ -4,7 +4,8 @@
     border-style: solid;
     background: linear-gradient(to bottom, #2929297f, #2929297f) padding-box,
     linear-gradient(to top, #6262623b, #03000e22) border-box;
-    border: .75px solid transparent; 
+    border-style: solid;
+    border-right: .75px solid rgba(79, 79, 79, 0.444);
     /* full height of the screen */
     min-height: 100vh; 
     box-sizing: border-box;

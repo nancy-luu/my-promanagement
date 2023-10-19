@@ -9,7 +9,7 @@ import Select from "react-select";
 import './CalendarDash.css'
 import 'flatpickr/dist/flatpickr.css';
 
-const CreateEvent = () => {
+const CreateMeeting = () => {
 
     const currentDate = dayjs();
     const endPlaceHolder = dayjs().add(1, 'hour');
@@ -19,6 +19,8 @@ const CreateEvent = () => {
     const [start, setStart] = useState(currentDate.toDate());
     const [end, setEnd] = useState(endPlaceHolder.toDate());
     const [guests, setGuests] = useState('');
+    const [formError, setFormError] = useState(null);
+
 
 
     const { documents } = useCollection("users");
@@ -30,13 +32,20 @@ const CreateEvent = () => {
           const options = documents.map((user) => {
             return { value: user, label: user.displayName, img: user.photoURL };
           });
-          setUsers(options);
+          setUsers(options); 
         }
-      }, [documents]);
+    }, [documents]);
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        console.log(title, start, end, description, guests)
+        // console.log(title, start, end, description, guests)
+
+        if(!start || !end){
+            setFormError("Please choose a start and end for your meeting.")
+        }
+        if(guests.length < 1){
+          setFormError("Please invite guests to your meeting.")
+        }
     }
 
   return (
@@ -74,7 +83,7 @@ const CreateEvent = () => {
                 </div>
             </label>
             <label>
-                <input 
+                <textarea 
                     placeholder="Add description"
                     required 
                     type="text" 
@@ -85,6 +94,7 @@ const CreateEvent = () => {
             <label>
             <span>Invite:</span>
             <Select
+              isMulti
               value={guests}
               onChange={(option) => setGuests(option)}
               options={users}
@@ -94,6 +104,7 @@ const CreateEvent = () => {
                   <p>{user.label}</p>
                 </div>
               )}
+              // select customize only here - not in css 
               theme={(theme) => ({
                 ...theme,
                 borderRadius: '5px',
@@ -104,13 +115,14 @@ const CreateEvent = () => {
                   primary: 'orange',
                 },
               })}
-              isMulti
             />
           </label>
           <button className="btn">Add</button>
+
+          {formError && <p className="error">{formError}</p>}
         </form>
     </div>
   )
 }
 
-export default CreateEvent
+export default CreateMeeting
