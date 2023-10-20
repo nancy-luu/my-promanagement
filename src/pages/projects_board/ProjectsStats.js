@@ -19,7 +19,7 @@ const ProjectsStats = ({ currFilter, setCurrFilter, changeFilter, projects, erro
 
   return (
     <div className="status-container">
-        <h3 className="status-title">Status of {currFilter} projects</h3>
+        <h3 className="status-title">Status</h3>
         <div className="status-form">
           <div className="percent-container">
               <h4>Completed:</h4>

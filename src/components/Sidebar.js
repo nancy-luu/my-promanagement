@@ -4,7 +4,6 @@ import { NavLink } from "react-router-dom";
 import "./Sidebar.css";
 import DashboardIcon from "../assets/dashboard_icon.png";
 import ProjectsIcon from "../assets/projects_icon.png";
-import AddIcon from "../assets/add_icon.png";
 import CalendarIcon from "../assets/calendar.png";
 import TeamIcon from "../assets/team.png";
 import ArrowIcon from "../assets/arrowright.png";
@@ -35,13 +34,6 @@ export default function Sidebar() {
               <NavLink exact to="/projects">
                 <img src={ProjectsIcon} alt="projects icon" />
                 <span>Projects</span>
-                <img className="arrow" src={ArrowIcon} alt="arrow icon" />
-              </NavLink>
-            </li>
-            <li>
-              <NavLink to="/create">
-                <img src={AddIcon} alt="add icon" />
-                <span>New Project</span>
                 <img className="arrow" src={ArrowIcon} alt="arrow icon" />
               </NavLink>
             </li>

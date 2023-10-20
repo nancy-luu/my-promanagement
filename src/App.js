@@ -42,7 +42,7 @@ function App() {
                   {!user && <Redirect to="/login" />}
                   {user && <ProjectsDash />}
                 </Route>
-                <Route path="/create">
+                <Route path="/createProject">
                   {!user && <Redirect to="/login" />}
                   {user && <Create />}
                 </Route>

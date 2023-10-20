@@ -6,7 +6,13 @@
     linear-gradient(to top, #6262623b, #03000e22) border-box;
     border-style: solid;
     border: .75px solid rgba(79, 79, 79, 0.444);
+    
 }
+
+.new-comments-container a {
+    text-decoration: none;
+    color: inherit;
+  }
 
 .new-comments-container h3 {
     padding-left: 10px;
@@ -35,6 +41,11 @@
     display: flex;
     flex-direction: row;
 }
+
+.comment-form a {
+    text-decoration: none;
+}
+
 
 .comment-createdBy {
     color: var(--text-color);

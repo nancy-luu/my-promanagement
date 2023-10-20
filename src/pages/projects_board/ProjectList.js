@@ -31,6 +31,7 @@ export default function ProjectList({ projects }) {
           </Link>
         ))}
       </div>
+      {closedProjects.length > 0 && <h4>Closed Projects</h4>}
       <div className="closed-projects-container">
       {closedProjects.map((project) => (
           <Link to={`/projects/${project.id}`} key={project.id}>
