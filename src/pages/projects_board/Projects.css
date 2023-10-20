@@ -1,12 +1,12 @@
 .projects-dash-container {
     display:flex;
     flex-direction: column;
+    margin: 10px;
 }
 
 /* PROJECT STATS ------------- */
 .status-container {
-    margin: 10px;
-    padding: 20px;
+    padding: 10px 20px 20px 20px;
     border-radius: var(--outer-radius);
     background: linear-gradient(to bottom, #2929297f, #2929297f) padding-box,
       linear-gradient(to top, #6262623b, #03000e22) border-box;
@@ -14,8 +14,12 @@
     border: .75px solid rgba(79, 79, 79, 0.444);
 }
 
+.status-container .status-title {
+    align-items: center;
+    margin-bottom: 10px;
+}
+
 .status-form {
-    margin: 10px;
     padding: 10px;
     border-radius: var(--inner-radius);
     background: linear-gradient(to bottom, #29292938, #03000e22) padding-box,

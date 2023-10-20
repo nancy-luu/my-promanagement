@@ -10,7 +10,6 @@ export default function ProjectsCollection({ currFilter, setCurrFilter, changeFi
 
   return (
     <div className="project-container">
-      <h3>Projects</h3>
       {error && <p className="error">{error}</p>}
       {documents && (
         <ProjectFilter currFilter={currFilter} changeFilter={changeFilter}/>
