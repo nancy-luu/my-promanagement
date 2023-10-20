@@ -6,12 +6,12 @@ import { useHistory } from 'react-router-dom'
 import Avatar from "../../components/Avatar"
 
 export default function ProjectSummary({ project }) {
-    const { deleteDocument } = useFirestore('projects');
+    const { markAsCompleted } = useFirestore('projects');
     const { user } = useAuthContext(); // to get current user 
     const history = useHistory();
 
     const handleClick = (e) => {
-        deleteDocument(project.id);
+        markAsCompleted(project.id);
         history.push('/') // sending to main page once deleted
     }
 

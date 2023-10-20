@@ -81,10 +81,27 @@ export const useFirestore = (collection) => {
     }
   }
 
+  // update complete status
+  const markAsCompleted = async (id) => {
+    dispatch({ type: "IS_PENDING" })
+
+
+    try {
+      const completedDocument = await ref.doc(id).update({ isCompleted: true })
+      dispatchIfNotCancelled({ type: "UPDATED_DOCUMENT", payload: completedDocument})
+      return completedDocument
+    }
+    catch (error) {
+      dispatchIfNotCancelled({ type: "ERROR", payload: error})
+      return null
+    }
+
+  }
+
   useEffect(() => {
     return () => setIsCancelled(true)
   }, [])
 
-  return { addDocument, deleteDocument, updateDocument, response }
+  return { addDocument, deleteDocument, updateDocument, markAsCompleted, response }
 
 }
