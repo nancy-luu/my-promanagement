@@ -44,8 +44,8 @@ const ProjectsDash = () => {
     }
   }) : null
 
-  console.log("PROJECTS -------------------")
-  console.log(projects)
+  // console.log("PROJECTS -------------------")
+  // console.log(projects)
 
   return (
     <div className="projects-dash-container">
