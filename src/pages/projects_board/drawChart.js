@@ -33,7 +33,16 @@ const drawChart = (element, data) => {
         .style("stroke", "rgba(79, 79, 79, 0.444)")
         .style("stroke-width", 5)
         // adding colors from colors array above 
-        .style("fill", (d, i) => colors[i % data.length]);
+        .style("fill", (d, i) => colors[i % data.length])
+        .transition()
+        .duration(700)
+        .attrTween("d", function (d) {
+          const i = d3.interpolate(d.startAngle, d.endAngle);
+          return function (t) {
+            d.endAngle = i(t);
+            return arcGenerator(d);
+          };
+        });
 };
 
 export default drawChart;
