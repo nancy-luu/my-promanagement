@@ -21,6 +21,7 @@ export default function ProjectSummary({ project }) {
         <div className="project-summary">
             <h2 className="page-title">{project.name}</h2>
             <p>Owner: {project.createdBy.displayName}</p>
+            <p>Status: {project.isCompleted ? 'Complete' : 'Open'}</p>
             <p className="due-date">
                 Project due by {project.dueDate.toDate().toDateString()}
             </p>
