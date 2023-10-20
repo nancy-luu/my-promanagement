@@ -15,13 +15,25 @@ export default function ProjectSummary({ project }) {
         history.push('/') // sending to main page once deleted
     }
 
+    function getStatusText(project) {
+        if (project.isCompleted === true) {
+          return 'Complete';
+        } else if (project.comments.length > 0 && project.isCompleted === false) {
+          return 'In Progress';
+        } else if (project.isCompleted === false) {
+          return 'Open';
+        } else {
+          return 'Unknown';
+        }
+    }
+      
 
   return (
     <div>
         <div className="project-summary">
             <h2 className="page-title">{project.name}</h2>
             <p>Owner: {project.createdBy.displayName}</p>
-            <p>Status: {project.isCompleted ? 'Complete' : 'Open'}</p>
+            <p>Status: {getStatusText(project)}</p>
             <p className="due-date">
                 Project due by {project.dueDate.toDate().toDateString()}
             </p>
