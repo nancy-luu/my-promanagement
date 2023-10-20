@@ -1,26 +1,63 @@
+import { useState } from "react";
 import { Link } from "react-router-dom";
 
 // images
 import SearchIcon from "../../assets/search-icon.svg";
+import ExitIcon from "../../assets/exit-search-icon.svg";
 
-const SearchBar = ({ query, setQuery, data }) => {
+
+const SearchBar = ({ data }) => {
+  const [query, setQuery] = useState([]);
+  const [inputValue, setInputValue] = useState("")
+
+  const handleSearch = (event) => {
+    const searchedWord = event.target.value.toLowerCase();
+    setInputValue(searchedWord);
+    const filteredWord = data.filter((d) => {
+      return d.name.toLowerCase().includes(searchedWord);
+    });
+    
+    if(searchedWord === ""){
+        setQuery([])
+    } else {
+        setQuery(filteredWord);
+    }
+  };
+
+  const clearInput = () => {
+    setQuery([])
+    setInputValue("")
+  }
 
   return (
     <div className="search-bar">
-        <div className="search-inputs">
-            <input
-                type="text"
-                placeholder="Search by project name.."
-                value={query}
-                onChange={(e) => setQuery(e.target.value)}
-            />
+      <div className="search-inputs">
+        <input
+          type="text"
+          placeholder="Search by project name.."
+          value={inputValue}
+          onChange={handleSearch}
+        />
+        {query.length === 0 ?
             <img src={SearchIcon} alt="search icon" />
-        </div>
-        <div className="search-result">
-            {data && data.map((value, key) => {
-                return <Link to={`projects/${value.docId}`} className="search-item" key={key}>{value.name}</Link>
-            })}
-        </div>
+            :
+            <img src={ExitIcon} alt="clear search icon" onClick={clearInput}/>
+        }
+      </div>
+      <div className="search-result">
+        {query.length !== 0 && (
+          <div className="search-option">
+            {query &&
+              query.slice(0, 15).map((value, key) => (
+                <div className="search-item">
+                  <Link to={`projects/${value.docId}`} key={key}>
+                    {value.name}
+                  </Link>
+                </div>
+              ))}
+          </div>
+        )}
+      </div>
     </div>
   );
 };

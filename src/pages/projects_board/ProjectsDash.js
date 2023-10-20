@@ -18,7 +18,6 @@ const ProjectsDash = () => {
   const { user } = useAuthContext(); 
 
   const [currFilter, setCurrFilter] = useState("all");
-  const [query, setQuery] = useState('')
 
   const projectsOrderedByDate = documents && [...documents].sort((a, b) => a.dueDate.toDate() - b.dueDate.toDate())
   const projectSearchList = documents && documents.map((document) => ({name: document.name, docId: document.id}))
@@ -64,7 +63,7 @@ const ProjectsDash = () => {
               <button className="btn">New Project</button>
             </NavLink>
           <div className="search-container">
-            <SearchBar data={projectSearchList} query={query} setQuery={setQuery}/>
+            <SearchBar data={projectSearchList}/>
           </div>
           </dvi>
           <div className="departments-container">
