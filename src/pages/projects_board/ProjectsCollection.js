@@ -1,4 +1,3 @@
-
 // components
 import ProjectList from "./ProjectList";
 import ProjectFilter from "./ProjectFilter";

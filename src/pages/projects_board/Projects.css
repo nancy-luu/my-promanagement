@@ -73,11 +73,26 @@
 }
 
 .project-list {
+    display:flex;
+    flex-direction: column;
+}
+
+.open-projects-container {
+    margin-top: 10px;
+    display: grid;
+    /* grid-template-columns: repeat(3, 200px);  */
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    grid-gap: 20px;
+}
+
+.closed-projects-container {
     margin-top: 10px;
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
     grid-gap: 20px;
 }
+
+
 
 .project-list a {
     background: linear-gradient(to bottom, #29292938, #03000e22) padding-box,

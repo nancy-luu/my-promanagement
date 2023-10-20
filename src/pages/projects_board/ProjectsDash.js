@@ -19,7 +19,9 @@ const ProjectsDash = () => {
     setCurrFilter(newFilter);
   };
 
-  const projects = documents ? documents.filter(document => {
+  const projectsOrderedByDate = documents ? [...documents].sort((a, b) => a.dueDate.toDate() - b.dueDate.toDate()) : [];
+
+  const projects = projectsOrderedByDate ? projectsOrderedByDate.filter(document => {
     switch (currFilter) {
       case 'all':
         return true;
