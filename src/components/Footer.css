@@ -1,0 +1,12 @@
+.footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    padding: 20px;
+    box-sizing: border-box;
+    color: var(--text-color);
+    background-color: #03000ea6; /* Set the background color you want */
+    backdrop-filter: blur(20px);
+    z-index: 2; /* Ensure the Navbar is on top of other components */
+}

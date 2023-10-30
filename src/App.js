@@ -16,6 +16,7 @@ import CreateMeeting from "./pages/calendar/CreateMeeting";
 
 //styles
 import "./App.css";
+import Footer from "./components/Footer";
 
 function App() {
   const { user, authIsReady } = useAuthContext();
@@ -67,6 +68,7 @@ function App() {
                   {!user && <Signup />}
                 </Route>
               </Switch>
+              {authIsReady && <Footer />}
             </div>
             {/* {user && <OnlineUsers />} */}
           </div>
