@@ -46,20 +46,16 @@ textarea[type=text]:focus
     top: 100%;
     left: 0;
     width: 390px;
-    max-height: 200px; /* Set the maximum height you want for the dropdown */
+    max-height: 200px;
     margin-top: 5px;
     padding: 5px;
-    background-color: #03000ebb; /* Set the background color you want */
+    background-color: #03000ebb;
     backdrop-filter: blur(20px);
-    overflow: hidden;
+    /* overflow: hidden; */
     overflow-y: auto;
     z-index: 1;
-    display: none;
 }
-
-.search-inputs:focus + .search-result {
-    display: block; /* Display the search result container when input is focused */
-}
+  
 
 .search-option a {
     text-decoration: none;
