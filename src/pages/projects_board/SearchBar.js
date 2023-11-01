@@ -9,6 +9,7 @@ import ExitIcon from "../../assets/exit-search-icon.svg";
 const SearchBar = ({ data }) => {
   const [query, setQuery] = useState([]);
   const [inputValue, setInputValue] = useState("")
+  const [isSearchVisible, setIsSearchVisible] = useState(false)
 
   const handleSearch = (event) => {
     const searchedWord = event.target.value.toLowerCase();
@@ -18,9 +19,11 @@ const SearchBar = ({ data }) => {
     });
     
     if(searchedWord === ""){
-        setQuery([])
+        setQuery([]);
+        setIsSearchVisible(false);
     } else {
         setQuery(filteredWord);
+        setIsSearchVisible(true);
     }
   };
 
@@ -37,6 +40,7 @@ const SearchBar = ({ data }) => {
           placeholder="Search by project name.."
           value={inputValue}
           onChange={handleSearch}
+          onFocus={()=> setIsSearchVisible(true)}
         />
         {query.length === 0 ?
             <img src={SearchIcon} alt="search icon" />
@@ -44,7 +48,7 @@ const SearchBar = ({ data }) => {
             <img src={ExitIcon} alt="clear search icon" onClick={clearInput}/>
         }
       </div>
-      <div className="search-result">
+      <div className="search-result" style={{ display: isSearchVisible ? "block" : "none" }}>
         {query.length !== 0 && (
           <div className="search-option">
             {query &&
