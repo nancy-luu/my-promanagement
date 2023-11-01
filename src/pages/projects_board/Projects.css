@@ -43,15 +43,12 @@ textarea[type=text]:focus
 
 .search-result {
     position: absolute;
-    top: 100%;
-    left: 0;
     width: 390px;
     max-height: 200px;
-    margin-top: 5px;
     padding: 5px;
-    background-color: #03000ebb;
+    background-color: #b1b1b13d;
     backdrop-filter: blur(20px);
-    /* overflow: hidden; */
+    overflow: hidden;
     overflow-y: auto;
     z-index: 1;
 }
