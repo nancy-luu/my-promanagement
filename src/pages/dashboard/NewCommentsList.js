@@ -1,4 +1,3 @@
-import { useMyProjects } from "../../hooks/useMyProjects";
 import { Link } from 'react-router-dom'
 
 // components
@@ -7,10 +6,9 @@ import NewComment from "./NewComment";
 // styles
 import './NewComment.css'
 
-const NewComments = () => {
-  const { myProjects } = useMyProjects();
+const NewCommentsList = ({ projects }) => {
 
-  const inProgressProjects = myProjects.filter(
+  const inProgressProjects = projects.filter(
     (project) => project.comments.length > 0
   );
   // console.log(inProgressProjects)
@@ -31,6 +29,7 @@ const NewComments = () => {
   return (
     <div className="new-comments-container">
       <h3>New Comments</h3>
+      {sortedComments.length <= 0 && <p>No new comments to display</p>}
       {sortedComments.map(comment => (
         <Link to={`/projects/${comment.projectId}`} key={comment.id}>
           <NewComment key={comment.createdAt} comment={comment}/>
@@ -40,4 +39,4 @@ const NewComments = () => {
   );
 };
 
-export default NewComments;
+export default NewCommentsList;

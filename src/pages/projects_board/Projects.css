@@ -73,6 +73,11 @@ textarea[type=text]:focus
     color: var(--bg-color)
 }
 
+/* UPPER DASH ---------------- */
+.project-stats-comments-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr
+}
 
 
 /* PROJECT STATS ------------- */
@@ -134,7 +139,7 @@ textarea[type=text]:focus
 
 /* PROJECT COLLECTIONS -------------- */
 .project-container {
-    margin: 10px;
+    margin-top: 10px;
     padding: 20px;
     border-radius: var(--outer-radius);
     background: linear-gradient(to bottom, #2929297f, #2929297f) padding-box,

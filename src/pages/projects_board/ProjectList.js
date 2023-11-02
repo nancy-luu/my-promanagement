@@ -12,7 +12,7 @@ export default function ProjectList({ projects }) {
 
   return (
     <div className="project-list">
-      {projects.length === 0 && <p>*No projects to display*</p>}
+      {projects.length === 0 ? <p>*No projects to display*</p> : <h4>Open & In Progress Projects:</h4> }
       <div className="open-projects-container">
         {openProjects.map((project) => (
           <Link to={`/projects/${project.id}`} key={project.id}>
@@ -31,7 +31,7 @@ export default function ProjectList({ projects }) {
           </Link>
         ))}
       </div>
-      {closedProjects.length > 0 && <h4>Closed Projects</h4>}
+      {closedProjects.length > 0 && <h4>Closed Projects:</h4>}
       <div className="closed-projects-container">
       {closedProjects.map((project) => (
           <Link to={`/projects/${project.id}`} key={project.id}>

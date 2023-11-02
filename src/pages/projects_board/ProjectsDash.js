@@ -12,6 +12,7 @@ import ProjectsStats from "./ProjectsStats";
 // styles
 import "./Projects.css";
 import SearchBar from "./SearchBar";
+import NewCommentsList from "../dashboard/NewCommentsList";
 
 const ProjectsDash = () => {
   const { documents, error } = useCollection("projects");
@@ -50,7 +51,7 @@ const ProjectsDash = () => {
   }) : null
 
   // console.log("PROJECTS -------------------")
-  // console.log(projects)
+  console.log(projects)
 
   const changeFilter = (newFilter) => {
     setCurrFilter(newFilter);
@@ -74,15 +75,20 @@ const ProjectsDash = () => {
             )}
           </div>
         </div>
-        <div className="stats-tasks-container">
-            <ProjectsStats
-              projects={projects} 
-              documents={documents}
-              error={error} 
-              currFilter={currFilter} 
-              setCurrFilter={setCurrFilter} 
-              changeFilter={changeFilter} 
-            />  
+        <div className="project-stats-comments-container">
+          <div className="stats-tasks-container">
+              <ProjectsStats
+                projects={projects} 
+                documents={documents}
+                error={error} 
+                currFilter={currFilter} 
+                setCurrFilter={setCurrFilter} 
+                changeFilter={changeFilter} 
+              />  
+          </div>
+          <div className="new-comments-list-container">
+                {projects && <NewCommentsList projects={projects}/>}
+          </div>
         </div>
         <div className="collection-container">
             <ProjectsCollection 

@@ -1,14 +1,18 @@
+import { useMyProjects } from "../../hooks/useMyProjects";
+
 // components
 import Overview from './Overview'
 import SmallCalendar from './SmallCalendar'
 import PriorityTasks from './PriorityTasksList'
-import NewComments from './NewCommentsList'
+import NewCommentsList from './NewCommentsList'
 import Collaborators from './Collaborators'
 
 // styles
 import './Dashboard.css'
 
 const Dashboard = () => {
+  const { myProjects } = useMyProjects();
+
   return (
     <div className="dashboard-container">
       <div className="dashboard-left">
@@ -20,7 +24,7 @@ const Dashboard = () => {
           <PriorityTasks />
         </div>
         <div className="dashboard-right-bottom">
-          <NewComments />
+          <NewCommentsList projects={myProjects}/>
           <Collaborators />
         </div>
       </div>
