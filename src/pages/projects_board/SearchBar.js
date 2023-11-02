@@ -38,7 +38,7 @@ const SearchBar = ({ data, query, setQuery }) => {
       <div className="search-inputs">
         <input
           type="text"
-          placeholder="Search by project name.."
+          placeholder="Search"
           value={inputValue}
           onChange={handleSearch}
         />
