@@ -17,6 +17,7 @@ import CreateMeeting from "./pages/calendar/CreateMeeting";
 //styles
 import "./App.css";
 import Footer from "./components/Footer";
+import BackToTop from "./components/BackToTop";
 
 function App() {
   const { user, authIsReady } = useAuthContext();
@@ -68,10 +69,10 @@ function App() {
                   {!user && <Signup />}
                 </Route>
               </Switch>
-              {authIsReady && <Footer />}
+              {authIsReady && <BackToTop />}
             </div>
-            {/* {user && <OnlineUsers />} */}
           </div>
+              {authIsReady && <Footer />}
           </BrowserRouter>
         )}
     </div>
