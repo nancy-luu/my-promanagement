@@ -90,6 +90,7 @@ const UpdateModal = ({ project }) => {
         photoURL: user.photoURL,
         id: user.uid,
     };
+
     // creating a simplified array of obects from useAuthContext with the properties we want
     const assignedUsersList = assignedUsers.map((u) => {
         return {
@@ -99,18 +100,17 @@ const UpdateModal = ({ project }) => {
         };
     });
 
-    const project = {
+
+    await updateDocumentSummary(project.id, {
         name,
         details,
         category: category.value,
         dueDate: timestamp.fromDate(new Date(dueDate)),
-        comments: [],
+        comments: project.comments,
         createdBy,
         assignedUsersList,
-        isCompleted: isCompleted,
-    };
-
-    await updateDocumentSummary(project);
+        isCompleted,
+    });
 
     if(!response.error){
         console.log("this is the response id:" + response.id);
