@@ -31,7 +31,7 @@ const UpdateModal = ({ project }) => {
   const [details, setDetails] = useState(project.details);
   const [dueDate, setDueDate] = useState(formattedDueDate);
   const [category, setCategory] = useState(project.category);
-  const [assignedUsers, setAssignedUsers] = useState(project.assignedUsersList);
+  const [assignedUsers, setAssignedUsers] = useState([]);
   const [isCompleted, setIsCompleted] = useState(project.isCompleted);
   const [formError, setFormError] = useState(null);
   const [users, setUsers] = useState([]);
@@ -47,6 +47,15 @@ const UpdateModal = ({ project }) => {
       setUsers(options);
     }
   }, [documents]);
+
+  useEffect(() => {
+    if(project) {
+        const formattedAssignedUsers = project.assignedUsersList.map((user) => {
+            return { value: user, label: user.displayName, img: user.photoURL };
+        })
+        setAssignedUsers(formattedAssignedUsers);
+    }
+  }, [project])
 
   const toggleModal = () => {
     setAppear(!appear);
