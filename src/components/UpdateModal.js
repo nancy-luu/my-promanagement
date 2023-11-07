@@ -1,17 +1,18 @@
 import { useState, useEffect } from "react";
 import { useCollection } from "../hooks/useCollection";
 import { useAuthContext } from "../hooks/useAuthContext";
+import { useFirestore } from "../hooks/useFirestore";
 import { categories } from "../util/categories";
 import { timestamp } from "../firebase/config";
-
+import { useHistory } from "react-router-dom";
 import Select from "react-select";
 
 //styles
 import "./UpdateModal.css";
 
 const UpdateModal = ({ project }) => {
-    const dueDateTimestamp = project.dueDate;
-    const convertedDueDate = dueDateTimestamp.toDate();  
+  const dueDateTimestamp = project.dueDate;
+  const convertedDueDate = dueDateTimestamp.toDate();
 
   // Function to format the date as "YYYY-MM-DD"
   const formatDate = (date) => {
@@ -38,7 +39,13 @@ const UpdateModal = ({ project }) => {
 
   const { documents } = useCollection("users");
   const { user } = useAuthContext();
+  const { updateDocumentSummary , response } = useFirestore("projects");
 
+  const history = useHistory();
+
+
+
+  // formatting for Assigned User Select Options 
   useEffect(() => {
     if (documents) {
       const options = documents.map((user) => {
@@ -48,27 +55,71 @@ const UpdateModal = ({ project }) => {
     }
   }, [documents]);
 
+  // formatting for Assigned User Select Default State
   useEffect(() => {
-    if(project) {
-        const formattedAssignedUsers = project.assignedUsersList.map((user) => {
-            return { value: user, label: user.displayName, img: user.photoURL };
-        })
-        setAssignedUsers(formattedAssignedUsers);
+    if (project) {
+      const formattedAssignedUsers = project.assignedUsersList.map((user) => {
+        return { value: user, label: user.displayName, img: user.photoURL };
+      });
+      setAssignedUsers(formattedAssignedUsers);
     }
-  }, [project])
+  }, [project]);
+
 
   const toggleModal = () => {
     setAppear(!appear);
   };
 
-  //   const handleUpdate = (e) => {};
+  const handleSave = async (e) => {
+    e.preventDefault();
+    setFormError(null);
 
-  console.log(project);
-  console.log(dueDate);
+    if(!category){
+        setFormError("Please select category.");
+        return;
+    }
+    if(!assignedUsers.length < 1){
+        setFormError("Please assign to at least 1 team member.");
+    }
+
+    const createdBy = {
+        displayName: user.displayName,
+        photoURL: user.photoURL,
+        id: user.uid,
+    };
+    // creating a simplified array of obects from useAuthContext with the properties we want
+    const assignedUsersList = assignedUsers.map((u) => {
+        return {
+          displayName: u.value.displayName,
+          photoURL: u.value.photoURL,
+          id: u.value.id,
+        };
+    });
+
+    const project = {
+        name,
+        details,
+        category: category.value,
+        dueDate: timestamp.fromDate(new Date(dueDate)),
+        comments: [],
+        createdBy,
+        assignedUsersList,
+        isCompleted: isCompleted,
+    };
+
+    await updateDocumentSummary(project);
+
+    if(!response.error){
+        console.log("this is the response id:" + response.id);
+        history.push(`/projects/${project.id}`);
+    }
+  };
+
 
   return (
     <>
       <button className="btn" onClick={toggleModal}>
+    
         Edit
       </button>
 
@@ -76,7 +127,7 @@ const UpdateModal = ({ project }) => {
         <div className="modal-content">
           <div className="update-form">
             <h2 className="page-title">Update Project:</h2>
-            <form>
+            <form onSubmit={handleSave}>
               <label>
                 <p>Name:</p>
                 <input
@@ -155,12 +206,15 @@ const UpdateModal = ({ project }) => {
               value={details}
             ></textarea>
           </label>
+          
           <div className="btn-group">
             <button className="btn" onClick={toggleModal}>
               Discard
             </button>
             <button className="btn">Save</button>
           </div>
+
+            {formError && <p className="error">{formError}</p>}
         </div>
       </div>
     </>

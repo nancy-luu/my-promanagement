@@ -47,18 +47,22 @@ export default function ProjectSummary({ project }) {
             </div>
           ))}
         </div>
-        {user.uid === project.createdBy.id && (
+        {!project.isCompleted && (
           <>
-            <UpdateModal project={project} />
-            <DeleteModal project={project} />
+            {user.uid === project.createdBy.id && (
+              <>
+                <UpdateModal project={project} />
+                <DeleteModal project={project} />
+              </>
+            )}
+            {project.assignedUsersList.some(
+              (assignedUser) => assignedUser.id === user.uid
+            ) && (
+              <button className="btn" onClick={handleComplete}>
+                Complete
+              </button>
+            )}
           </>
-        )}
-        {project.assignedUsersList.some(
-          (assignedUser) => assignedUser.id === user.uid
-        ) && (
-          <button className="btn" onClick={handleComplete}>
-            Complete
-          </button>
         )}
       </div>
     </div>
