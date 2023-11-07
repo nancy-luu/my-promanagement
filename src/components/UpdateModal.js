@@ -26,12 +26,15 @@ const UpdateModal = ({ project }) => {
 
   const formattedDueDate = formatDate(convertedDueDate);
 
+  const formattedCategory = [...project.category][0].toUpperCase()+[...project.category].slice(1).join('')
+
+
   // states
   const [appear, setAppear] = useState(false);
   const [name, setName] = useState(project.name);
   const [details, setDetails] = useState(project.details);
   const [dueDate, setDueDate] = useState(formattedDueDate);
-  const [category, setCategory] = useState(project.category);
+  const [category, setCategory] = useState(formattedCategory);
   const [assignedUsers, setAssignedUsers] = useState([]);
   const [isCompleted, setIsCompleted] = useState(project.isCompleted);
   const [formError, setFormError] = useState(null);
@@ -206,7 +209,7 @@ const UpdateModal = ({ project }) => {
               value={details}
             ></textarea>
           </label>
-          
+
           <div className="btn-group">
             <button className="btn" onClick={toggleModal}>
               Discard
