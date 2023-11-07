@@ -4,19 +4,12 @@ import { timestamp } from "../../firebase/config";
 import { useAuthContext } from "../../hooks/useAuthContext";
 import { useFirestore } from "../../hooks/useFirestore";
 import { useHistory } from "react-router-dom";
+import {categories} from "../../util/categories";
 import Select from "react-select";
 
 //styles
 import "./Create.css";
 
-const categories = [
-  { value: "development", label: "Development" },
-  { value: "design", label: "Design" },
-  { value: "marketing", label: "Marketing" },
-  { value: "product", label: "Product" },
-  { value: "research", label: "Research" },
-  { value: "sales", label: "Sales" },
-];
 
 export default function Create() {
   const [name, setName] = useState("");
@@ -26,9 +19,9 @@ export default function Create() {
   const [assignedUsers, setAssignedUsers] = useState([]);
   const [isCompleted, setIsCompleted] = useState(false);
   const [formError, setFormError] = useState(null);
+  const [users, setUsers] = useState([]);
 
   const { documents } = useCollection("users");
-  const [users, setUsers] = useState([]);
   const { user } = useAuthContext();
 
   // first time we save to projects if it doesnt exist it will be created
@@ -88,8 +81,8 @@ export default function Create() {
 
     // if there is no response the user will be redirected the the dashboard
     if (!response.error) {
-      console.log(response);
-      history.push("/");
+      console.log("this is the response id: " + response.id);
+      history.push(`/projects`);
     }
   };
 
@@ -111,15 +104,6 @@ export default function Create() {
             ></input>
           </label>
           <label>
-            <span>Details:</span>
-            <textarea
-              required
-              type="text"
-              onChange={(e) => setDetails(e.target.value)}
-              value={details}
-            ></textarea>
-          </label>
-          <label>
             <span>Due Date:</span>
             <input
               required
@@ -128,38 +112,61 @@ export default function Create() {
               value={dueDate}
             ></input>
           </label>
+          <div className="category-assign-container">
+            <label>
+              <span>Category:</span>
+              <Select
+                className="category-select"
+                options={categories}
+                onChange={(option) => setCategory(option)}
+                // select customize only here - not in css 
+                theme={(theme) => ({
+                  ...theme,
+                  borderRadius: '5px',
+                  colors: {
+                  ...theme.colors,
+                    text: 'orange',
+                    primary25: 'orange',
+                    primary: 'orange',
+                  },
+                })}
+              />
+            </label>
+            <label>
+              <span>Assign to:</span>
+              <Select
+                isMulti
+                value={assignedUsers}
+                onChange={(option) => setAssignedUsers(option)}
+                options={users}
+                formatOptionLabel={user => (
+                  <div className="assigned-user-option">
+                    <img src={user.img} className="avatar" alt="user-avatar" />
+                    <p>{user.label}</p>
+                  </div>
+                )}
+                // select customize only here - not in css 
+                theme={(theme) => ({
+                  ...theme,
+                  borderRadius: '5px',
+                  colors: {
+                  ...theme.colors,
+                    text: 'orange',
+                    primary25: 'orange',
+                    primary: 'orange',
+                  },
+                })}
+              />
+            </label>
+          </div>
           <label>
-            <span>Category:</span>
-            <Select
-              options={categories}
-              onChange={(option) => setCategory(option)}
-            />
-          </label>
-          <label>
-            <span>Assign to:</span>
-            <Select
-              isMulti
-              value={assignedUsers}
-              onChange={(option) => setAssignedUsers(option)}
-              options={users}
-              formatOptionLabel={user => (
-                <div className="assigned-user-option">
-                  <img src={user.img} className="avatar" alt="user-avatar" />
-                  <p>{user.label}</p>
-                </div>
-              )}
-              // select customize only here - not in css 
-              theme={(theme) => ({
-                ...theme,
-                borderRadius: '5px',
-                colors: {
-                ...theme.colors,
-                  text: 'orangered',
-                  primary25: 'orange',
-                  primary: 'orange',
-                },
-              })}
-            />
+            <span>Details:</span>
+            <textarea
+              required
+              type="text"
+              onChange={(e) => setDetails(e.target.value)}
+              value={details}
+            ></textarea>
           </label>
 
           <button className="btn">Add</button>

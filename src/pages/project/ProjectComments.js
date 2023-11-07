@@ -9,7 +9,7 @@ import Avatar from '../../components/Avatar'
 
 export default function ProjectComments({ project }) {
     const { user } = useAuthContext()
-    const { updateDocument, response } = useFirestore('projects')
+    const { updateDocumentComments, response } = useFirestore('projects')
     const [newComment, setNewComment] = useState('')
 
     const handleSubmit = async (e) => {
@@ -24,7 +24,7 @@ export default function ProjectComments({ project }) {
             id: Math.random()
         }
 
-        await updateDocument(project.id, {
+        await updateDocumentComments(project.id, {
             comments: [...project.comments, commentToAdd]
         })
 

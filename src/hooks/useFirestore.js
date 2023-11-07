@@ -53,21 +53,23 @@ export const useFirestore = (collection) => {
     }
   }
 
-  // delete a document
-  const deleteDocument = async (id) => {
-    dispatch({ type: 'IS_PENDING' })
-
-    try {
-      await ref.doc(id).delete()
-      dispatchIfNotCancelled({ type: 'DELETED_DOCUMENT' })
+    // update a document's comments
+    const updateDocumentSummary = async (id, updates) => {
+      dispatch({ type: "IS_PENDING" })
+  
+      try {
+        const updatedDocument = await ref.doc(id).update(updates)
+        dispatchIfNotCancelled({ type: "UPDATED_DOCUMENT", payload: updatedDocument })
+        return updatedDocument
+      } 
+      catch (error) {
+        dispatchIfNotCancelled({ type: "ERROR", payload: error })
+        return null
+      }
     }
-    catch (err) {
-      dispatchIfNotCancelled({ type: 'ERROR', payload: 'could not delete' })
-    }
-  }
 
-  // update a document
-  const updateDocument = async (id, updates) => {
+  // update a document's comments
+  const updateDocumentComments = async (id, updates) => {
     dispatch({ type: "IS_PENDING" })
 
     try {
@@ -95,13 +97,25 @@ export const useFirestore = (collection) => {
       dispatchIfNotCancelled({ type: "ERROR", payload: error})
       return null
     }
+  }
 
+  // delete a document
+  const deleteDocument = async (id) => {
+    dispatch({ type: 'IS_PENDING' })
+
+    try {
+      await ref.doc(id).delete()
+      dispatchIfNotCancelled({ type: 'DELETED_DOCUMENT' })
+    }
+    catch (err) {
+      dispatchIfNotCancelled({ type: 'ERROR', payload: 'could not delete' })
+    }
   }
 
   useEffect(() => {
     return () => setIsCancelled(true)
   }, [])
 
-  return { addDocument, deleteDocument, updateDocument, markAsCompleted, response }
+  return { addDocument, updateDocumentComments, updateDocumentSummary, markAsCompleted, deleteDocument, response }
 
 }

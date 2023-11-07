@@ -12,9 +12,21 @@
     border-radius: 5px;
 }
 
+.category-assign-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr
+}
+
+.category-assign-container label {
+    margin: 0px;
+}
+
+.category-select {
+    margin-right: 10px;
+}
+
 .assigned-user-option {
     display: flex;
-    /* justify-content: center; */
     align-items: center;
 }
 

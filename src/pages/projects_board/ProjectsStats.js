@@ -12,10 +12,11 @@ const ProjectsStats = ({ currFilter, setCurrFilter, changeFilter, projects, erro
         { value: openPercent },
         { value: inProgressPercent },
         { value: completedPercent }
-        // { value: 60 },
-        // { value: 20 },
-        // { value: 20 }
     ];
+
+    const formattedOpenPercent = openPercent.toFixed(0);
+    const formattedInProgressPercent = inProgressPercent.toFixed(0);
+    const formattedCompletedPercent = completedPercent.toFixed(0);
 
   return (
     <div className="status-container">
@@ -25,17 +26,17 @@ const ProjectsStats = ({ currFilter, setCurrFilter, changeFilter, projects, erro
               <h4>Completed:</h4>
               <div className="bullet-container">
                 <div className="complete-pt"></div>
-                <p>{completedPercent}%</p>
+                <p>{formattedCompletedPercent}%</p>
               </div>
               <h4>In Progress:</h4>
               <div className="bullet-container">
                 <div className="progress-pt"></div>
-                <p>{inProgressPercent}%</p>
+                <p>{formattedInProgressPercent}%</p>
               </div>
               <h4>Open:</h4>
               <div className="bullet-container">
                 <div className="open-pt"></div>
-                <p>{openPercent}%</p>
+                <p>{formattedOpenPercent}%</p>
               </div>
           </div>
           <div className="chart-container">

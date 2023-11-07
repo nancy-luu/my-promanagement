@@ -1,0 +1,56 @@
+.modal, .overlay {
+    width: 100vw;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    position: fixed;
+    opacity: 0;
+    visibility: hidden; /* Start hidden */
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+    backdrop-filter: blur(3px);
+}
+
+.overlay {
+    background: rgba(43, 43, 43, 0.203);
+}
+
+.modal-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    line-height: 1.4;
+    background: #03000ebb;
+    border-style: solid;
+    border: .75px solid rgba(79, 79, 79, 0.444);
+    padding: 14px 28px;
+    border-radius: 3px;
+    max-width: 600px;
+    min-width: 300px;
+    transition: transform 0.3s ease; 
+    display: flex;
+    flex-direction: column;
+}
+
+.modal.active {
+    opacity: 1; 
+    visibility: visible;
+}
+
+.close-modal {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    padding: 5px 7px;
+}
+
+.btn-group {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.btn-group .btn {
+    margin: 5px;
+}
