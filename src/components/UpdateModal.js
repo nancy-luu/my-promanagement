@@ -112,8 +112,11 @@ const UpdateModal = ({ project }) => {
         isCompleted,
     });
 
+    console.log('hitting update');
+
     if(!response.error){
         console.log("this is the response id:" + response.id);
+        setAppear(false);
         history.push(`/projects/${project.id}`);
     }
   };
@@ -150,7 +153,6 @@ const UpdateModal = ({ project }) => {
                 ></input>
               </label>
             </form>
-          </div>
           <div className="category-assign-container">
             <label>
               <p>Category:</p>
@@ -218,6 +220,7 @@ const UpdateModal = ({ project }) => {
           </div>
 
             {formError && <p className="error">{formError}</p>}
+          </div>
         </div>
       </div>
     </>
