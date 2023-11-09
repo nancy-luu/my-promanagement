@@ -82,6 +82,7 @@ export default function Create() {
     // if there is no response the user will be redirected the the dashboard
     if (!response.error) {
       console.log("this is the response id: " + response.id);
+      console.log(dueDate)
       history.push(`/projects`);
     }
   };
