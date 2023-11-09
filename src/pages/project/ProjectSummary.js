@@ -33,6 +33,7 @@ export default function ProjectSummary({ project }) {
     <div>
       <div className="project-summary">
         <h2 className="page-title">{project.name}</h2>
+        <p>Category: {[...project.category][0].toUpperCase()+[...project.category].slice(1).join('')}</p>
         <p>Owner: {project.createdBy.displayName}</p>
         <p>Status: {getStatusText(project)}</p>
         <p className="due-date">

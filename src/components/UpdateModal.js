@@ -26,15 +26,15 @@ const UpdateModal = ({ project }) => {
 
 //   const formattedDueDate = formatDate(convertedDueDate);
 
-//   const formattedCategory = [...project.category][0].toUpperCase()+[...project.category].slice(1).join('')
+  const formattedCategory = [...project.category][0].toUpperCase()+[...project.category].slice(1).join('')
 
 
   // states
   const [appear, setAppear] = useState(false);
   const [name, setName] = useState(project.name);
-//   const [details, setDetails] = useState(project.details);
+  const [details, setDetails] = useState(project.details);
 //   const [dueDate, setDueDate] = useState(formattedDueDate);
-//   const [category, setCategory] = useState(formattedCategory);
+  const [category, setCategory] = useState(formattedCategory);
 //   const [assignedUsers, setAssignedUsers] = useState([]);
 //   const [isCompleted, setIsCompleted] = useState(project.isCompleted);
   const [formError, setFormError] = useState(null);
@@ -100,9 +100,9 @@ const UpdateModal = ({ project }) => {
 
 
     await updateDocumentSummary(project.id, {
-        name
-        // details,
-        // category: category.value,
+        name,
+        details,
+        category: category.value,
         // dueDate: timestamp.fromDate(new Date(dueDate)),
         // comments: project.comments,
         // createdBy,
@@ -141,17 +141,16 @@ const UpdateModal = ({ project }) => {
                   value={name}
                 ></input>
               </label>
-              {/* <label>
-                <p>Due Date:</p>
-                <input
-                  required
-                  type="date"
-                  onChange={(e) => setDueDate(e.target.value)}
-                  value={dueDate}
-                ></input>
-              </label>
-          <div className="category-assign-container">
-            <label>
+              <label>
+                    <p>Details:</p>
+                    <textarea
+                    required
+                    type="text"
+                    onChange={(e) => setDetails(e.target.value)}
+                    value={details}
+                    ></textarea>
+                </label>
+                <label>
               <p>Category:</p>
               <Select
                 className="category-select"
@@ -172,6 +171,8 @@ const UpdateModal = ({ project }) => {
                 placeholder={category}
               />
             </label>
+              {/* 
+          <div className="category-assign-container">
             <label>
               <p>Assign to:</p>
               <Select
@@ -199,15 +200,7 @@ const UpdateModal = ({ project }) => {
               />
             </label>
           </div>
-          <label>
-            <p>Details:</p>
-            <textarea
-              required
-              type="text"
-              onChange={(e) => setDetails(e.target.value)}
-              value={details}
-            ></textarea>
-          </label> */}
+           */}
 
           <div className="btn-group">
             <button className="btn" onClick={toggleModal}>
