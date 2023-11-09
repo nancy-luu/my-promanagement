@@ -11,32 +11,32 @@ import Select from "react-select";
 import "./UpdateModal.css";
 
 const UpdateModal = ({ project }) => {
-  const dueDateTimestamp = project.dueDate;
-  const convertedDueDate = dueDateTimestamp.toDate();
+//   const dueDateTimestamp = project.dueDate;
+//   const convertedDueDate = dueDateTimestamp.toDate();
 
-  // Function to format the date as "YYYY-MM-DD"
-  const formatDate = (date) => {
-    if (!date) return ""; // Handle case where dueDate is not defined
-    const formattedDate = new Date(date);
-    const year = formattedDate.getFullYear();
-    const month = String(formattedDate.getMonth() + 1).padStart(2, "0");
-    const day = String(formattedDate.getDate()).padStart(2, "0");
-    return `${year}-${month}-${day}`;
-  };
+//   // Function to format the date as "YYYY-MM-DD"
+//   const formatDate = (date) => {
+//     if (!date) return ""; // Handle case where dueDate is not defined
+//     const formattedDate = new Date(date);
+//     const year = formattedDate.getFullYear();
+//     const month = String(formattedDate.getMonth() + 1).padStart(2, "0");
+//     const day = String(formattedDate.getDate()).padStart(2, "0");
+//     return `${year}-${month}-${day}`;
+//   };
 
-  const formattedDueDate = formatDate(convertedDueDate);
+//   const formattedDueDate = formatDate(convertedDueDate);
 
-  const formattedCategory = [...project.category][0].toUpperCase()+[...project.category].slice(1).join('')
+//   const formattedCategory = [...project.category][0].toUpperCase()+[...project.category].slice(1).join('')
 
 
   // states
   const [appear, setAppear] = useState(false);
   const [name, setName] = useState(project.name);
-  const [details, setDetails] = useState(project.details);
-  const [dueDate, setDueDate] = useState(formattedDueDate);
-  const [category, setCategory] = useState(formattedCategory);
-  const [assignedUsers, setAssignedUsers] = useState([]);
-  const [isCompleted, setIsCompleted] = useState(project.isCompleted);
+//   const [details, setDetails] = useState(project.details);
+//   const [dueDate, setDueDate] = useState(formattedDueDate);
+//   const [category, setCategory] = useState(formattedCategory);
+//   const [assignedUsers, setAssignedUsers] = useState([]);
+//   const [isCompleted, setIsCompleted] = useState(project.isCompleted);
   const [formError, setFormError] = useState(null);
   const [users, setUsers] = useState([]);
 
@@ -45,8 +45,6 @@ const UpdateModal = ({ project }) => {
   const { updateDocumentSummary , response } = useFirestore("projects");
 
   const history = useHistory();
-
-
 
   // formatting for Assigned User Select Options 
   useEffect(() => {
@@ -59,14 +57,14 @@ const UpdateModal = ({ project }) => {
   }, [documents]);
 
   // formatting for Assigned User Select Default State
-  useEffect(() => {
-    if (project) {
-      const formattedAssignedUsers = project.assignedUsersList.map((user) => {
-        return { value: user, label: user.displayName, img: user.photoURL };
-      });
-      setAssignedUsers(formattedAssignedUsers);
-    }
-  }, [project]);
+//   useEffect(() => {
+//     if (project) {
+//       const formattedAssignedUsers = project.assignedUsersList.map((user) => {
+//         return { value: user, label: user.displayName, img: user.photoURL };
+//       });
+//       setAssignedUsers(formattedAssignedUsers);
+//     }
+//   }, [project]);
 
 
   const toggleModal = () => {
@@ -77,39 +75,39 @@ const UpdateModal = ({ project }) => {
     e.preventDefault();
     setFormError(null);
 
-    if(!category){
-        setFormError("Please select category.");
-        return;
-    }
-    if(!assignedUsers.length < 1){
-        setFormError("Please assign to at least 1 team member.");
-    }
+    // if(!category){
+    //     setFormError("Please select category.");
+    //     return;
+    // }
+    // if(!assignedUsers.length < 1){
+    //     setFormError("Please assign to at least 1 team member.");
+    // }
 
-    const createdBy = {
-        displayName: user.displayName,
-        photoURL: user.photoURL,
-        id: user.uid,
-    };
+    // const createdBy = {
+    //     displayName: user.displayName,
+    //     photoURL: user.photoURL,
+    //     id: user.uid,
+    // };
 
     // creating a simplified array of obects from useAuthContext with the properties we want
-    const assignedUsersList = assignedUsers.map((u) => {
-        return {
-          displayName: u.value.displayName,
-          photoURL: u.value.photoURL,
-          id: u.value.id,
-        };
-    });
+    // const assignedUsersList = assignedUsers.map((u) => {
+    //     return {
+    //       displayName: u.value.displayName,
+    //       photoURL: u.value.photoURL,
+    //       id: u.value.id,
+    //     };
+    // });
 
 
     await updateDocumentSummary(project.id, {
-        name,
-        details,
-        category: category.value,
-        dueDate: timestamp.fromDate(new Date(dueDate)),
-        comments: project.comments,
-        createdBy,
-        assignedUsersList,
-        isCompleted,
+        name
+        // details,
+        // category: category.value,
+        // dueDate: timestamp.fromDate(new Date(dueDate)),
+        // comments: project.comments,
+        // createdBy,
+        // assignedUsersList,
+        // isCompleted,
     });
 
     console.log('hitting update');
@@ -143,7 +141,7 @@ const UpdateModal = ({ project }) => {
                   value={name}
                 ></input>
               </label>
-              <label>
+              {/* <label>
                 <p>Due Date:</p>
                 <input
                   required
@@ -152,7 +150,6 @@ const UpdateModal = ({ project }) => {
                   value={dueDate}
                 ></input>
               </label>
-            </form>
           <div className="category-assign-container">
             <label>
               <p>Category:</p>
@@ -210,7 +207,7 @@ const UpdateModal = ({ project }) => {
               onChange={(e) => setDetails(e.target.value)}
               value={details}
             ></textarea>
-          </label>
+          </label> */}
 
           <div className="btn-group">
             <button className="btn" onClick={toggleModal}>
@@ -220,6 +217,7 @@ const UpdateModal = ({ project }) => {
           </div>
 
             {formError && <p className="error">{formError}</p>}
+            </form>
           </div>
         </div>
       </div>
