@@ -21,7 +21,7 @@ const UpdateModal = ({ project }) => {
     const formattedDate = new Date(date);
     console.log("********************");
     console.log(convertUTC(new Date(date)));
-    console.log(formattedDate)
+    console.log(formattedDate);
     console.log("********************");
     // console.log('FORMATTED DATE: ---------> ' + UTCdate);
     const year = formattedDate.getFullYear();
@@ -31,16 +31,6 @@ const UpdateModal = ({ project }) => {
     const day = String(nextDay.getDate()).padStart(2, "0");
     return `${year}-${month}-${day}`;
   };
-
-//   function convertUTC(date) {
-//     var newDate = new Date(
-//       date.getTime() + date.getTimezoneOffset() * 60 * 1000
-//     );
-//     var offset = date.getTimezoneOffset() / 60;
-//     var hours = date.getHours();
-//     newDate.setHours(hours - offset);
-//     return newDate;
-//   }
 
   const formattedDueDate = formatDate(convertedDueDate);
 
@@ -54,8 +44,7 @@ const UpdateModal = ({ project }) => {
   const [details, setDetails] = useState(project.details);
   const [dueDate, setDueDate] = useState(formattedDueDate);
   const [category, setCategory] = useState(formattedCategory);
-  //   const [assignedUsers, setAssignedUsers] = useState([]);
-  //   const [isCompleted, setIsCompleted] = useState(project.isCompleted);
+  const [assignedUsers, setAssignedUsers] = useState(project.assignedUsersList);
   const [formError, setFormError] = useState(null);
   const [users, setUsers] = useState([]);
 
@@ -75,15 +64,15 @@ const UpdateModal = ({ project }) => {
     }
   }, [documents]);
 
-  // formatting for Assigned User Select Default State
-  //   useEffect(() => {
-  //     if (project) {
-  //       const formattedAssignedUsers = project.assignedUsersList.map((user) => {
-  //         return { value: user, label: user.displayName, img: user.photoURL };
-  //       });
-  //       setAssignedUsers(formattedAssignedUsers);
-  //     }
-  //   }, [project]);
+  //   formatting for Assigned User Select Default State
+  useEffect(() => {
+    if (project) {
+      const formattedAssignedUsers = project.assignedUsersList.map((user) => {
+        return { value: user, label: user.displayName, img: user.photoURL };
+      });
+      setAssignedUsers(formattedAssignedUsers);
+    }
+  }, [project]);
 
   const toggleModal = () => {
     setAppear(!appear);
@@ -93,38 +82,36 @@ const UpdateModal = ({ project }) => {
     e.preventDefault();
     setFormError(null);
 
-    // if(!category){
-    //     setFormError("Please select category.");
-    //     return;
-    // }
-    // if(!assignedUsers.length < 1){
-    //     setFormError("Please assign to at least 1 team member.");
-    // }
+    if (!category) {
+      setFormError("Please select category.");
+      return;
+    }
+    if (assignedUsers.length === 0) {
+        setFormError("Please assign to at least 1 team member.");
+        return;
+    }
 
-    // const createdBy = {
-    //     displayName: user.displayName,
-    //     photoURL: user.photoURL,
-    //     id: user.uid,
-    // };
+    const createdBy = {
+      displayName: user.displayName,
+      photoURL: user.photoURL,
+      id: user.uid,
+    };
 
-    // creating a simplified array of obects from useAuthContext with the properties we want
-    // const assignedUsersList = assignedUsers.map((u) => {
-    //     return {
-    //       displayName: u.value.displayName,
-    //       photoURL: u.value.photoURL,
-    //       id: u.value.id,
-    //     };
-    // });
+    // creating a simplified array of obects from useAuthContext with the following properties
+    const assignedUsersList = assignedUsers.map((u) => {
+      return {
+        displayName: u.value.displayName,
+        photoURL: u.value.photoURL,
+        id: u.value.id,
+      };
+    });
 
     await updateDocumentSummary(project.id, {
       name,
       details,
       category: category.value,
       dueDate: timestamp.fromDate(convertUTC(new Date(dueDate))),
-      // comments: project.comments,
-      // createdBy,
-      // assignedUsersList,
-      // isCompleted,
+      assignedUsersList: assignedUsersList,
     });
 
     console.log("hitting update");
@@ -139,8 +126,16 @@ const UpdateModal = ({ project }) => {
       );
       console.log("\n");
       history.push(`/projects/${project.id}`);
+
+
     }
+    console.log("\n")
+    console.log(assignedUsers)
+  //   console.log(assignedUsers.forEach(user => console.log(user.value)))
+    console.log('\n')
+
   };
+
 
   return (
     <>
@@ -201,36 +196,38 @@ const UpdateModal = ({ project }) => {
                   value={dueDate}
                 ></input>
               </label>
-              {/* 
-          <div className="category-assign-container">
-            <label>
-              <p>Assign to:</p>
-              <Select
-                isMulti
-                value={assignedUsers}
-                onChange={(option) => setAssignedUsers(option)}
-                options={users}
-                formatOptionLabel={(user) => (
-                  <div className="assigned-user-option">
-                    <img src={user.img} className="avatar" alt="user-avatar" />
-                    <p>{user.label}</p>
-                  </div>
-                )}
-                // select customize only here - not in css
-                theme={(theme) => ({
-                  ...theme,
-                  borderRadius: "5px",
-                  colors: {
-                    ...theme.colors,
-                    text: "orange",
-                    primary25: "orange",
-                    primary: "orange",
-                  },
-                })}
-              />
-            </label>
-          </div>
-           */}
+              <div className="category-assign-container">
+                <label>
+                  <p>Assign to:</p>
+                  <Select
+                    isMulti
+                    value={assignedUsers}
+                    onChange={(option) => setAssignedUsers(option)}
+                    options={users}
+                    formatOptionLabel={(user) => (
+                      <div className="assigned-user-option">
+                        <img
+                          src={user.img}
+                          className="avatar"
+                          alt="user-avatar"
+                        />
+                        <p>{user.label}</p>
+                      </div>
+                    )}
+                    // select customize only here - not in css
+                    theme={(theme) => ({
+                      ...theme,
+                      borderRadius: "5px",
+                      colors: {
+                        ...theme.colors,
+                        text: "orange",
+                        primary25: "orange",
+                        primary: "orange",
+                      },
+                    })}
+                  />
+                </label>
+              </div>
 
               <div className="btn-group">
                 <button className="btn" onClick={toggleModal}>
