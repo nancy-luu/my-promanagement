@@ -5,6 +5,7 @@ import { useAuthContext } from "../../hooks/useAuthContext";
 import { useFirestore } from "../../hooks/useFirestore";
 import { useHistory } from "react-router-dom";
 import {categories} from "../../util/categories";
+import { convertUTC } from "../../util/convertUTC";
 import Select from "react-select";
 
 //styles
@@ -69,7 +70,7 @@ export default function Create() {
       name,
       details,
       category: category.value,
-      dueDate: timestamp.fromDate(new Date(dueDate)),
+      dueDate: timestamp.fromDate(convertUTC(new Date(dueDate))),
       comments: [],
       createdBy,
       assignedUsersList,

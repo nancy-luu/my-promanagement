@@ -5,6 +5,7 @@ import { useFirestore } from "../hooks/useFirestore";
 import { categories } from "../util/categories";
 import { timestamp } from "../firebase/config";
 import { useHistory } from "react-router-dom";
+import { convertUTC } from "../util/convertUTC";
 import Select from "react-select";
 
 //styles
@@ -18,6 +19,11 @@ const UpdateModal = ({ project }) => {
   const formatDate = (date) => {
     if (!date) return ""; // Handle case where dueDate is not defined
     const formattedDate = new Date(date);
+    console.log("********************");
+    console.log(convertUTC(new Date(date)));
+    console.log(formattedDate)
+    console.log("********************");
+    // console.log('FORMATTED DATE: ---------> ' + UTCdate);
     const year = formattedDate.getFullYear();
     const month = String(formattedDate.getMonth() + 1).padStart(2, "0");
     const nextDay = new Date(formattedDate);
@@ -26,11 +32,21 @@ const UpdateModal = ({ project }) => {
     return `${year}-${month}-${day}`;
   };
 
+//   function convertUTC(date) {
+//     var newDate = new Date(
+//       date.getTime() + date.getTimezoneOffset() * 60 * 1000
+//     );
+//     var offset = date.getTimezoneOffset() / 60;
+//     var hours = date.getHours();
+//     newDate.setHours(hours - offset);
+//     return newDate;
+//   }
+
   const formattedDueDate = formatDate(convertedDueDate);
-  
 
-  const formattedCategory = [...project.category][0].toUpperCase()+[...project.category].slice(1).join('')
-
+  const formattedCategory =
+    [...project.category][0].toUpperCase() +
+    [...project.category].slice(1).join("");
 
   // states
   const [appear, setAppear] = useState(false);
@@ -38,18 +54,18 @@ const UpdateModal = ({ project }) => {
   const [details, setDetails] = useState(project.details);
   const [dueDate, setDueDate] = useState(formattedDueDate);
   const [category, setCategory] = useState(formattedCategory);
-//   const [assignedUsers, setAssignedUsers] = useState([]);
-//   const [isCompleted, setIsCompleted] = useState(project.isCompleted);
+  //   const [assignedUsers, setAssignedUsers] = useState([]);
+  //   const [isCompleted, setIsCompleted] = useState(project.isCompleted);
   const [formError, setFormError] = useState(null);
   const [users, setUsers] = useState([]);
 
   const { documents } = useCollection("users");
   const { user } = useAuthContext();
-  const { updateDocumentSummary , response } = useFirestore("projects");
+  const { updateDocumentSummary, response } = useFirestore("projects");
 
   const history = useHistory();
 
-  // formatting for Assigned User Select Options 
+  // formatting for Assigned User Select Options
   useEffect(() => {
     if (documents) {
       const options = documents.map((user) => {
@@ -60,15 +76,14 @@ const UpdateModal = ({ project }) => {
   }, [documents]);
 
   // formatting for Assigned User Select Default State
-//   useEffect(() => {
-//     if (project) {
-//       const formattedAssignedUsers = project.assignedUsersList.map((user) => {
-//         return { value: user, label: user.displayName, img: user.photoURL };
-//       });
-//       setAssignedUsers(formattedAssignedUsers);
-//     }
-//   }, [project]);
-
+  //   useEffect(() => {
+  //     if (project) {
+  //       const formattedAssignedUsers = project.assignedUsersList.map((user) => {
+  //         return { value: user, label: user.displayName, img: user.photoURL };
+  //       });
+  //       setAssignedUsers(formattedAssignedUsers);
+  //     }
+  //   }, [project]);
 
   const toggleModal = () => {
     setAppear(!appear);
@@ -101,32 +116,35 @@ const UpdateModal = ({ project }) => {
     //     };
     // });
 
-
     await updateDocumentSummary(project.id, {
-        name,
-        details,
-        category: category.value,
-        dueDate: timestamp.fromDate(new Date(dueDate)),
-        // comments: project.comments,
-        // createdBy,
-        // assignedUsersList,
-        // isCompleted,
+      name,
+      details,
+      category: category.value,
+      dueDate: timestamp.fromDate(convertUTC(new Date(dueDate))),
+      // comments: project.comments,
+      // createdBy,
+      // assignedUsersList,
+      // isCompleted,
     });
 
-    console.log('hitting update');
+    console.log("hitting update");
+    console.log("due date: ------>" + dueDate);
 
-    if(!response.error){
-        console.log("this is the response id:" + response.id);
-        setAppear(false);
-        history.push(`/projects/${project.id}`);
+    if (!response.error) {
+      console.log("this is the response id:" + response.id);
+      setAppear(false);
+      console.log("\n");
+      console.log(
+        "Project duedate from update: " + project.dueDate.toDate().toString()
+      );
+      console.log("\n");
+      history.push(`/projects/${project.id}`);
     }
   };
-
 
   return (
     <>
       <button className="btn" onClick={toggleModal}>
-    
         Edit
       </button>
 
@@ -145,36 +163,36 @@ const UpdateModal = ({ project }) => {
                 ></input>
               </label>
               <label>
-                    <p>Details:</p>
-                    <textarea
-                    required
-                    type="text"
-                    onChange={(e) => setDetails(e.target.value)}
-                    value={details}
-                    ></textarea>
-                </label>
-                <label>
-              <p>Category:</p>
-              <Select
-                className="category-select"
-                value={category}
-                options={categories}
-                onChange={(option) => setCategory(option)}
-                // select customize only here - not in css
-                theme={(theme) => ({
-                  ...theme,
-                  borderRadius: "5px",
-                  colors: {
-                    ...theme.colors,
-                    text: "orange",
-                    primary25: "orange",
-                    primary: "orange",
-                  },
-                })}
-                placeholder={category}
-              />
-            </label>
-            <label>
+                <p>Details:</p>
+                <textarea
+                  required
+                  type="text"
+                  onChange={(e) => setDetails(e.target.value)}
+                  value={details}
+                ></textarea>
+              </label>
+              <label>
+                <p>Category:</p>
+                <Select
+                  className="category-select"
+                  value={category}
+                  options={categories}
+                  onChange={(option) => setCategory(option)}
+                  // select customize only here - not in css
+                  theme={(theme) => ({
+                    ...theme,
+                    borderRadius: "5px",
+                    colors: {
+                      ...theme.colors,
+                      text: "orange",
+                      primary25: "orange",
+                      primary: "orange",
+                    },
+                  })}
+                  placeholder={category}
+                />
+              </label>
+              <label>
                 <p>Due Date:</p>
                 <input
                   required
@@ -182,7 +200,7 @@ const UpdateModal = ({ project }) => {
                   onChange={(e) => setDueDate(e.target.value)}
                   value={dueDate}
                 ></input>
-            </label>
+              </label>
               {/* 
           <div className="category-assign-container">
             <label>
@@ -214,14 +232,14 @@ const UpdateModal = ({ project }) => {
           </div>
            */}
 
-          <div className="btn-group">
-            <button className="btn" onClick={toggleModal}>
-              Discard
-            </button>
-            <button className="btn">Save</button>
-          </div>
+              <div className="btn-group">
+                <button className="btn" onClick={toggleModal}>
+                  Discard
+                </button>
+                <button className="btn">Save</button>
+              </div>
 
-            {formError && <p className="error">{formError}</p>}
+              {formError && <p className="error">{formError}</p>}
             </form>
           </div>
         </div>
@@ -231,9 +249,6 @@ const UpdateModal = ({ project }) => {
 };
 
 export default UpdateModal;
-
-
-
 
 /**
  * 

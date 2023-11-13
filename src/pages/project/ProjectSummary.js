@@ -29,6 +29,10 @@ export default function ProjectSummary({ project }) {
     }
   }
 
+  console.log('\n')
+  console.log('Project due date from summary: ' + project.dueDate.toDate().toDateString())
+  console.log('\n')
+
   return (
     <div>
       <div className="project-summary">
