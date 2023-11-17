@@ -19,11 +19,6 @@ const UpdateModal = ({ project }) => {
   const formatDate = (date) => {
     if (!date) return ""; // Handle case where dueDate is not defined
     const formattedDate = new Date(date);
-    console.log("********************");
-    console.log(convertUTC(new Date(date)));
-    console.log(formattedDate);
-    console.log("********************");
-    // console.log('FORMATTED DATE: ---------> ' + UTCdate);
     const year = formattedDate.getFullYear();
     const month = String(formattedDate.getMonth() + 1).padStart(2, "0");
     const nextDay = new Date(formattedDate);
@@ -31,9 +26,9 @@ const UpdateModal = ({ project }) => {
     const day = String(nextDay.getDate()).padStart(2, "0");
     return `${year}-${month}-${day}`;
   };
-
   const formattedDueDate = formatDate(convertedDueDate);
 
+  // Formating category to read with Capitalization
   const formattedCategory =
     [...project.category][0].toUpperCase() +
     [...project.category].slice(1).join("");
@@ -51,9 +46,9 @@ const UpdateModal = ({ project }) => {
   const { documents } = useCollection("users");
   const { user } = useAuthContext();
   const { updateDocumentSummary, response } = useFirestore("projects");
-
   const history = useHistory();
 
+  
   // formatting for Assigned User Select Options
   useEffect(() => {
     if (documents) {
@@ -99,12 +94,6 @@ const UpdateModal = ({ project }) => {
         setFormError("Please assign to at least 1 team member.");
         return;
       }
-  
-      const createdBy = {
-        displayName: user.displayName,
-        photoURL: user.photoURL,
-        id: user.uid,
-      };
   
       // creating a simplified array of objects from useAuthContext with the following properties
       const assignedUsersList = assignedUsers.map((u) => {

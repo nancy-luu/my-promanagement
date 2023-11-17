@@ -124,14 +124,18 @@ export default function Create() {
                 // select customize only here - not in css 
                 theme={(theme) => ({
                   ...theme,
-                  borderRadius: '5px',
+                  borderRadius: "5px",
                   colors: {
-                  ...theme.colors,
-                    text: 'orange',
-                    primary25: 'orange',
-                    primary: 'orange',
+                    ...theme.colors,
+                    primary25: "orange",
+                    primary: "orange",
                   },
                 })}
+                styles={{
+                  option: (provided, state) => ({
+                    ...provided,
+                    color: "black", // Set the font color for options
+                  })}}
               />
             </label>
             <label>

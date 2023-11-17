@@ -2,6 +2,7 @@ import { NavLink } from "react-router-dom";
 
 // styles and images
 import "./Sidebar.css";
+import Logo from '../assets/logo.png'
 import DashboardIcon from "../assets/dashboard_icon.png";
 import ProjectsIcon from "../assets/projects_icon.png";
 import CalendarIcon from "../assets/calendar.png";

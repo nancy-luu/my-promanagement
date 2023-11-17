@@ -1,7 +1,8 @@
-import React from 'react'
+import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { useLogout } from '../hooks/useLogout'
 import { useAuthContext } from "../hooks/useAuthContext";
+import { useCollection } from "../hooks/useCollection";
 
 // components
 import Avatar from './Avatar';
@@ -9,10 +10,17 @@ import Avatar from './Avatar';
 // styles and images
 import './Navbar.css'
 import Logo from '../assets/logo.png'
+import SearchBar from '../pages/projects_board/SearchBar';
 
 export default function Navbar() {
+  const { documents, error } = useCollection("projects");
+  const [query, setQuery] = useState([]);
+
+
   const { logout, isPending } = useLogout();
   const { user } = useAuthContext();
+
+  const projectSearchList = documents && documents.map((document) => ({name: document.name, docId: document.id}))
 
   return (
     <div className="navbar">
@@ -27,6 +35,7 @@ export default function Navbar() {
 
         {user && (
           <div className="left-nav-container">
+            <SearchBar data={projectSearchList} query={query} setQuery={setQuery}/>
             <Avatar src={user.photoURL}/>
             <h4>{user.displayName}</h4>
             <li>

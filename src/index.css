@@ -25,7 +25,7 @@
 body {
   font-family: Poppins, sans-serif;
   margin: 0;
-  font-size: 1em;
+  font-size: 14px;
   background-size: 100%;
   /* background: var(--bg-color); */
   background: radial-gradient(circle at left, #ae4619, #5e260e, #0b0707, #0b0707), 
