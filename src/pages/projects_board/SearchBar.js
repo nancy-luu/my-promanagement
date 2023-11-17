@@ -54,7 +54,7 @@ const SearchBar = ({ data, query, setQuery }) => {
             {query &&
               query.slice(0, 15).map((value, key) => (
                 <div className="search-item">
-                  <Link to={`projects/${value.docId}`} key={key}>
+                  <Link to={`projects/${value.docId}`} key={key} onClick={clearInput}>
                     {value.name}
                   </Link>
                 </div>

@@ -35,7 +35,9 @@ export default function Navbar() {
 
         {user && (
           <div className="left-nav-container">
-            <SearchBar data={projectSearchList} query={query} setQuery={setQuery}/>
+            <div className="search-container">
+              <SearchBar data={projectSearchList} query={query} setQuery={setQuery}/>
+            </div>
             <Avatar src={user.photoURL}/>
             <h4>{user.displayName}</h4>
             <li>
