@@ -57,16 +57,12 @@ const ProjectsDash = () => {
   return (
     <div className="projects-dash-container">
         <div className="projects-dash-navbar">
-          <dvi className="search-container">
             <NavLink to="/createProject">
               <button className="btn">New Project</button>
             </NavLink>
-          </dvi>
-          <div className="departments-container">
             {documents && (
               <ProjectFilter currFilter={currFilter} changeFilter={changeFilter}/>
             )}
-          </div>
         </div>
         <div className="project-stats-comments-container">
           <div className="stats-tasks-container">

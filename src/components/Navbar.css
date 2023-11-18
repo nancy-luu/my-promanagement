@@ -2,7 +2,7 @@
     width: 100%;
     padding: 10px;
     box-sizing: border-box;
-    border-bottom: 1px solid rgb(139, 139, 139);
+    border-bottom: .75px solid rgb(72, 72, 72);
     background-color: #03000ebb; /* Set the background color you want */
     backdrop-filter: blur(20px);
     z-index: 2; /* Ensure the Navbar is on top of other components */
@@ -53,6 +53,9 @@
 }
 
 /* SEARCH ---------------------- */
+input {
+    margin: 1px;
+}
 
 .search-container {
     display: flex;

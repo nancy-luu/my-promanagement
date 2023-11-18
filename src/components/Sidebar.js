@@ -21,28 +21,24 @@ export default function Sidebar() {
               <NavLink exact to="/">
                 <img src={DashboardIcon} alt="dashboard icon" />
                 <span>Dashboard</span>
-                <img className="arrow" src={ArrowIcon} alt="arrow icon" />
               </NavLink>
             </li>
             <li>
               <NavLink to="/calendar">
                 <img src={CalendarIcon} alt="calendar icon" />
                 <span>Calendar</span>
-                <img className="arrow" src={ArrowIcon} alt="arrow icon" />
               </NavLink>
             </li>
             <li>
               <NavLink exact to="/projects">
                 <img src={ProjectsIcon} alt="projects icon" />
                 <span>Projects</span>
-                <img className="arrow" src={ArrowIcon} alt="arrow icon" />
               </NavLink>
             </li>
             <li className="team-section">
               <NavLink to="/team">
                 <img src={TeamIcon} alt="team icon" />
                 <span>Team</span>
-                <img className="arrow" src={ArrowIcon} alt="arrow icon" />
               </NavLink>
             </li>
           </ul>

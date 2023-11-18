@@ -19,6 +19,9 @@
     display: flex;
 }
 
+.cal-arrow-form h4 {
+    transition: color 0.3s ease;
+}
 .cal-arrow-form h4:hover {
     color: var(--primary-color)
 }
@@ -29,6 +32,7 @@
     height: 20px;
     padding: 0px 5px;
     filter: grayscale(1);
+    transition: filter 0.3s ease;
     cursor: pointer;
 }
 
@@ -74,14 +78,17 @@
     justify-content: center;
     align-items: center;
     padding: 10px;
+    border-radius: 50%;
 }
 
 .day {
+    border-radius: 50%;
     cursor: pointer;
     color: var(--text-color);
 }
 .day:hover{
     color: var(--text-color);
+    transition: color 0.3s ease, background-color 0.3s ease, border-radius 0.3s ease;
     background-color: var( --bg-secondary-color);
     border-radius: 50%;
     font: bold;
