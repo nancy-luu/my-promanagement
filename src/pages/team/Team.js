@@ -1,9 +1,9 @@
-import { useAuthContext } from '../hooks/useAuthContext'
-import { useCollection } from '../hooks/useCollection'
-import { useMyProjects } from '../hooks/useMyProjects';
+import { useAuthContext } from '../../hooks/useAuthContext'
+import { useCollection } from '../../hooks/useCollection'
+import { useMyProjects } from '../../hooks/useMyProjects';
 
 // components
-import Avatar from './Avatar'
+import Avatar from '../../components/Avatar'
 
 // styles
 import './Team.css'
@@ -33,6 +33,11 @@ export default function OnlineUsers() {
     const uniqueTeamMembersObject = userDocuments
       ? userDocuments.filter(user => uniqueTeamMembers.includes(user.displayName))
       : [];
+
+      console.log("USER CONSOLE LOGGED")
+    console.log(user.email)
+    console.log(userDocuments)
+    // userDocuments.forEach(u => console.log(u.email));
 
   return (
     <div className="users-container">

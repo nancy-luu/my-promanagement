@@ -46,12 +46,14 @@ textarea[type=text]:focus
     font-weight: bold;
     color: var(--text-color);
     cursor: pointer;
-    font-size: 0.9em;
+}
+.project-filter button:hover {
+    background: #82828241;
 }
 
 .project-filter button.active {
     color: var(--primary-color);
-    background: #55555544;
+    background: #82828241;
     border-bottom: 3px solid var(--primary-color);
     border-bottom-left-radius: 0px;
     border-bottom-right-radius: 0px;
@@ -61,7 +63,7 @@ textarea[type=text]:focus
 /* UPPER DASH ---------------- */
 .project-stats-comments-container {
     display: grid;
-    grid-template-columns: 1fr 1fr
+    grid-template-columns: 1fr 2fr;
 }
 
 
@@ -73,6 +75,7 @@ textarea[type=text]:focus
       linear-gradient(to top, #6262623b, #03000e22) border-box;
     border-style: solid;
     border: .75px solid rgba(79, 79, 79, 0.444);
+    height: 230px;
 }
 
 .status-container .status-title {
