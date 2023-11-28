@@ -6,16 +6,18 @@
 
 .user-list,
 .team-list {
-    margin-right: 50px;
-    width: 250px;
     min-width: 250px;
     padding: 10px;
     box-sizing: border-box;
     border-radius: var(--outer-radius);
     background: linear-gradient(to bottom, #2929297f, #2929297f) padding-box,
-      linear-gradient(to top, #6262623b, #03000e22) border-box;
+        linear-gradient(to top, #6262623b, #03000e22) border-box;
     border-style: solid;
     border: .75px solid rgba(79, 79, 79, 0.444);
+}
+
+.user-list {
+    margin-right: 5px;
 }
 
 .users-container h2 {
@@ -28,7 +30,7 @@
     display: flex;
     flex-direction: column;
     background: linear-gradient(to bottom, #29292938, #03000e22) padding-box,
-    linear-gradient(to top, #5e5e5e75, #03000e22) border-box;
+        linear-gradient(to top, #5e5e5e75, #03000e22) border-box;
     border-top: solid 1px rgba(115, 115, 115, 0.5);
     border-left: solid 1px rgba(115, 115, 115, 0.5);
     border-right: solid 1px rgba(115, 115, 115, 0.5);
@@ -40,24 +42,87 @@
     font-size: 14px;
 }
 
-.users-container .avatar {
-    margin-right: 10px;
-    width: 40px;
-    height: 40px;
+.department-container {
+    display: grid;
+    grid-template-columns: 2fr 2fr 2fr;
+    margin: 5px;
 }
 
-.avatar-online-container {
-    position: relative; /* Add relative positioning */
-    display: inline-block;
+.department-card {
+    display: flex;
+    flex-direction: column;
+    border-radius: var(--outer-radius);
+    background: linear-gradient(to bottom, #2929297f, #2929297f) padding-box,
+        linear-gradient(to top, #6262623b, #03000e22) border-box;
+    border-style: solid;
+    border: .75px solid rgba(79, 79, 79, 0.444);
+    margin: 5px;
+    padding: 10px;
+}
+
+.users-container .avatar,
+.department-container .avatar {
+    width: 30px;
+    height: 30px;
 }
 
 .users-container .online-user {
-    position: absolute; /* Position absolutely within the container */
-    bottom: 3px; /* Align to the bottom edge */
-    right: 7px; /* Align to the right edge */
+    position: absolute;
+    /* Position absolutely within the container */
+    bottom: 3px;
+    /* Align to the bottom edge */
+    right: 7px;
+    /* Align to the right edge */
     width: 12px;
     height: 12px;
     background: rgb(112, 241, 112);
     border-radius: 50%;
-    margin: 2px; /* Adjust margin for spacing */
+    margin: 2px;
+    /* Adjust margin for spacing */
+}
+
+
+/*  TABLE --------------------------------------- */
+.team-table {
+    color: var(--text-color);
+    table-layout: fixed;
+    width: 100%;
+    border-collapse: collapse;
+    border: 1px solid white;
+    border-radius: var(--inner-radius);
+}
+
+thead th:nth-child(1) {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 20%;
+}
+
+thead th:nth-child(2) {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 20%;
+}
+
+thead th:nth-child(3) {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 20%;
+}
+
+thead th:nth-child(4) {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 20%;
+}
+
+th,
+td {
+    padding: 10px;
+    border-bottom: 1px solid #ccc;
+    text-align: left;
 }

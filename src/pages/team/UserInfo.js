@@ -1,10 +1,10 @@
 // components
 import Avatar from '../../components/Avatar'
 
-const UserInfoCard = ({ user }) => {
+const UserInfo = ({ user }) => {
   return (
     <div key={user.id} className="user-list-item">
-      <div className="avatar-online-container">
+      <div className="avatar-container">
         {user.online && <span className="online-user"></span>}
         <Avatar src={user.photoURL} />
       </div>
@@ -16,4 +16,4 @@ const UserInfoCard = ({ user }) => {
   );
 };
 
-export default UserInfoCard;
+export default UserInfo;
