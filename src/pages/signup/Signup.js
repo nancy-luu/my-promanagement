@@ -1,22 +1,30 @@
-import React, { useState } from "react";
-import { useSignup } from '../../hooks/useSignup'
+import React, { useState, useRef } from "react";
+import { useSignup } from "../../hooks/useSignup";
+import { categories } from "../../util/categories";
 
 // styles
 import "./Signup.css";
+import Select from "react-select";
 
 export default function Signup() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [displayName, setDisplayName] = useState("");
+  const [department, setDepartment] = useState("");
+  const [role, setRole] = useState("");
   const [thumbnail, setThumbnail] = useState(null);
   const [thumbnailError, setThumbnailError] = useState(null);
   const { signup, isPending, error } = useSignup();
-
+  const fileInputRef = useRef(null);
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    signup(email, password, displayName, thumbnail)
-  }
+    signup(email, password, displayName, thumbnail);
+  };
+
+  const handleButtonClick = () => {
+    fileInputRef.current.click(); // Clicks the hidden file input
+  };
 
   const handleFileChange = (e) => {
     setThumbnail(null);
@@ -25,67 +33,114 @@ export default function Signup() {
 
     if (!selected) {
       setThumbnailError("File must be selected.");
-      return
+      return;
     }
 
     if (!selected.type.includes("image")) {
       setThumbnailError("File must be an image.");
-      return
+      return;
     }
 
     // 10000 bytes
     if (selected.size > 100000) {
       setThumbnailError("File size must be less than 100kb");
-      return
+      return;
     }
 
     // resetting thumb nail error if it was set before
     setThumbnailError(null);
-    setThumbnail(selected)
-    console.log('Thumbnail updated')
+    setThumbnail(selected);
+    console.log("Thumbnail updated");
   };
 
   return (
-    <form className="auth-form" onSubmit={handleSubmit}>
-      <h2>Sign Up</h2>
-      <label>
-        <span>Email:</span>
-        <input
-          required
-          type="email"
-          onChange={(e) => setEmail(e.target.value)}
-          value={email}
-        ></input>
-      </label>
-      <label>
-        <span>Password:</span>
-        <input
-          required
-          type="password"
-          onChange={(e) => setPassword(e.target.value)}
-          value={password}
-        ></input>
-      </label>
-      <label>
-        <span>Display name:</span>
-        <input
-          required
-          type="text"
-          onChange={(e) => setDisplayName(e.target.value)}
-          value={displayName}
-        ></input>
-      </label>
-      <label>
-        <span>Profile Image:</span>
-        <input 
-          required type="file" 
-          onChange={handleFileChange}
-        ></input>
-        {thumbnailError && <div className="error">{thumbnailError}</div>}
-      </label>
-      {!isPending && <button className="btn">Submit</button>}
-      {isPending && <button className="btn" disabled>Loading...</button>}
-      {error && <div className="error">{error}</div>}
-    </form>
+    <div className="auth-form-container">
+
+      <form className="auth-form" onSubmit={handleSubmit}>
+        <h2>Sign Up</h2>
+        <div className="form-container">
+          <div className="form-left">
+            <label>
+              <input
+                required
+                placeholder="Display Name"
+                type="text"
+                onChange={(e) => setDisplayName(e.target.value)}
+                value={displayName}
+              ></input>
+            </label>
+            <label>
+              <input
+                required
+                placeholder="Email"
+                type="email"
+                onChange={(e) => setEmail(e.target.value)}
+                value={email}
+              ></input>
+            </label>
+            <label>
+              <input
+                required
+                placeholder="Password"
+                type="password"
+                onChange={(e) => setPassword(e.target.value)}
+                value={password}
+              ></input>
+            </label>
+          </div>
+          <div className="form-right">
+            <label>
+              <Select
+                className="category-select"
+                options={categories}
+                onChange={(option) => setDepartment(option)}
+                // select customize only here - not in css
+                theme={(theme) => ({
+                  ...theme,
+                  borderRadius: "5px",
+                  colors: {
+                    ...theme.colors,
+                    text: "orange",
+                    primary25: "orange",
+                    primary: "orange",
+                  },
+                })}
+                placeholder="Department"
+              />
+            </label>
+            <label>
+              <input
+                required
+                placeholder="Role"
+                type="text"
+                onChange={(e) => setRole(e.target.value)}
+                value={role}
+              ></input>
+            </label>
+            <label>
+              <button className="btn" type="button" onClick={handleButtonClick}>
+              Upload Profile Image
+            </button>
+            <input
+              ref={fileInputRef}
+              type="file"
+              style={{ display: "none" }}
+              accept="image/*"
+              onChange={handleFileChange}
+            />
+              {/* <input required type="file" onChange={handleFileChange} palceholder="Choose profile image"></input> */}
+              {thumbnailError && <div className="error">{thumbnailError}</div>}
+            </label>
+          </div>
+        </div>
+        {!isPending && <button className="btn">Submit</button>}
+        {isPending && (
+          <button className="btn" disabled>
+            Loading...
+          </button>
+        )}
+        {error && <div className="error">{error}</div>}
+      </form>
+    </div>
   );
 }
