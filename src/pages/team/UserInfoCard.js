@@ -9,6 +9,7 @@ const UserInfoCard = ({ user }) => {
         <Avatar src={user.photoURL} />
       </div>
       <span>{user.displayName}</span>
+      <span>{user.department.label}</span>
       <span>{user.role}</span>
       <h3>Projects: </h3>
     </div>

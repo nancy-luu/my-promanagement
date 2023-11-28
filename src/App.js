@@ -9,7 +9,7 @@ import Create from "./pages/create/Create";
 import Login from "./pages/login/Login";
 import Signup from "./pages/signup/Signup";
 import Project from "./pages/project/Project";
-import Team from "./pages/team/TeamDash";
+import TeamDash from "./pages/team/TeamDash";
 import Dashboard from "./pages/dashboard/Dashboard";
 import CalendarDash from "./pages/calendar/CalendarDash";
 import CreateMeeting from "./pages/calendar/CreateMeeting";
@@ -54,7 +54,7 @@ function App() {
                 </Route>
                 <Route path="/team">
                   {!user && <Redirect to="/login" />}
-                  {user && <Team />}
+                  {user && <TeamDash />}
                 </Route>
                 <Route path="/projects/:id">
                   {!user && <Redirect to="/login" />}

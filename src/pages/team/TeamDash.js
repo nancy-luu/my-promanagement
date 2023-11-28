@@ -1,6 +1,8 @@
 import { useAuthContext } from '../../hooks/useAuthContext'
 import { useCollection } from '../../hooks/useCollection'
 import { useMyProjects } from '../../hooks/useMyProjects';
+import { categories } from "../../util/categories";
+
 
 // components
 import Avatar from '../../components/Avatar'
@@ -10,9 +12,9 @@ import './Team.css'
 import UserInfoCard from './UserInfoCard';
 import DepartmentCard from './DepartmentCard';
 
-const departmentList = ['development', 'design', 'marketing', 'product', 'research', 'sales']
+// const departmentList = ['development', 'design', 'marketing', 'product', 'research', 'sales']
 
-export default function OnlineUsers() {
+export default function TeamDash() {
     const { user } = useAuthContext();
     const { documents: userDocuments } = useCollection('users');
 
@@ -46,9 +48,9 @@ export default function OnlineUsers() {
   return (
     <div className="users-container">
       <div className="department-container">
-          {departmentList.map((department) => (
-            <DepartmentCard department={department}/>
-          ))}
+      {categories.map((category) => (
+        <DepartmentCard key={category.value} department={category} />
+      ))}
       </div>
       <div className="user-list">
         <h2>Team:</h2>

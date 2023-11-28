@@ -16,7 +16,7 @@ export default function ProjectFilter({ currFilter, changeFilter }) {
                     onClick={() => handleClick(f)}
                     className={currFilter === f ? 'active' : ''}
                 >
-                    {f}
+                    {f.slice(0, 1).toUpperCase() + f.slice(1)}
                 </button>
             ))}
         </nav>
