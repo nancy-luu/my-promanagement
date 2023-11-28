@@ -7,6 +7,10 @@ import Avatar from '../../components/Avatar'
 
 // styles
 import './Team.css'
+import UserInfoCard from './UserInfoCard';
+import DepartmentCard from './DepartmentCard';
+
+const departmentList = ['development', 'design', 'marketing', 'product', 'research', 'sales']
 
 export default function OnlineUsers() {
     const { user } = useAuthContext();
@@ -20,7 +24,7 @@ export default function OnlineUsers() {
       projectDoc.assignedUsersList.map(userObj => userObj.displayName)
     );
 
-    // taking out user's name from the list
+    // taking out current user's name from the list
     const teamMembers = Array.from(assignedUsersDisplayNames).filter(
       displayName => displayName !== user.displayName
     );    
@@ -37,22 +41,21 @@ export default function OnlineUsers() {
       console.log("USER CONSOLE LOGGED")
     console.log(user.email)
     console.log(userDocuments)
-    // userDocuments.forEach(u => console.log(u.email));
+  
 
   return (
     <div className="users-container">
+      <div className="department-container">
+          {departmentList.map((department) => (
+            <DepartmentCard department={department}/>
+          ))}
+      </div>
       <div className="user-list">
         <h2>Team:</h2>
           {/* {error & <div className="error">{error}</div>} */}
           {/* Need to ensure document is not null first */}
           {userDocuments && userDocuments.map((user) => (
-            <div key={user.id} className="user-list-item">
-                  <div className="avatar-online-container">
-                      {user.online && <span className="online-user"></span>}
-                      <Avatar src={user.photoURL}/>
-                  </div>
-                  <span>{user.displayName}</span>
-              </div>
+            <UserInfoCard user={user}/>
           ))}
       </div>
       <div className="team-list">
@@ -60,13 +63,7 @@ export default function OnlineUsers() {
           {/* {error & <div className="error">{error}</div>} */}
           {/* Need to ensure document is not null first */}
           {uniqueTeamMembersObject && uniqueTeamMembersObject.map((user) => (
-            <div key={user.id} className="team-list-item">
-                  <div className="avatar-online-container">
-                      {user.online && <span className="online-user"></span>}
-                      <Avatar src={user.photoURL}/>
-                  </div>
-                  <span>{user.displayName}</span>
-              </div>
+            <UserInfoCard user={user}/>
           ))}
       </div>
     </div>
