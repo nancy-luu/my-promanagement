@@ -10,16 +10,17 @@ export default function Signup() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [displayName, setDisplayName] = useState("");
-  const [department, setDepartment] = useState("");
-  const [role, setRole] = useState("");
   const [thumbnail, setThumbnail] = useState(null);
   const [thumbnailError, setThumbnailError] = useState(null);
+  const [selectedFileName, setSelectedFileName] = useState("");
+  const [department, setDepartment] = useState("");
+  const [role, setRole] = useState("");
   const { signup, isPending, error } = useSignup();
   const fileInputRef = useRef(null);
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    signup(email, password, displayName, thumbnail);
+    signup(email, password, displayName, thumbnail, department, role);
   };
 
   const handleButtonClick = () => {
@@ -50,12 +51,12 @@ export default function Signup() {
     // resetting thumb nail error if it was set before
     setThumbnailError(null);
     setThumbnail(selected);
+    setSelectedFileName(selected ? selected.name : "");
     console.log("Thumbnail updated");
   };
 
   return (
     <div className="auth-form-container">
-
       <form className="auth-form" onSubmit={handleSubmit}>
         <h2>Sign Up</h2>
         <div className="form-container">
@@ -91,6 +92,7 @@ export default function Signup() {
           <div className="form-right">
             <label>
               <Select
+                required
                 className="category-select"
                 options={categories}
                 onChange={(option) => setDepartment(option)}
@@ -117,20 +119,28 @@ export default function Signup() {
                 value={role}
               ></input>
             </label>
-            <label>
-              <button className="btn" type="button" onClick={handleButtonClick}>
-              Upload Profile Image
-            </button>
-            <input
-              ref={fileInputRef}
-              type="file"
-              style={{ display: "none" }}
-              accept="image/*"
-              onChange={handleFileChange}
-            />
-              {/* <input required type="file" onChange={handleFileChange} palceholder="Choose profile image"></input> */}
-              {thumbnailError && <div className="error">{thumbnailError}</div>}
-            </label>
+              <label>
+              <div className="upload-image-container">
+                <button
+                  className="btn"
+                  type="button"
+                  onClick={handleButtonClick}
+                >
+                  Upload Image
+                </button>
+                <input
+                  ref={fileInputRef}
+                  type="file"
+                  style={{ display: "none" }}
+                  accept="image/*"
+                  onChange={handleFileChange}
+                />
+                {selectedFileName && <p>{selectedFileName.slice(0, 18)}...</p>}
+                </div>
+                {thumbnailError && (
+                  <div className="error">{thumbnailError}</div>
+                )}
+              </label>
           </div>
         </div>
         {!isPending && <button className="btn">Submit</button>}
