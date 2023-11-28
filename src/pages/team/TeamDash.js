@@ -3,15 +3,10 @@ import { useCollection } from "../../hooks/useCollection";
 import { useMyProjects } from "../../hooks/useMyProjects";
 import { categories } from "../../util/categories";
 
-// components
-import Avatar from "../../components/Avatar";
-
 // styles
 import "./Team.css";
 import UserInfo from "./UserInfo";
 import DepartmentCard from "./DepartmentCard";
-
-// const departmentList = ['development', 'design', 'marketing', 'product', 'research', 'sales']
 
 export default function TeamDash() {
   const { user } = useAuthContext();
@@ -54,26 +49,28 @@ export default function TeamDash() {
       </div>
       <div className="users-container">
         <div className="user-list">
-          <h2>Team:</h2>
+          <h2>Team</h2>
           <table className="team-table">
+            <colgroup>
+              <col style={{ width: "20%" }} /> {/* Adjust width as needed */}
+              <col style={{ width: "15%" }} />
+              <col style={{ width: "25%" }} />
+              <col style={{ width: "15%" }} />
+              <col style={{ width: "10%" }} />
+              <col style={{ width: "10%" }} />
+
+            </colgroup>
             <tr>
               <th>Name</th>
               <th>Status</th>
               <th>Role</th>
               <th>Department</th>
               <th>Projects</th>
+              <th>Collaborator</th>
             </tr>
-          {error ? <div className="error">{error}</div> : <></>}
-          {userDocuments &&
-            userDocuments.map((user) => 
-              <tr>
-                <td><Avatar src={user.photoURL}/>{user.displayName}</td>
-                <td>{user.online ? <div>Active</div> : <div>Offline</div>}</td>
-                <td>{user.role}</td>
-                <td>{user.department.label}</td>
-                <td>5</td>
-              </tr>
-          )}
+            {error ? <div className="error">{error}</div> : <></>}
+            {userDocuments &&
+              userDocuments.map((user) => <UserInfo user={user} uniqueTeamMembersObject={uniqueTeamMembersObject} />)}
           </table>
         </div>
         {/* <div className="team-list">
