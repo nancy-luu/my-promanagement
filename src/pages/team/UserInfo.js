@@ -22,6 +22,12 @@ const UserInfo = ({ user, uniqueTeamMembersObject }) => {
 
   const collaboratorIds = uniqueTeamMembersObject.map((tm) => tm.id);
 
+  /**
+   *  Why so many Links below?
+   *  Currently the Links must wrap every td so that they can align with the th tags in TeamDash.
+   *  Using a single Link tag to wrap the tr element below or around the UserInfo component in TeamDash will cause misalignment.
+   */
+
   return (
     <tr className="user-info">
       <td className="user-name">
@@ -33,25 +39,34 @@ const UserInfo = ({ user, uniqueTeamMembersObject }) => {
         </Link>
       </td>
       <td>
-        {user.online ? (
-          <div className="active">• Active</div>
-        ) : (
-          <div className="offline">• Offline</div>
-        )}
-      </td>
-      <td>{user.role}</td>
-      <td>{user.department.label}</td>
-      <td>{projectCount ? projectCount : "-"}</td>
-      <td className="check-icon">
-        <div className="check-wrapper">
-          {collaboratorIds.includes(user.id) ? (
-            <img src={Check} alt="check-icon" />
+        <Link to={`/team/${user.id}`}>
+          {user.online ? (
+            <div className="active">• Active</div>
           ) : (
-            <div></div>
+            <div className="offline">• Offline</div>
           )}
-        </div>
+        </Link>
       </td>
-      <td></td>
+      <td>
+        <Link to={`/team/${user.id}`}>{user.role}</Link>
+      </td>
+      <td>
+        <Link to={`/team/${user.id}`}>{user.department.label}</Link>
+      </td>
+      <td>
+        <Link to={`/team/${user.id}`}>{projectCount ? projectCount : "-"}</Link>
+      </td>
+      <td className="check-icon">
+        <Link to={`/team/${user.id}`}>
+          <div className="check-wrapper">
+            {collaboratorIds.includes(user.id) ? (
+              <img src={Check} alt="check-icon" />
+            ) : (
+              <div></div>
+            )}
+          </div>
+        </Link>
+      </td>
     </tr>
   );
 };
