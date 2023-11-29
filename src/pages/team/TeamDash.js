@@ -73,11 +73,6 @@ export default function TeamDash() {
               userDocuments.map((user) => <UserInfo user={user} uniqueTeamMembersObject={uniqueTeamMembersObject} />)}
           </table>
         </div>
-        {/* <div className="team-list">
-          <h2>Collaborators:</h2>
-          {uniqueTeamMembersObject &&
-            uniqueTeamMembersObject.map((user) => <UserInfo user={user} />)}
-        </div> */}
       </div>
     </div>
   );

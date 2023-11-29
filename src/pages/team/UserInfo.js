@@ -1,3 +1,5 @@
+import { useCollection } from '../../hooks/useCollection'
+
 // components
 import Avatar from "../../components/Avatar";
 
@@ -7,9 +9,18 @@ import Check from "../../assets/check.png";
 
 
 const UserInfo = ({ user, uniqueTeamMembersObject }) => {
+  const { documents: projectDocuments } = useCollection('projects');
+
+  const myProjects = projectDocuments ? projectDocuments.filter(projectDoc =>
+    projectDoc.assignedUsersList.some(userObj => userObj.displayName === user.displayName)
+    ) 
+    : 
+    []
+  ;
+
+  const projectCount = myProjects.length;
 
   const collaboratorIds = uniqueTeamMembersObject.map((tm) => tm.id)
-  console.log(collaboratorIds)
 
   return (
     <tr className="user-info">
@@ -28,7 +39,7 @@ const UserInfo = ({ user, uniqueTeamMembersObject }) => {
       </td>
       <td>{user.role}</td>
       <td>{user.department.label}</td>
-      <td>5</td>
+      <td>{projectCount? projectCount : "-"}</td>
       <td className="check-icon">
         <div className="check-wrapper">
           {collaboratorIds.includes(user.id) ? <img src={Check} alt="check-icon" /> : <div></div>}
