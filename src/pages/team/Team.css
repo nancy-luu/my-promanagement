@@ -22,6 +22,10 @@
     flex-direction: column;
 }
 
+.user-info {
+    display: table-row;
+}
+
 .user-list,
 .team-list {
     min-width: 250px;
@@ -38,7 +42,10 @@
     margin-right: 5px;
 }
 
-
+.user-list a {
+    color: var(--text-color);
+    text-decoration: none;
+}
 
 .users-container h2 {
     text-align: left;
@@ -136,14 +143,6 @@ th {
     border-bottom: 1px solid #cccccc7b;
 }
 
-td {
-    align-items: center;
-}
-
-td .user-name-wrapper {
-    display: flex;
-    align-items: center;
-}
 
 td .user-name-text {
     margin-left: 10px;

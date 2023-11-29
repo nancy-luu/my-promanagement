@@ -1,34 +1,36 @@
-import { useCollection } from '../../hooks/useCollection'
+import { useCollection } from "../../hooks/useCollection";
+import { Link } from "react-router-dom";
 
 // components
 import Avatar from "../../components/Avatar";
 
 // styles and images
-import './Team.css'
+import "./Team.css";
 import Check from "../../assets/check.png";
 
-
 const UserInfo = ({ user, uniqueTeamMembersObject }) => {
-  const { documents: projectDocuments } = useCollection('projects');
+  const { documents: projectDocuments } = useCollection("projects");
 
-  const myProjects = projectDocuments ? projectDocuments.filter(projectDoc =>
-    projectDoc.assignedUsersList.some(userObj => userObj.displayName === user.displayName)
-    ) 
-    : 
-    []
-  ;
-
+  const myProjects = projectDocuments
+    ? projectDocuments.filter((projectDoc) =>
+        projectDoc.assignedUsersList.some(
+          (userObj) => userObj.displayName === user.displayName
+        )
+      )
+    : [];
   const projectCount = myProjects.length;
 
-  const collaboratorIds = uniqueTeamMembersObject.map((tm) => tm.id)
+  const collaboratorIds = uniqueTeamMembersObject.map((tm) => tm.id);
 
   return (
     <tr className="user-info">
       <td className="user-name">
-        <div className="user-name-wrapper">
-          <Avatar src={user.photoURL} />
-          <span className="user-name-text">{user.displayName}</span>
-        </div>
+        <Link to={`/team/${user.id}`}>
+          <div className="user-name-wrapper">
+            <Avatar src={user.photoURL} />
+            <span className="user-name-text">{user.displayName}</span>
+          </div>
+        </Link>
       </td>
       <td>
         {user.online ? (
@@ -39,12 +41,17 @@ const UserInfo = ({ user, uniqueTeamMembersObject }) => {
       </td>
       <td>{user.role}</td>
       <td>{user.department.label}</td>
-      <td>{projectCount? projectCount : "-"}</td>
+      <td>{projectCount ? projectCount : "-"}</td>
       <td className="check-icon">
         <div className="check-wrapper">
-          {collaboratorIds.includes(user.id) ? <img src={Check} alt="check-icon" /> : <div></div>}
+          {collaboratorIds.includes(user.id) ? (
+            <img src={Check} alt="check-icon" />
+          ) : (
+            <div></div>
+          )}
         </div>
       </td>
+      <td></td>
     </tr>
   );
 };

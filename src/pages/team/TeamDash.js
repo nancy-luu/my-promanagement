@@ -2,6 +2,8 @@ import { useAuthContext } from "../../hooks/useAuthContext";
 import { useCollection } from "../../hooks/useCollection";
 import { useMyProjects } from "../../hooks/useMyProjects";
 import { categories } from "../../util/categories";
+import { Link } from "react-router-dom";
+
 
 // styles
 import "./Team.css";
@@ -54,10 +56,10 @@ export default function TeamDash() {
             <colgroup>
               <col style={{ width: "20%" }} /> {/* Adjust width as needed */}
               <col style={{ width: "15%" }} />
-              <col style={{ width: "25%" }} />
+              <col style={{ width: "23%" }} />
               <col style={{ width: "15%" }} />
               <col style={{ width: "10%" }} />
-              <col style={{ width: "10%" }} />
+              <col style={{ width: "12%" }} />
 
             </colgroup>
             <tr>
@@ -67,13 +69,20 @@ export default function TeamDash() {
               <th>Department</th>
               <th>Projects</th>
               <th>Collaborator</th>
+              <th></th>
             </tr>
+            <tbody>
             {error ? <div className="error">{error}</div> : <></>}
             {userDocuments &&
-              userDocuments.map((user) => <UserInfo user={user} uniqueTeamMembersObject={uniqueTeamMembersObject} />)}
+              userDocuments.map((user) => 
+                  <UserInfo user={user} uniqueTeamMembersObject={uniqueTeamMembersObject} />
+                )}
+            </tbody>
           </table>
         </div>
       </div>
     </div>
   );
 }
+
+
