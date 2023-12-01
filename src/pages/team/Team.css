@@ -29,7 +29,7 @@
 .user-list,
 .team-list {
     min-width: 250px;
-    padding: 10px;
+    padding: 10px 20px 10px 20px;
     box-sizing: border-box;
     border-radius: var(--outer-radius);
     background: linear-gradient(to bottom, #2929297f, #2929297f) padding-box,
@@ -49,8 +49,8 @@
 
 .users-container h2 {
     text-align: left;
-    margin: 10px;
     font-size: 1.2em;
+    margin-bottom: 10px;
 }
 
 .user-list-item {
@@ -172,4 +172,11 @@ td img {
 .check-wrapper {
     display: flex;
     align-items: center;
+}
+
+
+/* DepartmentInfo Component ---------------------- */
+.online-dot {
+    content: '';
+    background-color: green;
 }

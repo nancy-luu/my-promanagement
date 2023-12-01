@@ -31,7 +31,7 @@ const UserInfo = ({ user, uniqueTeamMembersObject }) => {
   return (
     <tr className="user-info">
       <td className="user-name">
-        <Link to={`/team/${user.id}`}>
+        <Link to={`/team/user/${user.id}`}>
           <div className="user-name-wrapper">
             <Avatar src={user.photoURL} />
             <span className="user-name-text">{user.displayName}</span>
@@ -39,7 +39,7 @@ const UserInfo = ({ user, uniqueTeamMembersObject }) => {
         </Link>
       </td>
       <td>
-        <Link to={`/team/${user.id}`}>
+      <Link to={`/team/user/${user.id}`}>
           {user.online ? (
             <div className="active">• Active</div>
           ) : (
@@ -48,16 +48,22 @@ const UserInfo = ({ user, uniqueTeamMembersObject }) => {
         </Link>
       </td>
       <td>
-        <Link to={`/team/${user.id}`}>{user.role}</Link>
+      <Link to={`/team/user/${user.id}`}>
+          <p>{user.role}</p>
+        </Link>
       </td>
       <td>
-        <Link to={`/team/${user.id}`}>{user.department.label}</Link>
+      <Link to={`/team/user/${user.id}`}>
+          <p>{user.department.label}</p>
+        </Link>
       </td>
       <td>
-        <Link to={`/team/${user.id}`}>{projectCount ? projectCount : "-"}</Link>
+      <Link to={`/team/user/${user.id}`}>
+          <p>{projectCount ? projectCount : "-"}</p>
+        </Link>
       </td>
       <td className="check-icon">
-        <Link to={`/team/${user.id}`}>
+      <Link to={`/team/user/${user.id}`}>
           <div className="check-wrapper">
             {collaboratorIds.includes(user.id) ? (
               <img src={Check} alt="check-icon" />

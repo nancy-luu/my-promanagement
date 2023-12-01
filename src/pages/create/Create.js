@@ -97,18 +97,18 @@ export default function Create() {
         <h2 className="page-title">Start a new Project:</h2>
         <form onSubmit={handleSubmit}>
           <label>
-            <span>Name:</span>
             <input
               required
+              placeholder="Name"
               type="text"
               onChange={(e) => setName(e.target.value)}
               value={name}
             ></input>
           </label>
           <label>
-            <span>Due Date:</span>
             <input
               required
+              placeholder="Due Date"
               type="date"
               onChange={(e) => setDueDate(e.target.value)}
               value={dueDate}
@@ -116,7 +116,6 @@ export default function Create() {
           </label>
           <div className="category-assign-container">
             <label>
-              <span>Category:</span>
               <Select
                 className="category-select"
                 options={categories}
@@ -136,10 +135,10 @@ export default function Create() {
                     ...provided,
                     color: "black", // Set the font color for options
                   })}}
+                placeholder="Category"
               />
             </label>
             <label>
-              <span>Assign to:</span>
               <Select
                 isMulti
                 value={assignedUsers}
@@ -162,16 +161,17 @@ export default function Create() {
                     primary: 'orange',
                   },
                 })}
+                placeholder="Assign To"
               />
             </label>
           </div>
           <label>
-            <span>Details:</span>
             <textarea
               required
               type="text"
               onChange={(e) => setDetails(e.target.value)}
               value={details}
+              placeholder="Detail"
             ></textarea>
           </label>
 

@@ -4,11 +4,12 @@ import { useMyProjects } from "../../hooks/useMyProjects";
 import { categories } from "../../util/categories";
 import { Link } from "react-router-dom";
 
+// components
+import UserInfo from "./UserInfo";
+import DepartmentCard from "./DepartmentCard";
 
 // styles
 import "./Team.css";
-import UserInfo from "./UserInfo";
-import DepartmentCard from "./DepartmentCard";
 
 export default function TeamDash() {
   const { user } = useAuthContext();
@@ -46,12 +47,14 @@ export default function TeamDash() {
     <div className="team-dash">
       <div className="department-container">
         {categories.map((category) => (
-          <DepartmentCard key={category.value} department={category} />
+          <Link to={`/team/${category.label}`}>
+            <DepartmentCard key={category.label} department={category} />
+          </Link>
         ))}
       </div>
       <div className="users-container">
         <div className="user-list">
-          <h2>Team</h2>
+          <h2>All Users</h2>
           <table className="team-table">
             <colgroup>
               <col style={{ width: "20%" }} /> {/* Adjust width as needed */}
