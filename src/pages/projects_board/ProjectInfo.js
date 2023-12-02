@@ -11,13 +11,13 @@ export default function ProjectInfo ({ project }) {
   const projectStat = (p) => {
     let status;
     if(!p.isCompleted && p.comments.length === 0) {
-      status = "open";
+      status = "• Open";
     } else if (p.comments && p.comments.length > 0) {
-      status = "inprogress"
+      status = "• In Progress"
     } else if (project.isCompleted){
-      status = "closed"
+      status = "• Closed"
     } else {
-      status = "unknown"
+      status = "Unknown"
     }
     return status;
   }
@@ -35,18 +35,22 @@ export default function ProjectInfo ({ project }) {
       </td>
       <td className="project-status">
           <Link to={`/projects/${project.id}`}>
-                <span className="project-name-text">{projectStat(project)}</span>
+                <div className={projectStat(project)}>{projectStat(project)}</div>
           </Link>
       </td>
       <td className="project-due">
           <Link to={`/projects/${project.id}`}>
+            <div className="project-due-wrapper">
                 <span className="project-due-text">{project.dueDate.toDate().toDateString()}</span>
+            </div>
           </Link>
       </td>
       <td className="project-owner">
           <Link to={`/projects/${project.id}`}>
+            <div className="project-owner-wrapper">
                 <Avatar src={project.createdBy.photoURL} />
                 <span className="project-owner-text">{project.createdBy.displayName}</span>
+            </div>
           </Link>
       </td>
       <td className="project-team">

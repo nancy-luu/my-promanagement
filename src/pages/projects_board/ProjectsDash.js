@@ -86,9 +86,10 @@ const ProjectsDash = () => {
         {projects && projects.length === 0 ? <p>*No projects to display*</p> : <h3>All Projects</h3> }
         <table className="project-table">
             <colgroup>
-              <col style={{ width: "20%" }} /> {/* Adjust width as needed */}
+              <col style={{ width: "25%" }} /> {/* Adjust width as needed */}
+              <col style={{ width: "10%" }} />
               <col style={{ width: "15%" }} />
-              <col style={{ width: "25%" }} />
+              <col style={{ width: "10%" }} />
               <col style={{ width: "15%" }} />
               <col style={{ width: "10%" }} />
             </colgroup>
