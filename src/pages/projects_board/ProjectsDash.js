@@ -7,7 +7,7 @@ import { NavLink } from "react-router-dom";
 import ProjectFilter from "./ProjectFilter";
 import ProjectsStats from "./ProjectsStats";
 import NewCommentsList from "../dashboard/NewCommentsList";
-import ProjectList from "./ProjectList";
+import ProjectInfo from "./ProjectInfo";
 
 // styles
 import "./Projects.css";
@@ -102,7 +102,9 @@ const ProjectsDash = () => {
             </tr>
             <tbody>
               {error && <p className="error">{error}</p>}
-              {projects && <ProjectList projects={projects} />}
+              {projects && 
+                projects.map((project) => <ProjectInfo project={project}/>)
+              }
             </tbody>
         </table>
         </div>
