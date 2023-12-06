@@ -73,10 +73,6 @@ export default function ProjectInfo ({ project }) {
   );
 }
 
-{/* <Link to={`/projects/${project.id}`}>
-</Link> */}
-
-
 // <div className="project-list-body">
 //       <div className="open-projects-container">
 //         {openProjects.map((project) => (

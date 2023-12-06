@@ -15,6 +15,11 @@ const DepartmentCard = ({ department }) => {
   return (
     <div className="department-card">
         <h3>{department.label}</h3>
+        {departmentsTeam.length <= 1 ? 
+          <p>{departmentsTeam.length} Team Member</p> 
+          : 
+          <p>{departmentsTeam.length} Team Members</p> 
+        }
         <div className="team-avatars">
           {departmentsTeam && departmentsTeam.map((user) => (
             <Avatar src={user.photoURL}/>

@@ -1,11 +1,9 @@
 import { useParams } from "react-router-dom";
 import { useCollection } from "../../hooks/useCollection";
 
-// components
-import Avatar from "../../components/Avatar";
-
 // styles
 import "./Team.css";
+import TeamMemberCard from "./TeamMemberCard";
 
 const DepartmentInfo = () => {
   const { department } = useParams();
@@ -26,20 +24,14 @@ const DepartmentInfo = () => {
   }
 
   return (
-    <div>
+    <div className="department-info-container">
       <div className="department-header">
-        <h2>{department}</h2>
-        <p>{departmentTeamMembers.length} Team Members</p>
+        <h2>{department} Team</h2>
       </div>
-      <div className="team-avatars">
+      <div className="team-members-container">
         {departmentTeamMembers &&
           departmentTeamMembers.map((user) => (
-            <div className="team-member-card">
-              <Avatar src={user.photoURL} />
-              {user.online && <div className="online-dot"></div>}
-              <h3>{user.displayName}</h3>
-              <p>{user.role}</p>
-            </div>
+            <TeamMemberCard user={user}/>
           ))}
       </div>
     </div>
