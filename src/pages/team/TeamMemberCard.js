@@ -19,18 +19,20 @@ const TeamMemberCard = ({ user }) => {
       <p>Projects Stats:</p>
       <p>{projectCount}</p>
       <div className="progress-bar-container">
-      <div
-          className="progress-stat-bar open"
-          style={{ width: `${openPercent}%` }}
-        ></div>
-        <div
-          className="progress-stat-bar in-progress"
-          style={{ width: `${inProgressPercent}%` }}
-        ></div>
-        <div
-          className="progress-stat-bar completed"
-          style={{ width: `${completedPercent}%` }}
-        ></div>
+        <div className="progress-bar">
+          <div
+            className="progress-stat-bar open"
+            style={{ width: `${openPercent}%` }}
+          ></div>
+          <div
+            className="progress-stat-bar in-progress"
+            style={{ width: `${inProgressPercent}%` }}
+          ></div>
+          <div
+            className="progress-stat-bar completed"
+            style={{ width: `${completedPercent}%` }}
+          ></div>
+        </div>
       </div>
     </div>
   );

@@ -187,24 +187,31 @@ td img {
     height: 10px;
     background-color: #ddd;
     border-radius: 5px;
-    margin-top: 5px;
+    margin: 10px 0px;
+    overflow: hidden; /* Hides overflowing content */
   }
   
-  .progress-stat-bar {
+  .progress-bar {
+    display: flex; /* Use flexbox to arrange the sections */
     height: 100%;
-    border-radius: 5px;
+  }
+  
+  .progress-stat {
+    height: 100%;
     transition: width 0.3s ease-in-out;
   }
   
-  .progress-stat-bar.open {
-    background-color:var(--secondary-color); /* Color for open projects */
+  /* Colors for different sections */
+  .progress-stat.open {
+    background-color: var(--secondary-color);
   }
   
-  .progress-stat-bar.in-progress {
-    background-color: var(--primary-color); /* Color for in-progress projects */
+  .progress-stat.in-progress {
+    background-color: var(--primary-color);
   }
   
-  .progress-stat-bar.completed {
-    background-color: var(--third-color); /* Color for completed projects */
+  .progress-stat.completed {
+    background-color: var(--third-color);
   }
+  
   
