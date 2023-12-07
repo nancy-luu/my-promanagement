@@ -38,8 +38,6 @@ const TeamMemberCard = ({ user }) => {
             </div> : <></>
         }
       </div>
-      <div className="stats-details">
-      </div>
       <HorizontalBarChart user={user} />
     </div>
   );

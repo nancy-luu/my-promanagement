@@ -4,7 +4,7 @@ export const useUsersProjects = ( user ) => {
     const { error: projectError, loading, documents: projectDocuments } = useCollection('projects');
 
     
-    const myProjects = projectDocuments ? projectDocuments.filter(projectDoc =>
+    const myProjects = user && projectDocuments ? projectDocuments.filter(projectDoc =>
         projectDoc.assignedUsersList.some(userObj => userObj.displayName === user.displayName)
         ) 
         : 
