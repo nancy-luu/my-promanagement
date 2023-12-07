@@ -1,9 +1,20 @@
-import React from 'react';
+import { useUsersProjects } from "../../hooks/useUsersProjects";
+
+// styles
 import './HorizontalBarChart.css'; 
 
-const HorizontalBarChart = ({ data }) => {
+const HorizontalBarChart = ({ user }) => {
 
-    const existingData = data.filter(segment => segment.percentage > 0);
+    const { projectCount, openPercent, inProgressPercent, completedPercent, openProjects, inProgressProjects,  completedProjects} =
+    useUsersProjects(user);
+
+    const barChartData = [
+        { label: 'Open', percentage: openPercent, color: '#FFEE53' },
+        { label: 'In Progress', percentage: inProgressPercent, color: '#FF6525' },
+        { label: 'Completed', percentage: completedPercent, color: '#7521FF' },
+    ];
+
+    const existingData = barChartData.filter(segment => segment.percentage > 0);
 
 
   return (

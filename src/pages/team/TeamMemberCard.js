@@ -2,24 +2,14 @@ import { useUsersProjects } from "../../hooks/useUsersProjects";
 
 // components
 import Avatar from "../../components/Avatar";
+import HorizontalBarChart from "./HorizontalBarChart";
 
 // styles
 import "./Team.css";
-import HorizontalBarChart from "./HorizontalBarChart";
 
 const TeamMemberCard = ({ user }) => {
-  const { projectCount, openPercent, inProgressPercent, completedPercent, openProjects, inProgressProjects,  completedProjects} =
+  const { projectCount, openProjects, inProgressProjects,  completedProjects } =
     useUsersProjects(user);
-
-    const barChartData = [
-        { label: 'Open', percentage: openPercent, color: '#FFEE53' },
-        { label: 'In Progress', percentage: inProgressPercent, color: '#FF6525' },
-        { label: 'Completed', percentage: completedPercent, color: '#7521FF' },
-    ];
-
-    console.log("COMPLETED")
-    console.log(completedPercent)
-    console.log(completedProjects)
 
   return (
     <div className="user-list-item">
@@ -50,7 +40,7 @@ const TeamMemberCard = ({ user }) => {
       </div>
       <div className="stats-details">
       </div>
-      <HorizontalBarChart data={barChartData} />
+      <HorizontalBarChart user={user} />
     </div>
   );
 };
