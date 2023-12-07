@@ -12,6 +12,7 @@ export const useProjectStats = (projects) => {
     let completedPercent = (completedProject.length / projectCount) * 100;
         
     return {
+        projects,
         openProjects, 
         inProgressProjects, 
         completedProject, 

@@ -56,6 +56,7 @@
 .user-list-item {
     display: flex;
     flex-direction: column;
+    width: 50%;
     background: linear-gradient(to bottom, #29292938, #03000e22) padding-box,
         linear-gradient(to top, #5e5e5e75, #03000e22) border-box;
     border-top: solid 1px rgba(115, 115, 115, 0.5);
@@ -182,6 +183,28 @@ td img {
 }
 
 
+
+
+/* Team Members Component ------------------------- */
+.team-members-container {
+    display: grid;
+    grid-template-columns: 1fr;
+    margin: 5px;
+}
+
+.project-breakdown{
+    display: flex;
+}
+
+.project-breakdown p{
+    margin-right: 10px;
+}
+
+.stat-label {
+    display: flex;
+    margin-right: 10px;
+}
+
 .progress-bar-container {
     width: 100%;
     height: 10px;
@@ -213,5 +236,4 @@ td img {
   .progress-stat.completed {
     background-color: var(--third-color);
   }
-  
   

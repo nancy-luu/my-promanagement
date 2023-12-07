@@ -2,9 +2,13 @@ import React from 'react';
 import './HorizontalBarChart.css'; 
 
 const HorizontalBarChart = ({ data }) => {
+
+    const existingData = data.filter(segment => segment.percentage > 0);
+
+
   return (
     <div className="horizontal-bar-chart">
-      {data.map((segment, index) => (
+      {existingData.map((segment, index) => (
         <div
           key={index}
           className="bar-segment"
@@ -12,9 +16,7 @@ const HorizontalBarChart = ({ data }) => {
             width: `${segment.percentage}%`,
             backgroundColor: segment.color,
           }}
-        >
-          <span className="segment-label">{segment.label}</span>
-        </div>
+        ></div>
       ))}
     </div>
   );
