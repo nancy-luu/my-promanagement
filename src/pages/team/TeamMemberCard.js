@@ -5,10 +5,17 @@ import Avatar from "../../components/Avatar";
 
 // styles
 import "./Team.css";
+import HorizontalBarChart from "./HorizontalBarChart";
 
 const TeamMemberCard = ({ user }) => {
   const { projectCount, openPercent, inProgressPercent, completedPercent } =
     useUsersProjects(user);
+
+    const barChartData = [
+        { label: 'Open', percentage: openPercent, color: '#FFEE53' },
+        { label: 'In Progress', percentage: inProgressPercent, color: '#FF6525' },
+        { label: 'Completed', percentage: completedPercent, color: '#7521FF' },
+    ];
 
   return (
     <div className="user-list-item">
@@ -18,22 +25,7 @@ const TeamMemberCard = ({ user }) => {
       <p>{user.role}</p>
       <p>Projects Stats:</p>
       <p>{projectCount}</p>
-      <div className="progress-bar-container">
-        <div className="progress-bar">
-          <div
-            className="progress-stat-bar open"
-            style={{ width: `${openPercent}%` }}
-          ></div>
-          <div
-            className="progress-stat-bar in-progress"
-            style={{ width: `${inProgressPercent}%` }}
-          ></div>
-          <div
-            className="progress-stat-bar completed"
-            style={{ width: `${completedPercent}%` }}
-          ></div>
-        </div>
-      </div>
+      <HorizontalBarChart data={barChartData} />
     </div>
   );
 };
