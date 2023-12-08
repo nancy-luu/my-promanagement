@@ -16,13 +16,14 @@ import SortIcon from "../../assets/sort-icon.png";
 export default function TeamDash() {
   const { user } = useAuthContext();
   const { error, documents: userDocuments } = useCollection("users");
+  const { documents: projectDocuments } = useCollection("projects");
   const { myProjects } = useMyProjects();
   const [sortedUserDocuments, setSortedUserDocuments] = useState([]);
   const [sortNamesAsc, setSortNamesAsc] = useState(false);
   const [sortOnline, setSortOnline] = useState(false);
   const [sortRoleAsc, setSortRoleAsc] = useState(false);
   const [sortDeparmetAsc, setSortDeparmentAsc] = useState(false);
-  const [sortProjects, setSortProjects] = useState(false);
+  const [sortProjectsDsc, setSortProjectsDsc] = useState(true);
 
 
   useEffect(() => {
@@ -164,6 +165,45 @@ export default function TeamDash() {
     }
   }
 
+  const handleProjectSort = () => {
+    if(sortProjectsDsc){
+      const sortedUserByProjectCount = [...sortedUserDocuments].sort((a, b) => {
+        const projectsA = projectDocuments.filter((projectDoc) =>
+          projectDoc.assignedUsersList.some((userObj) => userObj.displayName === a.displayName)
+        );
+        const projectCountA = projectsA.length;
+    
+        const projectsB = projectDocuments.filter((projectDoc) =>
+          projectDoc.assignedUsersList.some((userObj) => userObj.displayName === b.displayName)
+        );
+        const projectCountB = projectsB.length;
+    
+        return projectCountB - projectCountA; 
+      });
+    
+      setSortedUserDocuments(sortedUserByProjectCount);
+      setSortProjectsDsc(false)
+    } else {
+      const sortedUserByProjectCount = [...sortedUserDocuments].sort((a, b) => {
+        const projectsA = projectDocuments.filter((projectDoc) =>
+          projectDoc.assignedUsersList.some((userObj) => userObj.displayName === a.displayName)
+        );
+        const projectCountA = projectsA.length;
+    
+        const projectsB = projectDocuments.filter((projectDoc) =>
+          projectDoc.assignedUsersList.some((userObj) => userObj.displayName === b.displayName)
+        );
+        const projectCountB = projectsB.length;
+    
+        return projectCountA - projectCountB; 
+      });
+    
+      setSortedUserDocuments(sortedUserByProjectCount);
+      setSortProjectsDsc(true)
+    }
+  };
+  
+
   return (
     <div className="team-dash">
       <div className="department-container">
@@ -221,7 +261,15 @@ export default function TeamDash() {
                   onClick={handleDepartmentSort}
                 />
               </th>
-              <th>Projects</th>
+              <th>
+                Projects
+                <img
+                  className="sort-icon"
+                  src={SortIcon}
+                  alt="dashboard icon"
+                  onClick={handleProjectSort}
+                />
+              </th>
               <th>Collaborator</th>
             </tr>
             <tbody>
@@ -231,6 +279,7 @@ export default function TeamDash() {
                   key={user.id}
                   user={user}
                   uniqueTeamMembersObject={uniqueTeamMembersObject}
+                  projectDocuments={projectDocuments}
                 />
               ))}
             </tbody>

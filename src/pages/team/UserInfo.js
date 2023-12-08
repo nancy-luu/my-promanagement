@@ -1,4 +1,3 @@
-import { useCollection } from "../../hooks/useCollection";
 import { Link } from "react-router-dom";
 
 // components
@@ -8,8 +7,7 @@ import Avatar from "../../components/Avatar";
 import "./Team.css";
 import Check from "../../assets/check.png";
 
-const UserInfo = ({ user, uniqueTeamMembersObject }) => {
-  const { documents: projectDocuments } = useCollection("projects");
+const UserInfo = ({ user, uniqueTeamMembersObject, projectDocuments }) => {
 
   const myProjects = projectDocuments
     ? projectDocuments.filter((projectDoc) =>
