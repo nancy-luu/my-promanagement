@@ -20,7 +20,7 @@ export default function TeamDash() {
   const [sortedUserDocuments, setSortedUserDocuments] = useState([]);
   const [sortNamesAsc, setSortNamesAsc] = useState(false);
 
-  
+
   useEffect(() => {
     setSortedUserDocuments(userDocuments);
   }, [userDocuments]);
@@ -38,7 +38,6 @@ export default function TeamDash() {
 
   // creating a list of nonrepeated names
   const uniqueTeamMembers = [...new Set(teamMembers)];
-  // console.log(uniqueTeamMembers)
 
   // getting the full team members object by filtering through user Docs
   const uniqueTeamMembersObject = userDocuments
@@ -47,20 +46,34 @@ export default function TeamDash() {
       )
     : [];
 
-
-  const handleNameSortAsc = () => {
-    const sortedUserNamesAsc = [...sortedUserDocuments].sort((a, b) => {
-      if (a.displayName < b.displayName) {
-        return -1;
-      }
-      if (a.displayName > b.displayName) {
-        return 1;
-      }
-      return 0;
-    });
-
-    setSortedUserDocuments(sortedUserNamesAsc);
-    setSortNamesAsc(true);
+  
+  const handleNameSort = () => {
+    if(!sortNamesAsc) {
+      const sortedUserNamesAsc = [...sortedUserDocuments].sort((a, b) => {
+        if (a.displayName < b.displayName) {
+          return -1;
+        }
+        if (a.displayName > b.displayName) {
+          return 1;
+        }
+        return 0;
+      });
+      setSortedUserDocuments(sortedUserNamesAsc);
+      setSortNamesAsc(true);
+    } else {
+      const sortedUserNamesDsc = [...sortedUserDocuments].sort((a, b) => {
+        if (a.displayName > b.displayName) {
+          return -1;
+        }
+        if (a.displayName < b.displayName) {
+          return 1;
+        }
+        return 0;
+      })
+      console.log(sortedUserNamesDsc)
+      setSortedUserDocuments(sortedUserNamesDsc);
+      setSortNamesAsc(false);
+    }
   };
 
   return (
@@ -77,7 +90,7 @@ export default function TeamDash() {
           <h2>All Users</h2>
           <table className="team-table">
             <colgroup>
-              <col style={{ width: "20%" }} /> {/* Adjust width as needed */}
+              <col style={{ width: "20%" }} /> 
               <col style={{ width: "15%" }} />
               <col style={{ width: "25%" }} />
               <col style={{ width: "15%" }} />
@@ -90,7 +103,7 @@ export default function TeamDash() {
                   className="sort-icon"
                   src={SortIcon}
                   alt="dashboard icon"
-                  onClick={handleNameSortAsc}
+                  onClick={handleNameSort}
                 />
               </th>
               <th>Status</th>
@@ -105,7 +118,7 @@ export default function TeamDash() {
                 <UserInfo
                   key={user.id}
                   user={user}
-                  uniqueTeamMembersObject={userDocuments}
+                  uniqueTeamMembersObject={uniqueTeamMembersObject}
                 />
               ))}
             </tbody>
