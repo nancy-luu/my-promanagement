@@ -7,7 +7,7 @@ import Avatar from "../../components/Avatar";
 import "./Team.css";
 import Check from "../../assets/check.png";
 
-const UserInfo = ({ user, uniqueTeamMembersObject, projectDocuments }) => {
+const UserInfo = ({ user, uniqueTeamMembersObject, projectDocuments, collaboratorIds }) => {
 
   const myProjects = projectDocuments
     ? projectDocuments.filter((projectDoc) =>
@@ -18,12 +18,11 @@ const UserInfo = ({ user, uniqueTeamMembersObject, projectDocuments }) => {
     : [];
   const projectCount = myProjects.length;
 
-  const collaboratorIds = uniqueTeamMembersObject.map((tm) => tm.id);
-
   /**
    *  Why so many Links below?
    *  Currently the Links must wrap every td so that they can align with the th tags in TeamDash.
    *  Using a single Link tag to wrap the tr element below or around the UserInfo component in TeamDash will cause misalignment.
+   *  This will be refactored.
    */
 
   return (

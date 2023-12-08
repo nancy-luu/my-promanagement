@@ -24,6 +24,8 @@ export default function TeamDash() {
   const [sortRoleAsc, setSortRoleAsc] = useState(false);
   const [sortDeparmetAsc, setSortDeparmentAsc] = useState(false);
   const [sortProjectsDsc, setSortProjectsDsc] = useState(true);
+  const [sortCollaborator, setSortCollaborator] = useState(false);
+
 
 
   useEffect(() => {
@@ -50,7 +52,12 @@ export default function TeamDash() {
         uniqueTeamMembers.includes(user.displayName)
       )
     : [];
-  
+
+    console.log("UNIQUE TEAM MEMBERS: ")
+    console.log(uniqueTeamMembersObject)
+
+
+  const collaboratorIds = uniqueTeamMembersObject.map((tm) => tm.id);
   
   const handleNameSort = () => {
     if(!sortNamesAsc) {
@@ -202,6 +209,56 @@ export default function TeamDash() {
       setSortProjectsDsc(true)
     }
   };
+
+  const handleCollaboratorSort = () => {
+    if(!sortCollaborator) {
+      const sortedByCollaborators = [...sortedUserDocuments].sort((a, b) => {
+        const isCollaboratorA = collaboratorIds.includes(a.id);
+        const isCollaboratorB = collaboratorIds.includes(b.id);
+    
+        if (isCollaboratorA && !isCollaboratorB) {
+          return -1; // 'a' is a collaborator, prioritize 'a'
+        } else if (!isCollaboratorA && isCollaboratorB) {
+          return 1; // 'b' is a collaborator, prioritize 'b'
+        }
+    
+        // If both or neither are collaborators, use another sorting criteria (if needed)
+        // For example, sort by name if collaborators status is the same
+        if (a.displayName < b.displayName) {
+          return -1;
+        } else if (a.displayName > b.displayName) {
+          return 1;
+        }
+        return 0;
+      });
+    
+      setSortedUserDocuments(sortedByCollaborators);
+      setSortCollaborator(true);
+
+    } else {
+      const sortedByCollaborators = [...sortedUserDocuments].sort((a, b) => {
+        const isCollaboratorA = collaboratorIds.includes(a.id);
+        const isCollaboratorB = collaboratorIds.includes(b.id);
+    
+        if (isCollaboratorA && !isCollaboratorB) {
+          return 1; // 'a' is a collaborator, prioritize 'a'
+        } else if (!isCollaboratorA && isCollaboratorB) {
+          return -1; // 'b' is a collaborator, prioritize 'b'
+        }
+    
+        // If both or neither are collaborators, use another sorting criteria (if needed)
+        // For example, sort by name if collaborators status is the same
+        if (a.displayName < b.displayName) {
+          return -1;
+        } else if (a.displayName > b.displayName) {
+          return 1;
+        }
+        return 0;
+      });
+      setSortedUserDocuments(sortedByCollaborators);
+      setSortCollaborator(false);
+    }
+    }
   
 
   return (
@@ -270,7 +327,15 @@ export default function TeamDash() {
                   onClick={handleProjectSort}
                 />
               </th>
-              <th>Collaborator</th>
+              <th>
+                Collaborator
+                <img
+                  className="sort-icon"
+                  src={SortIcon}
+                  alt="dashboard icon"
+                  onClick={handleCollaboratorSort}
+                />
+              </th>
             </tr>
             <tbody>
               {error ? <div className="error">{error}</div> : <></>}
@@ -280,6 +345,7 @@ export default function TeamDash() {
                   user={user}
                   uniqueTeamMembersObject={uniqueTeamMembersObject}
                   projectDocuments={projectDocuments}
+                  collaboratorIds={collaboratorIds}
                 />
               ))}
             </tbody>
