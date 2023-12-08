@@ -19,6 +19,7 @@ export default function TeamDash() {
   const { myProjects } = useMyProjects();
   const [sortedUserDocuments, setSortedUserDocuments] = useState([]);
   const [sortNamesAsc, setSortNamesAsc] = useState(false);
+  const [sortOnline, setSortOnline] = useState(false);
 
 
   useEffect(() => {
@@ -45,7 +46,7 @@ export default function TeamDash() {
         uniqueTeamMembers.includes(user.displayName)
       )
     : [];
-
+  
   
   const handleNameSort = () => {
     if(!sortNamesAsc) {
@@ -75,6 +76,34 @@ export default function TeamDash() {
       setSortNamesAsc(false);
     }
   };
+
+  const handleOnlineSort = () => {
+    if(!sortOnline){
+      const onlineUsersFirst = [...sortedUserDocuments].sort((a, b) => {
+        if(a.online){
+          return -1;
+        }
+        if(!a.online){
+          return 1;
+        }
+        return 0;
+      })
+      setSortedUserDocuments(onlineUsersFirst);
+      setSortOnline(true)
+    } else {
+      const onlineUsersFirst = [...sortedUserDocuments].sort((a, b) => {
+        if(!a.online){
+          return -1;
+        }
+        if(a.online){
+          return 1;
+        }
+        return 0;
+      })
+      setSortedUserDocuments(onlineUsersFirst);
+      setSortOnline(false)
+    }
+  }
 
   return (
     <div className="team-dash">
@@ -106,7 +135,15 @@ export default function TeamDash() {
                   onClick={handleNameSort}
                 />
               </th>
-              <th>Status</th>
+              <th>
+                Status
+                <img
+                  className="sort-icon"
+                  src={SortIcon}
+                  alt="dashboard icon"
+                  onClick={handleOnlineSort}
+                />
+              </th>
               <th>Role</th>
               <th>Department</th>
               <th>Projects</th>
