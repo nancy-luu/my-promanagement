@@ -21,6 +21,8 @@ export default function TeamDash() {
   const [sortNamesAsc, setSortNamesAsc] = useState(false);
   const [sortOnline, setSortOnline] = useState(false);
   const [sortRoleAsc, setSortRoleAsc] = useState(false);
+  const [sortDeparmetAsc, setSortDeparmentAsc] = useState(false);
+  const [sortProjects, setSortProjects] = useState(false);
 
 
   useEffect(() => {
@@ -134,6 +136,34 @@ export default function TeamDash() {
     }
   }
 
+  const handleDepartmentSort = () => {
+    if(!sortDeparmetAsc){
+      const sortedDepartmentAsc = [...sortedUserDocuments].sort((a, b) => {
+        if(a.department.value < b.department.value){
+          return -1;
+        }
+        if(b.department.value > a.department.value){
+          return 1;
+        }
+        return 0;
+      })
+      setSortedUserDocuments(sortedDepartmentAsc)
+      setSortDeparmentAsc(true);
+    } else {
+      const sortedDepartmentAsc = [...sortedUserDocuments].sort((a, b) => {
+        if(a.department.value > b.department.value){
+          return -1;
+        }
+        if(b.department.value < a.department.value){
+          return 1;
+        }
+        return 0;
+      })
+      setSortedUserDocuments(sortedDepartmentAsc)
+      setSortDeparmentAsc(false);
+    }
+  }
+
   return (
     <div className="team-dash">
       <div className="department-container">
@@ -182,7 +212,15 @@ export default function TeamDash() {
                   onClick={handleRoleSort}
                 />
               </th>
-              <th>Department</th>
+              <th>
+                Department
+                <img
+                  className="sort-icon"
+                  src={SortIcon}
+                  alt="dashboard icon"
+                  onClick={handleDepartmentSort}
+                />
+              </th>
               <th>Projects</th>
               <th>Collaborator</th>
             </tr>
