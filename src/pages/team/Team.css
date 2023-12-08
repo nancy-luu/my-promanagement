@@ -47,13 +47,17 @@
     text-decoration: none;
 }
 
+.user-list .sort-icon {
+    width: 20px;
+}
+
 .users-container h2 {
     text-align: left;
     font-size: 1.2em;
     margin-bottom: 10px;
 }
 
-.user-list-item {
+.user-list-item, .user-profile-card{
     display: flex;
     flex-direction: column;
     width: 50%;

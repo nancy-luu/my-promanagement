@@ -1,3 +1,4 @@
+import { useState, useEffect } from "react";
 import { useAuthContext } from "../../hooks/useAuthContext";
 import { useCollection } from "../../hooks/useCollection";
 import { useMyProjects } from "../../hooks/useMyProjects";
@@ -8,15 +9,21 @@ import { Link } from "react-router-dom";
 import UserInfo from "./UserInfo";
 import DepartmentCard from "./DepartmentCard";
 
-
-// styles
+// styles and images
 import "./Team.css";
+import SortIcon from "../../assets/sort-icon.png";
 
 export default function TeamDash() {
   const { user } = useAuthContext();
   const { error, documents: userDocuments } = useCollection("users");
-
   const { myProjects } = useMyProjects();
+  const [sortedUserDocuments, setSortedUserDocuments] = useState([]);
+  const [sortNamesAsc, setSortNamesAsc] = useState(false);
+
+  
+  useEffect(() => {
+    setSortedUserDocuments(userDocuments);
+  }, [userDocuments]);
 
   // getting all the names of assigned user for each project
   // flatMap flattens these arrays of display names into a single array instead of multiple arrays
@@ -40,9 +47,21 @@ export default function TeamDash() {
       )
     : [];
 
-  console.log("USER CONSOLE LOGGED");
-  console.log(user.email);
-  console.log(userDocuments);
+
+  const handleNameSortAsc = () => {
+    const sortedUserNamesAsc = [...sortedUserDocuments].sort((a, b) => {
+      if (a.displayName < b.displayName) {
+        return -1;
+      }
+      if (a.displayName > b.displayName) {
+        return 1;
+      }
+      return 0;
+    });
+
+    setSortedUserDocuments(sortedUserNamesAsc);
+    setSortNamesAsc(true);
+  };
 
   return (
     <div className="team-dash">
@@ -65,7 +84,15 @@ export default function TeamDash() {
               <col style={{ width: "10%" }} />
             </colgroup>
             <tr>
-              <th>Name</th>
+              <th>
+                Name
+                <img
+                  className="sort-icon"
+                  src={SortIcon}
+                  alt="dashboard icon"
+                  onClick={handleNameSortAsc}
+                />
+              </th>
               <th>Status</th>
               <th>Role</th>
               <th>Department</th>
@@ -73,11 +100,14 @@ export default function TeamDash() {
               <th>Collaborator</th>
             </tr>
             <tbody>
-            {error ? <div className="error">{error}</div> : <></>}
-            {userDocuments &&
-              userDocuments.map((user) => 
-                  <UserInfo user={user} uniqueTeamMembersObject={uniqueTeamMembersObject} />
-                )}
+              {error ? <div className="error">{error}</div> : <></>}
+              {sortedUserDocuments && sortedUserDocuments.map((user) => (
+                <UserInfo
+                  key={user.id}
+                  user={user}
+                  uniqueTeamMembersObject={userDocuments}
+                />
+              ))}
             </tbody>
           </table>
         </div>
@@ -85,5 +115,3 @@ export default function TeamDash() {
     </div>
   );
 }
-
-

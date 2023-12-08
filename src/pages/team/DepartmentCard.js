@@ -10,7 +10,6 @@ const DepartmentCard = ({ department }) => {
     const { documents: userDocuments } = useCollection('users');
     
     const departmentsTeam = userDocuments ? userDocuments.filter((user) => user.department.value === department.value) : []
-    console.log(departmentsTeam)
 
   return (
     <div className="department-card">

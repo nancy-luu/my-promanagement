@@ -28,11 +28,6 @@ const SearchBar = ({ data, query, setQuery }) => {
     setInputValue("")
   }
 
-  console.log("This is the query:")
-  console.log(query)
-  console.log('\n')
-  console.log(inputValue)
-
   return (
     <div className="search-bar">
       <div className="search-inputs">

@@ -5,7 +5,7 @@ import './HorizontalBarChart.css';
 
 const HorizontalBarChart = ({ user }) => {
 
-    const { projectCount, openPercent, inProgressPercent, completedPercent, openProjects, inProgressProjects,  completedProjects} =
+    const { openPercent, inProgressPercent, completedPercent } =
     useUsersProjects(user);
 
     const barChartData = [

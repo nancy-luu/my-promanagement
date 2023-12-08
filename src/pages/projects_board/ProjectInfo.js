@@ -15,7 +15,7 @@ export default function ProjectInfo ({ project }) {
     } else if (p.comments && p.comments.length > 0) {
       status = "• In Progress"
     } else if (project.isCompleted){
-      status = "• Closed"
+      status = "• Complete"
     } else {
       status = "Unknown"
     }

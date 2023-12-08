@@ -29,15 +29,15 @@ export default function ProjectSummary({ project }) {
     }
   }
 
-  console.log('\n')
-  console.log('Project due date from summary: ' + project.dueDate.toDate().toDateString())
-  console.log('\n')
-
   return (
     <div>
       <div className="project-summary">
         <h2 className="page-title">{project.name}</h2>
-        <p>Category: {[...project.category][0].toUpperCase()+[...project.category].slice(1).join('')}</p>
+        <p>
+          Category:{" "}
+          {[...project.category][0].toUpperCase() +
+            [...project.category].slice(1).join("")}
+        </p>
         <p>Owner: {project.createdBy.displayName}</p>
         <p>Status: {getStatusText(project)}</p>
         <p className="due-date">
@@ -57,7 +57,6 @@ export default function ProjectSummary({ project }) {
             {user.uid === project.createdBy.id && (
               <>
                 <UpdateModal project={project} />
-                <DeleteModal project={project} />
               </>
             )}
             {project.assignedUsersList.some(
@@ -66,6 +65,11 @@ export default function ProjectSummary({ project }) {
               <button className="btn" onClick={handleComplete}>
                 Complete
               </button>
+            )}
+            {user.uid === project.createdBy.id && (
+              <>
+                <DeleteModal project={project} />
+              </>
             )}
           </>
         )}
