@@ -212,18 +212,17 @@ export default function TeamDash() {
 
   const handleCollaboratorSort = () => {
     if(!sortCollaborator) {
-      const sortedByCollaborators = [...sortedUserDocuments].sort((a, b) => {
+      const sortCollaboratorsFirst = [...sortedUserDocuments].sort((a, b) => {
         const isCollaboratorA = collaboratorIds.includes(a.id);
         const isCollaboratorB = collaboratorIds.includes(b.id);
     
         if (isCollaboratorA && !isCollaboratorB) {
-          return -1; // 'a' is a collaborator, prioritize 'a'
+          return -1; 
         } else if (!isCollaboratorA && isCollaboratorB) {
-          return 1; // 'b' is a collaborator, prioritize 'b'
+          return 1;
         }
     
-        // If both or neither are collaborators, use another sorting criteria (if needed)
-        // For example, sort by name if collaborators status is the same
+        // fallback sort if not collaborator
         if (a.displayName < b.displayName) {
           return -1;
         } else if (a.displayName > b.displayName) {
@@ -232,22 +231,21 @@ export default function TeamDash() {
         return 0;
       });
     
-      setSortedUserDocuments(sortedByCollaborators);
+      setSortedUserDocuments(sortCollaboratorsFirst);
       setSortCollaborator(true);
 
     } else {
-      const sortedByCollaborators = [...sortedUserDocuments].sort((a, b) => {
+      const sortCollaboratorsLast = [...sortedUserDocuments].sort((a, b) => {
         const isCollaboratorA = collaboratorIds.includes(a.id);
         const isCollaboratorB = collaboratorIds.includes(b.id);
     
         if (isCollaboratorA && !isCollaboratorB) {
-          return 1; // 'a' is a collaborator, prioritize 'a'
+          return 1;
         } else if (!isCollaboratorA && isCollaboratorB) {
-          return -1; // 'b' is a collaborator, prioritize 'b'
+          return -1;
         }
     
-        // If both or neither are collaborators, use another sorting criteria (if needed)
-        // For example, sort by name if collaborators status is the same
+        // fallback sort if not collaborator
         if (a.displayName < b.displayName) {
           return -1;
         } else if (a.displayName > b.displayName) {
@@ -255,7 +253,7 @@ export default function TeamDash() {
         }
         return 0;
       });
-      setSortedUserDocuments(sortedByCollaborators);
+      setSortedUserDocuments(sortCollaboratorsLast);
       setSortCollaborator(false);
     }
     }
@@ -283,58 +281,70 @@ export default function TeamDash() {
             </colgroup>
             <tr>
               <th>
-                Name
-                <img
-                  className="sort-icon"
-                  src={SortIcon}
-                  alt="dashboard icon"
-                  onClick={handleNameSort}
-                />
+                <div className="header-segment">
+                  Name
+                  <img
+                    className="sort-icon"
+                    src={SortIcon}
+                    alt="sort icon"
+                    onClick={handleNameSort}
+                  />
+                </div>
               </th>
               <th>
-                Status
-                <img
-                  className="sort-icon"
-                  src={SortIcon}
-                  alt="dashboard icon"
-                  onClick={handleOnlineSort}
-                />
+                <div className="header-segment">
+                  Status
+                  <img
+                    className="sort-icon"
+                    src={SortIcon}
+                    alt="sort icon"
+                    onClick={handleOnlineSort}
+                  />
+                </div>
               </th>
               <th>
-                Role
-                <img
-                  className="sort-icon"
-                  src={SortIcon}
-                  alt="dashboard icon"
-                  onClick={handleRoleSort}
-                />
+                <div className="header-segment">
+                  Role
+                  <img
+                    className="sort-icon"
+                    src={SortIcon}
+                    alt="sort icon"
+                    onClick={handleRoleSort}
+                  />
+                </div>
               </th>
               <th>
-                Department
-                <img
-                  className="sort-icon"
-                  src={SortIcon}
-                  alt="dashboard icon"
-                  onClick={handleDepartmentSort}
-                />
+                <div className="header-segment">
+                  Department
+                  <img
+                    className="sort-icon"
+                    src={SortIcon}
+                    alt="sort icon"
+                    onClick={handleDepartmentSort}
+                  />
+                </div>
               </th>
               <th>
-                Projects
-                <img
-                  className="sort-icon"
-                  src={SortIcon}
-                  alt="dashboard icon"
-                  onClick={handleProjectSort}
-                />
+                <div className="header-segment">
+                  Projects
+                  <img
+                    className="sort-icon"
+                    src={SortIcon}
+                    alt="sort icon"
+                    onClick={handleProjectSort}
+                  />
+                </div>
               </th>
               <th>
-                Collaborator
-                <img
-                  className="sort-icon"
-                  src={SortIcon}
-                  alt="dashboard icon"
-                  onClick={handleCollaboratorSort}
-                />
+                <div className="header-segment">
+                  Collaborator
+                  <img
+                    className="sort-icon"
+                    src={SortIcon}
+                    alt="sort icon"
+                    onClick={handleCollaboratorSort}
+                  />
+                </div>
               </th>
             </tr>
             <tbody>

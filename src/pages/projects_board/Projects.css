@@ -197,8 +197,15 @@ textarea[type=text]:focus
     height: 25px;
 }
 
-.project-team-wrapper {
+.project-owner-wrapper {
     display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.project-team .project-team-wrapper {
+    display: flex;
+    align-items: center;
 }
 
 

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useCollection } from "../../hooks/useCollection";
 import { useAuthContext } from "../../hooks/useAuthContext";
 import { NavLink } from "react-router-dom";
@@ -9,21 +9,26 @@ import ProjectsStats from "./ProjectsStats";
 import NewCommentsList from "../dashboard/NewCommentsList";
 import ProjectInfo from "./ProjectInfo";
 
-// styles
+// styles and images
 import "./Projects.css";
+import SortIcon from "../../assets/sort-icon.png";
+
 
 const ProjectsDash = () => {
   const { documents, error } = useCollection("projects");
   const { user } = useAuthContext();
 
   const [currFilter, setCurrFilter] = useState("all");
+  const [sortedProjects, setSortedProjects] = useState([]);
+  const [sortNamesAsc, setSortNamesAsc] = useState([false])
+  
 
-  const projectsOrderedByDate =
-    documents &&
-    [...documents].sort((a, b) => a.dueDate.toDate() - b.dueDate.toDate());
+  useEffect(() => {
+    setSortedProjects(documents)
+  }, [documents])
 
-  const projects = projectsOrderedByDate
-    ? projectsOrderedByDate.filter((document) => {
+  const projects = sortedProjects
+    ? sortedProjects.filter((document) => {
         switch (currFilter) {
           case "all":
             return true;
@@ -41,7 +46,6 @@ const ProjectsDash = () => {
           case "product":
           case "research":
           case "sales":
-            console.log(document.category, currFilter);
             return document.category === currFilter;
           default:
             return true;
@@ -55,6 +59,34 @@ const ProjectsDash = () => {
   const changeFilter = (newFilter) => {
     setCurrFilter(newFilter);
   };
+
+  const handleNameSort = () => {
+    if(!sortNamesAsc){
+      const sortedProjectNamesAsc = [...sortedProjects].sort((a, b) => {
+        if(a.name < b.name){
+          return -1;
+        }
+        if(a.name > b.name){
+          return 1;
+        }
+        return 0;
+      })
+      setSortedProjects(sortedProjectNamesAsc);
+      setSortNamesAsc(true);
+    } else {
+      const sortedProjectNamesDsc = [...sortedProjects].sort((a, b) => {
+        if(a.name > b.name){
+          return -1;
+        }
+        if(a.name < b.name){
+          return 1;
+        }
+        return 0;
+      })
+      setSortedProjects(sortedProjectNamesDsc);
+      setSortNamesAsc(false);
+    }
+  }
 
   return (
     <div className="projects-dash-container">
@@ -94,12 +126,67 @@ const ProjectsDash = () => {
               <col style={{ width: "10%" }} />
             </colgroup>
             <tr>
-              <th>Name</th>
-              <th>Status</th>
-              <th>Due Date</th>
-              <th>Owner</th>
-              <th>Team</th>
-              <th>Department</th>
+              <th>
+                <div className="header-segment">
+                  Name
+                  <img 
+                    className="sort-icon"
+                    src={SortIcon}
+                    alt="sort icon"
+                    onClick={handleNameSort}
+                  ></img>
+                </div>
+              </th>
+              <th>
+              <div className="header-segment">
+                  Status
+                  <img 
+                    className="sort-icon"
+                    src={SortIcon}
+                    alt="sort icon"
+                  ></img>
+                </div>
+              </th>
+              <th>
+              <div className="header-segment">
+                  Due Date
+                  <img 
+                    className="sort-icon"
+                    src={SortIcon}
+                    alt="sort icon"
+                  ></img>
+                </div>
+              </th>
+              <th>
+                <div className="header-segment">
+                  Owner
+                  <img 
+                    className="sort-icon"
+                    src={SortIcon}
+                    alt="sort icon"
+                  ></img>
+                </div>
+              </th>
+              <th>
+                <div className="header-segment">
+                  Team
+                  <img 
+                    className="sort-icon"
+                    src={SortIcon}
+                    alt="sort icon"
+                  ></img>
+                </div>
+              </th>
+              <th>
+                <div className="header-segment">
+                  Department
+                  <img 
+                    className="sort-icon"
+                    src={SortIcon}
+                    alt="sort icon"
+                  ></img>
+                </div>
+              </th>
             </tr>
             <tbody>
               {error && <p className="error">{error}</p>}

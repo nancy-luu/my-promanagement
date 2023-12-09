@@ -17,13 +17,18 @@
 }
 
 .users-container {
-    margin: 10px;
+    margin: 5px 10px 10px 10px;
     display: flex;
     flex-direction: column;
 }
 
 .user-info {
     display: table-row;
+}
+
+.user-name-wrapper{
+    display: flex;
+    align-items: center;
 }
 
 .user-list,
@@ -38,17 +43,9 @@
     border: .75px solid rgba(79, 79, 79, 0.444);
 }
 
-.user-list {
-    margin-right: 5px;
-}
-
 .user-list a {
     color: var(--text-color);
     text-decoration: none;
-}
-
-.user-list .sort-icon {
-    width: 20px;
 }
 
 .users-container h2 {
@@ -57,7 +54,8 @@
     margin-bottom: 10px;
 }
 
-.user-list-item, .user-profile-card{
+.user-list-item,
+.user-profile-card {
     display: flex;
     flex-direction: column;
     width: 50%;
@@ -149,6 +147,19 @@ th {
 }
 
 
+th img {
+    opacity: 0.25;
+    height: 20px;
+    width: 15px;
+    cursor: pointer;
+    margin-left: 5px;
+}
+
+th img:hover {
+    opacity: 1;
+}
+
+
 td .user-name-text {
     margin-left: 10px;
     /* Adjust this margin as needed */
@@ -179,6 +190,9 @@ td img {
     align-items: center;
 }
 
+.header-segment {
+    display: flex;
+}
 
 /* DepartmentInfo Component ---------------------- */
 .online-dot {
@@ -196,11 +210,11 @@ td img {
     margin: 5px;
 }
 
-.project-breakdown{
+.project-breakdown {
     display: flex;
 }
 
-.project-breakdown p{
+.project-breakdown p {
     margin-right: 10px;
 }
 
@@ -215,29 +229,30 @@ td img {
     background-color: #ddd;
     border-radius: 5px;
     margin: 10px 0px;
-    overflow: hidden; /* Hides overflowing content */
-  }
-  
-  .progress-bar {
-    display: flex; /* Use flexbox to arrange the sections */
+    overflow: hidden;
+    /* Hides overflowing content */
+}
+
+.progress-bar {
+    display: flex;
+    /* Use flexbox to arrange the sections */
     height: 100%;
-  }
-  
-  .progress-stat {
+}
+
+.progress-stat {
     height: 100%;
     transition: width 0.3s ease-in-out;
-  }
-  
-  /* Colors for different sections */
-  .progress-stat.open {
+}
+
+/* Colors for different sections */
+.progress-stat.open {
     background-color: var(--secondary-color);
-  }
-  
-  .progress-stat.in-progress {
+}
+
+.progress-stat.in-progress {
     background-color: var(--primary-color);
-  }
-  
-  .progress-stat.completed {
+}
+
+.progress-stat.completed {
     background-color: var(--third-color);
-  }
-  
+}
