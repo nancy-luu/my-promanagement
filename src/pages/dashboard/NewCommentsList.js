@@ -21,9 +21,6 @@ const NewCommentsList = ({ projects }) => {
   });
 
   let sortedComments = allComments.flat().sort((a, b) => b.createdAt - a.createdAt);
-
-  console.log("Sorted comment")
-  console.log(sortedComments);
   
 
   return (

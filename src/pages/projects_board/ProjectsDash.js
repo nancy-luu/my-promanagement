@@ -20,13 +20,13 @@ const ProjectsDash = () => {
 
   const [currFilter, setCurrFilter] = useState("all");
   const [sortedProjects, setSortedProjects] = useState([]);
-  const [sortNamesAsc, setSortNamesAsc] = useState([false])
-  
+  const [sortNamesAsc, setSortNamesAsc] = useState(false);
+  const [sortStatus, setSortStatus] = useState(false);
 
   useEffect(() => {
     setSortedProjects(documents)
   }, [documents])
-
+  
   const projects = sortedProjects
     ? sortedProjects.filter((document) => {
         switch (currFilter) {
@@ -51,10 +51,18 @@ const ProjectsDash = () => {
             return true;
         }
       })
-    : null;
+    : null
+  ;
 
-  // console.log("PROJECTS -------------------")
-  console.log(projects);
+  const sortedProjectsByDateDsc = projects ? projects.sort((a, b) => {
+    return b.createdAt.toDate() - a.createdAt.toDate()
+  }) : null;
+
+
+
+  console.log("SORTED PROJECTS")
+  console.log(sortedProjectsByDateDsc)
+
 
   const changeFilter = (newFilter) => {
     setCurrFilter(newFilter);
@@ -88,6 +96,11 @@ const ProjectsDash = () => {
     }
   }
 
+  const handleStatusSort = () => {
+
+  }
+
+
   return (
     <div className="projects-dash-container">
       <div className="projects-dash-navbar">
@@ -116,85 +129,86 @@ const ProjectsDash = () => {
       <div className="collection-container">
         <div className="project-container">
         {projects && projects.length === 0 ? <p>*No projects to display*</p> : <h3>All Projects</h3> }
-        <table className="project-table">
-            <colgroup>
-              <col style={{ width: "25%" }} /> {/* Adjust width as needed */}
-              <col style={{ width: "10%" }} />
-              <col style={{ width: "15%" }} />
-              <col style={{ width: "10%" }} />
-              <col style={{ width: "15%" }} />
-              <col style={{ width: "10%" }} />
-            </colgroup>
-            <tr>
-              <th>
+          <table className="project-table">
+              <colgroup>
+                <col style={{ width: "25%" }} /> {/* Adjust width as needed */}
+                <col style={{ width: "10%" }} />
+                <col style={{ width: "15%" }} />
+                <col style={{ width: "10%" }} />
+                <col style={{ width: "15%" }} />
+                <col style={{ width: "10%" }} />
+              </colgroup>
+              <tr>
+                <th>
+                  <div className="header-segment">
+                    Name
+                    <img 
+                      className="sort-icon"
+                      src={SortIcon}
+                      alt="sort icon"
+                      onClick={handleNameSort}
+                    ></img>
+                  </div>
+                </th>
+                <th>
                 <div className="header-segment">
-                  Name
-                  <img 
-                    className="sort-icon"
-                    src={SortIcon}
-                    alt="sort icon"
-                    onClick={handleNameSort}
-                  ></img>
-                </div>
-              </th>
-              <th>
-              <div className="header-segment">
-                  Status
-                  <img 
-                    className="sort-icon"
-                    src={SortIcon}
-                    alt="sort icon"
-                  ></img>
-                </div>
-              </th>
-              <th>
-              <div className="header-segment">
-                  Due Date
-                  <img 
-                    className="sort-icon"
-                    src={SortIcon}
-                    alt="sort icon"
-                  ></img>
-                </div>
-              </th>
-              <th>
+                    Status
+                    <img 
+                      className="sort-icon"
+                      src={SortIcon}
+                      alt="sort icon"
+                      onClick={handleStatusSort}
+                    ></img>
+                  </div>
+                </th>
+                <th>
                 <div className="header-segment">
-                  Owner
-                  <img 
-                    className="sort-icon"
-                    src={SortIcon}
-                    alt="sort icon"
-                  ></img>
-                </div>
-              </th>
-              <th>
-                <div className="header-segment">
-                  Team
-                  <img 
-                    className="sort-icon"
-                    src={SortIcon}
-                    alt="sort icon"
-                  ></img>
-                </div>
-              </th>
-              <th>
-                <div className="header-segment">
-                  Department
-                  <img 
-                    className="sort-icon"
-                    src={SortIcon}
-                    alt="sort icon"
-                  ></img>
-                </div>
-              </th>
-            </tr>
-            <tbody>
-              {error && <p className="error">{error}</p>}
-              {projects && 
-                projects.map((project) => <ProjectInfo project={project}/>)
-              }
-            </tbody>
-        </table>
+                    Due Date
+                    <img 
+                      className="sort-icon"
+                      src={SortIcon}
+                      alt="sort icon"
+                    ></img>
+                  </div>
+                </th>
+                <th>
+                  <div className="header-segment">
+                    Owner
+                    <img 
+                      className="sort-icon"
+                      src={SortIcon}
+                      alt="sort icon"
+                    ></img>
+                  </div>
+                </th>
+                <th>
+                  <div className="header-segment">
+                    Team
+                    <img 
+                      className="sort-icon"
+                      src={SortIcon}
+                      alt="sort icon"
+                    ></img>
+                  </div>
+                </th>
+                <th>
+                  <div className="header-segment">
+                    Department
+                    <img 
+                      className="sort-icon"
+                      src={SortIcon}
+                      alt="sort icon"
+                    ></img>
+                  </div>
+                </th>
+              </tr>
+              <tbody>
+                {error && <p className="error">{error}</p>}
+                {projects && 
+                  projects.map((project) => <ProjectInfo project={project}/>)
+                }
+              </tbody>
+          </table>
         </div>
       </div>
     </div>
