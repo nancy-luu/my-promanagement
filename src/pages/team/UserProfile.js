@@ -23,6 +23,8 @@ const UserProfile = () => {
   const [sortedProjectDocs, setSortedProjectDocs] = useState([])
   const [sortNamesAsc, setSortNamesAsc] = useState(false);
   const [sortStatus, setSortStatus] = useState(false)
+  const [sortDateDsc, setSortDateDsc] = useState(false)
+
 
   const usersProjects = useMemo(() => {
     return projects ? projects.filter(projectDoc =>
@@ -78,20 +80,19 @@ const UserProfile = () => {
         const aHasComments = a.comments && a.comments.length > 0;
         const bHasComments = b.comments && b.comments.length > 0;
   
-        // Sorting logic based on project status
         if (isACompleted && isBCompleted) {
-          return 0; // Both are closed projects
+          return 0; 
         } else if (isACompleted && !isBCompleted) {
-          return 1; // 'a' (closed) comes after 'b' (open)
+          return 1; 
         } else if (!isACompleted && isBCompleted) {
-          return -1; // 'a' (open) comes before 'b' (closed)
+          return -1;
         } else if (!isACompleted && !isBCompleted) {
           if (!aHasComments && bHasComments) {
-            return -1; // 'a' (open) without comments comes before 'b' (open) with comments
+            return -1; 
           } else if (aHasComments && !bHasComments) {
-            return 1; // 'a' (open) with comments comes after 'b' (open) without comments
+            return 1; 
           } else {
-            return 0; // Both are open projects with the same comments status
+            return 0;
           }
         }
       });
@@ -105,20 +106,19 @@ const UserProfile = () => {
         const aHasComments = a.comments && a.comments.length > 0;
         const bHasComments = b.comments && b.comments.length > 0;
   
-        // Sorting logic based on project status
         if (isACompleted && isBCompleted) {
-          return 0; // Both are closed projects
+          return 0;
         } else if (isACompleted && !isBCompleted) {
-          return -1; // 'a' (closed) comes after 'b' (open)
+          return -1; 
         } else if (!isACompleted && isBCompleted) {
-          return 1; // 'a' (open) comes before 'b' (closed)
+          return 1; 
         } else if (!isACompleted && !isBCompleted) {
           if (!aHasComments && bHasComments) {
-            return -1; // 'a' (open) without comments comes before 'b' (open) with comments
+            return -1; 
           } else if (aHasComments && !bHasComments) {
-            return 1; // 'a' (open) with comments comes after 'b' (open) without comments
+            return 1; 
           } else {
-            return 0; // Both are open projects with the same comments status
+            return 0;
           }
         }
       });
@@ -127,7 +127,33 @@ const UserProfile = () => {
     }
   };
   
-  
+  const handleProjectDateSort = () => {
+    if(!sortDateDsc){
+      const projectSortedDsc = [...sortedProjectDocs].sort((a, b) => {
+        if(a.dueDate > b.dueDate){
+          return -1;
+        }
+        if(a.dueDate < b.dueDate){
+          return 1;
+        }
+        return 0;
+      })
+      setSortedProjectDocs(projectSortedDsc);
+      setSortDateDsc(true);
+    } else {
+      const projectSortAsc = [...sortedProjectDocs].sort((a, b) => {
+        if(a.dueDate < b.dueDate){
+          return -1;
+        }
+        if(a.dueDate > b.dueDate){
+          return 1;
+        }
+        return 0;
+      })
+      setSortedProjectDocs(projectSortAsc);
+      setSortDateDsc(false);
+    }   
+  }
   
 
   return (
@@ -196,7 +222,17 @@ const UserProfile = () => {
                   />
                   </div>
               </th>
-              <th>Due Date</th>
+              <th>
+                <div className="header-segment">
+                  Due Date
+                  <img
+                    className="sort-icon"
+                    src={SortIcon}
+                    alt="sort icon"
+                    onClick={handleProjectDateSort}
+                  />
+                </div>
+              </th>
               <th>Owner</th>
               <th>Team</th>
               <th>Department</th>
