@@ -22,6 +22,7 @@ const UserProfile = () => {
   
   const [sortedProjectDocs, setSortedProjectDocs] = useState([])
   const [sortNamesAsc, setSortNamesAsc] = useState(false);
+  const [sortStatus, setSortStatus] = useState(false)
 
   const usersProjects = useMemo(() => {
     return projects ? projects.filter(projectDoc =>
@@ -69,6 +70,66 @@ const UserProfile = () => {
     }
   }
 
+  const handleProjectStatusSort = () => {
+    if (!sortStatus) {
+      const sortOpenInProgressClosed= [...sortedProjectDocs].sort((a, b) => {
+        const isACompleted = a.isCompleted;
+        const isBCompleted = b.isCompleted;
+        const aHasComments = a.comments && a.comments.length > 0;
+        const bHasComments = b.comments && b.comments.length > 0;
+  
+        // Sorting logic based on project status
+        if (isACompleted && isBCompleted) {
+          return 0; // Both are closed projects
+        } else if (isACompleted && !isBCompleted) {
+          return 1; // 'a' (closed) comes after 'b' (open)
+        } else if (!isACompleted && isBCompleted) {
+          return -1; // 'a' (open) comes before 'b' (closed)
+        } else if (!isACompleted && !isBCompleted) {
+          if (!aHasComments && bHasComments) {
+            return -1; // 'a' (open) without comments comes before 'b' (open) with comments
+          } else if (aHasComments && !bHasComments) {
+            return 1; // 'a' (open) with comments comes after 'b' (open) without comments
+          } else {
+            return 0; // Both are open projects with the same comments status
+          }
+        }
+      });
+      setSortedProjectDocs(sortOpenInProgressClosed);
+      console.log("Sorted proejcts in status" + sortedProjectDocs)
+      setSortStatus(true);
+    } else {
+      const sortClosedInProgressOpen = [...sortedProjectDocs].sort((a, b) => {
+        const isACompleted = a.isCompleted;
+        const isBCompleted = b.isCompleted;
+        const aHasComments = a.comments && a.comments.length > 0;
+        const bHasComments = b.comments && b.comments.length > 0;
+  
+        // Sorting logic based on project status
+        if (isACompleted && isBCompleted) {
+          return 0; // Both are closed projects
+        } else if (isACompleted && !isBCompleted) {
+          return -1; // 'a' (closed) comes after 'b' (open)
+        } else if (!isACompleted && isBCompleted) {
+          return 1; // 'a' (open) comes before 'b' (closed)
+        } else if (!isACompleted && !isBCompleted) {
+          if (!aHasComments && bHasComments) {
+            return -1; // 'a' (open) without comments comes before 'b' (open) with comments
+          } else if (aHasComments && !bHasComments) {
+            return 1; // 'a' (open) with comments comes after 'b' (open) without comments
+          } else {
+            return 0; // Both are open projects with the same comments status
+          }
+        }
+      });
+      setSortedProjectDocs(sortClosedInProgressOpen);
+      setSortStatus(false);
+    }
+  };
+  
+  
+  
+
   return (
     <div>
       {user && (
@@ -77,8 +138,8 @@ const UserProfile = () => {
             <Avatar src={user.photoURL} />
             <h2>{user.displayName}</h2>
             <h4>{user.department.label} | {user.role}</h4>
-            <p>{projectCount} Total Projects:</p>
             <div className="project-breakdown">
+              <p>{projectCount} Total Projects:</p>
               {openProjects.length ?
                   <div className="stat-label">                
                       <div className="open-pt"></div>
@@ -124,7 +185,17 @@ const UserProfile = () => {
                   />
                 </div>
               </th>
-              <th>Status</th>
+              <th>
+                <div className="header-segment">
+                  Status
+                  <img
+                    className="sort-icon"
+                    src={SortIcon}
+                    alt="sort icon"
+                    onClick={handleProjectStatusSort}
+                  />
+                  </div>
+              </th>
               <th>Due Date</th>
               <th>Owner</th>
               <th>Team</th>

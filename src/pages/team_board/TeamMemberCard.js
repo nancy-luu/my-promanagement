@@ -19,8 +19,8 @@ const TeamMemberCard = ({ user }) => {
             {user.online && <div className="online-dot"></div>}
             <h3>{user.displayName}</h3>
             <p>{user.role}</p>
-            <p>{projectCount} Total Projects: </p>
             <div className="project-breakdown">
+                <p>{projectCount} Total Projects: </p>
                 {openProjects.length ?
                     <div className="stat-label">                
                         <div className="open-pt"></div>
