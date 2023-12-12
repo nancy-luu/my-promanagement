@@ -6,7 +6,7 @@ import { categories } from "../../util/categories";
 import { Link } from "react-router-dom";
 
 // components
-import UserInfo from "./UserInfo";
+import UserInfoCell from "./UserInfoCell";
 import DepartmentCard from "./DepartmentCard";
 
 // styles and images
@@ -350,7 +350,7 @@ export default function TeamDash() {
             <tbody>
               {error ? <div className="error">{error}</div> : <></>}
               {sortedUserDocuments && sortedUserDocuments.map((user) => (
-                <UserInfo
+                <UserInfoCell
                   key={user.id}
                   user={user}
                   uniqueTeamMembersObject={uniqueTeamMembersObject}

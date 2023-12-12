@@ -1,3 +1,4 @@
+import { useState, useEffect, useMemo } from "react";
 import { useParams } from "react-router-dom";
 import { useDocument } from "../../hooks/useDocument";
 import { useCollection } from "../../hooks/useCollection";
@@ -6,31 +7,66 @@ import { useUsersProjects } from "../../hooks/useUsersProjects";
 
 // components
 import Avatar from "../../components/Avatar";
-import HorizontalBarChart from "./HorizontalBarChart";
+import HorizontalBarChart from "../team_board/HorizontalBarChart";
 import ProjectInfo from "../projects_board/ProjectInfo";
+
+// style and images
+import SortIcon from "../../assets/sort-icon.png"
 
 
 const UserProfile = () => {
   const { id } = useParams();
   const { error: userError, document: user } = useDocument("users", id);
   const { error, documents: projects } = useCollection("projects");
-  const { projectCount, openProjects, inProgressProjects,  completedProjects } =
-    useUsersProjects(user);
+  const { projectCount, openProjects, inProgressProjects,  completedProjects } = useUsersProjects(user);
   
-  console.log(user)
+  const [sortedProjectDocs, setSortedProjectDocs] = useState([])
+  const [sortNamesAsc, setSortNamesAsc] = useState(false);
 
-  const usersProjects = projects ? projects.filter(projectDoc =>
-    projectDoc.assignedUsersList.some(userObj => userObj.id === id)
-    ) 
-    : 
-    []
-  ;
+  const usersProjects = useMemo(() => {
+    return projects ? projects.filter(projectDoc =>
+      projectDoc.assignedUsersList.some(userObj => userObj.id === id)
+      ) : [];
+    }, [projects, id]);
+
+
+  useEffect(() => {
+    setSortedProjectDocs(usersProjects);
+  }, [usersProjects])
 
   if (userError) {
     return <div className="error">{userError}</div>;
   }
   if (!user) {
     return <div className="loading">Loading...</div>;
+  }
+
+  const handleProjectNameSort = () => {
+    if(!sortNamesAsc){
+      const sortedProjectNamesAsc = [...sortedProjectDocs].sort((a, b) => {
+        if(a.name < b.name) {
+          return -1;
+        }
+        if(a.name > b.name) {
+          return 1;
+        }
+        return 0;
+      })
+      setSortedProjectDocs(sortedProjectNamesAsc);
+      setSortNamesAsc(true);
+    } else {
+      const sortedProjectNamesDsc = [...sortedProjectDocs].sort((a, b) => {
+        if(a.name > b.name) {
+          return -1;
+        }
+        if(a.name < b.name) {
+          return 1;
+        }
+        return 0;
+      })
+      setSortedProjectDocs(sortedProjectNamesDsc);
+      setSortNamesAsc(false);
+    }
   }
 
   return (
@@ -77,7 +113,17 @@ const UserProfile = () => {
               <col style={{ width: "10%" }} />
             </colgroup>
             <tr>
-              <th>Name</th>
+              <th>
+                <div className="header-segment">
+                  Name
+                  <img
+                    className="sort-icon"
+                    src={SortIcon}
+                    alt="sort icon"
+                    onClick={handleProjectNameSort}
+                  />
+                </div>
+              </th>
               <th>Status</th>
               <th>Due Date</th>
               <th>Owner</th>
@@ -86,8 +132,8 @@ const UserProfile = () => {
             </tr>
             <tbody>
               {error && <p className="error">{error}</p>}
-              {usersProjects && 
-                usersProjects.map((project) => <ProjectInfo project={project}/>)
+              {sortedProjectDocs && 
+                sortedProjectDocs.map((project) => <ProjectInfo project={project}/>)
               }
             </tbody>
         </table>

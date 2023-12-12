@@ -5,7 +5,7 @@ import { useCollection } from "../../hooks/useCollection";
 import "./Team.css";
 import TeamMemberCard from "./TeamMemberCard";
 
-const DepartmentInfo = () => {
+const DepartmentTeamInfo = () => {
   const { department } = useParams();
   const { error, documents: users } = useCollection("users");
 
@@ -38,4 +38,4 @@ const DepartmentInfo = () => {
   );
 };
 
-export default DepartmentInfo;
+export default DepartmentTeamInfo;

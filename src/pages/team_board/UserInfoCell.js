@@ -7,7 +7,7 @@ import Avatar from "../../components/Avatar";
 import "./Team.css";
 import Check from "../../assets/check.png";
 
-const UserInfo = ({ user, uniqueTeamMembersObject, projectDocuments, collaboratorIds }) => {
+const UserInfoCell = ({ user, uniqueTeamMembersObject, projectDocuments, collaboratorIds }) => {
 
   const myProjects = projectDocuments
     ? projectDocuments.filter((projectDoc) =>
@@ -74,4 +74,4 @@ const UserInfo = ({ user, uniqueTeamMembersObject, projectDocuments, collaborato
   );
 };
 
-export default UserInfo;
+export default UserInfoCell;

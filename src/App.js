@@ -19,7 +19,7 @@ import CreateMeeting from "./pages/calendar/CreateMeeting";
 import "./App.css";
 import Footer from "./components/Footer";
 import BackToTop from "./components/BackToTop";
-import DepartmentInfo from "./pages/team/DepartmentInfo";
+import DepartmentTeamInfo from "./pages/team_board/DepartmentTeamInfo";
 
 function App() {
   const { user, authIsReady } = useAuthContext();
@@ -60,7 +60,7 @@ function App() {
                 </Route>
                 <Route path="/team/:department">
                   {!user && <Redirect to="/login" />}
-                  {user && <DepartmentInfo />}
+                  {user && <DepartmentTeamInfo />}
                 </Route>
                 <Route path="/team">
                   {!user && <Redirect to="/login" />}
