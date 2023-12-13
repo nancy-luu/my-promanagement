@@ -9,9 +9,6 @@ const DepartmentTeamInfo = () => {
   const { department } = useParams();
   const { error, documents: users } = useCollection("users");
 
-  console.log("IN DEPARTMENT INFO");
-  console.log(users);
-
   const departmentTeamMembers = users
     ? users.filter((u) => u.department.label === department)
     : [];

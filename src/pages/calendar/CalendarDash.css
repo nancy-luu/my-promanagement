@@ -1,18 +1,15 @@
 .calendar-dash-container {
-    background: linear-gradient(to bottom, #2929297f, #2929297f) padding-box,
-    linear-gradient(to top, #6262623b, #03000e22) border-box;
-    border-style: solid;
-    border: .75px solid rgba(79, 79, 79, 0.444);
-    border-radius: var(--outer-radius);
-    padding: 20px;
     margin: 10px;
     color: white;
     font-family: Poppins, sans-serif !important;
     /* font-size: bold; */
 }
 
+.calendar-dash-container .btn {
+    margin-bottom: 10px;
+}
+
 .big-calendar-container {
-    margin: 10px;
     padding: 20px;
     border-radius: var(--inner-radius);
     background: linear-gradient(to bottom, #29292938, #03000e22) padding-box,

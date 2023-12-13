@@ -11,8 +11,8 @@ const BigCalendar = () => {
 
   const testEvent = [
     { 
-      start: dayjs('2023-10-17 09:30:00').toDate(), 
-      end: dayjs('2023-10-18 10:30:00').toDate(),
+      start: currentDay.toDate(), 
+      end: currentDay.toDate(),
       title: "Test Event1",
       attendees: ["Nancy", "Donna"]
     },

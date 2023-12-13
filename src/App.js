@@ -9,7 +9,7 @@ import Create from "./pages/create/Create";
 import Login from "./pages/login/Login";
 import Signup from "./pages/signup/Signup";
 import Project from "./pages/project/Project";
-import TeamDash from "./pages/team/TeamDash";
+import TeamDash from "./pages/team_board/TeamDash";
 import UserProfile from "./pages/team/UserProfile";
 import Dashboard from "./pages/dashboard/Dashboard";
 import CalendarDash from "./pages/calendar/CalendarDash";

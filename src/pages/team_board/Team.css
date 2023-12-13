@@ -78,22 +78,6 @@
     height: 30px;
 }
 
-.users-container .online-user {
-    position: absolute;
-    /* Position absolutely within the container */
-    bottom: 3px;
-    /* Align to the bottom edge */
-    right: 7px;
-    /* Align to the right edge */
-    width: 12px;
-    height: 12px;
-    background: rgb(112, 241, 112);
-    border-radius: 50%;
-    margin: 2px;
-    /* Adjust margin for spacing */
-}
-
-
 /*  TABLE --------------------------------------- */
 .team-table {
     color: var(--text-color);
@@ -195,12 +179,10 @@ td img {
 }
 
 /* DepartmentInfo Component ---------------------- */
-.online-dot {
-    content: '';
-    background-color: green;
+.department-header{
+    margin-top: 10px;
+    margin-left: 20px;
 }
-
-
 
 
 /* Team Members Component ------------------------- */
@@ -208,6 +190,18 @@ td img {
     display: grid;
     grid-template-columns: 1fr;
     margin: 5px;
+}
+
+/* UserProfile Component ---------------------------*/
+
+.users-project-container {
+    margin: 0px 10px 10px 10px;
+    padding: 20px;
+    border-radius: var(--outer-radius);
+    background: linear-gradient(to bottom, #2929297f, #2929297f) padding-box,
+      linear-gradient(to top, #6262623b, #03000e22) border-box;
+    border-style: solid;
+    border: .75px solid rgba(79, 79, 79, 0.444);
 }
 
 .project-breakdown {
@@ -220,6 +214,8 @@ td img {
 
 .stat-label {
     display: flex;
+    align-items: center;
+    justify-content: center;
     margin-right: 10px;
 }
 
@@ -235,7 +231,6 @@ td img {
 
 .progress-bar {
     display: flex;
-    /* Use flexbox to arrange the sections */
     height: 100%;
 }
 
@@ -244,15 +239,27 @@ td img {
     transition: width 0.3s ease-in-out;
 }
 
-/* Colors for different sections */
-.progress-stat.open {
-    background-color: var(--secondary-color);
+.stat-label .open-pt,
+.stat-label .progress-pt,
+.stat-label .complete-pt {
+    content: '';
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    margin-right: 5px;
 }
 
-.progress-stat.in-progress {
+.stat-label .open-pt {
+    background-color: var(--secondary-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.stat-label .progress-pt {
     background-color: var(--primary-color);
 }
 
-.progress-stat.completed {
+.stat-label .complete-pt{
     background-color: var(--third-color);
 }

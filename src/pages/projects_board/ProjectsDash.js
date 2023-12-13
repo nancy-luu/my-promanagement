@@ -27,8 +27,8 @@ const ProjectsDash = () => {
     setSortedProjects(documents)
   }, [documents])
   
-  const projects = sortedProjects
-    ? sortedProjects.filter((document) => {
+  const projects = documents
+    ? documents.filter((document) => {
         switch (currFilter) {
           case "all":
             return true;
