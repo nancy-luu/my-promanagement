@@ -20,10 +20,12 @@ const UserProfile = () => {
   const { error, documents: projects } = useCollection("projects");
   const { projectCount, openProjects, inProgressProjects,  completedProjects } = useUsersProjects(user);
   
-  const [sortedProjectDocs, setSortedProjectDocs] = useState([])
+  const [sortedProjectDocs, setSortedProjectDocs] = useState([]);
   const [sortNamesAsc, setSortNamesAsc] = useState(false);
-  const [sortStatus, setSortStatus] = useState(false)
-  const [sortDateDsc, setSortDateDsc] = useState(false)
+  const [sortStatus, setSortStatus] = useState(false);
+  const [sortDateDsc, setSortDateDsc] = useState(false);
+  const [sortOwnerAsc, setSortOwnerAsc] = useState(false);
+  const [sortDepartmentAsc, setSortDepartmentAsc] = useState(false);
 
 
   const usersProjects = useMemo(() => {
@@ -35,7 +37,7 @@ const UserProfile = () => {
 
   useEffect(() => {
     setSortedProjectDocs(usersProjects);
-  }, [usersProjects])
+  }, [usersProjects]);
 
   if (userError) {
     return <div className="error">{userError}</div>;
@@ -154,7 +156,62 @@ const UserProfile = () => {
       setSortDateDsc(false);
     }   
   }
-  
+
+  const handleProjectOwnerSort = () => {
+    if(!sortOwnerAsc){
+      const projectOwnersAsc = [...sortedProjectDocs].sort((a, b) => {
+        if(a.createdBy.displayName < b.createdBy.displayName){
+          return -1;
+        }
+        if(a.createdBy.displayName > b.createdBy.displayName){
+          return 1;
+        }
+        return 0;
+      })
+      setSortedProjectDocs(projectOwnersAsc);
+      setSortOwnerAsc(true);
+    } else {
+      const projectOwnersDsc = [...sortedProjectDocs].sort((a, b) => {
+        if(a.createdBy.displayName > b.createdBy.displayName){
+          return -1;
+        }
+        if(a.createdBy.displayName < b.createdBy.displayName){
+          return 1;
+        }
+        return 0; 
+      })
+      setSortedProjectDocs(projectOwnersDsc);
+      setSortOwnerAsc(false);
+    }
+  }
+
+  const handleProjectDepartmentSort = () => {
+    if(!sortDepartmentAsc){
+      const projectDepartmentAsc = [...sortedProjectDocs].sort((a, b) => {
+        if(a.category < b.category){
+          return -1;
+        }
+        if(a.category > b.category){
+          return 1;
+        }
+        return 0;
+      })
+      setSortedProjectDocs(projectDepartmentAsc);
+      setSortDepartmentAsc(true);
+    } else {
+      const projectDepartmentDsc = [...sortedProjectDocs].sort((a, b) => {
+        if(a.category > b.category){
+          return -1;
+        }
+        if(a.category < b.category){
+          return 1;
+        }
+        return 0;
+      })
+      setSortedProjectDocs(projectDepartmentDsc);
+      setSortDepartmentAsc(false);
+    }
+  }
 
   return (
     <div>
@@ -233,9 +290,29 @@ const UserProfile = () => {
                   />
                 </div>
               </th>
-              <th>Owner</th>
+              <th>
+                <div className="header-segment">
+                  Owner
+                  <img
+                    className="sort-icon"
+                    src={SortIcon}
+                    alt="sort icon"
+                    onClick={handleProjectOwnerSort}
+                  />
+                </div>
+              </th>
               <th>Team</th>
-              <th>Department</th>
+              <th>
+                <div className="header-segment">
+                  Owner
+                  <img
+                    className="sort-icon"
+                    src={SortIcon}
+                    alt="sort icon"
+                    onClick={handleProjectDepartmentSort}
+                  />
+                </div>              
+              </th>
             </tr>
             <tbody>
               {error && <p className="error">{error}</p>}
