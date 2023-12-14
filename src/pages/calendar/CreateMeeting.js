@@ -107,8 +107,8 @@ const CreateMeeting = () => {
                             enableTime: true,
                             altInput: true,
                         }}
-                        onChange={(e) => setStart(e)}
-                    />
+                        onChange={(selectedDates) => setStart(selectedDates[0])}
+                        />
                     <p>to</p>
                     <Flatpickr
                         value={end}
@@ -116,8 +116,8 @@ const CreateMeeting = () => {
                             enableTime: true,
                             altInput: true,
                         }}
-                        onChange={(e) => setEnd(e)}
-                    />
+                        onChange={(selectedDates) => setEnd(selectedDates[0])}
+                        />
                 </div>
             </label>
             <label>
