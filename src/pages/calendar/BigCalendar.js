@@ -1,39 +1,62 @@
+import { useState, useEffect } from "react";
 import { Calendar, dayjsLocalizer } from 'react-big-calendar';
 import dayjs from 'dayjs';
+import { useCollection } from '../../hooks/useCollection';
 
 const BigCalendar = () => {
+  const [meetings, setMeetings]=useState([])
+  const { documents, error } = useCollection("meetings");
+  
   const localizer = dayjsLocalizer(dayjs)
-
   const currentDay = dayjs();
   const minTime = currentDay.set('hour', 8).set('minute', 0).set('second', 0);
   const maxTime = currentDay.set('hour', 19).set('minute', 0).set('second', 0);
 
-  const testEvent = [
-    { 
-      start: currentDay.toDate(), 
-      end: currentDay.toDate(),
-      title: "Test Event1",
-      attendees: ["Nancy", "Donna"]
-    },
-    { 
-      start: dayjs('2023-10-17 10:30:00').toDate(), 
-      end: dayjs('2023-10-17 11:30:00').toDate(),
-      title: "Test Event2",
-      attendees: ["Quade", "Ebri"]
-    },
-    { 
-      start: dayjs('2023-10-17 10:00:00').toDate(), 
-      end: dayjs('2023-10-17 11:00:00').toDate(),
-      title: "Test Event3",
-      attendees: ["Maria", "Edgar"]
-    },
-    { 
-      start: dayjs('2023-10-17 11:30:00').toDate(), 
-      end: dayjs('2023-10-17 12:30:00').toDate(),
-      title: "Test Event4",
-      attendees: ["Chris", "Jane"]
+  useEffect(() => {
+    if(documents){
+      const formattedMeetings = documents.map((m) => {
+        return {
+          title: m.title,
+          createdBy: m.createdBy,
+          createdAt: m.createdAt.toDate(),
+          start: m.start.toDate(),
+          end: m.end.toDate(),
+          description: m.description,
+          guestsInvitedList: m.guestsInvitedList
+        }
+      })
+      setMeetings(formattedMeetings)
     }
-  ]
+  }, [documents])
+
+  console.log(meetings);
+
+  // const testEvent = [
+  //   { 
+  //     start: currentDay.toDate(), 
+  //     end: currentDay.toDate(),
+  //     title: "Test Event1",
+  //     attendees: ["Nancy", "Donna"]
+  //   },
+  //   { 
+  //     start: dayjs('2023-10-17 10:30:00').toDate(), 
+  //     end: dayjs('2023-10-17 11:30:00').toDate(),
+  //     title: "Test Event2",
+  //     attendees: ["Quade", "Ebri"]
+  //   },
+  //   { 
+  //     start: dayjs('2023-10-17 10:00:00').toDate(), 
+  //     end: dayjs('2023-10-17 11:00:00').toDate(),
+  //     title: "Test Event3",
+  //     attendees: ["Maria", "Edgar"]
+  //   },
+  //   { 
+  //     start: dayjs('2023-10-17 11:30:00').toDate(), 
+  //     end: dayjs('2023-10-17 12:30:00').toDate(),
+  //     title: "Test Event4",
+  //     attendees: ["Chris", "Jane"]
+  //   }
+  // ]
 
   const handleEventClick = (event) => {
     console.log('Clicked event:', event);
@@ -87,7 +110,7 @@ const BigCalendar = () => {
     <div>
         <Calendar
           localizer={localizer}
-          events={testEvent}
+          events={meetings}
           defaultView={"week"}
           views={["month", "week", "day"]}
           style={{ height: 600 }}
