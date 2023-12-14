@@ -11,8 +11,6 @@ import "./SmallCalendar.css";
 import CalArrow from '../../assets/cal-arrow-hover.png';
 
 const SmallCalendar = () => {
-//   console.log(generateDate());
-
   const days = ["S", "M", "T", "W", "T", "F", "S"];
 
   const currentDate = dayjs();
@@ -23,7 +21,8 @@ const SmallCalendar = () => {
   const [selectedMonth, setSelectedMonth] = useState();
   const [selectedYear, setSelectedYear] = useState();
   const [selectedDateObj, setSelectedDateObj] = useState({day: currentDate.$D, month: months[currentDate.month()], year: currentDate.$y});    
-
+  const [dateForComparison, setDateForComparison] = useState(currentDate)
+  
   const changeCalendar = (x) => {
     let newMonth = thisMonth.month() + x;
     let newYear = thisMonth.year(); // Preserve the current year
@@ -52,7 +51,15 @@ const SmallCalendar = () => {
     setSelectedMonth(months[date.$M]);
     setSelectedYear(date.$y);
     setSelectedDateObj({ day: date.$D, month: months[date.$M], year: date.$y });
-    console.log(date)
+
+  const formattedDate = date.set({
+    year: date.$y,
+    month: date.$M,
+    date: date.$D
+  });
+  
+  setDateForComparison(formattedDate);
+
     return;
   }
 
@@ -125,6 +132,7 @@ const SmallCalendar = () => {
             </div>
         </div>
         <MeetingsList 
+            dateForComparison={dateForComparison}
             selectedDateObj={selectedDateObj}
             calendarDays={calendarDays} 
         />

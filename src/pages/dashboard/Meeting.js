@@ -5,11 +5,12 @@
 // styles
 import './Meeting.css';
 
-const Meeting = ({ selectedMonth, calendarDays, selectedDay }) => {
+const Meeting = ({ meeting }) => {
 
   return (
-    <div className="meeting">
-        <div>Meetings Info</div>
+    <div className="meeting-container">
+        <h4>Meetings Info</h4>
+        <div>{meeting.title}</div>
     </div>
   )
 }
