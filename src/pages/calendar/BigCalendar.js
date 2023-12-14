@@ -1,74 +1,36 @@
 import { useState, useEffect } from "react";
-import { Calendar, dayjsLocalizer } from 'react-big-calendar';
 import dayjs from 'dayjs';
-import { useCollection } from '../../hooks/useCollection';
+import { Calendar, dayjsLocalizer } from 'react-big-calendar';
+import { useMyMeetings } from "../../hooks/useMyMeetings";
 
 const BigCalendar = () => {
   const [meetings, setMeetings]=useState([])
-  const { documents, error } = useCollection("meetings");
-  
+  const { myMeetings } = useMyMeetings();
+
   const localizer = dayjsLocalizer(dayjs)
   const currentDay = dayjs();
   const minTime = currentDay.set('hour', 8).set('minute', 0).set('second', 0);
   const maxTime = currentDay.set('hour', 19).set('minute', 0).set('second', 0);
 
-  useEffect(() => {
-    if(documents){
-      const formattedMeetings = documents.map((m) => {
-        return {
-          title: m.title,
-          createdBy: m.createdBy,
-          createdAt: m.createdAt.toDate(),
-          start: m.start.toDate(),
-          end: m.end.toDate(),
-          description: m.description,
-          guestsInvitedList: m.guestsInvitedList
+    useEffect(() => {
+        if(myMeetings){
+          setMeetings(myMeetings)
         }
-      })
-      setMeetings(formattedMeetings)
-    }
-  }, [documents])
+    }, [myMeetings])
 
   console.log(meetings);
 
-  // const testEvent = [
-  //   { 
-  //     start: currentDay.toDate(), 
-  //     end: currentDay.toDate(),
-  //     title: "Test Event1",
-  //     attendees: ["Nancy", "Donna"]
-  //   },
-  //   { 
-  //     start: dayjs('2023-10-17 10:30:00').toDate(), 
-  //     end: dayjs('2023-10-17 11:30:00').toDate(),
-  //     title: "Test Event2",
-  //     attendees: ["Quade", "Ebri"]
-  //   },
-  //   { 
-  //     start: dayjs('2023-10-17 10:00:00').toDate(), 
-  //     end: dayjs('2023-10-17 11:00:00').toDate(),
-  //     title: "Test Event3",
-  //     attendees: ["Maria", "Edgar"]
-  //   },
-  //   { 
-  //     start: dayjs('2023-10-17 11:30:00').toDate(), 
-  //     end: dayjs('2023-10-17 12:30:00').toDate(),
-  //     title: "Test Event4",
-  //     attendees: ["Chris", "Jane"]
-  //   }
-  // ]
+  console.log("MY MEETINGS: ")
+  console.log(myMeetings);
 
   const handleEventClick = (event) => {
     console.log('Clicked event:', event);
-    console.log(event.attendees);
   };
 
+  // Custom event display in Month View
   const EventDisplay = ({ event }) => (
     <div>
-      <strong>{event.title}</strong>
-      {/* <p>Start: {localizer.format(event.start, 'YYYY-MM-DD HH:mm:ss')}</p>
-      <p>End: {localizer.format(event.end, 'YYYY-MM-DD HH:mm:ss')}</p>
-      <p>Attendees: {event.attendees.join(', ')}</p> */}
+      <div>{event.title}</div>
     </div>
   );
 
@@ -110,7 +72,7 @@ const BigCalendar = () => {
     <div>
         <Calendar
           localizer={localizer}
-          events={meetings}
+          events={myMeetings}
           defaultView={"week"}
           views={["month", "week", "day"]}
           style={{ height: 600 }}
@@ -118,7 +80,7 @@ const BigCalendar = () => {
           max={maxTime.toDate()}
           onSelectEvent={handleEventClick}
           components={{
-            event: EventDisplay, // Use the custom EventDisplay component
+            event: EventDisplay,
             toolbar: CustomToolbar
           }}
         />
