@@ -15,6 +15,7 @@ export const useMyMeetings = () => {
           return meetingDocuments.filter((meeting) =>
             meeting.guestsInvitedList.some(userObj => userObj.displayName === user.displayName)
           ).map((m) => ({
+            id: m.id,
             title: m.title,
             createdBy: m.createdBy,
             createdAt: m.createdAt.toDate(),

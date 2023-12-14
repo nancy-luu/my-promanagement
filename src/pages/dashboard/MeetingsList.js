@@ -1,6 +1,8 @@
 import { useState, useEffect } from "react"
 import { useMyMeetings } from '../../hooks/useMyMeetings'
 import dayjs from 'dayjs';
+import { Link } from "react-router-dom";
+
 
 
 // components
@@ -28,17 +30,18 @@ const MeetingsList = ({ dateForComparison, selectedDateObj, calendarDays }) => {
   return (
     <div className="meetings-container">
       <h4>Schedule for {selectedDateObj.month} {selectedDateObj.day}, {selectedDateObj.year}</h4>
-      <div className="meetings-form">
-        {meetingToRender ? meetingToRender.map(m => 
-          <Meeting 
-            // thisMonth={thisMonth} 
-            meeting={m}
-            calendarDays={calendarDays} 
-          />
+      <div className="meetings-wrapper">
+        {meetingToRender && meetingToRender.map(m => 
+          <Link to={`meetings/${m.id}`}>
+            <Meeting 
+              // thisMonth={thisMonth} 
+              meeting={m}
+              calendarDays={calendarDays} 
+            />
+          </Link>
           )
-          :
-         (<div>No meetings for today.</div>)
         }
+        {meetingToRender.length === 0 && <p>No meetings</p>}
       </div>
     </div>
   )

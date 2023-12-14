@@ -20,6 +20,8 @@ import "./App.css";
 import Footer from "./components/Footer";
 import BackToTop from "./components/BackToTop";
 import DepartmentTeamInfo from "./pages/team_board/DepartmentTeamInfo";
+import Meeting from "./pages/meeting/MeetingInfo";
+import MeetingInfo from "./pages/meeting/MeetingInfo";
 
 function App() {
   const { user, authIsReady } = useAuthContext();
@@ -41,6 +43,10 @@ function App() {
                 <Route exact path="/calendar">
                   {!user && <Redirect to="/login" />}
                   {user && <CalendarDash />}
+                </Route>
+                <Route exact path="/meetings/:id">
+                  {!user && <Redirect to="/login" />}
+                  {user && <MeetingInfo />}
                 </Route>
                 <Route exact path="/projects">
                   {!user && <Redirect to="/login" />}

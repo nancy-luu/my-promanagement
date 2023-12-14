@@ -22,6 +22,8 @@ export default function ProjectInfo ({ project }) {
     return status;
   }
 
+  console.log(project.id)
+
   return (
     <tr className="project-info">
       <td className="project-name">

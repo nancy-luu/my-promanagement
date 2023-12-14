@@ -19,7 +19,6 @@ const CreateMeeting = () => {
 
   const history = useHistory();
 
-
     const currentDate = dayjs();
     const endPlaceHolder = dayjs().add(1, 'hour');
 

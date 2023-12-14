@@ -75,7 +75,7 @@ const BigCalendar = () => {
           events={myMeetings}
           defaultView={"week"}
           views={["month", "week", "day"]}
-          style={{ height: 600 }}
+          style={{ height: 550 }}
           min={minTime.toDate()}
           max={maxTime.toDate()}
           onSelectEvent={handleEventClick}
