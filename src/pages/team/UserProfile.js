@@ -107,7 +107,7 @@ const UserProfile = () => {
         const isBCompleted = b.isCompleted;
         const aHasComments = a.comments && a.comments.length > 0;
         const bHasComments = b.comments && b.comments.length > 0;
-
+        
         if (isACompleted && isBCompleted) {
           return 0;
         } else if (isACompleted && !isBCompleted) {

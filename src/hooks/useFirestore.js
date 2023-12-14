@@ -39,7 +39,7 @@ export const useFirestore = (collection) => {
     }
   }
   
-  // add a document
+  // add a project document
   const addDocument = async (doc) => {
     dispatch({ type: 'IS_PENDING' })
 
@@ -112,10 +112,47 @@ export const useFirestore = (collection) => {
     }
   }
 
+  // add meeting 
+  const addMeetingDocument = async (doc) => {
+    dispatch({ type: 'IS_PENDING' })
+
+    try {
+      const createdAt = timestamp.fromDate(new Date())
+      const addedMeeting = await ref.add({ ...doc, createdAt })
+      dispatchIfNotCancelled({ type: 'ADDED_DOCUMENT', payload: addedMeeting })
+    }
+    catch (err) {
+      dispatchIfNotCancelled({ type: 'ERROR', payload: err.message })
+    }
+  }
+
+    // add meeting 
+    const addTest = async (doc) => {
+      dispatch({ type: 'IS_PENDING' })
+  
+      try {
+        const createdAt = timestamp.fromDate(new Date())
+        const addedMeeting = await ref.add({ ...doc, createdAt })
+        dispatchIfNotCancelled({ type: 'ADDED_DOCUMENT', payload: addedMeeting })
+      }
+      catch (err) {
+        dispatchIfNotCancelled({ type: 'ERROR', payload: err.message })
+      }
+    }
+
   useEffect(() => {
     return () => setIsCancelled(true)
   }, [])
 
-  return { addDocument, updateDocumentComments, updateDocumentSummary, markAsCompleted, deleteDocument, response }
+  return { 
+    addDocument, 
+    updateDocumentComments, 
+    updateDocumentSummary, 
+    markAsCompleted, 
+    deleteDocument, 
+    addMeetingDocument, 
+    addTest,
+    response 
+  }
 
 }

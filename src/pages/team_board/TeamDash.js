@@ -53,10 +53,6 @@ export default function TeamDash() {
       )
     : [];
 
-    console.log("UNIQUE TEAM MEMBERS: ")
-    console.log(uniqueTeamMembersObject)
-
-
   const collaboratorIds = uniqueTeamMembersObject.map((tm) => tm.id);
   
   const handleNameSort = () => {

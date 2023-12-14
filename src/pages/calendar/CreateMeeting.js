@@ -1,6 +1,8 @@
 import { useState, useEffect } from 'react';
 import { useCollection } from "../../hooks/useCollection";
 import { useAuthContext } from "../../hooks/useAuthContext";
+import { useFirestore } from "../../hooks/useFirestore";
+import { useHistory } from "react-router-dom";
 import dayjs from "dayjs";
 import Flatpickr from 'react-flatpickr';
 import Select from "react-select";
@@ -10,22 +12,24 @@ import './CalendarDash.css'
 import 'flatpickr/dist/flatpickr.css';
 
 const CreateMeeting = () => {
+  const { documents } = useCollection("users");
+  const { user } = useAuthContext();
+  const { addMeetingDocument, response } = useFirestore("meetings");
+  const { addTest, response: testResponse } = useFirestore("test");
+
+  const history = useHistory();
+
 
     const currentDate = dayjs();
     const endPlaceHolder = dayjs().add(1, 'hour');
 
     const [title, setTitle] = useState('');
-    const [description, setDescription] = useState('');
     const [start, setStart] = useState(currentDate.toDate());
     const [end, setEnd] = useState(endPlaceHolder.toDate());
-    const [guests, setGuests] = useState('');
-    const [formError, setFormError] = useState(null);
-
-
-
-    const { documents } = useCollection("users");
-    const { user } = useAuthContext();
+    const [description, setDescription] = useState('');
     const [users, setUsers] = useState([]);
+    const [guests, setGuests] = useState([]);
+    const [formError, setFormError] = useState(null);
 
     useEffect(() => {
         if (documents) {
@@ -36,8 +40,10 @@ const CreateMeeting = () => {
         }
     }, [documents]);
 
-    const handleSubmit = (e) => {
+
+    const handleSubmitMeeting = async (e) => {
         e.preventDefault();
+        setFormError(null)
         // console.log(title, start, end, description, guests)
 
         if(!start || !end){
@@ -46,12 +52,44 @@ const CreateMeeting = () => {
         if(guests.length < 1){
           setFormError("Please invite guests to your meeting.")
         }
+
+      const createdBy = {
+        displayName: user.displayName,
+        photoURL: user.photoURL,
+        id: user.uid,
+      };
+
+      const guestsInvitedList = guests.map((g) => {
+        return {
+          displayName: g.value.displayName,
+          photoURL: g.value.photoURL,
+          id: g.value.id
+        }
+      })
+
+      const meeting = {
+        title,
+        start,
+        end,
+        description,
+        guestsInvitedList,
+        createdBy
+      }
+
+      await addMeetingDocument(meeting);
+
+      if (!response.error) {
+        console.log(response)
+        console.log("this is the response id: " + response.id);
+        console.log(meeting)
+        history.push(`/calendar`);
+      }
     }
 
   return (
     <div className="create-event-container">
         <h3>Shedule New Meeting</h3>
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmitMeeting}>
             <label>
                 <input 
                     placeholder="Add title"

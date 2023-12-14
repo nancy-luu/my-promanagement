@@ -1,5 +1,9 @@
 import { useEffect, useState } from "react";
 
+// styles & images
+import './BackToTop.css'
+import ScrollUpIcon from "../assets/scroll-up.png";
+
 const BackToTop = () => {
   const [backToTop, setBackToTop] = useState(false);
 
@@ -27,19 +31,12 @@ const BackToTop = () => {
   return (
     <div style={scrollableStyle}>
       {backToTop && (
-        <button
-          style={{
-            position: "fixed",
-            bottom: "50px",
-            right: "50px",
-            width: "50px",
-            height: "50px",
-            fontSize: "50px",
-          }}
-          onClick={scrollUp}
-        >
-          ^
-        </button>
+        <img
+        className="scroll-up-icon"
+        src={ScrollUpIcon}
+        alt="scroll up button"
+        onClick={scrollUp}
+      />
       )}
     </div>
   );

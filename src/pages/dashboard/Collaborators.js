@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { useAuthContext } from "../../hooks/useAuthContext";
 import { useCollection } from "../../hooks/useCollection";
 import { useMyProjects } from "../../hooks/useMyProjects";
@@ -45,14 +46,16 @@ const Collaborators = () => {
             <div className="collaborators-form">    
                 {uniqueTeamMembersObject &&
                     uniqueTeamMembersObject.map((user) => (
-                    <div div key={user.id} className="collaborator-card">
-                        {user.online && <span className="online-user"></span>}
-                        <div className="collaborator-avatar">
-                        <Avatar src={user.photoURL} />
-                        </div>
-                        <div className="user-displayname">{user.displayName}</div>
-                        <div className="user-role">{user.role}</div>
-                    </div>
+                    <Link to={`/team/user/${user.id}`}>
+                      <div div key={user.id} className="collaborator-card">
+                          {user.online && <span className="online-user"></span>}
+                          <div className="collaborator-avatar">
+                          <Avatar src={user.photoURL} />
+                          </div>
+                          <div className="user-displayname">{user.displayName}</div>
+                          <div className="user-role">{user.role}</div>
+                      </div>
+                    </Link>
                     ))}
             </div>
         </div>

@@ -8,8 +8,7 @@ import "./CalendarDash.css";
 
 const CalendarDash = () => {
   const handleAddEvent = () => {
-    // Handle the click of your custom button here
-    console.log("Adding new event...");
+    console.log("Redirect to /createEvent");
   };
 
   return (
