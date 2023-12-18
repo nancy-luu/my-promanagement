@@ -12,7 +12,7 @@ export default function ProjectInfo ({ project }) {
     let status;
     if(!p.isCompleted && p.comments.length === 0) {
       status = "• Open";
-    } else if (p.comments && p.comments.length > 0) {
+    } else if (!p.isCompleted && p.comments.length > 0) {
       status = "• In Progress"
     } else if (project.isCompleted){
       status = "• Complete"

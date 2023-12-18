@@ -3,8 +3,6 @@ import { useMyMeetings } from '../../hooks/useMyMeetings'
 import dayjs from 'dayjs';
 import { Link } from "react-router-dom";
 
-
-
 // components
 import Meeting from './Meeting'
 

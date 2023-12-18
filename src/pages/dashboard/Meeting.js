@@ -1,11 +1,12 @@
-// import { useState } from 'react';
-// import { months } from "../../util/generateDate";
 import dayjs from "dayjs";
 
 // styles
 import './Meeting.css';
 
 const Meeting = ({ meeting }) => {
+
+  console.log("INSIDE MEETING")
+  console.log(meeting)
 
   const startTime = (dayjs(meeting.start)).format('h:mm A');
   const endTime = (dayjs(meeting.end)).format('h:mm A');
