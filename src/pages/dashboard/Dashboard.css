@@ -1,14 +1,11 @@
 .dashboard-container {
-    overflow: hidden;
-    display: flex;
-}
-
-.dashboard-right {
-    display: flex;
-    flex-direction: column;
-}
-
-.dashboard-right-bottom {
     display: grid;
-    grid-template-columns: 1fr 1fr
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
+    grid-template-areas:
+        "overview tasks tasks tasks"
+        "small-call comments comments comments"
+        "small-cal collabs collabs collabs"
+        "small-call collabs collabs collabs";
 }
+

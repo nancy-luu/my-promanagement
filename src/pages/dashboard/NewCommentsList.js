@@ -20,7 +20,7 @@ const NewCommentsList = ({ projects }) => {
     allComments.push(newComment);
   });
 
-  let sortedComments = allComments.flat().sort((a, b) => b.createdAt - a.createdAt);
+  let sortedComments = allComments.flat().sort((a, b) => b.createdAt - a.createdAt).slice(0, 4);
   
 
   return (

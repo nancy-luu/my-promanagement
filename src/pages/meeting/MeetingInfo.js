@@ -10,34 +10,36 @@ const MeetingInfo = () => {
   const { id } = useParams();
   const { document: meeting, error} = useDocument("meetings", id)
 
-  
-  // const startTime = (dayjs(meeting.start)).format('h:mm A');
-  // const endTime = (dayjs(meeting.end)).format('h:mm A');
 
   useEffect(() => {
-    let startTime;
-    let endTime;
-    if(meeting){
-       startTime = (dayjs(meeting.start)).format('h:mm A');
-       endTime = (dayjs(meeting.end)).format('h:mm A');
+    let startFormatted;
+    let endFormatted;
+    
+    if (meeting) {
+      const startDate = meeting.start.toDate();
+      const endDate = meeting.end.toDate();
+  
+      const options = { weekday: 'short', month: 'short', day: 'numeric', hour: 'numeric', minute: 'numeric', hour12: true };
+  
+      startFormatted = startDate.toLocaleString('en-US', options);
+      endFormatted = endDate.toLocaleString('en-US', options);
+  
+      const sameWeekdayMonthDay = startDate.getDay() === endDate.getDay() &&
+                                  startDate.getMonth() === endDate.getMonth() &&
+                                  startDate.getDate() === endDate.getDate();
+  
+      if (sameWeekdayMonthDay) {
+        const onlyTimeOptions = { hour: 'numeric', minute: 'numeric', hour12: true };
+        endFormatted = endDate.toLocaleString('en-US', onlyTimeOptions);
+        setStart(startFormatted);
+        setEnd(endFormatted);
+      } else {
+        setStart(startFormatted);
+        setEnd(endFormatted); 
+      }
     }
-    setStart(startTime)
-    setEnd(endTime)
-  }, [meeting])
-
-  // useEffect(() => {
-  //   let startTime;
-  //   let endTime;
-  //   if(meeting){
-  //     startTime = meeting.start.toDate().toString();
-  //     endTime = meeting.end.toDate().toString()
-  //   }
-  //   setStart(startTime)
-  //   setEnd(endTime)
-  // }, [meeting])
-
-  console.log("start")
-  console.log(start)
+  
+  }, [meeting]);
 
 
   return (
@@ -47,8 +49,7 @@ const MeetingInfo = () => {
           <h3>{meeting.title}</h3>
           <p>{meeting.description}</p>
           <div className="meeting-duration">
-            <p>{start}</p>
-            <p>{end}</p>
+            <p>{start} - {end}</p>
           </div>
         </div>
       }

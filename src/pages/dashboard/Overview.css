@@ -1,5 +1,4 @@
 .overview-container {
-  width: 350px;
   display: flex;
   padding: 20px;
   border-radius: var(--outer-radius);
