@@ -62,7 +62,8 @@ const CreateMeeting = () => {
         return {
           displayName: g.value.displayName,
           photoURL: g.value.photoURL,
-          id: g.value.id
+          id: g.value.id,
+          accepted: false
         }
       })
 
