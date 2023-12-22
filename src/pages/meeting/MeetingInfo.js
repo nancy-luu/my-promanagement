@@ -191,7 +191,10 @@ const MeetingInfo = () => {
             <h4>Going?</h4>
             </div>
             <div className="btn-wrapper"> 
-              <button className="btn" onClick={handleAcceptMeeting}>Yes</button>
+                <button 
+                  className={`btn ${meeting.guestsInvitedList.some(guest => guest.id === user.uid && guest.accepted === true) ? 'activated' : ''}`} 
+                  onClick={handleAcceptMeeting}
+                >Yes</button>
               <button className="btn" onClick={handleDeclineMeeting}>No</button>
             </div>
           </div>
