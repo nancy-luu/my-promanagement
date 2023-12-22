@@ -6,13 +6,104 @@
     linear-gradient(to top, #6262623b, #03000e22) border-box;
     border-style: solid;
     border: .75px solid rgba(79, 79, 79, 0.444);
-    padding: 5px 20px;
+    padding: 5px 0px;
     margin: 10px;
 }
 
 .meeting-info-container > * {
     padding-top: 10px;
     padding-bottom: 10px;
+}
+
+.meeting-info-wrapper {
+    display: grid;
+    grid-template-columns: 1fr 1fr
+}
+
+.meetings-container{
+    display: flex;
+    flex-direction: column;
+    border-radius: var(--outer-radius);
+    background: linear-gradient(to bottom, #2929297f, #2929297f) padding-box,
+    linear-gradient(to top, #6262623b, #03000e22) border-box;
+    border-style: solid;
+    border: .75px solid rgba(79, 79, 79, 0.444);
+    padding: 20px;
+}
+
+.meetings-container p {
+    margin-top: 10px;
+    align-items: center;
+}
+
+.meeting-container{
+    margin-top: 5px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #ffffff25;
+}
+
+.meeting-info-container h3 {
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+
+/* Sections ------------------------------------------------ */
+
+.detail-section,
+.time-section,
+.guest-section,
+.response-section {
+    display: flex;
+    align-items: center;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+.detail-section img,
+.time-section img,
+.guest-section .meeting-icon {
+    width: 30px;
+    height: 30px;
+    padding-right: 20px;
+}
+
+.guest-section img {
+    width: 30px;
+    height: 30px;
+}
+
+.guest-section {
+    justify-content: space-between;
+}
+
+.guest-section:hover {
+    background: #55555544;
+}
+
+.guest-count-wrapper {
+    display: flex;
+    justify-content: space-between;
+}
+
+.guest-section .arrow {
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.2s ease;
+}
+
+.up-arrow {
+    transform: rotate(180deg);
+    transition: transform 0.2s ease;
+}
+
+
+/*  Drop Menu for Guests --------------------------------- */
+
+.meeting-guests-container{
+    padding-left: 60px;
 }
 
 .single-guest-container{
@@ -40,14 +131,16 @@
     height: 15px;
 }
 
-.response{
-    display: flex;
+
+/*  Response Section ------------------------------------ */
+
+.response-section{
     justify-content: space-between;
     align-items: center;
     border-top: 1px solid rgba(79, 79, 79, 0.444);
 }
 
-.response .btn {
+.response-section .btn {
     width: 50px;
     margin-left: 10px;
 }
