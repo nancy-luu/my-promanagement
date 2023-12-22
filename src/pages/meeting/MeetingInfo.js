@@ -1,6 +1,9 @@
 import { useState, useEffect } from "react"
 import { useParams } from "react-router-dom";
 import { useDocument } from "../../hooks/useDocument"; 
+import { useAuthContext } from "../../hooks/useAuthContext";
+import { useFirestore } from "../../hooks/useFirestore"
+import { useHistory } from "react-router-dom";
 
 // components
 import Avatar from "../../components/Avatar"
@@ -13,7 +16,11 @@ const MeetingInfo = () => {
   const [start, setStart] = useState()
   const [end, setEnd] = useState()
   const { id } = useParams();
+  const { user } = useAuthContext();
   const { document: meeting, error} = useDocument("meetings", id)
+  const { removeUserFromMeeting, response: removeResponse } = useFirestore("meetings");
+
+  const history = useHistory();
 
 
   useEffect(() => {
@@ -48,6 +55,19 @@ const MeetingInfo = () => {
   
   }, [meeting]);
 
+
+  const handleDeclineMeeting = () => {
+    
+    removeUserFromMeeting(meeting.id, user.uid);
+
+    if (!removeResponse.error) {
+      console.log(removeResponse)
+      console.log("this is the response id: " + removeResponse.id);
+      console.log(meeting)
+      history.push(`/calendar`);
+    }
+  }
+
   return (
     <>
       {meeting && 
@@ -78,6 +98,15 @@ const MeetingInfo = () => {
                 </div>
               </div>
             )}
+          </div>
+          <div className="response">
+            <div>
+            <h4>Going?</h4>
+            </div>
+            <div className="btn-wrapper"> 
+              <button className="btn">Yes</button>
+              <button className="btn" onClick={handleDeclineMeeting}>No</button>
+            </div>
           </div>
         </div>
       }

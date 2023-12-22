@@ -19,10 +19,6 @@ const BigCalendar = () => {
         }
     }, [myMeetings])
 
-  console.log(meetings);
-
-  console.log("MY MEETINGS: ")
-  console.log(myMeetings);
 
   const handleEventClick = (event) => {
     console.log('Clicked event:', event);
@@ -39,7 +35,7 @@ const BigCalendar = () => {
 
   const CustomToolbar = (toolbar) => {
 
-    console.log(toolbar)
+    // console.log(toolbar)
  
     return (
       <div className="rbc-toolbar">

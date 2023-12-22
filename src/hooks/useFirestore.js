@@ -1,5 +1,6 @@
 import { useReducer, useEffect, useState } from "react"
 import { projectFirestore, timestamp } from "../firebase/config"
+import { cleanDigitSectionValue } from "@mui/x-date-pickers/internals/hooks/useField/useField.utils"
 
 let initialState = {
   document: null,
@@ -126,19 +127,32 @@ export const useFirestore = (collection) => {
     }
   }
 
-    // add meeting 
-    const addTest = async (doc) => {
-      dispatch({ type: 'IS_PENDING' })
-  
-      try {
-        const createdAt = timestamp.fromDate(new Date())
-        const addedMeeting = await ref.add({ ...doc, createdAt })
-        dispatchIfNotCancelled({ type: 'ADDED_DOCUMENT', payload: addedMeeting })
+  // remove user from meeting
+  const removeUserFromMeeting = async (docId, userId) => {
+    dispatch({ type: "IS_PENDING"})
+
+    try {
+      const meetingRef = ref.doc(docId)
+      const meetingDoc = await meetingRef.get()
+
+      if (!meetingDoc.exists) {
+        dispatchIfNotCancelled({ type: "ERROR", payload: "Document does not exist." });
+        return null;
       }
-      catch (err) {
-        dispatchIfNotCancelled({ type: 'ERROR', payload: err.message })
-      }
+
+      const meetingData = meetingDoc.data();
+      const updatedGuestsList = meetingData.guestsInvitedList.filter(g => g.id !== userId);
+
+      await meetingRef.update({ guestsInvitedList: updatedGuestsList });
+
+      dispatchIfNotCancelled({ type: "UPDATED_DOCUMENT", payload: updatedGuestsList})
+      return updatedGuestsList
+
+    } catch (error) {
+      dispatchIfNotCancelled({ type: "ERROR", payload: error})
+      return null
     }
+  }
 
   useEffect(() => {
     return () => setIsCancelled(true)
@@ -151,7 +165,7 @@ export const useFirestore = (collection) => {
     markAsCompleted, 
     deleteDocument, 
     addMeetingDocument, 
-    addTest,
+    removeUserFromMeeting,
     response 
   }
 
