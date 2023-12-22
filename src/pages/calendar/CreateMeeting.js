@@ -47,9 +47,11 @@ const CreateMeeting = () => {
 
         if(!start || !end){
             setFormError("Please choose a start and end for your meeting.")
+            return;
         }
         if(guests.length < 1){
           setFormError("Please invite guests to your meeting.")
+          return;
         }
 
       const createdBy = {

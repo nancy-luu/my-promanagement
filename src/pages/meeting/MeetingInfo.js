@@ -12,6 +12,7 @@ import DetailIcon from "../../assets/detail-icon.png"
 import TimeIcon from "../../assets/time-icon.png"
 import MeetingIcon from "../../assets/meeting-icon.png"
 import DownArrow from "../../assets/down-arrow.png"
+import TrashIcon from "../../assets/trash-icon.png"
 
 
 // styles
@@ -21,10 +22,11 @@ const MeetingInfo = () => {
   const [start, setStart] = useState()
   const [end, setEnd] = useState()
   const [showGuests, setShowGuests] = useState(false)
+  const [guestsInvited, setGuestsInvited] = useState([])
   const { id } = useParams();
   const { user } = useAuthContext();
   const { document: meeting, error} = useDocument("meetings", id)
-  const { acceptMeeting, removeUserFromMeeting, response } = useFirestore("meetings");
+  const { acceptMeeting, removeUserFromMeeting, deleteDocument, response } = useFirestore("meetings");
 
   const history = useHistory();
 
@@ -58,8 +60,45 @@ const MeetingInfo = () => {
         setEnd(endFormatted); 
       }
     }
+
+    let sortedMeetingGuests = [];
+
+    if(meeting){
+      const alphabeticalGuestList = meeting.guestsInvitedList.sort((a, b) => {
+        if(a.displayName < b.displayName){
+          return -1;
+        } else if (a.displayName > b.displayName) {
+          return 1;
+        }
+        return 0;
+      })
+
+      sortedMeetingGuests = alphabeticalGuestList.sort((a, b) => {
+        const aIsAttending = a.accepted
+        const bIsAttending = b.accepted
+  
+        if(aIsAttending && !bIsAttending){
+          return -1;
+        } else if (!aIsAttending && bIsAttending){
+          return 1;
+        }
+        return 0;
+      })
+      setGuestsInvited(sortedMeetingGuests)
+    }
   
   }, [meeting]);
+
+  const handleCancelMeeting = () => {
+    deleteDocument(meeting.id);
+
+    if (!response.error) {
+      console.log(response)
+      console.log("this is the response id: " + response.id);
+      console.log(meeting)
+      history.push(`/calendar`);
+    }
+  }
 
   const handleAcceptMeeting = () => {
     acceptMeeting(meeting.id, user.uid);
@@ -70,7 +109,6 @@ const MeetingInfo = () => {
       console.log(meeting)
     }
   }
-
 
   const handleDeclineMeeting = () => {
     removeUserFromMeeting(meeting.id, user.uid);
@@ -91,40 +129,18 @@ const MeetingInfo = () => {
     }
   }
 
-  let sortedMeetingGuests = [];
-
-  if(meeting){
-    const alphabeticalGuestList = meeting.guestsInvitedList.sort((a, b) => {
-      if(a.displayName < b.displayName){
-        return -1;
-      } else if (a.displayName > b.displayName) {
-        return 1;
-      }
-      return 0;
-    })
-
-    console.log("-------------------------")
-    console.log(alphabeticalGuestList)
-
-      sortedMeetingGuests = alphabeticalGuestList.sort((a, b) => {
-      const aIsAttending = a.accepted
-      const bIsAttending = b.accepted
-  
-      if(aIsAttending && !bIsAttending){
-        return -1;
-      } else if (!aIsAttending && bIsAttending){
-        return 1;
-      }
-      return 0;
-    })
-  }
-
-
   return (
     <div className="meeting-info-wrapper">
       {meeting && 
         <div className="meeting-info-container">
-          <h3>{meeting.title}</h3>
+          <div className="header-section">
+            <h3>{meeting.title}</h3>
+            {user.uid === meeting.createdBy.id ? 
+              <img src={TrashIcon} alt="trash icon" className="btn" onClick={handleCancelMeeting}/>
+              :
+              <></>
+            }
+          </div>
           <div className="detail-section">
             <img src={DetailIcon} alt="detail icon"/>
             <p>{meeting.description}</p>
@@ -156,7 +172,7 @@ const MeetingInfo = () => {
           </div>
           {showGuests && 
             <div className="meeting-guests-container">
-              {sortedMeetingGuests.map(guest => 
+              {guestsInvited.map(guest => 
                 <div className="single-guest-container">
                   <div className="guest-image-container">
                     <Avatar src={guest.photoURL}/>
