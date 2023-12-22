@@ -1,8 +1,8 @@
 import { useState, useEffect } from "react";
-import dayjs from 'dayjs';
 import { Calendar, dayjsLocalizer } from 'react-big-calendar';
 import { useMyMeetings } from "../../hooks/useMyMeetings";
 import { Link } from "react-router-dom";
+import dayjs from 'dayjs';
 
 const BigCalendar = () => {
   const [meetings, setMeetings]=useState([])
@@ -27,8 +27,9 @@ const BigCalendar = () => {
   // Custom event display in Month View
   const EventDisplay = ({ event }) => (
     <Link to={`/meetings/${event.id}`}>
-      <div>
-        <div>{event.title}</div>
+      <div className="event-display-container">
+        {/* <h5>{(dayjs(event.start)).format('h:mm A')}</h5> */}
+        <h5>{event.title}</h5>
       </div>
     </Link>
   );
@@ -72,7 +73,7 @@ const BigCalendar = () => {
         <Calendar
           localizer={localizer}
           events={myMeetings}
-          defaultView={"week"}
+          defaultView={"month"}
           views={["month", "week", "day"]}
           style={{ height: 550 }}
           min={minTime.toDate()}

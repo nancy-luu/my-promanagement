@@ -1,3 +1,7 @@
+:root {
+    --calendar-line: 1px solid rgba(115, 115, 115, 0.5);
+}
+
 .calendar-dash-container {
     margin: 10px;
     color: white;
@@ -25,18 +29,34 @@
     font-family: Poppins, sans-serif;
     font-weight: bold;
 }
+.rbc-header.rbc-today {
+    background: rgba(115, 115, 115, 0.5) !important;
+}
 
 .rbc-month-view {
     border: 1px solid rgba(255, 255, 255, 0.253) !important;
 }
 
+.rbc-month-row {
+    border-top: var(--calendar-line) !important;
+}
+
+.rbc-day-bg {
+    border-left: var(--calendar-line) !important;
+}
+
 .rbc-event {
-    background-color: orange !important;
+    border:none !important;
+    background-color: #FF6525 !important;
     /* !important to override */
 }
 
+.event-display-container {
+    display: flex;
+}
+
 .rbc-today {
-    background-color: rgba(148, 148, 148, 0.367) !important;
+    background-color: rgba(148, 148, 148, 0) !important;
 }
 
 .rbc-show-more {
@@ -63,6 +83,43 @@
     background-color: rgba(255, 153, 0, 0.937) !important;
 }
 
+.rbc-current-time-indicator {
+    height: 2px !important;
+    background-color: #7521FF !important;
+}
+
+.rbc-time-view {
+    border: var(--calendar-line) !important;
+}
+
+.rbc-header {
+    border-left: var(--calendar-line) !important;
+    border-bottom: var(--calendar-line) !important;
+}
+
+.rbc-time-header.rbc-overflowing {
+    border-right:var(--calendar-line) !important;
+}
+
+.rbc-time-header-content {
+    border-left: var(--calendar-line) !important;
+}
+
+.rbc-time-content > * + * > * {
+    border-left: var(--calendar-line) !important;
+}
+
+.rbc-timeslot-group {
+    border-bottom: var(--calendar-line)!important;
+}
+
+.rbc-day-slot .rbc-time-slot {
+    border-top: 1px dashed rgba(115, 115, 115, 0) !important;
+}
+
+.rbc-time-content {
+    border-top: var(--calendar-line)!important;
+}
 
 .start-end-input-container {
     display: flex;
@@ -74,12 +131,12 @@
     margin: 0px 10px;
 }
 
-/* CREATE EVENT FORM ----------------------- */
+
+/* CREATE EVENT FORM ------------------------------------ */
 .create-event-wrapper{
     display: grid;
     grid-template-columns: 1fr 1fr
 }
-
 
 .create-event-container {
     margin: 10px;
@@ -92,8 +149,7 @@
 }
 
 
-
-/* FLATPICKER STTYLES */
+/* FLATPICKER STTYLES -----------------------------------*/
 
 .flatpickr-calendar {
     background-color: #1e1e1ee8 !important;

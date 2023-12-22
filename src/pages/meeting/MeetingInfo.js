@@ -159,7 +159,14 @@ const MeetingInfo = () => {
                       {meeting.guestsInvitedList.filter(guest => guest.accepted).length} yes
                     </>
                     }
-                    {meeting.guestsInvitedList.filter(guest => guest.accepted).length > 0 && <>, </>}
+                    {meeting.guestsInvitedList.filter(guest => guest.accepted).length > 0 
+                      && 
+                      meeting.guestsInvitedList.filter(guest => !guest.accepted).length > 0 
+                      ?
+                      <>, </>
+                      :
+                      ''
+                    }
                     {meeting.guestsInvitedList.filter(guest => !guest.accepted).length > 0 && 
                       <>
                         {meeting.guestsInvitedList.filter(guest => !guest.accepted).length} awaiting
