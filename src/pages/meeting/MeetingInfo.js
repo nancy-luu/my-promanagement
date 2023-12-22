@@ -18,7 +18,7 @@ const MeetingInfo = () => {
   const { id } = useParams();
   const { user } = useAuthContext();
   const { document: meeting, error} = useDocument("meetings", id)
-  const { removeUserFromMeeting, response: removeResponse } = useFirestore("meetings");
+  const { acceptMeeting, removeUserFromMeeting, response } = useFirestore("meetings");
 
   const history = useHistory();
 
@@ -55,18 +55,28 @@ const MeetingInfo = () => {
   
   }, [meeting]);
 
+  const handleAcceptMeeting = () => {
+    acceptMeeting(meeting.id, user.uid);
+
+    if (!response.error) {
+      console.log(response)
+      console.log("this is the response id: " + response.id);
+      console.log(meeting)
+    }
+  }
+
 
   const handleDeclineMeeting = () => {
-    
     removeUserFromMeeting(meeting.id, user.uid);
 
-    if (!removeResponse.error) {
-      console.log(removeResponse)
-      console.log("this is the response id: " + removeResponse.id);
+    if (!response.error) {
+      console.log(response)
+      console.log("this is the response id: " + response.id);
       console.log(meeting)
       history.push(`/calendar`);
     }
   }
+
 
   return (
     <>
@@ -104,7 +114,7 @@ const MeetingInfo = () => {
             <h4>Going?</h4>
             </div>
             <div className="btn-wrapper"> 
-              <button className="btn">Yes</button>
+              <button className="btn" onClick={handleAcceptMeeting}>Yes</button>
               <button className="btn" onClick={handleDeclineMeeting}>No</button>
             </div>
           </div>

@@ -127,9 +127,41 @@ export const useFirestore = (collection) => {
     }
   }
 
+  // update user's acceptance response in meeting
+  const acceptMeeting = async (docId, userId) => {
+    dispatch({ type: "IS_PENDING" })
+
+    try {
+      const meetingRef = ref.doc(docId)
+      const meetingDoc = await meetingRef.get()
+
+      if(!meetingDoc.exists){
+        dispatchIfNotCancelled({ type: "ERROR", payload: "Document does not exist." })
+        return null;
+      }
+
+      const meetingData = meetingDoc.data()
+      const updatedGuestsList = meetingData.guestsInvitedList.map((guest) => {
+        if(guest.id === userId){
+          return {...guest, accepted:true}
+        }
+        return guest;
+      })
+
+      await meetingRef.update({ guestsInvitedList: updatedGuestsList})
+
+      dispatchIfNotCancelled({ type: "UPDATED_DOCUMENT", payload: updatedGuestsList})
+      return updatedGuestsList
+
+    } catch (error) {
+      dispatchIfNotCancelled({ type: "ERROR", payload: error})
+      return null
+    }
+  }
+
   // remove user from meeting
   const removeUserFromMeeting = async (docId, userId) => {
-    dispatch({ type: "IS_PENDING"})
+    dispatch({ type: "IS_PENDING" })
 
     try {
       const meetingRef = ref.doc(docId)
@@ -165,6 +197,7 @@ export const useFirestore = (collection) => {
     markAsCompleted, 
     deleteDocument, 
     addMeetingDocument, 
+    acceptMeeting,
     removeUserFromMeeting,
     response 
   }
