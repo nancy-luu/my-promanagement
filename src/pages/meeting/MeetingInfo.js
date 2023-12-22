@@ -91,6 +91,34 @@ const MeetingInfo = () => {
     }
   }
 
+  let sortedMeetingGuests = [];
+
+  if(meeting){
+    const alphabeticalGuestList = meeting.guestsInvitedList.sort((a, b) => {
+      if(a.displayName < b.displayName){
+        return -1;
+      } else if (a.displayName > b.displayName) {
+        return 1;
+      }
+      return 0;
+    })
+
+    console.log("-------------------------")
+    console.log(alphabeticalGuestList)
+
+      sortedMeetingGuests = alphabeticalGuestList.sort((a, b) => {
+      const aIsAttending = a.accepted
+      const bIsAttending = b.accepted
+  
+      if(aIsAttending && !bIsAttending){
+        return -1;
+      } else if (!aIsAttending && bIsAttending){
+        return 1;
+      }
+      return 0;
+    })
+  }
+
 
   return (
     <div className="meeting-info-wrapper">
@@ -115,9 +143,10 @@ const MeetingInfo = () => {
                       {meeting.guestsInvitedList.filter(guest => guest.accepted).length} yes
                     </>
                     }
+                    {meeting.guestsInvitedList.filter(guest => guest.accepted).length > 0 && <>, </>}
                     {meeting.guestsInvitedList.filter(guest => !guest.accepted).length > 0 && 
                       <>
-                        , {meeting.guestsInvitedList.filter(guest => !guest.accepted).length} awaiting
+                        {meeting.guestsInvitedList.filter(guest => !guest.accepted).length} awaiting
                       </>
                     } 
                 </p>
@@ -127,7 +156,7 @@ const MeetingInfo = () => {
           </div>
           {showGuests && 
             <div className="meeting-guests-container">
-              {meeting.guestsInvitedList.map(guest => 
+              {sortedMeetingGuests.map(guest => 
                 <div className="single-guest-container">
                   <div className="guest-image-container">
                     <Avatar src={guest.photoURL}/>

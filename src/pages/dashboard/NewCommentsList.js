@@ -11,7 +11,6 @@ const NewCommentsList = ({ projects }) => {
   const inProgressProjects = projects.filter(
     (project) => project.comments.length > 0
   );
-  // console.log(inProgressProjects)
 
   let allComments = [];
 
