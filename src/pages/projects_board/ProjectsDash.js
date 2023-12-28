@@ -59,9 +59,9 @@ const ProjectsDash = () => {
   const sortedProjectsByName = projects
   ? [...projects].sort((a, b) => {
       if (!sortNamesAsc) {
-        return a.name.localeCompare(b.name); // Ascending order
+        return a.name.localeCompare(b.name); 
       } else {
-        return b.name.localeCompare(a.name); // Descending order
+        return b.name.localeCompare(a.name); 
       }
     })
   : null;
@@ -71,13 +71,9 @@ const changeFilter = (newFilter) => {
 };
 
 const handleNameSort = () => {
-  setSortNamesAsc((prev) => !prev); // Toggle sorting order
+  setSortNamesAsc((prev) => !prev); 
 };
 
-
-  console.log("CHANGED PROJECTS------------------")
-  console.log(changedProjects)
-  console.log("----------------------------------")
 
   return (
     <div className="projects-dash-container">
