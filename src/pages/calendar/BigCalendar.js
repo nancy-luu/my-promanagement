@@ -46,13 +46,13 @@ const BigCalendar = () => {
           </span>
         </span>
         <span className="rbc-btn-group">
-          <button type="button" onClick={() => toolbar.onNavigate('PREV')}>{'<'}</button>
-          <button type="button" onClick={() => toolbar.onNavigate('NEXT')}>{'>'}</button>
+            <button className="btn-arrows" type="button" onClick={() => toolbar.onNavigate('PREV')}>{'<'}</button>
+            <button className="btn-arrows" type="button" onClick={() => toolbar.onNavigate('NEXT')}>{'>'}</button>
         </span>
           <span className="rbc-toolbar-label">
             {toolbar.label}
           </span>
-        <span className="rbc-btn-group">
+        <span className="rbc-btn-group views">
           {toolbar.views.map(viewName => (
             <button
               key={viewName}

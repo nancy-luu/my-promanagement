@@ -19,12 +19,13 @@ const ProjectsDash = () => {
   const { user } = useAuthContext();
 
   const [currFilter, setCurrFilter] = useState("all");
+  const [changedProjects, setChangedProjects] = useState([]);
   const [sortedProjects, setSortedProjects] = useState([]);
   const [sortNamesAsc, setSortNamesAsc] = useState(false);
   const [sortStatus, setSortStatus] = useState(false);
 
   useEffect(() => {
-    setSortedProjects(documents)
+    setChangedProjects(documents)
   }, [documents])
   
   const projects = documents
@@ -39,7 +40,7 @@ const ProjectsDash = () => {
                 assigned = true;
               }
             });
-            return assigned;
+            return assigned
           case "development":
           case "design":
           case "marketing":
@@ -54,52 +55,29 @@ const ProjectsDash = () => {
     : null
   ;
 
-  const sortedProjectsByDateDsc = projects ? projects.sort((a, b) => {
-    return b.createdAt.toDate() - a.createdAt.toDate()
-  }) : null;
+
+  const sortedProjectsByName = projects
+  ? [...projects].sort((a, b) => {
+      if (!sortNamesAsc) {
+        return a.name.localeCompare(b.name); // Ascending order
+      } else {
+        return b.name.localeCompare(a.name); // Descending order
+      }
+    })
+  : null;
+
+const changeFilter = (newFilter) => {
+  setCurrFilter(newFilter);
+};
+
+const handleNameSort = () => {
+  setSortNamesAsc((prev) => !prev); // Toggle sorting order
+};
 
 
-
-  console.log("SORTED PROJECTS")
-  console.log(sortedProjectsByDateDsc)
-
-
-  const changeFilter = (newFilter) => {
-    setCurrFilter(newFilter);
-  };
-
-  const handleNameSort = () => {
-    if(!sortNamesAsc){
-      const sortedProjectNamesAsc = [...sortedProjects].sort((a, b) => {
-        if(a.name < b.name){
-          return -1;
-        }
-        if(a.name > b.name){
-          return 1;
-        }
-        return 0;
-      })
-      setSortedProjects(sortedProjectNamesAsc);
-      setSortNamesAsc(true);
-    } else {
-      const sortedProjectNamesDsc = [...sortedProjects].sort((a, b) => {
-        if(a.name > b.name){
-          return -1;
-        }
-        if(a.name < b.name){
-          return 1;
-        }
-        return 0;
-      })
-      setSortedProjects(sortedProjectNamesDsc);
-      setSortNamesAsc(false);
-    }
-  }
-
-  const handleStatusSort = () => {
-
-  }
-
+  console.log("CHANGED PROJECTS------------------")
+  console.log(changedProjects)
+  console.log("----------------------------------")
 
   return (
     <div className="projects-dash-container">
@@ -157,7 +135,7 @@ const ProjectsDash = () => {
                       className="sort-icon"
                       src={SortIcon}
                       alt="sort icon"
-                      onClick={handleStatusSort}
+                      // onClick={handleStatusSort}
                     ></img>
                   </div>
                 </th>
@@ -204,8 +182,8 @@ const ProjectsDash = () => {
               </tr>
               <tbody>
                 {error && <p className="error">{error}</p>}
-                {projects && 
-                  projects.map((project) => <ProjectInfo project={project}/>)
+                {sortedProjectsByName && 
+                  sortedProjectsByName.map((project) => <ProjectInfo project={project}/>)
                 }
               </tbody>
           </table>
