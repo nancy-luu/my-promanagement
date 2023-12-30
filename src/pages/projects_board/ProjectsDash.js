@@ -19,23 +19,24 @@ const ProjectsDash = () => {
   const { user } = useAuthContext();
 
   const [currFilter, setCurrFilter] = useState("all");
-  const [changedProjects, setChangedProjects] = useState([]);
-  const [sortedProjects, setSortedProjects] = useState([]);
+  const [changedProjects, setChangedProjects] = useState()
   const [sortNamesAsc, setSortNamesAsc] = useState(false);
-  const [sortStatus, setSortStatus] = useState(false);
+  const [sortStatusAsc, setSortStatusAsc] = useState(false);
+
+
 
   useEffect(() => {
     setChangedProjects(documents)
   }, [documents])
   
-  const projects = documents
-    ? documents.filter((document) => {
+  const projects = changedProjects
+    ? changedProjects.filter((project) => {
         switch (currFilter) {
           case "all":
             return true;
           case "assigned":
             let assigned = false;
-            document.assignedUsersList.forEach((u) => {
+            project.assignedUsersList.forEach((u) => {
               if (u.id === user.uid) {
                 assigned = true;
               }
@@ -47,7 +48,7 @@ const ProjectsDash = () => {
           case "product":
           case "research":
           case "sales":
-            return document.category === currFilter;
+            return project.category === currFilter;
           default:
             return true;
         }
@@ -66,14 +67,62 @@ const ProjectsDash = () => {
     })
   : null;
 
+  // const handleProjectSort = () => {
+  //   if(sortProjectsDsc){
+  //     const sortedUserByProjectCount = [...sortedUserDocuments].sort((a, b) => {
+  //       const projectsA = projectDocuments.filter((projectDoc) =>
+  //         projectDoc.assignedUsersList.some((userObj) => userObj.displayName === a.displayName)
+  //       );
+  //       const projectCountA = projectsA.length;
+    
+  //       const projectsB = projectDocuments.filter((projectDoc) =>
+  //         projectDoc.assignedUsersList.some((userObj) => userObj.displayName === b.displayName)
+  //       );
+  //       const projectCountB = projectsB.length;
+    
+  //       return projectCountB - projectCountA; 
+  //     });
+    
+  //     setSortedUserDocuments(sortedUserByProjectCount);
+  //     setSortProjectsDsc(false)
+  //   } else {
+  //     const sortedUserByProjectCount = [...sortedUserDocuments].sort((a, b) => {
+  //       const projectsA = projectDocuments.filter((projectDoc) =>
+  //         projectDoc.assignedUsersList.some((userObj) => userObj.displayName === a.displayName)
+  //       );
+  //       const projectCountA = projectsA.length;
+    
+  //       const projectsB = projectDocuments.filter((projectDoc) =>
+  //         projectDoc.assignedUsersList.some((userObj) => userObj.displayName === b.displayName)
+  //       );
+  //       const projectCountB = projectsB.length;
+    
+  //       return projectCountA - projectCountB; 
+  //     });
+    
+  //     setSortedUserDocuments(sortedUserByProjectCount);
+  //     setSortProjectsDsc(true)
+  //   }
+  // };
+
 const changeFilter = (newFilter) => {
   setCurrFilter(newFilter);
 };
 
 const handleNameSort = () => {
+  setChangedProjects(sortedProjectsByName)
   setSortNamesAsc((prev) => !prev); 
 };
 
+const handleStatusSort = () => {
+  setChangedProjects()
+  setSortStatusAsc((prev) => !prev); // Toggle status sorting order
+};
+
+
+  console.log("CHANGED PROJECT DOCS")
+  console.log(changedProjects)
+  console.log(projects);
 
   return (
     <div className="projects-dash-container">
@@ -131,7 +180,7 @@ const handleNameSort = () => {
                       className="sort-icon"
                       src={SortIcon}
                       alt="sort icon"
-                      // onClick={handleStatusSort}
+                      onClick={handleStatusSort}
                     ></img>
                   </div>
                 </th>
@@ -178,8 +227,8 @@ const handleNameSort = () => {
               </tr>
               <tbody>
                 {error && <p className="error">{error}</p>}
-                {sortedProjectsByName && 
-                  sortedProjectsByName.map((project) => <ProjectInfo project={project}/>)
+                {projects && 
+                  projects.map((project) => <ProjectInfo project={project}/>)
                 }
               </tbody>
           </table>
