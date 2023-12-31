@@ -8,9 +8,12 @@ import './NewComment.css'
 
 const NewCommentsList = ({ projects }) => {
 
-  const inProgressProjects = projects.filter(
+  console.log("INSIDE NEW COMMENTS")
+  console.log(projects)
+
+  const inProgressProjects = projects ? projects.filter(
     (project) => project.comments.length > 0
-  );
+  ) : []
 
   let allComments = [];
 

@@ -19,110 +19,93 @@ const ProjectsDash = () => {
   const { user } = useAuthContext();
 
   const [currFilter, setCurrFilter] = useState("all");
-  const [changedProjects, setChangedProjects] = useState()
+  const [sortedProjects, setSortedProjects] = useState({});
   const [sortNamesAsc, setSortNamesAsc] = useState(false);
   const [sortStatusAsc, setSortStatusAsc] = useState(false);
 
 
-
   useEffect(() => {
-    setChangedProjects(documents)
-  }, [documents])
+    if (documents) {
+      const categories = ["all", "assigned", "development", "design", "marketing", "product", "research", "sales"];
   
-  const projects = changedProjects
-    ? changedProjects.filter((project) => {
-        switch (currFilter) {
+      const categorizedProjects = categories.reduce((acc, category) => {
+        switch (category) {
           case "all":
-            return true;
+            acc[category] = documents;
+            break;
           case "assigned":
-            let assigned = false;
-            project.assignedUsersList.forEach((u) => {
-              if (u.id === user.uid) {
-                assigned = true;
-              }
-            });
-            return assigned
+            acc[category] = documents.filter((project) =>
+              project.assignedUsersList.some((u) => u.id === user.uid)
+            );
+            break;
           case "development":
           case "design":
           case "marketing":
           case "product":
           case "research":
           case "sales":
-            return project.category === currFilter;
+            acc[category] = documents.filter((project) => project.category === category);
+            break;
           default:
-            return true;
+            break;
         }
-      })
-    : null
-  ;
+        return acc;
+      }, {});
+  
+      setSortedProjects(categorizedProjects);
+    }
+  }, [documents, user.uid]);
 
 
-  const sortedProjectsByName = projects
-  ? [...projects].sort((a, b) => {
-      if (!sortNamesAsc) {
-        return a.name.localeCompare(b.name); 
+  const getSortedProjectsForCurrentFilter = () => {
+    const currentProjects = sortedProjects[currFilter];
+    if (currentProjects) {
+      if (sortNamesAsc) {
+        return [...currentProjects].sort((a, b) => a.name.localeCompare(b.name));
       } else {
-        return b.name.localeCompare(a.name); 
+        return [...currentProjects].sort((a, b) => b.name.localeCompare(a.name));
       }
-    })
-  : null;
+    }
+    return [];
+  };
 
-  // const handleProjectSort = () => {
-  //   if(sortProjectsDsc){
-  //     const sortedUserByProjectCount = [...sortedUserDocuments].sort((a, b) => {
-  //       const projectsA = projectDocuments.filter((projectDoc) =>
-  //         projectDoc.assignedUsersList.some((userObj) => userObj.displayName === a.displayName)
-  //       );
-  //       const projectCountA = projectsA.length;
-    
-  //       const projectsB = projectDocuments.filter((projectDoc) =>
-  //         projectDoc.assignedUsersList.some((userObj) => userObj.displayName === b.displayName)
-  //       );
-  //       const projectCountB = projectsB.length;
-    
-  //       return projectCountB - projectCountA; 
-  //     });
-    
-  //     setSortedUserDocuments(sortedUserByProjectCount);
-  //     setSortProjectsDsc(false)
-  //   } else {
-  //     const sortedUserByProjectCount = [...sortedUserDocuments].sort((a, b) => {
-  //       const projectsA = projectDocuments.filter((projectDoc) =>
-  //         projectDoc.assignedUsersList.some((userObj) => userObj.displayName === a.displayName)
-  //       );
-  //       const projectCountA = projectsA.length;
-    
-  //       const projectsB = projectDocuments.filter((projectDoc) =>
-  //         projectDoc.assignedUsersList.some((userObj) => userObj.displayName === b.displayName)
-  //       );
-  //       const projectCountB = projectsB.length;
-    
-  //       return projectCountA - projectCountB; 
-  //     });
-    
-  //     setSortedUserDocuments(sortedUserByProjectCount);
-  //     setSortProjectsDsc(true)
-  //   }
-  // };
+
+  const handleProjectsUpdate = () => {
+    const updatedSortedProjects = { ...sortedProjects };
+    updatedSortedProjects[currFilter] = getSortedProjectsForCurrentFilter();
+    setSortedProjects(updatedSortedProjects);
+    console.log("---------------------------")
+    console.log("INSIDE HANDLE PROJECT UPDTE:")
+    console.log(sortedProjects)
+    console.log("---------------------------")
+  };
+
+  useEffect(() => {
+    handleProjectsUpdate();
+  }, [currFilter])
+
+
+  console.log("This is the set sorted projects")
+  console.log(sortedProjects);
+  console.log('\n')
+
+  console.log('This is curr filter')
+  console.log(currFilter)
+  console.log('\n')
+  
 
 const changeFilter = (newFilter) => {
   setCurrFilter(newFilter);
 };
 
 const handleNameSort = () => {
-  setChangedProjects(sortedProjectsByName)
   setSortNamesAsc((prev) => !prev); 
 };
 
 const handleStatusSort = () => {
-  setChangedProjects()
-  setSortStatusAsc((prev) => !prev); // Toggle status sorting order
+  setSortStatusAsc((prev) => !prev); 
 };
 
-
-  console.log("CHANGED PROJECT DOCS")
-  console.log(changedProjects)
-  console.log(projects);
 
   return (
     <div className="projects-dash-container">
@@ -137,7 +120,7 @@ const handleStatusSort = () => {
       <div className="project-stats-comments-container">
         <div className="stats-tasks-container">
           <ProjectsStats
-            projects={projects}
+            projects={sortedProjects[currFilter]}
             documents={documents}
             error={error}
             currFilter={currFilter}
@@ -146,15 +129,15 @@ const handleStatusSort = () => {
           />
         </div>
         <div className="new-comments-list-container">
-          {projects && <NewCommentsList projects={projects} />}
+          {sortedProjects && <NewCommentsList projects={sortedProjects[currFilter]} />}
         </div>
       </div>
       <div className="collection-container">
-        <div className="project-container">
-        {projects && projects.length === 0 ? <p>*No projects to display*</p> : <h3>All Projects</h3> }
+        {/* <div className="project-container">
+        {sortedProjects && sortedProjects.length === 0 ? <p>*No projects to display*</p> : <h3>All Projects</h3> }
           <table className="project-table">
               <colgroup>
-                <col style={{ width: "25%" }} /> {/* Adjust width as needed */}
+                <col style={{ width: "25%" }} /> 
                 <col style={{ width: "10%" }} />
                 <col style={{ width: "15%" }} />
                 <col style={{ width: "10%" }} />
@@ -227,15 +210,97 @@ const handleStatusSort = () => {
               </tr>
               <tbody>
                 {error && <p className="error">{error}</p>}
-                {projects && 
-                  projects.map((project) => <ProjectInfo project={project}/>)
+                {sortedProjects && 
+                  sortedProjects.map((project) => <ProjectInfo project={project}/>)
                 }
               </tbody>
           </table>
-        </div>
+        </div> */}
       </div>
     </div>
   );
 };
 
 export default ProjectsDash;
+
+
+
+
+
+
+// 
+  // const projects = changedProjects
+  //   ? changedProjects.filter((project) => {
+  //       switch (currFilter) {
+  //         case "all":
+  //           return true;
+  //         case "assigned":
+  //           let assigned = false;
+  //           project.assignedUsersList.forEach((u) => {
+  //             if (u.id === user.uid) {
+  //               assigned = true;
+  //             }
+  //           });
+  //           return assigned
+  //         case "development":
+  //         case "design":
+  //         case "marketing":
+  //         case "product":
+  //         case "research":
+  //         case "sales":
+  //           return project.category === currFilter;
+  //         default:
+  //           return true;
+  //       }
+  //     })
+  //   : null
+  // ;
+
+
+  // const sortedProjectsByName = projects
+  // ? [...projects].sort((a, b) => {
+  //     if (!sortNamesAsc) {
+  //       return a.name.localeCompare(b.name); 
+  //     } else {
+  //       return b.name.localeCompare(a.name); 
+  //     }
+  //   })
+  // : null;
+
+  // const handleProjectSort = () => {
+  //   if(sortProjectsDsc){
+  //     const sortedUserByProjectCount = [...sortedUserDocuments].sort((a, b) => {
+  //       const projectsA = projectDocuments.filter((projectDoc) =>
+  //         projectDoc.assignedUsersList.some((userObj) => userObj.displayName === a.displayName)
+  //       );
+  //       const projectCountA = projectsA.length;
+    
+  //       const projectsB = projectDocuments.filter((projectDoc) =>
+  //         projectDoc.assignedUsersList.some((userObj) => userObj.displayName === b.displayName)
+  //       );
+  //       const projectCountB = projectsB.length;
+    
+  //       return projectCountB - projectCountA; 
+  //     });
+    
+  //     setSortedUserDocuments(sortedUserByProjectCount);
+  //     setSortProjectsDsc(false)
+  //   } else {
+  //     const sortedUserByProjectCount = [...sortedUserDocuments].sort((a, b) => {
+  //       const projectsA = projectDocuments.filter((projectDoc) =>
+  //         projectDoc.assignedUsersList.some((userObj) => userObj.displayName === a.displayName)
+  //       );
+  //       const projectCountA = projectsA.length;
+    
+  //       const projectsB = projectDocuments.filter((projectDoc) =>
+  //         projectDoc.assignedUsersList.some((userObj) => userObj.displayName === b.displayName)
+  //       );
+  //       const projectCountB = projectsB.length;
+    
+  //       return projectCountA - projectCountB; 
+  //     });
+    
+  //     setSortedUserDocuments(sortedUserByProjectCount);
+  //     setSortProjectsDsc(true)
+  //   }
+  // };
