@@ -26,7 +26,7 @@ const ProjectsDash = () => {
 
   useEffect(() => {
     if (documents) {
-      const categories = ["all", "assigned", "development", "design", "marketing", "product", "research", "sales"];
+      const categories = ["all", "assigned", "design", "development", "marketing", "product", "research", "sales"];
   
       const categorizedProjects = categories.reduce((acc, category) => {
         switch (category) {
@@ -38,8 +38,8 @@ const ProjectsDash = () => {
               project.assignedUsersList.some((u) => u.id === user.uid)
             );
             break;
-          case "development":
           case "design":
+          case "development":
           case "marketing":
           case "product":
           case "research":
@@ -60,13 +60,65 @@ const ProjectsDash = () => {
   const getSortedProjectsForCurrentFilter = () => {
     const currentProjects = sortedProjects[currFilter];
     if (currentProjects) {
+      let sortedProjects = [...currentProjects];
+
       if (sortNamesAsc) {
-        return [...currentProjects].sort((a, b) => a.name.localeCompare(b.name));
+        sortedProjects = [...currentProjects].sort((a, b) => a.name.localeCompare(b.name));
       } else {
-        return [...currentProjects].sort((a, b) => b.name.localeCompare(a.name));
+        sortedProjects = [...currentProjects].sort((a, b) => b.name.localeCompare(a.name));
       }
+
+      if (!sortStatusAsc) {
+        const sortOpenInProgressClosed = [...currentProjects].sort((a, b) => {
+          const isACompleted = a.isCompleted;
+          const isBCompleted = b.isCompleted;
+          const aHasComments = a.comments && a.comments.length > 0;
+          const bHasComments = b.comments && b.comments.length > 0;
+  
+          if (isACompleted && isBCompleted) {
+            return 0;
+          } else if (isACompleted && !isBCompleted) {
+            return 1;
+          } else if (!isACompleted && isBCompleted) {
+            return -1;
+          } else if (!isACompleted && !isBCompleted) {
+            if (!aHasComments && bHasComments) {
+              return -1;
+            } else if (aHasComments && !bHasComments) {
+              return 1;
+            } else {
+              return 0;
+            }
+          }
+        });
+        sortedProjects = sortOpenInProgressClosed;
+      } else {
+        const sortClosedInProgressOpen = [...currentProjects].sort((a, b) => {
+          const isACompleted = a.isCompleted;
+          const isBCompleted = b.isCompleted;
+          const aHasComments = a.comments && a.comments.length > 0;
+          const bHasComments = b.comments && b.comments.length > 0;
+          
+          if (isACompleted && isBCompleted) {
+            return 0;
+          } else if (isACompleted && !isBCompleted) {
+            return -1;
+          } else if (!isACompleted && isBCompleted) {
+            return 1;
+          } else if (!isACompleted && !isBCompleted) {
+            if (!aHasComments && bHasComments) {
+              return -1;
+            } else if (aHasComments && !bHasComments) {
+              return 1;
+            } else {
+              return 0;
+            }
+          }
+        });
+        sortedProjects = sortClosedInProgressOpen;
     }
-    return [];
+    return sortedProjects;
+  };
   };
 
 
@@ -74,15 +126,11 @@ const ProjectsDash = () => {
     const updatedSortedProjects = { ...sortedProjects };
     updatedSortedProjects[currFilter] = getSortedProjectsForCurrentFilter();
     setSortedProjects(updatedSortedProjects);
-    console.log("---------------------------")
-    console.log("INSIDE HANDLE PROJECT UPDTE:")
-    console.log(sortedProjects)
-    console.log("---------------------------")
   };
 
   useEffect(() => {
     handleProjectsUpdate();
-  }, [currFilter])
+  }, [currFilter, sortNamesAsc, sortStatusAsc])
 
 
   console.log("This is the set sorted projects")
@@ -133,7 +181,7 @@ const handleStatusSort = () => {
         </div>
       </div>
       <div className="collection-container">
-        {/* <div className="project-container">
+        <div className="project-container">
         {sortedProjects && sortedProjects.length === 0 ? <p>*No projects to display*</p> : <h3>All Projects</h3> }
           <table className="project-table">
               <colgroup>
@@ -210,18 +258,19 @@ const handleStatusSort = () => {
               </tr>
               <tbody>
                 {error && <p className="error">{error}</p>}
-                {sortedProjects && 
-                  sortedProjects.map((project) => <ProjectInfo project={project}/>)
+                {sortedProjects[currFilter] && 
+                  sortedProjects[currFilter].map((project) => <ProjectInfo project={project}/>)
                 }
               </tbody>
           </table>
-        </div> */}
+        </div>
       </div>
     </div>
   );
 };
 
 export default ProjectsDash;
+
 
 
 

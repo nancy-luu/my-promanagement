@@ -5,9 +5,6 @@ import ChartComponent from './ChartComponent';
 const ProjectsStats = ({ currFilter, setCurrFilter, changeFilter, projects, error, documents }) => {
     const { openPercent, inProgressPercent, completedPercent } = useProjectStats(projects);
 
-    // console.log('project stats:-----')
-    // console.log(openPercent, inProgressPercent, completedPercent);
-
     const data = [
         { value: openPercent },
         { value: inProgressPercent },

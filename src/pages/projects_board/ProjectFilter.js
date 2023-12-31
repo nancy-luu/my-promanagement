@@ -1,5 +1,5 @@
 
-const filterList = ['all', 'assigned', 'development', 'design', 'marketing', 'product', 'research', 'sales']
+const filterList = ['all', 'assigned', 'design', 'development', 'marketing', 'product', 'research', 'sales']
 
 export default function ProjectFilter({ currFilter, changeFilter }) {
 
