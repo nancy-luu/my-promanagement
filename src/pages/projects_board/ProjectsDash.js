@@ -20,8 +20,11 @@ const ProjectsDash = () => {
 
   const [currFilter, setCurrFilter] = useState("all");
   const [sortedProjects, setSortedProjects] = useState({});
+  const [activeSort, setActiveSort] = useState("none");
   const [sortNamesAsc, setSortNamesAsc] = useState(false);
   const [sortStatusAsc, setSortStatusAsc] = useState(false);
+  const [sortDateDsc, setSortDateDsc] = useState(false);
+  const [sortOwnerAsc, setSortOwnerAsc] = useState(false);
 
 
   useEffect(() => {
@@ -60,16 +63,22 @@ const ProjectsDash = () => {
   const getSortedProjectsForCurrentFilter = () => {
     const currentProjects = sortedProjects[currFilter];
     if (currentProjects) {
-      let sortedProjects = [...currentProjects];
+      let sortedProjectsCopy = [...currentProjects];
 
-      if (sortNamesAsc) {
-        sortedProjects = [...currentProjects].sort((a, b) => a.name.localeCompare(b.name));
-      } else {
-        sortedProjects = [...currentProjects].sort((a, b) => b.name.localeCompare(a.name));
-      }
+         // Make copies for sorting individually
+    let sortedByName = [...currentProjects];
+    let sortedByStatus = [...currentProjects];
+    let sortedByDate = [...currentProjects];
+      
+    if (sortNamesAsc) {
+      sortedByName.sort((a, b) => a.name.localeCompare(b.name));
+    } else {
+      sortedByName.sort((a, b) => b.name.localeCompare(a.name));
+    }
 
+  
       if (!sortStatusAsc) {
-        const sortOpenInProgressClosed = [...currentProjects].sort((a, b) => {
+        sortedByStatus.sort((a, b) => {
           const isACompleted = a.isCompleted;
           const isBCompleted = b.isCompleted;
           const aHasComments = a.comments && a.comments.length > 0;
@@ -91,14 +100,13 @@ const ProjectsDash = () => {
             }
           }
         });
-        sortedProjects = sortOpenInProgressClosed;
       } else {
-        const sortClosedInProgressOpen = [...currentProjects].sort((a, b) => {
+        sortedByStatus.sort((a, b) => {
           const isACompleted = a.isCompleted;
           const isBCompleted = b.isCompleted;
           const aHasComments = a.comments && a.comments.length > 0;
           const bHasComments = b.comments && b.comments.length > 0;
-          
+  
           if (isACompleted && isBCompleted) {
             return 0;
           } else if (isACompleted && !isBCompleted) {
@@ -115,11 +123,36 @@ const ProjectsDash = () => {
             }
           }
         });
-        sortedProjects = sortClosedInProgressOpen;
+      }
+  
+      if (!sortDateDsc) {
+        sortedByDate.sort((a, b) => b.dueDate - a.dueDate);
+      } else {
+        sortedByDate.sort((a, b) => a.dueDate - b.dueDate);
+      }
+
+      if (!sortOwnerAsc) {
+        const sortedProjectNamesAsc = [...sortedProjectsCopy].sort((a, b) => a.createdBy.displayName.localeCompare(b.createdBy.displayName));
+        sortedProjectsCopy = sortedProjectNamesAsc
+      } else {
+        const sortedProjectNamesDsc = [...sortedProjectsCopy].sort((a, b) => b.createdBy.displayName.localeCompare(a.createdBy.displayName));
+        sortedProjectsCopy = sortedProjectNamesDsc
+      }
+
+      switch (activeSort) {
+        case "name":
+          return sortedByName;
+        case "status":
+          return sortedByStatus;
+        case "date":
+          return sortedByDate;
+        default:
+          return sortedProjectsCopy;
+      }
     }
-    return sortedProjects;
+    return [];
   };
-  };
+  
 
 
   const handleProjectsUpdate = () => {
@@ -130,16 +163,23 @@ const ProjectsDash = () => {
 
   useEffect(() => {
     handleProjectsUpdate();
-  }, [currFilter, sortNamesAsc, sortStatusAsc])
+  }, [currFilter, sortNamesAsc, sortStatusAsc, sortDateDsc, sortOwnerAsc])
 
 
-  console.log("This is the set sorted projects")
-  console.log(sortedProjects);
-  console.log('\n')
+  // console.log("This is the set sorted projects")
+  // console.log(sortedProjects);
+  // console.log('\n')
 
-  console.log('This is curr filter')
-  console.log(currFilter)
-  console.log('\n')
+  // console.log('This is curr filter')
+  // console.log(currFilter)
+  // console.log('\n')
+
+  console.log("----------------")
+  console.log("Sort names state: " + sortNamesAsc)
+  console.log("Sort status state: " + sortStatusAsc)
+  console.log("Sort date state: " + sortDateDsc)
+  console.log("\n")
+
   
 
 const changeFilter = (newFilter) => {
@@ -148,11 +188,24 @@ const changeFilter = (newFilter) => {
 
 const handleNameSort = () => {
   setSortNamesAsc((prev) => !prev); 
+  setActiveSort("name")
 };
 
 const handleStatusSort = () => {
   setSortStatusAsc((prev) => !prev); 
+  setActiveSort("status")
 };
+
+const handleDateSort = () => {
+  setSortDateDsc((prev) => !prev);
+  setActiveSort("date")
+}
+
+const handleOwnerSort = () => {
+  setSortOwnerAsc((prev) => !prev);
+  setActiveSort("owner")
+
+}
 
 
   return (
@@ -222,6 +275,7 @@ const handleStatusSort = () => {
                       className="sort-icon"
                       src={SortIcon}
                       alt="sort icon"
+                      onClick={handleDateSort}
                     ></img>
                   </div>
                 </th>
@@ -232,17 +286,13 @@ const handleStatusSort = () => {
                       className="sort-icon"
                       src={SortIcon}
                       alt="sort icon"
+                      onClick={handleOwnerSort}
                     ></img>
                   </div>
                 </th>
                 <th>
                   <div className="header-segment">
                     Team
-                    <img 
-                      className="sort-icon"
-                      src={SortIcon}
-                      alt="sort icon"
-                    ></img>
                   </div>
                 </th>
                 <th>
