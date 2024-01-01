@@ -25,6 +25,7 @@ const ProjectsDash = () => {
   const [sortStatusAsc, setSortStatusAsc] = useState(false);
   const [sortDateDsc, setSortDateDsc] = useState(false);
   const [sortOwnerAsc, setSortOwnerAsc] = useState(false);
+  const [sortDepartmentAsc, setSortDepartmentAsc] = useState(false);
 
 
   useEffect(() => {
@@ -63,27 +64,27 @@ const ProjectsDash = () => {
   const getSortedProjectsForCurrentFilter = () => {
     const currentProjects = sortedProjects[currFilter];
     if (currentProjects) {
+      // Copies for sorting individually
       let sortedProjectsCopy = [...currentProjects];
-
-         // Make copies for sorting individually
-    let sortedByName = [...currentProjects];
-    let sortedByStatus = [...currentProjects];
-    let sortedByDate = [...currentProjects];
-      
-    if (sortNamesAsc) {
-      sortedByName.sort((a, b) => a.name.localeCompare(b.name));
-    } else {
-      sortedByName.sort((a, b) => b.name.localeCompare(a.name));
-    }
-
-  
+      let sortedByName = [...currentProjects];
+      let sortedByStatus = [...currentProjects];
+      let sortedByDate = [...currentProjects];
+      let sortedByOwner = [...currentProjects];
+      let sortedByDepartment = [...currentProjects];
+        
+      if (sortNamesAsc) {
+        sortedByName.sort((a, b) => a.name.localeCompare(b.name));
+      } else {
+        sortedByName.sort((a, b) => b.name.localeCompare(a.name));
+      }
+    
       if (!sortStatusAsc) {
         sortedByStatus.sort((a, b) => {
           const isACompleted = a.isCompleted;
           const isBCompleted = b.isCompleted;
           const aHasComments = a.comments && a.comments.length > 0;
           const bHasComments = b.comments && b.comments.length > 0;
-  
+
           if (isACompleted && isBCompleted) {
             return 0;
           } else if (isACompleted && !isBCompleted) {
@@ -106,7 +107,7 @@ const ProjectsDash = () => {
           const isBCompleted = b.isCompleted;
           const aHasComments = a.comments && a.comments.length > 0;
           const bHasComments = b.comments && b.comments.length > 0;
-  
+
           if (isACompleted && isBCompleted) {
             return 0;
           } else if (isACompleted && !isBCompleted) {
@@ -124,19 +125,23 @@ const ProjectsDash = () => {
           }
         });
       }
-  
+
       if (!sortDateDsc) {
         sortedByDate.sort((a, b) => b.dueDate - a.dueDate);
       } else {
         sortedByDate.sort((a, b) => a.dueDate - b.dueDate);
       }
 
-      if (!sortOwnerAsc) {
-        const sortedProjectNamesAsc = [...sortedProjectsCopy].sort((a, b) => a.createdBy.displayName.localeCompare(b.createdBy.displayName));
-        sortedProjectsCopy = sortedProjectNamesAsc
+      if (sortOwnerAsc) {
+        sortedByOwner.sort((a, b) => a.createdBy.displayName.localeCompare(b.createdBy.displayName));
       } else {
-        const sortedProjectNamesDsc = [...sortedProjectsCopy].sort((a, b) => b.createdBy.displayName.localeCompare(a.createdBy.displayName));
-        sortedProjectsCopy = sortedProjectNamesDsc
+        sortedByOwner.sort((a, b) => b.createdBy.displayName.localeCompare(a.createdBy.displayName));
+      }
+
+      if (sortDepartmentAsc) {
+        sortedByDepartment.sort((a, b) => a.category.localeCompare(b.category));
+      } else {
+        sortedByDepartment.sort((a, b) => b.category.localeCompare(a.category));
       }
 
       switch (activeSort) {
@@ -146,6 +151,12 @@ const ProjectsDash = () => {
           return sortedByStatus;
         case "date":
           return sortedByDate;
+        case "owner":
+          return sortedByOwner;
+        case "department":
+          console.log("DEPARTMENT PROJECTS")
+          console.log(sortedByDepartment)
+          return sortedByDepartment;
         default:
           return sortedProjectsCopy;
       }
@@ -153,7 +164,6 @@ const ProjectsDash = () => {
     return [];
   };
   
-
 
   const handleProjectsUpdate = () => {
     const updatedSortedProjects = { ...sortedProjects };
@@ -163,24 +173,8 @@ const ProjectsDash = () => {
 
   useEffect(() => {
     handleProjectsUpdate();
-  }, [currFilter, sortNamesAsc, sortStatusAsc, sortDateDsc, sortOwnerAsc])
+  }, [currFilter, sortNamesAsc, sortStatusAsc, sortDateDsc, sortOwnerAsc, sortDepartmentAsc])
 
-
-  // console.log("This is the set sorted projects")
-  // console.log(sortedProjects);
-  // console.log('\n')
-
-  // console.log('This is curr filter')
-  // console.log(currFilter)
-  // console.log('\n')
-
-  console.log("----------------")
-  console.log("Sort names state: " + sortNamesAsc)
-  console.log("Sort status state: " + sortStatusAsc)
-  console.log("Sort date state: " + sortDateDsc)
-  console.log("\n")
-
-  
 
 const changeFilter = (newFilter) => {
   setCurrFilter(newFilter);
@@ -204,7 +198,11 @@ const handleDateSort = () => {
 const handleOwnerSort = () => {
   setSortOwnerAsc((prev) => !prev);
   setActiveSort("owner")
+}
 
+const handleDepartmentSort = () => {
+  setSortDepartmentAsc((prev) => !prev);
+  setActiveSort("department")
 }
 
 
@@ -252,7 +250,7 @@ const handleOwnerSort = () => {
                     <img 
                       className="sort-icon"
                       src={SortIcon}
-                      alt="sort icon"
+                      alt="name sort icon"
                       onClick={handleNameSort}
                     ></img>
                   </div>
@@ -263,7 +261,7 @@ const handleOwnerSort = () => {
                     <img 
                       className="sort-icon"
                       src={SortIcon}
-                      alt="sort icon"
+                      alt="status sort icon"
                       onClick={handleStatusSort}
                     ></img>
                   </div>
@@ -274,7 +272,7 @@ const handleOwnerSort = () => {
                     <img 
                       className="sort-icon"
                       src={SortIcon}
-                      alt="sort icon"
+                      alt="date sort icon"
                       onClick={handleDateSort}
                     ></img>
                   </div>
@@ -285,7 +283,7 @@ const handleOwnerSort = () => {
                     <img 
                       className="sort-icon"
                       src={SortIcon}
-                      alt="sort icon"
+                      alt="owner sort icon"
                       onClick={handleOwnerSort}
                     ></img>
                   </div>
@@ -301,7 +299,8 @@ const handleOwnerSort = () => {
                     <img 
                       className="sort-icon"
                       src={SortIcon}
-                      alt="sort icon"
+                      alt="department sort icon"
+                      onClick={handleDepartmentSort}
                     ></img>
                   </div>
                 </th>
