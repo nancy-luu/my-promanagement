@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useMemo } from "react";
 import { useCollection } from "../../hooks/useCollection";
 import { useAuthContext } from "../../hooks/useAuthContext";
 import { NavLink } from "react-router-dom";
@@ -60,7 +60,6 @@ const ProjectsDash = () => {
     }
   }, [documents, user.uid]);
 
-
   const getSortedProjectsForCurrentFilter = () => {
     const currentProjects = sortedProjects[currFilter];
     if (currentProjects) {
@@ -78,6 +77,7 @@ const ProjectsDash = () => {
         sortedByName.sort((a, b) => b.name.localeCompare(a.name));
       }
     
+
       if (!sortStatusAsc) {
         sortedByStatus.sort((a, b) => {
           const isACompleted = a.isCompleted;
@@ -115,9 +115,9 @@ const ProjectsDash = () => {
           } else if (!isACompleted && isBCompleted) {
             return 1;
           } else if (!isACompleted && !isBCompleted) {
-            if (!aHasComments && bHasComments) {
+            if (aHasComments && !bHasComments) {
               return -1;
-            } else if (aHasComments && !bHasComments) {
+            } else if (!aHasComments && bHasComments) {
               return 1;
             } else {
               return 0;
@@ -126,17 +126,20 @@ const ProjectsDash = () => {
         });
       }
 
+
       if (!sortDateDsc) {
         sortedByDate.sort((a, b) => b.dueDate - a.dueDate);
       } else {
         sortedByDate.sort((a, b) => a.dueDate - b.dueDate);
       }
 
+
       if (sortOwnerAsc) {
         sortedByOwner.sort((a, b) => a.createdBy.displayName.localeCompare(b.createdBy.displayName));
       } else {
         sortedByOwner.sort((a, b) => b.createdBy.displayName.localeCompare(a.createdBy.displayName));
       }
+
 
       if (sortDepartmentAsc) {
         sortedByDepartment.sort((a, b) => a.category.localeCompare(b.category));
@@ -319,86 +322,3 @@ const handleDepartmentSort = () => {
 };
 
 export default ProjectsDash;
-
-
-
-
-
-
-
-// 
-  // const projects = changedProjects
-  //   ? changedProjects.filter((project) => {
-  //       switch (currFilter) {
-  //         case "all":
-  //           return true;
-  //         case "assigned":
-  //           let assigned = false;
-  //           project.assignedUsersList.forEach((u) => {
-  //             if (u.id === user.uid) {
-  //               assigned = true;
-  //             }
-  //           });
-  //           return assigned
-  //         case "development":
-  //         case "design":
-  //         case "marketing":
-  //         case "product":
-  //         case "research":
-  //         case "sales":
-  //           return project.category === currFilter;
-  //         default:
-  //           return true;
-  //       }
-  //     })
-  //   : null
-  // ;
-
-
-  // const sortedProjectsByName = projects
-  // ? [...projects].sort((a, b) => {
-  //     if (!sortNamesAsc) {
-  //       return a.name.localeCompare(b.name); 
-  //     } else {
-  //       return b.name.localeCompare(a.name); 
-  //     }
-  //   })
-  // : null;
-
-  // const handleProjectSort = () => {
-  //   if(sortProjectsDsc){
-  //     const sortedUserByProjectCount = [...sortedUserDocuments].sort((a, b) => {
-  //       const projectsA = projectDocuments.filter((projectDoc) =>
-  //         projectDoc.assignedUsersList.some((userObj) => userObj.displayName === a.displayName)
-  //       );
-  //       const projectCountA = projectsA.length;
-    
-  //       const projectsB = projectDocuments.filter((projectDoc) =>
-  //         projectDoc.assignedUsersList.some((userObj) => userObj.displayName === b.displayName)
-  //       );
-  //       const projectCountB = projectsB.length;
-    
-  //       return projectCountB - projectCountA; 
-  //     });
-    
-  //     setSortedUserDocuments(sortedUserByProjectCount);
-  //     setSortProjectsDsc(false)
-  //   } else {
-  //     const sortedUserByProjectCount = [...sortedUserDocuments].sort((a, b) => {
-  //       const projectsA = projectDocuments.filter((projectDoc) =>
-  //         projectDoc.assignedUsersList.some((userObj) => userObj.displayName === a.displayName)
-  //       );
-  //       const projectCountA = projectsA.length;
-    
-  //       const projectsB = projectDocuments.filter((projectDoc) =>
-  //         projectDoc.assignedUsersList.some((userObj) => userObj.displayName === b.displayName)
-  //       );
-  //       const projectCountB = projectsB.length;
-    
-  //       return projectCountA - projectCountB; 
-  //     });
-    
-  //     setSortedUserDocuments(sortedUserByProjectCount);
-  //     setSortProjectsDsc(true)
-  //   }
-  // };

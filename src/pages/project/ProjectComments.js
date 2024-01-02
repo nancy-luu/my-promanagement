@@ -34,38 +34,43 @@ export default function ProjectComments({ project }) {
     }
 
   return (
-    <div className="project-comments">
-      <h4>Project Updates:</h4>
+    <div className="project-comments-wrapper">
+        <div className="project-comments">
+        <h4>Project Updates:</h4>
+            <ul>
+                {project.comments.length > 0 && project.comments.map((comment) => (
+                    <div key={comment.id} className="project-comment">
+                        <div className="comment-author">
+                            <span className="avatar-wrapper">
+                                <Avatar src={comment.photoURL}/>
+                            </span>
+                            <div className="comment-details">
+                                <div className="author-details">
+                                    <h4>{comment.displayName}</h4>
+                                    <p>{formatDistanceToNow(comment.createdAt.toDate(), { addSuffix: true })}</p>
+                                </div>
+                                <div className="comment">
+                                    <p>{comment.content}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                ))}
+            </ul>
 
-        <ul>
-            {project.comments.length > 0 && project.comments.map((comment) => (
-                <li key={comment.id} className="project-comment">
-                    <div className="comment-author">
-                        <Avatar src={comment.photoURL}/>
-                        <p>{comment.displayName}</p>
-                    </div>
-                    <div className="comment-date">
-                        <p>{formatDistanceToNow(comment.createdAt.toDate(), { addSuffix: true })}</p>
-                    </div>
-                    <div className="comment-content">
-                        <p>{comment.content}</p>
-                    </div>
-                </li>
-            ))}
-        </ul>
-
-      <form className="add-comment" onSubmit={handleSubmit}>
-        <label>
-            <textarea
-                required
-                className="custom-textarea"
-                placeholder='Give your update...'
-                onChange={(e) => setNewComment(e.target.value)}
-                value={newComment}
-            ></textarea>
-        </label>
-        <button className="btn">Add</button>
-      </form>
+        <form className="add-comment" onSubmit={handleSubmit}>
+            <label>
+                <textarea
+                    required
+                    className="custom-textarea"
+                    placeholder='Add a comment...'
+                    onChange={(e) => setNewComment(e.target.value)}
+                    value={newComment}
+                ></textarea>
+            </label>
+            <button className="btn">Add</button>
+        </form>
+        </div>
     </div>
   )
 }

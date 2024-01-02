@@ -11,10 +11,10 @@
   --form-background-color: #4b4b4b50;
   --primary-color: #FF6525;
   --secondary-color: #FFEE53;
-  --third-color: #7521FF;
+  --third-color: #390095;
   --highlight-color: #ff9f21;
   --heading-color: #a9a9a9;
-  --text-color: #dddddd;
+  --text-color: #c3c3c3;
   --outer-radius: 10px;
   --inner-radius: 5px;
 }
@@ -53,18 +53,18 @@ ul {
   display: inline-block;
 }
 .btn {
-  background: #121420;
+  background: var(--bg-color);
+  border: .75px solid rgba(79, 79, 79, 0.444);
+  color: #c3c3c3;
   padding: 8px 12px;
   border-radius: 4px;
-  color: #fff;
   cursor: pointer;
   font-size: 1em;
-  border: .75px solid rgba(79, 79, 79, 0.444);
 }
 .btn:hover {
-  color: #fff;
-  background-color: var(--highlight-color);
+  background: var(--third-color);
   border: .75px solid rgba(79, 79, 79, 0.444);
+  color: #c3c3c3;
 }
 
 /* forms */

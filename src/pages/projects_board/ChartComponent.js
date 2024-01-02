@@ -1,15 +1,16 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useMemo } from "react";
 import drawChart from "./drawChart";
 
 const DonutChart = ({ data }) => {
   const ref = useRef(null);
 
+  const memoizedData = useMemo(() => data, [data]);
+
   useEffect(() => {
     if (ref.current) {
-      drawChart(ref.current, data);
+      drawChart(ref.current, memoizedData);
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [data]);
+  }, [memoizedData]);
 
   return (
     <div className="container">
@@ -18,4 +19,4 @@ const DonutChart = ({ data }) => {
   );
 };
 
-export default React.memo(DonutChart);
+export default DonutChart;
