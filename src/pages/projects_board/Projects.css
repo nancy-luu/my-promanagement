@@ -223,27 +223,27 @@ textarea[type=text]:focus
 }
 
 td .Open {
-    width: 60px;
-    padding: 5px;
+    display: inline-block;
+    padding: 5px 10px;
     border-radius: 30px;
     background-color: var(--secondary-color);
     color: black;
 }
 
 td .In {
-    width: 90px;
-    padding: 5px;
+    display: inline-block;
+    padding: 5px 10px;
     border-radius: 30px;
     background-color: var(--primary-color);
 }
 
 
 td .Complete {
-    color: var(--text-color);
-    width: 80px;
-    padding: 5px;
+    display: inline-block;
+    padding: 5px 10px;
     border-radius: 30px;
     background-color: var(--third-color);
+    color: var(--text-color);
 }
 
 .online-dot {

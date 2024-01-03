@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import { statusHelper } from '../../util/statusHelper';
 
 // components
 import Avatar from "../../components/Avatar";
@@ -7,20 +8,6 @@ import Avatar from "../../components/Avatar";
 import "./Projects.css";
 
 export default function ProjectInfo ({ project }) {
-
-  const projectStat = (p) => {
-    let status;
-    if(!p.isCompleted && p.comments.length === 0) {
-      status = "• Open";
-    } else if (!p.isCompleted && p.comments.length > 0) {
-      status = "• In Progress"
-    } else if (project.isCompleted){
-      status = "• Complete"
-    } else {
-      status = "Unknown"
-    }
-    return status;
-  }
 
   return (
     <tr className="project-info">
@@ -33,7 +20,7 @@ export default function ProjectInfo ({ project }) {
       </td>
       <td className="project-status">
           <Link to={`/projects/${project.id}`}>
-                <div className={projectStat(project)}>{projectStat(project)}</div>
+                <div className={statusHelper(project)}>• {statusHelper(project)}</div>
           </Link>
       </td>
       <td className="project-due">

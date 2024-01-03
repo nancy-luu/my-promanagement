@@ -11,27 +11,82 @@
     margin: 10px;
 }
 
+
+/* PROJECT SUMMARY ---------------------------------- */
+
 .project-summary {
     padding: 20px;
 }
 
-.project-summary .due-date {
-    margin: 10px 0;
-    font-size: 0.9em;
+.project-summary > * {
+    display: flex;
+    margin-bottom: 20px;
 }
 
-.project-summary .details {
-    line-height: 1.8em;
-    font-size: 0.9em;
+.title-section {
+    flex-direction: column;
 }
 
-.project-summary h4 {
-    font-size: 0.9em;
+.project-breakdown h4 {
+    margin-bottom: 5px;
+}
+
+.project-breakdown > * {
+    margin-right: 10px;
+    align-items: center;
+}
+
+.project-breakdown .due-date-section p {
+    display: inline-block;
+    padding: 5px 10px;
+    border-radius: 30px;
+    background-color: var(--bg-secondary-color);
+    color: var(--text-color);
+}
+
+.project-category {
+    display: inline-block;
+    padding: 5px 10px;
+    border-radius: 30px;
+    background-color: var(--bg-secondary-color);
+    color: var(--text-color);
+}
+
+.project-breakdown .Open {
+    display: inline-block;
+    padding: 5px 10px;
+    border-radius: 30px;
+    background-color: var(--secondary-color);
+    color: black;
+}
+
+.project-summary .In {
+    display: inline-block;
+    padding: 5px 10px;
+    padding: 5px;
+    border-radius: 30px;
+    background-color: var(--primary-color);
+}
+
+.project-summary .Complete {
+    display: inline-block;
+    padding: 5px 10px;
+    color: var(--text-color);
+    width: 80px;
+    border-radius: 30px;
+    background-color: var(--third-color);
 }
 
 .project-summary .assigned-users {
     display: flex;
-    margin-top: 20px;
+    flex-direction: column;
+    Margin-bottom: 20px;
+    padding: 10px 0px;
+    border-bottom: .75px solid rgba(79, 79, 79, 0.444);
+}
+
+.assigned-users .users-avatars{
+    display: flex;
 }
 
 .project-summary .assigned-users .avatar {
@@ -40,9 +95,18 @@
     height: 30px;
 }
 
-.project-summary .btn {
-    margin-top: 20px;
+.description-section {
+    flex-direction: column;
 }
+
+.project-buttons {
+    display: flex;
+    gap: 5px;
+    margin-top: 10px
+}
+
+/* PROJECT COMMENTS ---------------------------------- */
+
 
 .project-comments-wrapper {
     border-top: .75px solid #ffffff25;
@@ -58,14 +122,10 @@
 }
 
 .project-comments textarea {
-    max-width: 520px;
+    max-width: 1fr;
     min-height: 40px;
     font-family: Poppins, sans-serif !important;
     color: var(--text-color)
-}
-
-.project-comments h4 {
-    color: var(--heading-color);
 }
 
 .projects-comments li {
@@ -104,7 +164,6 @@
 .author-details > * {
     padding-right: 10px;
 }
-
 
 
 .author-details p {
