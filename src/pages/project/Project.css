@@ -8,7 +8,10 @@
     border-style: solid;
     border: .75px solid rgba(79, 79, 79, 0.444);
     padding: 5px 0px;
-    margin: 10px;
+    margin: 10px auto; /* Auto margins horizontally center the component */
+    max-width: 800px; /* Set maximum width as needed */
+    min-width: 300px; /* Set minimum width as needed */
+    width: 100%;
 }
 
 
@@ -185,3 +188,18 @@
     
 }
 
+
+
+/* Media query for smaller screens */
+@media screen and (max-width: 768px) {
+    .project-details {
+        max-width: 90%; /* Adjust maximum width for smaller screens */
+    }
+}
+
+/* Media query for even smaller screens */
+@media screen and (max-width: 480px) {
+    .project-details {
+        max-width: 100%; /* Adjust maximum width for smaller screens */
+    }
+}

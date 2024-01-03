@@ -1,22 +1,19 @@
 .prioritylist-container {
-  padding: 10px;
   border-radius: var(--outer-radius);
   color: var(--text-color);
   background: linear-gradient(to bottom, #2929297f, #2929297f) padding-box,
   linear-gradient(to top, #6262623b, #03000e22) border-box;
   border-style: solid;
   border: .75px solid rgba(79, 79, 79, 0.444);
-}
-
-.prioritylist-container h3 {
-  padding-left: 10px;
+  padding: 10px;
 }
 
 .task-form {
-  margin: 10px;
-  padding: 10px;
   display: flex;
+  flex-direction: column;
   justify-content: space-between;
+  padding: 10px;
+  margin: 10px 0px;
   border-radius: var(--inner-radius);
   background: linear-gradient(to bottom, #29292938, #03000e22) padding-box,
   linear-gradient(to top, #5e5e5e75, #03000e22) border-box;

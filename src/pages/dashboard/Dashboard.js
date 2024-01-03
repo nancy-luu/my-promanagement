@@ -20,11 +20,11 @@ const Dashboard = () => {
       </div>
       <div className="small-cal">
         <SmallCalendar />
-      </div>
+      </div>      
       <div className="tasks">
         <PriorityTasks />
       </div>
-      <div className="commens">
+      <div className="comments">
         <NewCommentsList projects={myProjects} />
       </div>
       <div className="collabs">

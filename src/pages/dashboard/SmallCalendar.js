@@ -64,7 +64,7 @@ const SmallCalendar = () => {
   }
 
   return (
-    <div>
+    <div className="small-calender-wrapper">
         <div className="small-calendar-container">
             <div className="month-name-form">
                 <h3>

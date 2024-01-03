@@ -25,15 +25,12 @@ const NewComment = ({ comment }) => {
                     <Avatar src={comment.photoURL} /> 
                 </div>
                 <div className="comment-info">
-                    <div className="comment-createdBy">
+                    <p>
                         {comment.displayName} - {commentProject && <>{commentProject.name}</>}
-                    </div>
+                    </p>
                     <div className="comment-content">
                         "{commentPreview}..."
                     </div>
-                </div>
-                <div className="comment-arrow">
-                    <img className="arrow" src={ArrowIcon} alt="arrow icon" />
                 </div>
             </div>
         )}

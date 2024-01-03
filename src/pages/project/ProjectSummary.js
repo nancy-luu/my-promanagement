@@ -24,7 +24,6 @@ export default function ProjectSummary({ project }) {
   };
 
   return (
-    <div>
       <div className="project-summary">
         <div className="title-section">
           <h3>{project.name}</h3>
@@ -85,6 +84,5 @@ export default function ProjectSummary({ project }) {
           </div>
         </div>
       </div>
-    </div>
   );
 }
