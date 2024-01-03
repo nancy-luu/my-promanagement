@@ -9,9 +9,10 @@ import Collaborators from "./Collaborators";
 
 // styles
 import "./Dashboard.css";
+import MyProjectsList from "./MyProjectsList";
 
 const Dashboard = () => {
-  const { myProjects } = useMyProjects();
+  const { myProjects, openProjects, inProgressProjects, completedProject } = useMyProjects();
 
   return (
     <div className="dashboard-container">
@@ -26,6 +27,9 @@ const Dashboard = () => {
       </div>
       <div className="comments">
         <NewCommentsList projects={myProjects} />
+      </div>
+      <div className="my-projects">
+        <MyProjectsList openProjects={openProjects} inProgressProjects={inProgressProjects} completedProject={completedProject}/>
       </div>
       <div className="collabs">
         <Collaborators />

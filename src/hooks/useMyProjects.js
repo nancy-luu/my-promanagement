@@ -14,9 +14,11 @@ export const useMyProjects = () => {
     ;
         
     const openProjects = myProjects.filter(project => {return project.isCompleted === false && project.comments.length === 0});
-    
+
     const inProgressProjects = myProjects.filter(project => project.comments && project.comments.length > 0);
+    
     const completedProject = myProjects.filter(project => project.isCompleted)
+
     const projectCount = myProjects.length;
 
 
