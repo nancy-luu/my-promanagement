@@ -8,7 +8,7 @@ import CalendarIcon from "../assets/calendar.png";
 import TeamIcon from "../assets/team.png";
 
 
-export default function Sidebar() {
+export default function Sidebar({ sidebarToggle, OpenSideBar}) {
 
   return (
     <div className="sidebar">

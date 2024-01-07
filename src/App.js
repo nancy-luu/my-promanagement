@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { BrowserRouter, Route, Switch, Redirect } from "react-router-dom";
 import { useAuthContext } from "./hooks/useAuthContext";
 
@@ -24,17 +25,22 @@ import Meeting from "./pages/meeting/MeetingInfo";
 import MeetingInfo from "./pages/meeting/MeetingInfo";
 
 function App() {
+  const [sidebarToggle, setSidebarToggle] = useState(false)
   const { user, authIsReady } = useAuthContext();
 
+  const OpenSideBar = () => {
+    setSidebarToggle(!sidebarToggle)
+  }
+
   return (
-    <div className="App">
+    <div className="app">
       {/* we'll only render when authIsReady from userAuthContext */}
         {authIsReady && (
           <BrowserRouter>
-          {authIsReady && <Navbar />}
-          <div className="main-content">
-            {user && <Sidebar />}
-            <div className="container">
+          {authIsReady && <Navbar OpenSideBar={OpenSideBar}/>}
+          <div className="main">
+            {user && <Sidebar sidebarToggle={sidebarToggle} OpenSideBar={OpenSideBar} />}
+            <div className="content">
               <Switch>
                 <Route exact path="/">
                   {!user && <Redirect to="/login" />}

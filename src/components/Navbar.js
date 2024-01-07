@@ -12,7 +12,7 @@ import './Navbar.css'
 import Logo from '../assets/logo.png'
 import SearchBar from '../pages/projects_board/SearchBar';
 
-export default function Navbar() {
+export default function Navbar({ OpenSideBar }) {
   const { documents, error } = useCollection("projects");
   const [query, setQuery] = useState([]);
 
