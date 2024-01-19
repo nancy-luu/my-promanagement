@@ -7,8 +7,8 @@ import Navbar from "./components/Navbar";
 import Sidebar from "./components/Sidebar";
 import ProjectsDash from "./pages/projects_board/ProjectsDash";
 import Create from "./pages/create/Create";
-import Login from "./pages/login/Login";
-import Signup from "./pages/signup/Signup";
+import Login from "./pages/login-signup/Login";
+import Signup from "./pages/login-signup/Signup";
 import Project from "./pages/project/Project";
 import TeamDash from "./pages/team_board/TeamDash";
 import UserProfile from "./pages/team/UserProfile";
@@ -42,7 +42,15 @@ function App() {
             {user && <Sidebar sidebarToggle={sidebarToggle} OpenSideBar={OpenSideBar} />}
             <div className="content">
               <Switch>
-                <Route exact path="/">
+                <Route path="/login">
+                    {user && <Redirect to="/" />}
+                    {!user && <Login />}
+                </Route>
+                <Route path="/signup">
+                  {user && <Redirect to="/" />}
+                  {!user && <Signup />}
+                </Route>
+                {/* <Route exact path="/">
                   {!user && <Redirect to="/login" />}
                   {user && <Dashboard />}
                 </Route>
@@ -81,20 +89,12 @@ function App() {
                 <Route path="/projects/:id">
                   {!user && <Redirect to="/login" />}
                   {user && <Project />}
-                </Route>
-                <Route path="/login">
-                  {user && <Redirect to="/" />}
-                  {!user && <Login />}
-                </Route>
-                <Route path="/signup">
-                  {user && <Redirect to="/" />}
-                  {!user && <Signup />}
-                </Route>
+                </Route> */}
               </Switch>
               {authIsReady && <BackToTop />}
             </div>
           </div>
-              {authIsReady && <Footer />}
+              {/* {authIsReady && <Footer />} */}
           </BrowserRouter>
         )}
     </div>

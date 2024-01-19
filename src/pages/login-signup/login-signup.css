@@ -1,7 +1,6 @@
 .auth-form {
-    display: flex;
-    flex-direction: column;
-    max-width: 600px;
+    min-width: 400px;
+    max-width: 500px;
     margin: 50px auto;
     padding: 20px;
     box-sizing: border-box;
@@ -45,4 +44,11 @@
 
 .category-select {
     width: 100%;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+    .auth-form {
+        max-width: 95%; /* Adjust max-width for smaller screens */
+    }
 }

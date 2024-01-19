@@ -10,10 +10,8 @@ body {
 
 .main {
   display: flex;
+  justify-content: center;
+  align-items: center;
   flex-grow: 1; /* Allow the content to grow and take remaining space */
   /* overflow: hidden; Hide any overflowing content */
-}
-
-.App .container{
-  flex-grow: 1;
 }

@@ -36,11 +36,11 @@
     letter-spacing: 1px;
     display: flex;
     align-items: center;
+    justify-content: center;
     margin-right: auto;
 }
 
 .navbar .logo img {
-    margin: 0px 10px;
     filter: invert(25%);
     width: 30px;
     margin-top: -8px;

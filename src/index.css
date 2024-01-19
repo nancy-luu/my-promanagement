@@ -26,13 +26,17 @@ body {
   font-family: Poppins, sans-serif;
   margin: 0;
   font-size: 14px;
-  background-size: 100%;
   /* background: var(--bg-color); */
+  /* background-size: 100%;
   background: radial-gradient(circle at left, #ae4619, #5e260e, #0b0707, #0b0707), 
   radial-gradient(circle at bottom right, #25086d, #100431, #0b0707, #0b0707);
   background-size: 50% 100%, 50% 100%;
   background-position: left, right;
-  background-repeat: no-repeat;
+  background-repeat: no-repeat; */
+  background-image: url('assets/bg-image3.jpg');
+  background-attachment: fixed; 
+  background-size: cover; 
+  background-position: 69%;
 }
 body::-webkit-scrollbar{
   display: none;
@@ -85,6 +89,16 @@ input, textarea {
   border: 1px solid #ddd;
   border-radius: 4px;
 }
+
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="password"]:focus {
+    transition: transform 2s ease-in;
+    border: 2px solid var(--highlight-color);
+    outline: none;
+}
+
+
 textarea {
   min-height: 160px;
 }

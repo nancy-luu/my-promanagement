@@ -10,6 +10,8 @@ import Avatar from './Avatar';
 // styles and images
 import './Navbar.css'
 import Logo from '../assets/logo.png'
+import MenuIcon from '../assets/menu-icon.png'
+
 import SearchBar from '../pages/projects_board/SearchBar';
 
 export default function Navbar({ OpenSideBar }) {
@@ -27,11 +29,13 @@ export default function Navbar({ OpenSideBar }) {
       <ul>
         <li className="logo">
             <img src={Logo} alt="promanagemt logo" />
-            <span>ProManagement</span>
+            <span>My ProManagement</span>
+            {/* <img src={MenuIcon} alt="promanagemt logo" /> */}
         </li>
 
         {!user && <Link to="/login">Login</Link>}
         {!user && <Link to="/signup">Signup</Link>}
+        
 
         {user && (
           <div className="left-nav-container">
