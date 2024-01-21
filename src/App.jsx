@@ -4,25 +4,26 @@ import { useAuthContext } from "./hooks/useAuthContext";
 
 // components
 import Navbar from "./components/Navbar";
-import Sidebar from "./components/Sidebar";
+import Sidebar from "./layout/Sidebar/Sidebar";
+import Login from "./pages/login-signup/Login";
+import Signup from "./pages/login-signup/Signup";
 import ProjectsDash from "./pages/projects_board/ProjectsDash";
 import Create from "./pages/create/Create";
-import Login from "./pages/login/Login";
-import Signup from "./pages/signup/Signup";
 import Project from "./pages/project/Project";
+import Meeting from "./pages/meeting/MeetingInfo";
+import MeetingInfo from "./pages/meeting/MeetingInfo";
+import CreateMeeting from "./pages/calendar/CreateMeeting";
 import TeamDash from "./pages/team_board/TeamDash";
+import DepartmentTeamInfo from "./pages/team_board/DepartmentTeamInfo";
 import UserProfile from "./pages/team/UserProfile";
 import Dashboard from "./pages/dashboard/Dashboard";
 import CalendarDash from "./pages/calendar/CalendarDash";
-import CreateMeeting from "./pages/calendar/CreateMeeting";
+import Footer from "./components/Footer";
+import BackToTop from "./components/BackToTop";
 
 //styles
 import "./App.css";
-import Footer from "./components/Footer";
-import BackToTop from "./components/BackToTop";
-import DepartmentTeamInfo from "./pages/team_board/DepartmentTeamInfo";
-import Meeting from "./pages/meeting/MeetingInfo";
-import MeetingInfo from "./pages/meeting/MeetingInfo";
+import Content from "./layout/Content/Content";
 
 function App() {
   const [sidebarToggle, setSidebarToggle] = useState(false)
@@ -31,18 +32,35 @@ function App() {
   const OpenSideBar = () => {
     setSidebarToggle(!sidebarToggle)
   }
+  console.log('user:', user);
+  console.log('authIsReady:', authIsReady);
 
   return (
     <div className="app">
-      {/* we'll only render when authIsReady from userAuthContext */}
-        {authIsReady && (
+
           <BrowserRouter>
-          {authIsReady && <Navbar OpenSideBar={OpenSideBar}/>}
-          <div className="main">
-            {user && <Sidebar sidebarToggle={sidebarToggle} OpenSideBar={OpenSideBar} />}
-            <div className="content">
-              <Switch>
-                <Route exact path="/">
+                {authIsReady && user ? (
+                  <>
+                    <Sidebar sidebarToggle={sidebarToggle} OpenSideBar={OpenSideBar} /> 
+                    <Content />
+                  </>
+                  ):(
+                    <></>
+                  )
+                }
+                <Switch>
+                {/* {!user && <Link to="/login">Login</Link>}
+                    {!user && <Link to="/signup">Signup</Link>} */}
+                  <Route path="/signup">
+                    {authIsReady && !user ? <Signup /> : <></>}
+                  </Route>
+                  <Route path="/login">
+                    {authIsReady && !user ? <Login /> : null}
+                  </Route>
+                </Switch>
+              {authIsReady && <BackToTop />}
+          </BrowserRouter>
+                {/* <Route exact path="/home">
                   {!user && <Redirect to="/login" />}
                   {user && <Dashboard />}
                 </Route>
@@ -81,22 +99,8 @@ function App() {
                 <Route path="/projects/:id">
                   {!user && <Redirect to="/login" />}
                   {user && <Project />}
-                </Route>
-                <Route path="/login">
-                  {user && <Redirect to="/" />}
-                  {!user && <Login />}
-                </Route>
-                <Route path="/signup">
-                  {user && <Redirect to="/" />}
-                  {!user && <Signup />}
-                </Route>
-              </Switch>
-              {authIsReady && <BackToTop />}
-            </div>
-          </div>
-              {authIsReady && <Footer />}
-          </BrowserRouter>
-        )}
+                </Route> */}
+              {/* {authIsReady && <Footer />} */}
     </div>
   );
 }

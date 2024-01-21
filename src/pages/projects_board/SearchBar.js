@@ -26,7 +26,7 @@ const SearchBar = ({ data, query, setQuery }) => {
   const clearInput = () => {
     setQuery([])
     setInputValue("")
-  }
+  } 
 
   return (
     <div className="search-bar">

@@ -3,9 +3,9 @@ import { useSignup } from "../../hooks/useSignup";
 import { categories } from "../../util/categories";
 
 // styles
-import "./Signup.css";
+import "./login-signup.css";
 import Select from "react-select";
-
+ 
 export default function Signup() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -63,27 +63,30 @@ export default function Signup() {
           <div className="form-left">
             <label>
               <input
-                required
+                className="input-control"
                 placeholder="Display Name"
                 type="text"
+                required
                 onChange={(e) => setDisplayName(e.target.value)}
                 value={displayName}
               ></input>
             </label>
             <label>
               <input
-                required
+                className="input-control"
                 placeholder="Email"
                 type="email"
+                required
                 onChange={(e) => setEmail(e.target.value)}
                 value={email}
               ></input>
             </label>
             <label>
               <input
-                required
+                className="input-control"
                 placeholder="Password"
                 type="password"
+                required
                 onChange={(e) => setPassword(e.target.value)}
                 value={password}
               ></input>
@@ -112,9 +115,10 @@ export default function Signup() {
             </label>
             <label>
               <input
-                required
+                className="input-control"
                 placeholder="Role"
                 type="text"
+                required
                 onChange={(e) => setRole(e.target.value)}
                 value={role}
               ></input>
@@ -129,6 +133,7 @@ export default function Signup() {
                   Upload Image
                 </button>
                 <input
+                  className="input-control"
                   ref={fileInputRef}
                   type="file"
                   style={{ display: "none" }}
