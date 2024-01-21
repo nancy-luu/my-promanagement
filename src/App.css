@@ -4,14 +4,11 @@ body {
 
 .app {
   display: flex;
-  flex-direction: column; /* Arrange children vertically */
   min-height: 100vh; /* Ensure the content stretches to fill the screen */
 }
 
 .main {
   display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-grow: 1; /* Allow the content to grow and take remaining space */
+
   /* overflow: hidden; Hide any overflowing content */
 }

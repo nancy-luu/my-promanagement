@@ -1,8 +1,16 @@
-import dashboard from "../assets/dashboard/dashboard_icon.png";
-import projects from "../assets/dashboard/projects_icon.png";
-import calendar from "../assets/dashboard/calendar.png";
-import team from "../assets/dashboard/team.png";
+import logo from "../assets/sidebar/logo.png";
+import dashboard from "../assets/sidebar/dashboard_icon.png";
+import projects from "../assets/sidebar/projects_icon.png";
+import calendar from "../assets/sidebar/calendar.png";
+import team from "../assets/sidebar/team.png";
+import menu from "../assets/navbar/menu-icon.png";
+
+
 
 export const sideBarImgs = {
-    dashboard, projects, calendar, team
+    logo, dashboard, projects, calendar, team
+}
+
+export const navbarImgs = {
+    menu
 }
