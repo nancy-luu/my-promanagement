@@ -5,7 +5,7 @@ import { useMyProjects } from '../../hooks/useMyProjects';
 
 // styles
 import './Overview.css'
-import BookmarkModal from "./BookmarkModal";
+import BookmarkedProjects from "./BookmarkedProjects";
 
 const Overview = () => {    
     const { openProjects, completedProject, inProgressProjects, projectCount, myProjects } = useMyProjects();
@@ -28,10 +28,7 @@ const Overview = () => {
             </div>
         </div>
         <div className="bookmarks-container">
-            <div className="fav-projects">
-                <h4>Bookmarked Projects</h4>
-                <BookmarkModal myProjects={myProjects}/>
-            </div>
+                <BookmarkedProjects myProjects={myProjects}/>
         </div>
     </div>
   )

@@ -40,7 +40,7 @@
 }
 
 .dashboard-container {
-grid-template-areas:
+    grid-template-areas:
     "overview  tasks comments"
     "overview  tasks comments"
     "overview  tasks comments"

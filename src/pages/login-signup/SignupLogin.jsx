@@ -174,7 +174,7 @@ export default function SignupLogin() {
             )}
           </div>
           <div className="signin-option">
-            <h4>Already a member?</h4>
+            <h4>Have an account?</h4>
             <h4
               className="switch-login"
               onClick={() => setSwitchLogin(!switchLogin)}
@@ -224,7 +224,7 @@ export default function SignupLogin() {
             )}
           </div>
           <div className="signin-option">
-            <h4>Not a member?</h4>
+            <h4>Don't have an account?</h4>
             <h4
               className="switch-login"
               onClick={() => setSwitchLogin(!switchLogin)}
