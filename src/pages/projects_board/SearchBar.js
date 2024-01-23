@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import { Link } from "react-router-dom";
 
 // images
@@ -8,6 +8,8 @@ import ExitIcon from "../../assets/exit-search-icon.svg";
 
 const SearchBar = ({ data, query, setQuery }) => {
   const [inputValue, setInputValue] = useState("")
+  const searchRef = useRef(null);
+
 
   const handleSearch = (event) => {
     const searchedWord = event.target.value.toLowerCase();
@@ -28,8 +30,23 @@ const SearchBar = ({ data, query, setQuery }) => {
     setInputValue("")
   } 
 
+  const handleClickOutside = (event) => {
+    if (searchRef.current && !searchRef.current.contains(event.target)) {
+      // Clicked outside the search bar, close the search results
+      setInputValue("")
+      setQuery([]);
+    }
+  };
+
+  useEffect(() => {
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
+
   return (
-    <div className="search-bar">
+    <div className="search-bar" ref={searchRef}>
       <div className="search-inputs">
         <input
           type="text"
@@ -38,9 +55,9 @@ const SearchBar = ({ data, query, setQuery }) => {
           onChange={handleSearch}
         />
         {query.length === 0 ?
-            <img src={SearchIcon} alt="search icon" />
+            <img className="search-icon" src={SearchIcon} alt="search icon" />
             :
-            <img src={ExitIcon} alt="clear search icon" onClick={clearInput}/>
+            <img className="search-icon" src={ExitIcon} alt="clear search icon" onClick={clearInput}/>
         }
       </div>
       <div className="search-result" style={{ display: query.length > 0 ? 'block' : 'none' }}>

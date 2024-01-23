@@ -3,7 +3,6 @@ body {
 }
 
 .app {
-  display: flex;
   min-height: 100vh; /* Ensure the content stretches to fill the screen */
 }
 
@@ -11,4 +10,8 @@ body {
   display: flex;
 
   /* overflow: hidden; Hide any overflowing content */
+}
+
+.accessed-app {
+  display: flex;
 }

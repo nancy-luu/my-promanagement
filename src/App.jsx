@@ -24,6 +24,7 @@ import BackToTop from "./components/BackToTop";
 //styles
 import "./App.css";
 import Content from "./layout/Content/Content";
+import Home from "./pages/home/Home";
 
 function App() {
   const [sidebarToggle, setSidebarToggle] = useState(false)
@@ -40,22 +41,19 @@ function App() {
 
           <BrowserRouter>
                 {authIsReady && user ? (
-                  <>
+                  <div className="accessed-app">
                     <Sidebar sidebarToggle={sidebarToggle} OpenSideBar={OpenSideBar} /> 
                     <Content />
-                  </>
+                  </div>
                   ):(
                     <></>
                   )
                 }
                 <Switch>
-                {/* {!user && <Link to="/login">Login</Link>}
-                    {!user && <Link to="/signup">Signup</Link>} */}
-                  <Route path="/signup">
-                    {authIsReady && !user ? <Signup /> : <></>}
+                  <Route path="/">
+                    {authIsReady && !user ? <Home /> : <></>}
                   </Route>
                   <Route path="/login">
-                    {authIsReady && !user ? <Login /> : null}
                   </Route>
                 </Switch>
               {authIsReady && <BackToTop />}

@@ -98,7 +98,8 @@
 
 @media screen and (max-width: 420px) {
     .sidebar {
-      margin-left: -72px;
+      margin-left: -100px;
+      min-height: 100vh; 
     }
     .sidebar-change {
       margin-left: 0px;
