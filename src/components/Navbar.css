@@ -155,9 +155,15 @@ input {
 
 }
 
-@media screen and (max-width: 420px) {
+@media screen and (max-width: 430px) {
+    .main-content-top{
+        display: flex;
+        justify-content: start;
+        min-width: 430px;
+    }
+
     .search-inputs{
-        width: 95%;
+        width: 70%;
     }
     .user-content h4{
         display: none;
@@ -166,4 +172,38 @@ input {
         display: none;
     }
 
+    .content-top-right{
+        gap: 10px;
+    }
+
+    .user-content{
+        display: none;
+    }
+
+} 
+
+@media screen and (max-width: 390px) {
+    .main-content-top{
+        display: flex;
+        justify-content: start;
+        min-width: 150px;
+    }
+
+    .search-inputs{
+        width: 70%;
+    }
+    .user-content h4{
+        display: none;
+    }
+    .search-icon{
+        display: none;
+    }
+
+    .content-top-right{
+        gap: 10px;
+    }
+
+    .user-content{
+        display: none;
+    }
 } 

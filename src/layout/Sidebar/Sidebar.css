@@ -61,14 +61,14 @@
 
 }
 
-@media screen and (max-width: 1200px) {
+@media screen and (max-width: 1024px) {
     .sidebar {
         width: 72px;
         padding-left: 12px;
         padding-right: 12px;
     }
     .sidebar-change {
-        margin-left: -72px;
+        margin-left: -100px;
     }
     .info-name {
         display: none;
@@ -96,13 +96,12 @@
     }
 }
 
-@media screen and (max-width: 420px) {
+@media screen and (max-width: 430px) {
     .sidebar {
-      margin-left: -100px;
       min-height: 100vh; 
     }
     .sidebar-change {
-      margin-left: 0px;
+      margin-left: -75px;
     }
 }
 

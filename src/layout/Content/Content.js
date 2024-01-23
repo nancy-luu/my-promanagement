@@ -1,5 +1,7 @@
 import React from 'react'
-import Navbar from '../../components/Navbar'
+import Navbar from '../../components/Navbar';
+import { Route } from "react-router-dom";
+
 
 import './Content.css'
 import Dashboard from '../../pages/dashboard/Dashboard'
@@ -8,7 +10,9 @@ const Content = () => {
   return (
     <div className="main-content">
       <Navbar />
-      <Dashboard />
+      <Route path="/dashboard">
+        <Dashboard />
+      </Route>
     </div>
   )
 }

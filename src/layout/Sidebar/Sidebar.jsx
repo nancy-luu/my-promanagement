@@ -34,7 +34,9 @@ export default function Sidebar({ }) {
           {navigationLinks.map((nav) => (
             <li className="nav-item" key = {nav.id}>
               <NavLink 
-                className={`nav-link ${ nav.id === activeLinkIdx ? 'active' : null }`}
+                // className={`nav-link ${ nav.id === activeLinkIdx ? 'active' : null }`}
+                className="nav-link"
+                activeClassName="active"
                 exact to={nav.path}>
                 <img src={nav.image} alt={nav.title} className="nav-link-icon"/>
                 <span className="nav-link-text">{nav.title}</span>
