@@ -40,8 +40,8 @@
 }
 
 .home-img {
-    width: 300px;
-    height: 300px;
+    width: 350px;
+    height: 350px;
 }
 
 .home-img img {
@@ -58,4 +58,104 @@
 
 .switch-login:hover {
     color: var(--primary-color)
+}
+
+
+/* Responsiveness */
+
+@media screen and (max-width: 800px){
+
+    .home-content {
+        display: flex;
+        flex-direction: column;
+        padding: 0px 20px;
+    }
+
+    .home-left-content {
+        background: rgb(255, 255, 255);
+        padding: 20px;
+        border-radius: 20px;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+    }
+
+    .home-img {
+        width: 300px;
+        height: 300px;
+    }
+    
+    .home-img img {
+        width: 100%;
+    }
+
+    .home-right-content {
+        width: 100%; /* Set the same width as home-left-content */
+    }
+}
+
+@media screen and (max-width: 430px){
+
+    .home-content {
+        display: flex;
+        flex-direction: column;
+        padding: 0px 20px;
+        margin:20px;
+        min-width: 200px;
+    }
+
+    .home-left-content {
+        background: rgb(255, 255, 255);
+        padding: 20px;
+        border-radius: 20px;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+    }
+
+    .home-img {
+        width: 300px;
+        height: 300px;
+    }
+    
+    .home-img img {
+        width: 100%;
+    }
+
+    .home-right-content {
+        width: 100%; /* Set the same width as home-left-content */
+    }
+}
+
+@media screen and (max-width: 390px){
+
+    .home-content {
+        display: flex;
+        flex-direction: column;
+        padding: 0px 20px;
+        margin:20px;
+        min-width: 200px;
+    }
+
+    .home-left-content {
+        background: rgb(255, 255, 255);
+        padding: 20px;
+        border-radius: 20px;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+    }
+
+    .home-img {
+        width: 300px;
+        height: 300px;
+    }
+    
+    .home-img img {
+        width: 100%;
+    }
+
+    .home-right-content {
+        width: 100%; /* Set the same width as home-left-content */
+    }
 }

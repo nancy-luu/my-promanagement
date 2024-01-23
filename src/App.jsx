@@ -5,8 +5,7 @@ import { useAuthContext } from "./hooks/useAuthContext";
 // components
 import Navbar from "./components/Navbar";
 import Sidebar from "./layout/Sidebar/Sidebar";
-import Login from "./pages/login-signup/Login";
-import Signup from "./pages/login-signup/Signup";
+import SignupLogin from "./pages/login-signup/SignupLogin";
 import ProjectsDash from "./pages/projects_board/ProjectsDash";
 import Create from "./pages/create/Create";
 import Project from "./pages/project/Project";
@@ -52,8 +51,6 @@ function App() {
                 <Switch>
                   <Route path="/">
                     {authIsReady && !user ? <Home /> : <></>}
-                  </Route>
-                  <Route path="/login">
                   </Route>
                 </Switch>
               {authIsReady && <BackToTop />}
