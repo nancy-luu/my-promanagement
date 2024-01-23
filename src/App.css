@@ -8,7 +8,6 @@ body {
 
 .main {
   display: flex;
-
   /* overflow: hidden; Hide any overflowing content */
 }
 

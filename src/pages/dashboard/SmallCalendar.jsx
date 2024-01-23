@@ -10,18 +10,14 @@ import MeetingsList from './MeetingsList'
 import "./SmallCalendar.css";
 import CalArrow from '../../assets/cal-arrow-hover.png';
 
-const SmallCalendar = () => {
+const SmallCalendar = ({dateForComparison,setDateForComparison, currentDate, selectedDateObj, setSelectedDateObj}) => {
   const days = ["S", "M", "T", "W", "T", "F", "S"];
-
-  const currentDate = dayjs();
 
   const [thisMonth, setThisMonth] = useState(currentDate);
   const [calendarDays, setCalendarDays] = useState(generateDate());
   const [selectedDay, setSelectedDay] = useState();
   const [selectedMonth, setSelectedMonth] = useState();
-  const [selectedYear, setSelectedYear] = useState();
-  const [selectedDateObj, setSelectedDateObj] = useState({day: currentDate.$D, month: months[currentDate.month()], year: currentDate.$y});    
-  const [dateForComparison, setDateForComparison] = useState(currentDate)
+  const [selectedYear, setSelectedYear] = useState();  
   
   const changeCalendar = (x) => {
     let newMonth = thisMonth.month() + x;
@@ -131,11 +127,6 @@ const SmallCalendar = () => {
                 })}
             </div>
         </div>
-        <MeetingsList 
-            dateForComparison={dateForComparison}
-            selectedDateObj={selectedDateObj}
-            calendarDays={calendarDays} 
-        />
     </div>
   );
 };

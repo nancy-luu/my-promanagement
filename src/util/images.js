@@ -5,6 +5,8 @@ import calendar from "../assets/sidebar/calendar.png";
 import team from "../assets/sidebar/team.png";
 import menu from "../assets/navbar/menu-icon.png";
 import home from "../assets/home/home-img.png";
+import add from "../assets/dashboard/add-icon.png";
+
 
 
 export const homeImgs = {
@@ -17,4 +19,8 @@ export const sideBarImgs = {
 
 export const navbarImgs = {
     menu
+}
+
+export const dashboardImgs = {
+    add
 }

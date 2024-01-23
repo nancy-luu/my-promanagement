@@ -1,14 +1,33 @@
-.overview-container {
+.over-view-wrapper {
   display: flex;
+  flex-direction: column;
   padding: 20px;
   border-radius: var(--outer-radius);
   background: linear-gradient(to bottom, #2929297f, #2929297f) padding-box,
-    linear-gradient(to top, #6262623b, #03000e22) border-box;
+  linear-gradient(to top, #6262623b, #03000e22) border-box;
   border-style: solid;
   border: .75px solid rgba(79, 79, 79, 0.444);
 }
 
+.overview-container {
+  display:flex;
+  border-bottom: solid 1px #ffffff25;}
+
 .completed-stack,
 .progress-stack {
   padding-right: 20px;
+}
+
+.bookmarks-container{
+  margin-top: 10px;
+}
+
+.fav-projects {
+  display: flex;
+  justify-content: space-between;
+}
+
+.add-bookmark-btn{
+  width: 20px;
+  height: 20px;
 }
