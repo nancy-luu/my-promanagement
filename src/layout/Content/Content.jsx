@@ -6,6 +6,7 @@ import { Route } from "react-router-dom";
 import './Content.css'
 import Dashboard from '../../pages/dashboard/Dashboard'
 import CalendarDash from '../../pages/calendar/CalendarDash';
+import CreateMeeting from '../../pages/calendar/CreateMeeting';
 
 
 const Content = () => {
@@ -18,6 +19,9 @@ const Content = () => {
         </Route>
         <Route exact path="/calendar">
           <CalendarDash />
+        </Route>
+        <Route path="/createEvent">
+          <CreateMeeting />
         </Route>
       </div>
     </div>

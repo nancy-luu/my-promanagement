@@ -3,7 +3,7 @@ import { NavLink } from "react-router-dom";
 // components
 import BigCalendar from "./BigCalendar";
 
-// styles
+// styles 
 import "./CalendarDash.css";
 
 const CalendarDash = () => {

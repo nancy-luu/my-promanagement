@@ -15,7 +15,6 @@ const CreateMeeting = () => {
   const { documents } = useCollection("users");
   const { user } = useAuthContext();
   const { addMeetingDocument, response } = useFirestore("meetings");
-  const { addTest, response: testResponse } = useFirestore("test");
 
   const history = useHistory();
 

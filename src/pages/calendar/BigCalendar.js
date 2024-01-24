@@ -35,20 +35,20 @@ const BigCalendar = () => {
   );
 
   const CustomToolbar = (toolbar) => {
-
-    // console.log(toolbar)
  
     return (
       <div className="rbc-toolbar">
-        <span className="rbc-btn-group">
-          <span className="rbc-btn-today">
-            <button type="button" onClick={() => toolbar.onNavigate('TODAY')}>Today</button>
+        <div className="today-arrows">
+          <span className="rbc-btn-group">
+            <span className="rbc-btn-today">
+              <button type="button" onClick={() => toolbar.onNavigate('TODAY')}>Today</button>
+            </span>
           </span>
-        </span>
-        <span className="rbc-btn-group">
-            <button className="btn-arrows" type="button" onClick={() => toolbar.onNavigate('PREV')}>{'<'}</button>
-            <button className="btn-arrows" type="button" onClick={() => toolbar.onNavigate('NEXT')}>{'>'}</button>
-        </span>
+          <span className="rbc-btn-group">
+              <button className="btn-arrows" type="button" onClick={() => toolbar.onNavigate('PREV')}>{'<'}</button>
+              <button className="btn-arrows" type="button" onClick={() => toolbar.onNavigate('NEXT')}>{'>'}</button>
+          </span>
+        </div>
           <span className="rbc-toolbar-label">
             {toolbar.label}
           </span>

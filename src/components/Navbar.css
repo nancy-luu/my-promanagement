@@ -16,6 +16,10 @@
     gap: 20px;
 }
 
+.content-top-right {
+    padding-right: 10px;
+}
+
 .sidebar-toggler {
     padding-left: 10px;
     width: 30px;
@@ -155,7 +159,8 @@ input {
     }
     
     .main-content-top {
-      width: 1200px;
+        padding: 0px;
+      width: 100%;
     }
 }
 

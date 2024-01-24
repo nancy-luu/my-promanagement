@@ -3,7 +3,6 @@
 }
 
 .calendar-dash-container {
-    margin: 10px;
     color: white;
     font-family: Poppins, sans-serif !important;
     /* font-size: bold; */
@@ -34,7 +33,6 @@
 .rbc-toolbar button:hover {
     background: rgba(79, 79, 79, 0.444) !important;
 }
-
 
 .rbc-header {
     background: rgba(50, 17, 168, 0.612);
@@ -227,4 +225,29 @@
 
 .flatpickr-am-pm {
     background-color: var(--primary-background-color) !important;
+}
+
+
+@media screen and (max-width: 430px) {
+    .big-calendar-container{
+        width: 370px;
+    }
+
+  .rbc-toolbar{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+}
+
+@media screen and (max-width: 390px) {
+    .big-calendar-container{
+        width: 330px;
+    }
+
+  .rbc-toolbar{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
 }
