@@ -143,8 +143,10 @@
 
 /* CREATE EVENT FORM ------------------------------------ */
 .create-event-wrapper{
-    display: grid;
-    grid-template-columns: 1fr 1fr
+    display: flex;
+    max-width: 100%;
+    justify-content: center;
+    align-items: center;
 }
 
 .create-event-container {
@@ -155,6 +157,7 @@
     linear-gradient(to top, #6262623b, #03000e22) border-box;
     border-style: solid;
     border: .75px solid rgba(79, 79, 79, 0.444);
+    max-width: 500px;
 }
 
 
@@ -250,4 +253,10 @@
     flex-direction: column;
     gap: 10px;
   }
+
+  .start-end-input-container{
+    display: flex;
+    flex-direction: column;
+  }
+  
 }

@@ -11,9 +11,17 @@
 .content-top-left,
 .content-top-right {
     display: flex;
-    justify-content: center;
     align-items: center;
     gap: 20px;
+    flex: 1;
+}
+
+.content-top-left {
+    justify-content: flex-start;
+}
+
+.content-top-right {
+    justify-content: flex-end;
 }
 
 .content-top-right {

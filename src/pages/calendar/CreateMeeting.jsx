@@ -111,7 +111,7 @@ const CreateMeeting = () => {
                           }}
                           onChange={(selectedDates) => setStart(selectedDates[0])}
                           />
-                      <p>to</p>
+                    <p>to</p>
                       <Flatpickr
                           value={end}
                           options={{
