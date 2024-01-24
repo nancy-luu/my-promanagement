@@ -8,7 +8,7 @@ const ProjectsStats = ({ currFilter, setCurrFilter, changeFilter, projects, erro
     const data = [
         { value: openPercent },
         { value: inProgressPercent },
-        { value: completedPercent }
+        { value: completedPercent } 
     ];
 
     const formattedOpenPercent = openPercent.toFixed(0);
@@ -16,7 +16,7 @@ const ProjectsStats = ({ currFilter, setCurrFilter, changeFilter, projects, erro
     const formattedCompletedPercent = completedPercent.toFixed(0);
 
   return (
-    <div className="status-container">
+    <div className="status-container grid-one-item grid-common">
         <h3 className="status-title">Status</h3>
         <div className="status-form">
           <div className="percent-container">

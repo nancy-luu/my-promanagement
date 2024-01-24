@@ -1,8 +1,8 @@
 import { useState, useEffect } from "react";
-import { dashboardImgs } from "../../util/images";
-import { useAuthContext } from "../../hooks/useAuthContext";
-import { useDocument } from "../../hooks/useDocument";
-import { useFirestore } from "../../hooks/useFirestore";
+import { dashboardImgs } from "../../../util/images";
+import { useAuthContext } from "../../../hooks/useAuthContext";
+import { useDocument } from "../../../hooks/useDocument";
+import { useFirestore } from "../../../hooks/useFirestore";
 import { Link } from "react-router-dom";
 
 //styles
@@ -19,7 +19,7 @@ export default function BookmarkedProjects({ myProjects }) {
   const [bookmarkedProjectsList, setBookmarkedMarkedProjectsList] = useState(
     []
   );
- 
+  
   useEffect(() => {
     if (userData && userData.bookmarkedProjects) {
       setBookmarkedIds(userData.bookmarkedProjects);
@@ -95,26 +95,43 @@ export default function BookmarkedProjects({ myProjects }) {
           <div className="modal-content">
             <div className="modal-header">
               <h4>Choose 3 projects:</h4>
+              <button className="btn" onClick={toggleModal}>
+                X
+              </button>
             </div>
             <div className="modal-body">
-              {myProjects.map((project) => (
-                <div className="bookmark-container">
-                  <input
-                    type="checkbox"
-                    checked={checkedProjects.includes(project.id)}
-                    onChange={() => handleCheckboxChange(project.id)}
-                  />
-                  <p>{project.name}</p>
-                </div>
-              ))}
-              <div className="modal-button-wrapper">
-                <button className="btn" onClick={handleSaveBookmarks}>
-                  Save
-                </button>
-                <button className="btn" onClick={toggleModal}>
-                  X
-                </button>
-              </div>
+              {myProjects.length > 0 ? (
+                <>
+                  {myProjects.map((project) => (
+                    <div className="bookmark-container">
+                      <input
+                        type="checkbox"
+                        checked={checkedProjects.includes(project.id)}
+                        onChange={() => handleCheckboxChange(project.id)}
+                      />
+                        <p>{project.name}</p>
+                    </div>
+                  ))}
+                  <div className="modal-button-wrapper">
+                    <button className="btn" onClick={handleSaveBookmarks}>
+                      Save
+                    </button>
+                  </div>
+                </>
+              )
+               :
+              (
+                <>
+                  <div className="bookmark-container">
+                    <div className="bookmark-link">
+                      <div className="nothing-to-display">
+                        <p>No projects to display</p>
+                        <Link to={"/createProject"}> yet!</Link>
+                      </div>
+                    </div>
+                  </div>
+                </>
+              )}
             </div>
           </div>
         </div>

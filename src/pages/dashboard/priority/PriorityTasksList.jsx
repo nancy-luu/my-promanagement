@@ -1,4 +1,4 @@
-import { useMyProjects } from '../../hooks/useMyProjects';
+import { useMyProjects } from '../../../hooks/useMyProjects';
 import { Link } from 'react-router-dom'
 
 // components
@@ -20,13 +20,24 @@ const PriorityTasks = () => {
     <div className='grid-one-item grid-common grid-c1'>
       <h3>Priority</h3>
       <div className="task-container">
-          {topProjects.map(project => (
-            <Link to={`/projects/${project.id}`} key={project.id}>
-              <div key={project.id}>
-                <PriorityTask project={project}/>
-              </div>
-            </Link>
-          ))}
+        {topProjects.length > 0 ? 
+        (
+          <>
+            {topProjects.map(project => (
+              <Link to={`/projects/${project.id}`} key={project.id}>
+                <div key={project.id}>
+                  <PriorityTask project={project}/>
+                </div>
+              </Link>
+            ))}
+          </>
+        ):(
+          <div className="nothing-to-display">
+            <p>No projects to display</p>
+            <Link to={"/createProject"}> yet!</Link>
+          </div>
+        )
+        }
       </div>
     </div>
   )

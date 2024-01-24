@@ -7,7 +7,7 @@ import Navbar from "./components/Navbar";
 import Sidebar from "./layout/Sidebar/Sidebar";
 import SignupLogin from "./pages/login-signup/SignupLogin";
 import ProjectsDash from "./pages/projects_board/ProjectsDash";
-import Create from "./pages/create/Create";
+import Create from "./pages/projects_board/CreateProject";
 import Project from "./pages/project/Project";
 import Meeting from "./pages/meeting/MeetingInfo";
 import MeetingInfo from "./pages/meeting/MeetingInfo";
@@ -42,7 +42,7 @@ function App() {
                 {authIsReady && user ? (
                   <div className="accessed-app">
                     <Sidebar sidebarToggle={sidebarToggle} OpenSideBar={OpenSideBar} /> 
-                    <Content />
+                    <Content user={user}/>
                   </div>
                   ):(
                     <></>

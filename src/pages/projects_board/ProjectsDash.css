@@ -1,7 +1,6 @@
 .projects-dash-container {
     display:flex;
     flex-direction: column;
-    margin: 10px;
 }
 
 input[type=text]:focus,
@@ -10,7 +9,7 @@ textarea[type=text]:focus
 {
     outline: 2px solid orange;
 }
-
+ 
 /* NAV BAR ------------------- */
 
 .projects-dash-navbar {
@@ -18,7 +17,7 @@ textarea[type=text]:focus
     margin-bottom: 10px;
 }
 
-.projects-dash-navbar button {
+.projects-dash-navbar button{
     margin-right: 10px; 
 }
 
@@ -64,18 +63,15 @@ textarea[type=text]:focus
 .project-stats-comments-container {
     display: grid;
     grid-template-columns: 1fr 2fr;
+    grid-template-rows: 1fr;
+    column-gap: 10px;
 }
 
 
 /* PROJECT STATS ------------- */
 .status-container {
-    padding: 10px 20px 20px 20px;
-    border-radius: var(--outer-radius);
-    background: linear-gradient(to bottom, #2929297f, #2929297f) padding-box,
-      linear-gradient(to top, #6262623b, #03000e22) border-box;
-    border-style: solid;
-    border: .75px solid rgba(79, 79, 79, 0.444);
-    height: 230px;
+    display: flex;
+    flex-direction: column;
 }
 
 .status-container .status-title {

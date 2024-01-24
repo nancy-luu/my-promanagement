@@ -13,7 +13,7 @@ const PriorityTask = ({ project }) => {
   const formattedCurrDate = dueDate.toLocaleDateString(undefined, options);
 
   return (
-    <div className="task-form">
+    <div className="task-form inner-common">
       <div>{project.name}</div>
       <div className={currDate.getTime() > dueDate.getTime() ? "pastDue" : "inProgress"}>
         <div>{formattedCurrDate}</div>

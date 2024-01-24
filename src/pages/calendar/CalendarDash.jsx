@@ -13,7 +13,7 @@ const CalendarDash = () => {
 
   return (
     <div className="calendar-dash-container">
-      <NavLink exact to="/createEvent">
+      <NavLink exact to="/createMeeting">
         <button className="btn" onClick={handleAddEvent}>
           Schedule Meeting
         </button>

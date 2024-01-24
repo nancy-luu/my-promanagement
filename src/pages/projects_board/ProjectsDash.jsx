@@ -6,11 +6,11 @@ import { NavLink } from "react-router-dom";
 // components
 import ProjectFilter from "./ProjectFilter";
 import ProjectsStats from "./ProjectsStats";
-import NewCommentsList from "../dashboard/NewCommentsList";
+import NewCommentsList from "../dashboard/new-comments/NewCommentsList";
 import ProjectInfo from "./ProjectInfo";
 
 // styles and images
-import "./Projects.css";
+import "./ProjectsDash.css";
 import SortIcon from "../../assets/sort-icon.png";
 
 
@@ -211,29 +211,27 @@ const handleDepartmentSort = () => {
 
   return (
     <div className="projects-dash-container">
-      <div className="projects-dash-navbar">
-        <NavLink to="/createProject">
-          <button className="btn">New Project</button>
-        </NavLink>
-        {documents && (
-          <ProjectFilter currFilter={currFilter} changeFilter={changeFilter} />
-        )}
-      </div>
-      <div className="project-stats-comments-container">
-        <div className="stats-tasks-container">
-          <ProjectsStats
-            projects={sortedProjects[currFilter]}
-            documents={documents}
-            error={error}
-            currFilter={currFilter}
-            setCurrFilter={setCurrFilter}
-            changeFilter={changeFilter}
-          />
+        <div className="projects-dash-navbar">
+          <NavLink to="/createProject">
+            <button className="newproject-btn btn">New Project</button>
+          </NavLink>
+          {documents && (
+            <ProjectFilter currFilter={currFilter} changeFilter={changeFilter} />
+          )}
         </div>
-        <div className="new-comments-list-container">
-          {sortedProjects && <NewCommentsList projects={sortedProjects[currFilter]} />}
+        <div className="project-stats-comments-container">
+            <ProjectsStats
+              projects={sortedProjects[currFilter]}
+              documents={documents}
+              error={error}
+              currFilter={currFilter}
+              setCurrFilter={setCurrFilter}
+              changeFilter={changeFilter}
+            />
+          <div className="new-comments-list-container">
+            {sortedProjects && <NewCommentsList projects={sortedProjects[currFilter]} />}
+          </div>
         </div>
-      </div>
       <div className="collection-container">
         <div className="project-container">
         {sortedProjects && sortedProjects.length === 0 ? <p>*No projects to display*</p> : <h3>All Projects</h3> }

@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react"
-import { useMyMeetings } from '../../hooks/useMyMeetings'
+import { useMyMeetings } from '../../../hooks/useMyMeetings'
 import dayjs from 'dayjs';
 import { Link } from "react-router-dom";
 
@@ -29,17 +29,28 @@ const MeetingsList = ({ dateForComparison, selectedDateObj, calendarDays }) => {
     <div className="grid-one-item grid-common grid-c1">
       <h3>Schedule for {selectedDateObj.month} {selectedDateObj.day}, {selectedDateObj.year}</h3>
       <div className="meetings-wrapper">
-        {meetingToRender && meetingToRender.map(m => 
-          <Link to={`meetings/${m.id}`}>
-            <Meeting 
-              // thisMonth={thisMonth} 
-              meeting={m}
-              calendarDays={calendarDays} 
-            />
-          </Link>
-          )
-        }
-        {meetingToRender.length === 0 && <p>No meetings</p>}
+        {meetingToRender.length > 0 ? (
+          <>
+            {meetingToRender && meetingToRender.map(m => 
+              <Link to={`meetings/${m.id}`}>
+                <Meeting 
+                  // thisMonth={thisMonth} 
+                  meeting={m}
+                  calendarDays={calendarDays} 
+                />
+              </Link>
+              )
+            }
+          </>
+          ):(
+          <>
+          <div className="nothing-to-display">
+            <p>No meetings to display</p>
+            <Link to={"/createMeeting"}> yet!</Link>
+          </div>
+          </>
+        )}
+        {/* {meetingToRender.length === 0 && <p>No meetings</p>} */}
       </div>
     </div>
   )

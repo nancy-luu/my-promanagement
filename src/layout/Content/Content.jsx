@@ -1,15 +1,17 @@
 import React from 'react'
 import Navbar from '../../components/Navbar';
-import { Route } from "react-router-dom";
+import { Route } from "react-router-dom"; 
 
 
 import './Content.css'
 import Dashboard from '../../pages/dashboard/Dashboard'
 import CalendarDash from '../../pages/calendar/CalendarDash';
 import CreateMeeting from '../../pages/calendar/CreateMeeting';
+import ProjectsDash from '../../pages/projects_board/ProjectsDash';
+import CreateProject from '../../pages/projects_board/CreateProject';
 
 
-const Content = () => {
+const Content = ({ user }) => {
   return (
     <div className="main-content">
       <Navbar />
@@ -20,8 +22,14 @@ const Content = () => {
         <Route exact path="/calendar">
           <CalendarDash />
         </Route>
-        <Route path="/createEvent">
+        <Route path="/createMeeting">
           <CreateMeeting />
+        </Route>
+        <Route exact path="/projects">
+           <ProjectsDash />
+        </Route>
+        <Route path="/createProject">
+          <CreateProject />
         </Route>
       </div>
     </div>

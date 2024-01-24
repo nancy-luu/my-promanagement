@@ -19,13 +19,6 @@
     display: flex;
     flex-direction: row;
     margin: 10px 0px;
-    padding: 10px;
-    border-radius: var(--inner-radius);
-    background: linear-gradient(to bottom, #29292938, #03000e22) padding-box,
-    linear-gradient(to top, #5e5e5e75, #03000e22) border-box;
-    border-top: solid 1px rgba(115, 115, 115, 0.5);
-    border-left: solid 1px rgba(115, 115, 115, 0.5);
-    border-right: solid 1px rgba(115, 115, 115, 0.5);
 }
 
 .comment-form a {

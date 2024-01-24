@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 import NewComment from "./NewComment";
 
 // styles
-import './NewComment.css'
+import './NewComment.css' 
 
 const NewCommentsList = ({ projects }) => {
 
@@ -21,16 +21,27 @@ const NewCommentsList = ({ projects }) => {
 
   let sortedComments = allComments.flat().sort((a, b) => b.createdAt - a.createdAt).slice(0, 4);
   
-
+ 
   return (
     <div className="grid-one-item grid-common grid-c1">
       <h3>New Comments</h3>
-      {sortedComments.length <= 0 && <p>No new comments to display</p>}
-      {sortedComments.map(comment => (
-        <Link to={`/projects/${comment.projectId}`} key={comment.id}>
-          <NewComment key={comment.createdAt} comment={comment}/>
-        </Link>
-      ))}
+      {/* {sortedComments.length <= 0 && <p>No new comments to display</p>} */}
+      {sortedComments.length > 0 ? (
+        <>
+          {sortedComments.map(comment => (
+            <Link to={`/projects/${comment.projectId}`} key={comment.id}>
+              <NewComment key={comment.createdAt} comment={comment}/>
+            </Link>
+          ))}
+        </>
+        ):(
+        <>
+          <div className="nothing-to-display">
+            <p>No new comments to display</p>
+            <Link to={"/createProject"}> yet!</Link>
+          </div>
+        </>
+      )}
     </div>
   );
 };

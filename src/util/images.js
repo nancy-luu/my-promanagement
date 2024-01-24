@@ -6,6 +6,7 @@ import team from "../assets/sidebar/team.png";
 import menu from "../assets/navbar/menu-icon.png";
 import home from "../assets/home/home-img.png";
 import add from "../assets/dashboard/add-icon.png";
+import calArrow from "../assets/dashboard/cal-arrow-hover.png";
 
 
 
@@ -22,5 +23,5 @@ export const navbarImgs = {
 }
 
 export const dashboardImgs = {
-    add
+    add, calArrow
 }

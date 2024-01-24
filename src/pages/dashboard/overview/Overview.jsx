@@ -1,7 +1,7 @@
 import { useState } from "react";
-import { useAuthContext } from '../../hooks/useAuthContext'
-import { useCollection } from '../../hooks/useCollection'
-import { useMyProjects } from '../../hooks/useMyProjects';
+import { useAuthContext } from '../../../hooks/useAuthContext'
+import { useCollection } from '../../../hooks/useCollection'
+import { useMyProjects } from '../../../hooks/useMyProjects';
 
 // styles
 import './Overview.css'
@@ -23,7 +23,7 @@ const Overview = () => {
             </div>
             <div className="total-stack">
                 <h4>Open</h4>
-                <h1>{openProjects ? openProjects.length : '-'}</h1>
+                <h1>{openProjects.length ? openProjects.length : '-'}</h1>
             </div>
         </div>
     </div>

@@ -4,14 +4,14 @@ import { generateDate, months } from "../../util/generateDate";
 import dayjs from "dayjs";
 
 // components
-import Overview from "./Overview";
-import SmallCalendar from "./SmallCalendar";
-import PriorityTasks from "./PriorityTasksList";
-import NewCommentsList from "./NewCommentsList";
-import Collaborators from "./Collaborators";
-import MeetingsList from "./MeetingsList";
-import BookmarkedProjects from "./BookmarkedProjects";
-
+import Overview from "./overview/Overview";
+import SmallCalendar from "./small-calendar/SmallCalendar";
+import PriorityTasks from "./priority/PriorityTasksList";
+import NewCommentsList from "./new-comments/NewCommentsList";
+import Collaborators from "./collaborators/Collaborators";
+import MeetingsList from "./meeting/MeetingsList";
+import BookmarkedProjects from "./bookmark/BookmarkedProjects";
+ 
 // styles
 import "./Dashboard.css";
 

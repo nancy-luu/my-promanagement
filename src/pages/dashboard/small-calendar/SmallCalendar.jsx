@@ -1,14 +1,10 @@
 import { useState } from "react";
-import { generateDate, months } from "../../util/generateDate";
-import { classNameHelper } from "../../util/classNameHelper";
-import dayjs from "dayjs";
-
-// components
-import MeetingsList from './MeetingsList'
+import { dashboardImgs } from "../../../util/images";
+import { generateDate, months } from "../../../util/generateDate";
+import { classNameHelper } from "../../../util/classNameHelper";
 
 // styles and images
 import "./SmallCalendar.css";
-import CalArrow from '../../assets/cal-arrow-hover.png';
 
 const SmallCalendar = ({dateForComparison,setDateForComparison, currentDate, selectedDateObj, setSelectedDateObj}) => {
   const days = ["S", "M", "T", "W", "T", "F", "S"];
@@ -67,13 +63,13 @@ const SmallCalendar = ({dateForComparison,setDateForComparison, currentDate, sel
                 {months[thisMonth.month()]}, {thisMonth.year()}
                 </h3>
                 <div className="cal-arrow-form">
-                    <img className="cal-arrow-left" src={CalArrow} alt="calendar arrow icon" 
+                    <img className="cal-arrow-left" src={dashboardImgs.calArrow} alt="calendar arrow icon" 
                         onClick={()=> changeCalendar(-1)}
                     />
                     <h4 
                         onClick={()=> returnToToday()}
                     >Today</h4>
-                    <img className="cal-arrow-right" src={CalArrow} alt="calenar arrow icon" 
+                    <img className="cal-arrow-right" src={dashboardImgs.calArrow} alt="calenar arrow icon" 
                         onClick={()=> changeCalendar(+1)}
                     />
                 </div>

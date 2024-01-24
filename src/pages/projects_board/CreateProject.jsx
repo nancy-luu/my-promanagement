@@ -9,10 +9,10 @@ import { convertUTC } from "../../util/convertUTC";
 import Select from "react-select";
 
 //styles
-import "./Create.css";
+import "./CreateProject.css";
 
 
-export default function Create() {
+export default function CreateProject() {
   const [name, setName] = useState("");
   const [details, setDetails] = useState("");
   const [dueDate, setDueDate] = useState("");
