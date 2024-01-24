@@ -253,7 +253,7 @@ export default function TeamDash() {
       setSortCollaborator(false);
     }
     }
-  
+   
 
   return (
     <div className="team-dash">

@@ -47,7 +47,6 @@
 .day-name-form {
     display: grid;
     grid-template-columns: repeat(7, minmax(0, 1fr)); 
-    padding: 0px 10px 0px 10px;
 }
 
 .day-name {
@@ -62,7 +61,6 @@
 .days-form {
     display: grid;
     grid-template-columns: repeat(7, minmax(0, 1fr));
-    padding: 10px 10px 10px 10px;
 }
 
 .day,

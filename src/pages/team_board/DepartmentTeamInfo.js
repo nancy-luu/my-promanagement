@@ -4,7 +4,7 @@ import { useCollection } from "../../hooks/useCollection";
 // styles
 import "./Team.css";
 import TeamMemberCard from "./TeamMemberCard";
-
+ 
 const DepartmentTeamInfo = () => {
   const { department } = useParams();
   const { error, documents: users } = useCollection("users");
@@ -21,16 +21,16 @@ const DepartmentTeamInfo = () => {
   }
 
   return (
-    <div className="department-info-container">
-      <div className="department-header">
-        <h2>{department} Team</h2>
-      </div>
-      <div className="team-members-container">
-        {departmentTeamMembers &&
-          departmentTeamMembers.map((user) => (
-            <TeamMemberCard user={user}/>
-          ))}
-      </div>
+    <div className="department-info-wrapper">
+        <div className="department-header">
+          <h2>{department} Team</h2>
+        </div>
+        <div className="team-members-container">
+          {departmentTeamMembers &&
+            departmentTeamMembers.map((user) => (
+              <TeamMemberCard user={user}/>
+            ))}
+        </div>
     </div>
   );
 };

@@ -15,12 +15,13 @@ html, body, #root {
 
 .accessed-app {
   display: flex;
+  width: 100%;;
 }
 
 /* Common for grid items */
 
 .grid-common {
-  padding: 10px;
+  padding: 12px;
   border-radius: var(--outer-radius);
   background: linear-gradient(to bottom, #2929297f, #2929297f) padding-box,
   linear-gradient(to top, #6262626a, #03000e22) border-box;

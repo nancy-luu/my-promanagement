@@ -6,7 +6,7 @@
     width: 100%;
     box-sizing: border-box;
     color: var(--text-color);
-    background-color: #03000ea6; /* Set the background color you want */
+    background-color: #03000ea6;
     backdrop-filter: blur(20px);
-    z-index: 0; /* Ensure the Navbar is on top of other components */
+    z-index: 0;
 }

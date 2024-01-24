@@ -1,19 +1,19 @@
 import { useState, useContext } from 'react'
-import { SidebarContext } from '../context/SidebarContext';
-import { navbarImgs } from '../util/images';
+import { SidebarContext } from '../../context/SidebarContext';
+import { navbarImgs } from '../../util/images';
 import { Link } from 'react-router-dom'
-import { useLogout } from '../hooks/useLogout'
-import { useAuthContext } from "../hooks/useAuthContext";
-import { useCollection } from "../hooks/useCollection";
+import { useLogout } from '../../hooks/useLogout'
+import { useAuthContext } from "../../hooks/useAuthContext";
+import { useCollection } from "../../hooks/useCollection";
 
 // components
-import Avatar from './Avatar';
+import Avatar from '../../components/Avatar';
 
 // styles and images
 import './Navbar.css'
 
 
-import SearchBar from '../pages/projects_board/SearchBar';
+import SearchBar from '../../pages/projects_board/SearchBar';
 
 export default function Navbar({ OpenSideBar }) {
   const { toggleSidebar } = useContext(SidebarContext); 
