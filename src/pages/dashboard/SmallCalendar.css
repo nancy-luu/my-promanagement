@@ -1,12 +1,6 @@
-.small-calendar-container{
-    background-color: var(--form-background-color);
-    border-radius: var(--outer-radius);
-    padding: 10px 10px 10px 10px;
-    background: linear-gradient(to bottom, #2929297f, #2929297f) padding-box, linear-gradient(to top, #6262623b, #03000e22) border-box;
-    border-style: solid;
-    border: .75px solid rgba(79, 79, 79, 0.444);
-    margin-bottom: 10px;
-}
+/* .small-calendar-container {
+    width: 100%;
+} */
 
 .month-name-form {
     display: flex;

@@ -1,16 +1,29 @@
-body {
+html, body, #root {
+  height: 100%;
   margin: 0;
+  padding: 0;
 }
 
 .app {
-  min-height: 100vh; /* Ensure the content stretches to fill the screen */
+  height: 100%;
+  min-height: 100vh;
 }
-
+ 
 .main {
   display: flex;
-  /* overflow: hidden; Hide any overflowing content */
 }
 
 .accessed-app {
   display: flex;
+}
+
+/* Common for grid items */
+
+.grid-common {
+  padding: 10px;
+  border-radius: var(--outer-radius);
+  background: linear-gradient(to bottom, #2929297f, #2929297f) padding-box,
+  linear-gradient(to top, #6262623b, #03000e22) border-box;
+  border-style: solid;
+  border: .75px solid rgba(79, 79, 79, 0.444);
 }

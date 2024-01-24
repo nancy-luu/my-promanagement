@@ -23,7 +23,7 @@ const NewCommentsList = ({ projects }) => {
   
 
   return (
-    <div className="new-comments-container">
+    <div className="grid-one-item grid-common grid-c1">
       <h3>New Comments</h3>
       {sortedComments.length <= 0 && <p>No new comments to display</p>}
       {sortedComments.map(comment => (

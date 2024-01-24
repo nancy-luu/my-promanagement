@@ -5,14 +5,13 @@ import { useMyProjects } from '../../hooks/useMyProjects';
 
 // styles
 import './Overview.css'
-import BookmarkedProjects from "./BookmarkedProjects";
 
 const Overview = () => {    
     const { openProjects, completedProject, inProgressProjects, projectCount, myProjects } = useMyProjects();
     const [openModal, setOpenModal] = useState(false);
     
   return (
-    <div className="over-view-wrapper">
+    <div className="grid-one-item grid-common grid-c1">
         <div className="overview-container">
             <div className="completed-stack">
                 <h4>Completed</h4>
@@ -27,11 +26,8 @@ const Overview = () => {
                 <h1>{openProjects ? openProjects.length : '-'}</h1>
             </div>
         </div>
-        <div className="bookmarks-container">
-                <BookmarkedProjects myProjects={myProjects}/>
-        </div>
     </div>
   )
-}
+} 
 
 export default Overview

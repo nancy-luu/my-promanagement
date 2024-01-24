@@ -3,7 +3,7 @@ import { useAuthContext } from "../../hooks/useAuthContext";
 import { useCollection } from "../../hooks/useCollection";
 import { useMyProjects } from "../../hooks/useMyProjects";
 
-// components
+// components 
 import Avatar from "../../components/Avatar";
 
 // styles
@@ -39,7 +39,7 @@ const Collaborators = () => {
 
   return (
     <>
-        <div className="collaborators-container">
+        <div className="grid-one-item grid-common grid-c1">
             <h3>Collaborators</h3>
             {/* {error & <div className="error">{error}</div>} */}
             {/* Need to ensure document is not null first */}
@@ -52,8 +52,10 @@ const Collaborators = () => {
                           <div className="collaborator-avatar">
                           <Avatar src={user.photoURL} />
                           </div>
-                          <div className="user-displayname">{user.displayName}</div>
-                          <div className="user-role">{user.role}</div>
+                          <div className="collaborator-detail">
+                            <h4 className="user-displayname">{user.displayName}</h4>
+                            <p className="user-role">{user.role}</p>
+                          </div>
                       </div>
                     </Link>
                     ))}

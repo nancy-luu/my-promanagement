@@ -60,7 +60,7 @@ const SmallCalendar = ({dateForComparison,setDateForComparison, currentDate, sel
   }
 
   return (
-    <div className="small-calender-wrapper">
+    <div className="grid-one-item grid-common grid-c1">
         <div className="small-calendar-container">
             <div className="month-name-form">
                 <h3>

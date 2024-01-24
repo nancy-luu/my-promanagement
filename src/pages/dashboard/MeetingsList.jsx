@@ -12,7 +12,7 @@ import './Meeting.css'
 const MeetingsList = ({ dateForComparison, selectedDateObj, calendarDays }) => {
   const [meetingToRender, setMeetingToRender] = useState([]);
   const { myMeetings } = useMyMeetings();
-
+ 
 
   useEffect(() => {
     if (myMeetings && dateForComparison) {
@@ -26,8 +26,8 @@ const MeetingsList = ({ dateForComparison, selectedDateObj, calendarDays }) => {
 
 
   return (
-    <div className="meetings-container">
-      <h4>Schedule for {selectedDateObj.month} {selectedDateObj.day}, {selectedDateObj.year}</h4>
+    <div className="grid-one-item grid-common grid-c1">
+      <h3>Schedule for {selectedDateObj.month} {selectedDateObj.day}, {selectedDateObj.year}</h3>
       <div className="meetings-wrapper">
         {meetingToRender && meetingToRender.map(m => 
           <Link to={`meetings/${m.id}`}>

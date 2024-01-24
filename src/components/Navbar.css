@@ -2,8 +2,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 10px;
-    padding: 10px;
+    padding: 5px;
     border-bottom: .75px solid rgb(72, 72, 72);
     background-color: #03000ebb; 
     backdrop-filter: blur(20px);
@@ -147,12 +146,17 @@ input {
 
 
 
-@media screen and (max-width: 1400px) {
-
-}
-
-@media screen and (max-width: 1200px) {
-
+@media screen and (min-width: 1500px) {
+    .main-content {
+        flex: 1;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    
+    .main-content-top {
+      width: 1200px;
+    }
 }
 
 @media screen and (max-width: 430px) {

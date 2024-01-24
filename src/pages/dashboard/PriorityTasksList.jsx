@@ -7,7 +7,7 @@ import PriorityTask from './PriorityTask';
 // styles
 import './PriorityTask.css'
 
-
+ 
 const PriorityTasks = () => {
   const { myProjects } = useMyProjects();
 
@@ -17,7 +17,7 @@ const PriorityTasks = () => {
 
 
   return (
-    <div className='prioritylist-container'>
+    <div className='grid-one-item grid-common grid-c1'>
       <h3>Priority</h3>
       <div className="task-container">
           {topProjects.map(project => (
