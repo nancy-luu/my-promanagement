@@ -9,6 +9,7 @@ import CalendarDash from '../../pages/calendar/CalendarDash';
 import CreateMeeting from '../../pages/calendar/CreateMeeting';
 import ProjectsDash from '../../pages/projects_board/ProjectsDash';
 import CreateProject from '../../pages/projects_board/CreateProject';
+import Project from '../../pages/project/Project';
 
 
 const Content = ({ user }) => {
@@ -30,6 +31,9 @@ const Content = ({ user }) => {
         </Route>
         <Route path="/createProject">
           <CreateProject />
+        </Route>
+        <Route path="/projects/:id">
+          <Project />
         </Route>
       </div>
     </div>

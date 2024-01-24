@@ -6,7 +6,7 @@ import Avatar from "../../components/Avatar";
 
 // styles
 import "./ProjectsDash.css";
-
+ 
 export default function ProjectInfo ({ project }) {
 
   return (

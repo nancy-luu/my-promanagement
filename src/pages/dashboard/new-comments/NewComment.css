@@ -14,20 +14,23 @@
     width: 30px;
     height: 30px;
 }
-
+ 
 .comment-form {
     display: flex;
     flex-direction: row;
     margin: 10px 0px;
 }
 
-.comment-form a {
+.grid-one-item a {
     text-decoration: none;
 }
 
-
 .comment-info {
     margin-left: 10px;
+}
+
+.comment-info p {
+    font-weight: bold;
 }
 
 .comment-arrow {

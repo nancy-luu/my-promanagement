@@ -45,7 +45,7 @@ const MeetingsList = ({ dateForComparison, selectedDateObj, calendarDays }) => {
           ):(
           <>
           <div className="nothing-to-display">
-            <p>No meetings to display</p>
+            <p>No meetings to today</p>
             <Link to={"/createMeeting"}> yet!</Link>
           </div>
           </>

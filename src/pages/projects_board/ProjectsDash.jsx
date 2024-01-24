@@ -12,7 +12,7 @@ import ProjectInfo from "./ProjectInfo";
 // styles and images
 import "./ProjectsDash.css";
 import SortIcon from "../../assets/sort-icon.png";
-
+ 
 
 const ProjectsDash = () => {
   const { documents, error } = useCollection("projects");
@@ -210,7 +210,7 @@ const handleDepartmentSort = () => {
 
 
   return (
-    <div className="projects-dash-container">
+    <div className="main-content-container">
         <div className="projects-dash-navbar">
           <NavLink to="/createProject">
             <button className="newproject-btn btn">New Project</button>
@@ -233,7 +233,7 @@ const handleDepartmentSort = () => {
           </div>
         </div>
       <div className="collection-container">
-        <div className="project-container">
+        <div className="grid-common">
         {sortedProjects && sortedProjects.length === 0 ? <p>*No projects to display*</p> : <h3>All Projects</h3> }
           <table className="project-table">
               <colgroup>

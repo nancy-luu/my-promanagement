@@ -19,7 +19,7 @@ export default function BookmarkedProjects({ myProjects }) {
   const [bookmarkedProjectsList, setBookmarkedMarkedProjectsList] = useState(
     []
   );
-  
+   
   useEffect(() => {
     if (userData && userData.bookmarkedProjects) {
       setBookmarkedIds(userData.bookmarkedProjects);
@@ -51,22 +51,29 @@ export default function BookmarkedProjects({ myProjects }) {
   };
 
   const handleSaveBookmarks = async () => {
-    setBookmarkedIds(checkedProjects);
-
     try {
       const response = await updateUserBookmarks(user.uid, {
-        bookmarkedProjects: bookmarkedIds,
+        bookmarkedProjects: checkedProjects,
       });
-
+  
       if (response && response.error) {
         console.log("Failed to update: " + response.error);
       } else {
+        setBookmarkedIds(checkedProjects);
+  
+        const bookmarked = myProjects.filter((project) =>
+          checkedProjects.includes(project.id)
+        );
+  
+        setBookmarkedMarkedProjectsList(bookmarked);
+        
         toggleModal();
       }
     } catch (error) {
       console.log("Error occurred while updating bookmarks: " + error);
     }
   };
+  
 
   return (
     <div className="subgrid-two-item grid-common grid-c1">
@@ -99,7 +106,7 @@ export default function BookmarkedProjects({ myProjects }) {
                 X
               </button>
             </div>
-            <div className="modal-body">
+              <>
               {myProjects.length > 0 ? (
                 <>
                   {myProjects.map((project) => (
@@ -132,7 +139,7 @@ export default function BookmarkedProjects({ myProjects }) {
                   </div>
                 </>
               )}
-            </div>
+            </>
           </div>
         </div>
       </div>

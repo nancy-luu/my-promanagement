@@ -122,12 +122,12 @@ td {
     padding: 10px;
     text-align: left;
     word-break: break-word;
-    border-bottom: 1px solid #cccccc7b;
+    border-bottom: 1px solid #cccccc4d;
 }
 
 th {
-    border-top: 1px solid #cccccc7b;
-    border-bottom: 1px solid #cccccc7b;
+    border-top: 1px solid #cccccc4d;
+    border-bottom: 1px solid #cccccc4d;
 }
 
 

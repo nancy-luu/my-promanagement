@@ -11,7 +11,7 @@ import Select from "react-select";
 //styles
 import "./CreateProject.css";
 
-
+ 
 export default function CreateProject() {
   const [name, setName] = useState("");
   const [details, setDetails] = useState("");
@@ -92,7 +92,7 @@ export default function CreateProject() {
   console.log(users);
 
   return (
-    <div className="create-container">
+    <div className="create-project-wrapper">
       <div className="create-form">
         <h2 className="page-title">Start a new Project:</h2>
         <form onSubmit={handleSubmit}>

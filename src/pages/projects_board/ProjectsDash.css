@@ -1,8 +1,8 @@
-.projects-dash-container {
-    display:flex;
-    flex-direction: column;
+.main-content-container {
+    row-gap: 10px;
+    box-sizing: border-box;
 }
-
+ 
 input[type=text]:focus,
 input[type=date]:focus,
 textarea[type=text]:focus
@@ -65,6 +65,7 @@ textarea[type=text]:focus
     grid-template-columns: 1fr 2fr;
     grid-template-rows: 1fr;
     column-gap: 10px;
+    margin-bottom: 10px;
 }
 
 
@@ -210,8 +211,9 @@ textarea[type=text]:focus
     width: 100%;
     border-collapse: collapse;
     border-radius: var(--inner-radius);
-    border-right: 1px solid #cccccc7b;
-    border-left: 1px solid #cccccc7b;
+    border-right: 1px solid #cccccc4d;
+    border-left: 1px solid #cccccc4d;
+    margin-top: 10px;
 }
 
 .project-info:hover {
@@ -246,3 +248,4 @@ td .Complete {
     content: '';
     background-color: green;
 }
+

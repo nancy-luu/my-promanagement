@@ -22,7 +22,7 @@ export default function ProjectSummary({ project }) {
     markAsCompleted(project.id);
     history.push("/projects"); // sending to main page once deleted
   };
-
+ 
   return (
       <div className="project-summary">
         <div className="title-section">
