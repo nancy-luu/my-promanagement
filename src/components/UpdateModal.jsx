@@ -39,7 +39,7 @@ const UpdateModal = ({ project }) => {
   const [details, setDetails] = useState(project.details);
   const [dueDate, setDueDate] = useState(formattedDueDate);
   const [category, setCategory] = useState(formattedCategory);
-  const [assignedUsers, setAssignedUsers] = useState(project.assignedUsersList);
+  const [assignedUsers, setAssignedUsers] = useState();
   const [formError, setFormError] = useState(null);
   const [users, setUsers] = useState([]);
 
@@ -47,6 +47,9 @@ const UpdateModal = ({ project }) => {
   const { user } = useAuthContext();
   const { updateDocumentSummary, response } = useFirestore("projects");
   const history = useHistory();
+
+  console.log("PROJECT HERE")
+  console.log(project)
 
   
   // formatting for Assigned User Select Options
@@ -75,7 +78,14 @@ const UpdateModal = ({ project }) => {
       });
       setAssignedUsers(formattedAssignedUsers);
     }
-  }, [project]);
+
+    const formattedCategoryOption = {
+      value: formattedCategory,
+      label: formattedCategory,
+    };
+    setCategory(formattedCategoryOption);
+
+  }, [project, formattedCategory]);
 
   const toggleModal = () => {
     setAppear(!appear);
@@ -114,11 +124,9 @@ const UpdateModal = ({ project }) => {
   
       // Check the update result
       if (updateResult && updateResult.error) {
-        // Handle the case where there's an error in the update result
         console.error("Error updating document:", updateResult.error);
         setFormError("An error occurred while updating the document.");
       } else {
-        // Success case
         console.log("Update successful");
         setAppear(false);
         console.log("\n");
@@ -135,8 +143,8 @@ const UpdateModal = ({ project }) => {
     }
   
     console.log("\n");
+    console.log("ASSIGN USERS HERE")
     console.log(assignedUsers);
-    //   console.log(assignedUsers.forEach(user => console.log(user.value)))
     console.log("\n");
   };
   
@@ -214,8 +222,9 @@ const UpdateModal = ({ project }) => {
                         <img
                           src={user.img}
                           className="avatar"
-                          alt="user-avatar"
+                          alt={user.uid}
                         />
+                        <p>{user.uid}</p>
                         <p>{user.label}</p>
                       </div>
                     )}

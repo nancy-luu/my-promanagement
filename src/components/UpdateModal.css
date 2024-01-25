@@ -26,6 +26,11 @@
     flex-direction: column;
 }
 
+.modal-content textarea {
+    max-height: 200px;
+}
+
+
 .modal.active {
     opacity: 1; 
     visibility: visible;

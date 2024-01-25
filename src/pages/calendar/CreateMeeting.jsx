@@ -132,7 +132,7 @@ const CreateMeeting = () => {
                   />
               </label>
               <label>
-              <span>Invite:</span>
+              <h4>Invite:</h4>
               <Select
                 isMulti
                 value={guests}
