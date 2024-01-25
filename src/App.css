@@ -31,9 +31,9 @@ html, body, #root {
 }
 
 .inner-common {
-  color: var(--text-color);
   padding: 10px;
   margin: 10px 0px;
+  color: var(--text-color);
   border-radius: var(--inner-radius);
   background: linear-gradient(to bottom, #29292938, #03000e22) padding-box,
   linear-gradient(to top, #5e5e5e75, #03000e22) border-box;
@@ -43,9 +43,9 @@ html, body, #root {
 }
 
 .inner-common:hover {
-  color: var(--text-color);
   padding: 10px;
   margin: 10px 0px;
+  color: var(--text-color);
   border-radius: var(--inner-radius);
   background: linear-gradient(to bottom, #7d7c7c38, #03000e22) padding-box,
   linear-gradient(to top, #5e5e5e75, #03000e22) border-box;

@@ -12,7 +12,7 @@ import DetailIcon from "../../assets/detail-icon.png"
 import TimeIcon from "../../assets/time-icon.png"
 import MeetingIcon from "../../assets/meeting-icon.png"
 import DownArrow from "../../assets/down-arrow.png"
-import TrashIcon from "../../assets/trash-icon.png"
+import TrashIcon from "../../assets/trash-icon.png" 
 
 
 // styles
@@ -132,7 +132,7 @@ const MeetingInfo = () => {
   return (
     <div className="meeting-info-wrapper">
       {meeting && 
-        <div className="meeting-info-container">
+        <div className="meeting-info-container grid-common">
           <div className="header-section">
             <h3>{meeting.title}</h3>
             {user.uid === meeting.createdBy.id ? 

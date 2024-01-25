@@ -11,8 +11,9 @@ import CreateProject from "../../pages/projects_board/CreateProject";
 import Project from "../../pages/project/Project";
 import TeamDash from "../../pages/team_board/TeamDash";
 import DepartmentTeamInfo from "../../pages/team_board/DepartmentTeamInfo";
-import UserProfile from "../../pages/team/UserProfile";
+import UserProfile from "../../pages/team_board/UserProfile";
 import Footer from '../Footer/Footer';
+import MeetingInfo from "../../pages/meeting/MeetingInfo";
 
 const Content = ({ user }) => {
   return (
@@ -28,6 +29,9 @@ const Content = ({ user }) => {
           </Route>
           <Route path="/createMeeting">
             <CreateMeeting />
+          </Route>
+          <Route path="/meetings/:id">
+            <MeetingInfo />
           </Route>
           <Route path="/createProject">
             <CreateProject />

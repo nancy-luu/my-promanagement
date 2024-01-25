@@ -7,7 +7,7 @@ import PriorityTask from './PriorityTask';
 // styles
 import './PriorityTask.css'
 
- 
+
 const PriorityTasks = () => {
   const { myProjects } = useMyProjects();
 

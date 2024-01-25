@@ -6,7 +6,7 @@ import { useUsersProjects } from "../../hooks/useUsersProjects";
 
 // components
 import Avatar from "../../components/Avatar";
-import HorizontalBarChart from "../team_board/HorizontalBarChart";
+import HorizontalBarChart from "./HorizontalBarChart";
 import ProjectInfo from "../projects_board/ProjectInfo";
 
 // style and images
@@ -217,47 +217,15 @@ const UserProfile = () => {
     <div>
       {user && (
         <div className="user-profile-container">
-          <div className="user-profile-card">
-            <Avatar src={user.photoURL} />
-            <h2>{user.displayName}</h2>
-            <h4>
-              {user.department.label} | {user.role}
-            </h4>
-            <div className="project-breakdown">
-              <p>{projectCount} Total Projects:</p>
-              {openProjects.length ? (
-                <div className="stat-label">
-                  <div className="open-pt"></div>
-                  {openProjects.length} Open
-                </div>
-              ) : (
-                <></>
-              )}
-              {inProgressProjects.length ? (
-                <div className="stat-label">
-                  <div className="progress-pt"></div>
-                  <p>{inProgressProjects.length} In Progress</p>
-                </div>
-              ) : (
-                <></>
-              )}
-              {completedProjects.length ? (
-                <div className="stat-label">
-                  <div className="complete-pt"></div>
-                  <p>{completedProjects.length} Completed</p>
-                </div>
-              ) : (
-                <></>
-              )}
-            </div>
-            <HorizontalBarChart user={user} />
-          </div>
           <div className="users-project-wrapper">
             <div className="users-project-container">
               {usersProjects && usersProjects.length === 0 ? (
                 <p>*No projects to display*</p>
               ) : (
-                <h3>{user.displayName}'s Projects</h3>
+                <div className="user-container">
+                   <Avatar src={user.photoURL} />
+                  <h3>{user.displayName}'s Projects</h3>
+                </div>
               )}
               <table className="project-table">
                 <colgroup>

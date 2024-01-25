@@ -89,7 +89,7 @@ const CreateMeeting = () => {
 
   return (
     <div className="create-event-wrapper">
-      <div className="create-event-container">
+      <div className="create-event-container grid-common">
           <h3>Shedule New Meeting</h3>
           <form onSubmit={handleSubmitMeeting}>
               <label>

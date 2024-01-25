@@ -136,6 +136,18 @@
     border: .75px solid rgba(79, 79, 79, 0.444);
 }
 
+.user-container{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 10px;
+}
+
+.user-container .avatar {
+    width: 30px;
+    height: 30px;
+}
+
 .project-breakdown {
     display: flex;
 }

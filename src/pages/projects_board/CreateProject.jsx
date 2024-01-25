@@ -93,7 +93,7 @@ export default function CreateProject() {
 
   return (
     <div className="create-project-wrapper">
-      <div className="create-form">
+      <div className="create-form grid-common">
         <h2 className="page-title">Start a new Project:</h2>
         <form onSubmit={handleSubmit}>
           <label>

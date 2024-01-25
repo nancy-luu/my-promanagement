@@ -5,7 +5,7 @@ import Avatar from '../../components/Avatar'
 
 // style
 import './Team.css'
-
+ 
 const DepartmentCard = ({ department }) => {
     const { documents: userDocuments } = useCollection('users');
     

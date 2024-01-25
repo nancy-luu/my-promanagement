@@ -9,7 +9,7 @@ import SmallCalendar from "./small-calendar/SmallCalendar";
 import PriorityTasks from "./priority/PriorityTasksList";
 import NewCommentsList from "./new-comments/NewCommentsList";
 import Collaborators from "./collaborators/Collaborators";
-import MeetingsList from "./meeting/MeetingsList";
+import MeetingsList from "./meeting-list/MeetingsList";
 import BookmarkedProjects from "./bookmark/BookmarkedProjects";
  
 // styles
