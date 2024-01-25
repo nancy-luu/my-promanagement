@@ -32,8 +32,12 @@
     margin-top: 10px;
 }
 
-.get-started-container{
+.get-started-container {
     width: 100%;
+}
+
+.error-container {
+    margin-top: 10px;
 }
 
 .auth-form button{
@@ -42,7 +46,7 @@
 
 .category-select {
     width: 100%;
-} 
+}
 
 
 @media screen and (max-width: 800px){

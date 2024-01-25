@@ -17,13 +17,22 @@ export default function SignupLogin() {
   const [selectedFileName, setSelectedFileName] = useState("");
   const [department, setDepartment] = useState("");
   const [role, setRole] = useState("");
-  const { signup, isPendingSignup, errorSignup } = useSignup();
-  const { login, isPendingLogin, errorLogin } = useLogin();
+  const { signup, isPendingSignup, error: signupError } = useSignup();
+  const { login, isPendingLogin, error: loginError } = useLogin();
   const fileInputRef = useRef(null);
+  const [errorSignup, setErrorSignup] = useState(null);
 
-  const handleSignupSubmit = (e) => {
+
+  const handleSignupSubmit = async (e) => {
     e.preventDefault();
-    signup(email, password, displayName, thumbnail, department, role);
+  
+    // Call signup function
+    await signup(email, password, displayName, thumbnail, department, role);
+  
+    // Check for errors after signup
+    if (signupError) {
+      setErrorSignup(signupError);
+    }
   };
 
   const handleLoginSubmit = (e) => {
@@ -62,6 +71,15 @@ export default function SignupLogin() {
     setSelectedFileName(selected ? selected.name : "");
     console.log("Thumbnail updated");
   };
+
+  const handleSwitchFromSignIn = () => {
+    setSwitchLogin(!switchLogin)
+    setErrorSignup(null);
+  }
+
+
+  console.log(errorSignup)
+
 
   return (
     <div className="auth-form-container">
@@ -177,12 +195,31 @@ export default function SignupLogin() {
             <h4>Have an account?</h4>
             <h4
               className="switch-login"
-              onClick={() => setSwitchLogin(!switchLogin)}
+              onClick={handleSwitchFromSignIn}
             >
               Sign In
             </h4>
           </div>
-          {errorSignup && <div className="error">{errorSignup}</div>}
+          {errorSignup === 'Password error' ? 
+              ( <>
+                  <div className="error-container">
+                    <p>Password must include:</p>
+                    <li>8 characters minimum</li>
+                    <li>Contain at least one capital letter</li>
+                    <li>At least one number</li>
+                  </div>
+                </>
+              ):(
+                <></>
+              )
+          }
+          {errorSignup === 'Choose image' ?                  
+               <div className="error-container">
+                    <p>Must select image.</p>
+               </div>
+              :
+                <></>
+          }
         </form>
       ) : (
         <form className="auth-form" onSubmit={handleLoginSubmit}>
@@ -228,11 +265,13 @@ export default function SignupLogin() {
             <h4
               className="switch-login"
               onClick={() => setSwitchLogin(!switchLogin)}
-            >
+              >
               Sign Up
             </h4>
           </div>
-          {errorLogin && <div className="error">{errorLogin}</div>}
+          <div className="error-container">
+          {loginError && <div className="error">{loginError}</div>}
+          </div>
         </form>
       )}
     </div>

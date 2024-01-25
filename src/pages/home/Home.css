@@ -7,22 +7,17 @@
 
 .home-content {
     display: flex;
-    justify-content: center;
-    align-items: center;
-    background: linear-gradient(to bottom, #2929297f, #2929297f) padding-box,
-    linear-gradient(to top, #6262623b, #03000e22) border-box;
-    border: .75px solid rgba(79, 79, 79, 0.444);
-    border-style: solid;
-    border-radius: 30px;
 }
 
 .home-left-content {
-    background: rgb(255, 255, 255);
-    padding: 20px;
-    border-top-left-radius: 20px;
-    border-bottom-left-radius: 20px;
+    display: flex;
     align-items: center;
     justify-content: center;
+    padding: 20px;
+    background: rgb(255, 255, 255);
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 20px;
+    min-height: 420px;
 }
 
 .home-left-content h1 {
@@ -32,7 +27,6 @@
 
 .home-left-content > * {
     color: var(--text-color);
-    margin: 0 auto;
 }
 
 .home-text {
@@ -42,6 +36,9 @@
 .home-img {
     width: 350px;
     height: 350px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .home-img img {
@@ -49,7 +46,17 @@
 }
 
 .home-right-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     padding: 20px;
+    background: linear-gradient(to bottom, #2929297f, #2929297f) padding-box,
+    linear-gradient(to top, #6262623b, #03000e22) border-box;
+    border: .75px solid rgba(79, 79, 79, 0.444);
+    border-style: solid;
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+    min-height: 420px;
 }
 
 .switch-login {
@@ -68,29 +75,32 @@
     .home-content {
         display: flex;
         flex-direction: column;
-        padding: 0px 20px;
+        padding: 0px 10px;
     }
 
     .home-left-content {
-        background: rgb(255, 255, 255);
-        padding: 20px;
         border-radius: 20px;
         align-items: center;
         justify-content: center;
-        width: 100%;
+        padding: 10px;
+        background: rgb(255, 255, 255);
+        border-top-left-radius: 20px;
+        border-top-right-radius: 20px;
+        border-bottom-left-radius: 0px;
+        border-bottom-right-radius: 0px;
+        min-height: 200px;
     }
 
     .home-img {
         width: 300px;
         height: 300px;
     }
-    
-    .home-img img {
-        width: 100%;
-    }
 
     .home-right-content {
-        width: 100%; /* Set the same width as home-left-content */
+        border-top-left-radius: 0px;
+        border-top-right-radius: 0px;
+        border-bottom-left-radius: 20px;
+        border-bottom-right-radius: 20px;
     }
 }
 
@@ -99,36 +109,31 @@
     .home-content {
         display: flex;
         flex-direction: column;
-        padding: 0px 20px;
-        margin:20px;
-        min-width: 200px;
+        margin:10px;
     }
 
     .home-left-content {
-        background: rgb(255, 255, 255);
-        padding: 20px;
+        background: rgba(255, 255, 255, 0);
+        padding: 10px;
         border-radius: 20px;
         align-items: center;
         justify-content: center;
-        width: 100%;
-    }
-
-    .home-img {
-        width: 300px;
-        height: 300px;
-    }
-    
-    .home-img img {
-        width: 100%;
+        border-radius: 20px;
+        max-height: 200px;
     }
 
     .home-right-content {
-        width: 100%; /* Set the same width as home-left-content */
+        border-radius: 20px;
+    }
+
+    .home-img {
+        width: 200px;
+        height: 200px;
     }
 }
 
 @media screen and (max-width: 390px){
-
+ 
     .home-content {
         display: flex;
         flex-direction: column;
@@ -138,17 +143,14 @@
     }
 
     .home-left-content {
-        background: rgb(255, 255, 255);
+        background: transparent;
         padding: 20px;
-        border-radius: 20px;
         align-items: center;
         justify-content: center;
-        width: 100%;
     }
 
     .home-img {
         width: 300px;
-        height: 300px;
     }
     
     .home-img img {
@@ -156,6 +158,6 @@
     }
 
     .home-right-content {
-        width: 100%; /* Set the same width as home-left-content */
+        border-radius: 20px;
     }
 }
