@@ -1,4 +1,4 @@
-.modal, .overlay {
+/* .modal, .overlay {
     width: 100vw;
     height: 100vh;
     top: 0;
@@ -7,7 +7,7 @@
     bottom: 0;
     position: fixed;
     opacity: 0;
-    visibility: hidden; /* Start hidden */
+    visibility: hidden; 
     transition: opacity 0.3s ease, visibility 0.3s ease;
     backdrop-filter: blur(3px);
 }
@@ -53,4 +53,4 @@
 
 .btn-group .btn {
     margin: 5px;
-}
+} */

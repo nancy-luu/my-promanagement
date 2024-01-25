@@ -73,6 +73,7 @@
     display: flex;
 }
 
+/* Bookmark Modal */
 
 .bookmark-container{
     display: flex;
@@ -114,4 +115,23 @@
 
 .bookmark-links-wrapper a {
     text-decoration: none;
+}
+
+
+/* Delete Modal */
+
+.close-modal {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    padding: 5px 7px;
+}
+
+.btn-group {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.btn-group .btn {
+    margin: 5px;
 }

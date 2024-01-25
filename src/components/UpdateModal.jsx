@@ -201,7 +201,7 @@ const UpdateModal = ({ project }) => {
                   value={dueDate}
                 ></input>
               </label>
-              <div className="category-assign-container">
+              <div className="category-select">
                 <label>
                   <p>Assign to:</p>
                   <Select

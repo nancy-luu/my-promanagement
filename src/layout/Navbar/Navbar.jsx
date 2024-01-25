@@ -32,9 +32,7 @@ export default function Navbar({ OpenSideBar }) {
           <img src={navbarImgs.menu} alt="menu icon" className="sidebar-toggler" onClick={() => toggleSidebar()}/>
       </div>
       <div className="content-top-center">
-            <div className="search-bar">
               <SearchBar data={projectSearchList} query={query} setQuery={setQuery}/>
-            </div>
       </div>
       <div className="content-top-right">
             <div className="user-content">

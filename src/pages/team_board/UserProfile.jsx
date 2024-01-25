@@ -3,14 +3,14 @@ import { useParams } from "react-router-dom";
 import { useDocument } from "../../hooks/useDocument";
 import { useCollection } from "../../hooks/useCollection";
 import { useUsersProjects } from "../../hooks/useUsersProjects";
+import { tableImgs } from "../../util/images";
+
 
 // components
 import Avatar from "../../components/Avatar";
-import HorizontalBarChart from "./HorizontalBarChart";
 import ProjectInfo from "../projects_board/ProjectInfo";
 
 // style and images
-import SortIcon from "../../assets/sort-icon.png";
 import "../team_board/Team.css";
 
 const UserProfile = () => {
@@ -243,7 +243,7 @@ const UserProfile = () => {
                       Name
                       <img
                         className="sort-icon"
-                        src={SortIcon}
+                        src={tableImgs.sortIcon}
                         alt="sort icon"
                         onClick={handleProjectNameSort}
                       />
@@ -254,7 +254,7 @@ const UserProfile = () => {
                       Status
                       <img
                         className="sort-icon"
-                        src={SortIcon}
+                        src={tableImgs.sortIcon}
                         alt="sort icon"
                         onClick={handleProjectStatusSort}
                       />
@@ -265,7 +265,7 @@ const UserProfile = () => {
                       Due Date
                       <img
                         className="sort-icon"
-                        src={SortIcon}
+                        src={tableImgs.sortIcon}
                         alt="sort icon"
                         onClick={handleProjectDateSort}
                       />
@@ -276,7 +276,7 @@ const UserProfile = () => {
                       Owner
                       <img
                         className="sort-icon"
-                        src={SortIcon}
+                        src={tableImgs.sortIcon}
                         alt="sort icon"
                         onClick={handleProjectOwnerSort}
                       />
@@ -288,7 +288,7 @@ const UserProfile = () => {
                       Owner
                       <img
                         className="sort-icon"
-                        src={SortIcon}
+                        src={tableImgs.sortIcon}
                         alt="sort icon"
                         onClick={handleProjectDepartmentSort}
                       />

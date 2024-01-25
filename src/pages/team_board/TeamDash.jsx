@@ -4,6 +4,8 @@ import { useCollection } from "../../hooks/useCollection";
 import { useMyProjects } from "../../hooks/useMyProjects";
 import { categories } from "../../util/categories";
 import { Link } from "react-router-dom";
+import { tableImgs } from "../../util/images";
+
 
 // components
 import UserInfoCell from "./UserInfoCell";
@@ -11,7 +13,6 @@ import DepartmentCard from "./DepartmentCard";
 
 // styles and images
 import "./Team.css";
-import SortIcon from "../../assets/sort-icon.png";
 
 export default function TeamDash() {
   const { user } = useAuthContext();
@@ -281,7 +282,7 @@ export default function TeamDash() {
                   Name
                   <img
                     className="sort-icon"
-                    src={SortIcon}
+                    src={tableImgs.sortIcon}
                     alt="sort icon"
                     onClick={handleNameSort}
                   />
@@ -292,7 +293,7 @@ export default function TeamDash() {
                   Status
                   <img
                     className="sort-icon"
-                    src={SortIcon}
+                    src={tableImgs.sortIcon}
                     alt="sort icon"
                     onClick={handleOnlineSort}
                   />
@@ -303,7 +304,7 @@ export default function TeamDash() {
                   Role
                   <img
                     className="sort-icon"
-                    src={SortIcon}
+                    src={tableImgs.sortIcon}
                     alt="sort icon"
                     onClick={handleRoleSort}
                   />
@@ -314,7 +315,7 @@ export default function TeamDash() {
                   Department
                   <img
                     className="sort-icon"
-                    src={SortIcon}
+                    src={tableImgs.sortIcon}
                     alt="sort icon"
                     onClick={handleDepartmentSort}
                   />
@@ -325,7 +326,7 @@ export default function TeamDash() {
                   Projects
                   <img
                     className="sort-icon"
-                    src={SortIcon}
+                    src={tableImgs.sortIcon}
                     alt="sort icon"
                     onClick={handleProjectSort}
                   />
@@ -336,7 +337,7 @@ export default function TeamDash() {
                   Collaborator
                   <img
                     className="sort-icon"
-                    src={SortIcon}
+                    src={tableImgs.sortIcon}
                     alt="sort icon"
                     onClick={handleCollaboratorSort}
                   />

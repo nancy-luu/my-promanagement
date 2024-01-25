@@ -26,8 +26,7 @@ html, body, #root {
   background: linear-gradient(to bottom, #2929297f, #2929297f) padding-box,
   linear-gradient(to top, #6262626a, #03000e22) border-box;
   border-style: solid;
-  border: .75px solid rgba(79, 79, 79, 0.75
-  );
+  border: .75px solid rgba(79, 79, 79, 0.605);
 }
 
 .inner-common {

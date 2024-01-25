@@ -2,6 +2,7 @@ import { useState, useEffect, useMemo } from "react";
 import { useCollection } from "../../hooks/useCollection";
 import { useAuthContext } from "../../hooks/useAuthContext";
 import { NavLink } from "react-router-dom";
+import { tableImgs } from "../../util/images";
 
 // components
 import ProjectFilter from "./ProjectFilter";
@@ -11,8 +12,6 @@ import ProjectInfo from "./ProjectInfo";
 
 // styles and images
 import "./ProjectsDash.css";
-import SortIcon from "../../assets/sort-icon.png";
- 
 
 const ProjectsDash = () => {
   const { documents, error } = useCollection("projects");
@@ -228,9 +227,7 @@ const handleDepartmentSort = () => {
               setCurrFilter={setCurrFilter}
               changeFilter={changeFilter}
             />
-          <div className="new-comments-list-container">
             {sortedProjects && <NewCommentsList projects={sortedProjects[currFilter]} />}
-          </div>
         </div>
       <div className="collection-container">
         <div className="grid-common">
@@ -250,7 +247,7 @@ const handleDepartmentSort = () => {
                     Name
                     <img 
                       className="sort-icon"
-                      src={SortIcon}
+                      src={tableImgs.sortIcon}
                       alt="name sort icon"
                       onClick={handleNameSort}
                     ></img>
@@ -261,7 +258,7 @@ const handleDepartmentSort = () => {
                     Status
                     <img 
                       className="sort-icon"
-                      src={SortIcon}
+                      src={tableImgs.sortIcon}
                       alt="status sort icon"
                       onClick={handleStatusSort}
                     ></img>
@@ -272,7 +269,7 @@ const handleDepartmentSort = () => {
                     Due Date
                     <img 
                       className="sort-icon"
-                      src={SortIcon}
+                      src={tableImgs.sortIcon}
                       alt="date sort icon"
                       onClick={handleDateSort}
                     ></img>
@@ -283,7 +280,7 @@ const handleDepartmentSort = () => {
                     Owner
                     <img 
                       className="sort-icon"
-                      src={SortIcon}
+                      src={tableImgs.sortIcon}
                       alt="owner sort icon"
                       onClick={handleOwnerSort}
                     ></img>
@@ -299,7 +296,7 @@ const handleDepartmentSort = () => {
                     Department
                     <img 
                       className="sort-icon"
-                      src={SortIcon}
+                      src={tableImgs.sortIcon}
                       alt="department sort icon"
                       onClick={handleDepartmentSort}
                     ></img>

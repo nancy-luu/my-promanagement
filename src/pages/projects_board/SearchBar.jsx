@@ -1,9 +1,6 @@
 import { useState, useRef, useEffect } from "react";
-import { Link } from "react-router-dom";
-
-// images
-import SearchIcon from "../../assets/search-icon.svg";
-import ExitIcon from "../../assets/exit-search-icon.svg";
+import { navbarImgs } from "../../util/images";
+import SearchResult from "./SearchResult";
 
 
 const SearchBar = ({ data, query, setQuery }) => {
@@ -55,25 +52,12 @@ const SearchBar = ({ data, query, setQuery }) => {
           onChange={handleSearch}
         />
         {query.length === 0 ?
-            <img className="search-icon" src={SearchIcon} alt="search icon" />
+            <img className="search-icon" src={navbarImgs.search} alt="search icon" />
             :
-            <img className="search-icon" src={ExitIcon} alt="clear search icon" onClick={clearInput}/>
+            <img className="search-icon" src={navbarImgs.exit} alt="clear search icon" onClick={clearInput}/>
         }
       </div>
-      <div className="search-result" style={{ display: query.length > 0 ? 'block' : 'none' }}>
-        {query.length !== 0 && (
-          <div className="search-option">
-            {query &&
-              query.slice(0, 15).map((value, key) => (
-                <div className="search-item">
-                  <Link to={`projects/${value.docId}`} key={key} onClick={clearInput}>
-                    {value.name}
-                  </Link>
-                </div>
-              ))}
-          </div>
-        )}
-      </div>
+        <SearchResult query={query} clearInput={clearInput}/>
     </div>
   );
 };

@@ -1,11 +1,11 @@
 import { Link } from "react-router-dom";
+import { tableImgs } from "../../util/images";
 
 // components
 import Avatar from "../../components/Avatar";
 
 // styles and images
 import "./Team.css";
-import Check from "../../assets/check.png";
 
 const UserInfoCell = ({ user, uniqueTeamMembersObject, projectDocuments, collaboratorIds }) => {
 
@@ -63,7 +63,7 @@ const UserInfoCell = ({ user, uniqueTeamMembersObject, projectDocuments, collabo
         <Link to={`/team/user/${user.id}`}>
             <div className="check-wrapper">
               {collaboratorIds.includes(user.id) ? (
-                <img src={Check} alt="check-icon" />
+                <img src={tableImgs.check} alt="check-icon" />
               ) : (
                 <div></div>
               )}

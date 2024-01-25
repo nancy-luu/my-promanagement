@@ -15,7 +15,7 @@ import UserProfile from "../../pages/team_board/UserProfile";
 import Footer from '../Footer/Footer';
 import MeetingInfo from "../../pages/meeting/MeetingInfo";
 
-const Content = ({ user }) => {
+const Content = ( ) => {
   return (
     <div className="main-content">
       <Navbar />

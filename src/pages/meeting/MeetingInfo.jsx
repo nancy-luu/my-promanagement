@@ -4,16 +4,10 @@ import { useDocument } from "../../hooks/useDocument";
 import { useAuthContext } from "../../hooks/useAuthContext";
 import { useFirestore } from "../../hooks/useFirestore"
 import { useHistory } from "react-router-dom";
+import { meetingImgs } from "../../util/images";
 
 // components
 import Avatar from "../../components/Avatar"
-import CheckIcon from "../../assets/check-icon.png"
-import DetailIcon from "../../assets/detail-icon.png"
-import TimeIcon from "../../assets/time-icon.png"
-import MeetingIcon from "../../assets/meeting-icon.png"
-import DownArrow from "../../assets/down-arrow.png"
-import TrashIcon from "../../assets/trash-icon.png" 
-
 
 // styles
 import './MeetingInfo.css'
@@ -136,22 +130,22 @@ const MeetingInfo = () => {
           <div className="header-section">
             <h3>{meeting.title}</h3>
             {user.uid === meeting.createdBy.id ? 
-              <img src={TrashIcon} alt="trash icon" className="btn" onClick={handleCancelMeeting}/>
+              <img src={meetingImgs.trash} alt="trash icon" className="btn" onClick={handleCancelMeeting}/>
               :
               <></>
             }
           </div>
           <div className="detail-section">
-            <img src={DetailIcon} alt="detail icon"/>
+            <img src={meetingImgs.detail} alt="detail icon"/>
             <p>{meeting.description}</p>
           </div>
           <div className="time-section">
-            <img src={TimeIcon} alt="time icon"/>
+            <img src={meetingImgs.time} alt="time icon"/>
             <p>{start} - {end}</p>
           </div>
           <div className="guest-section" onClick={handleShowGuests}>
             <div className="guest-count-wrapper">
-            <img src={MeetingIcon} alt="meeting guest icon" className="meeting-icon"/>
+            <img src={meetingImgs.meeting} alt="meeting guest icon" className="meeting-icon"/>
               <div className="guest-count">
                 <h4>{meeting.guestsInvitedList.length} guests</h4>
                 <p>{meeting.guestsInvitedList.filter(guest => guest.accepted).length > 0 && 
@@ -175,7 +169,7 @@ const MeetingInfo = () => {
                 </p>
               </div>
             </div>
-            <img src={DownArrow} alt="down arrow" className={`arrow ${showGuests ? 'up-arrow' : ''}`}/>
+            <img src={meetingImgs.downArrow} alt="down arrow" className={`arrow ${showGuests ? 'up-arrow' : ''}`}/>
           </div>
           {showGuests && 
             <div className="meeting-guests-container">
@@ -183,7 +177,7 @@ const MeetingInfo = () => {
                 <div className="single-guest-container">
                   <div className="guest-image-container">
                     <Avatar src={guest.photoURL}/>
-                    {guest.accepted && <img className="check-icon" src={CheckIcon} alt="check icon"></img>}
+                    {guest.accepted && <img className="check-icon" src={meetingImgs.attending} alt="check icon"></img>}
                   </div>
                   <div className="guests-name">
                     <p>{guest.displayName}</p>
