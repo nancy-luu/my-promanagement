@@ -28,24 +28,26 @@ const TeamMemberCard = ({ user }) => {
                 </div>
                 <div className="project-breakdown">
                     <p>{projectCount} Total Projects: </p>
-                    {openProjects.length ?
-                        <div className="stat-label">                
-                            <div className="open-pt"></div>
-                            {openProjects.length} Open
-                        </div> : <></>
-                    }
-                    {inProgressProjects.length ?  
-                        <div className="stat-label">
-                            <div className="progress-pt"></div>
-                            <p>{inProgressProjects.length} In Progress</p> 
-                        </div> : <></>
-                    }
-                    {completedProjects.length ?
-                        <div className="stat-label">
-                            <div className="complete-pt"></div>
-                            <p>{completedProjects.length} Completed</p> 
-                        </div> : <></>
-                    }
+                    <div className="project-stat-wrapper">
+                        {openProjects.length ?
+                            <div className="stat-label">                
+                                <div className="open-pt"></div>
+                                {openProjects.length} Open
+                            </div> : <></>
+                        }
+                        {inProgressProjects.length ?  
+                            <div className="stat-label">
+                                <div className="progress-pt"></div>
+                                <p>{inProgressProjects.length} In Progress</p> 
+                            </div> : <></>
+                        }
+                        {completedProjects.length ?
+                            <div className="stat-label">
+                                <div className="complete-pt"></div>
+                                <p>{completedProjects.length} Completed</p> 
+                            </div> : <></>
+                        }
+                    </div>
                 </div>
                 <HorizontalBarChart user={user} />
             </div>

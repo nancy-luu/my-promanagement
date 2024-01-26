@@ -14,6 +14,7 @@
 
 .big-calendar-container {
     padding: 20px;
+    margin-top: 10px;
     border-radius: var(--inner-radius);
     background: linear-gradient(to bottom, #29292938, #03000e22) padding-box,
     linear-gradient(to top, #5e5e5eaa, #03000e22) border-box;
@@ -38,6 +39,7 @@
     background: rgba(50, 17, 168, 0.612);
     font-family: Poppins, sans-serif;
     font-weight: bold;
+    color: var(--text-color);
 }
 .rbc-header.rbc-today {
     background: rgba(115, 115, 115, 0.5) !important;
@@ -138,6 +140,10 @@
 
 .start-end-input-container p {
     margin: 0px 10px;
+}
+
+.rbc-date-cell {
+    color: var(--text-color)
 }
 
 

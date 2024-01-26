@@ -18,7 +18,7 @@ const BigCalendar = () => {
           setMeetings(myMeetings)
         }
     }, [myMeetings])
-
+ 
 
   const handleEventClick = (event) => {
     console.log('Clicked event:', event);

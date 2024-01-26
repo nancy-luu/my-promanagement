@@ -12,7 +12,7 @@ const DepartmentCard = ({ department }) => {
     const departmentsTeam = userDocuments ? userDocuments.filter((user) => user.department.value === department.value) : []
 
   return (
-    <div className="department-card grid-common">
+    <div className="grid-common">
         <h3>{department.label}</h3>
         <div className="team-count">
           {departmentsTeam.length <= 1 ? 

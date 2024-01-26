@@ -19,7 +19,7 @@ const UserInfoCell = ({ user, uniqueTeamMembersObject, projectDocuments, collabo
   const projectCount = myProjects.length;
 
   /**
-   *  Why so many Links below?
+   *  Note: Why so many links below?
    *  Currently the Links must wrap every td so that they can align with the th tags in TeamDash.
    *  Using a single Link tag to wrap the tr element below or around the UserInfo component in TeamDash will cause misalignment.
    *  This will be refactored.

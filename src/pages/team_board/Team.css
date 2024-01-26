@@ -1,6 +1,13 @@
 .department-container {
     display: grid;
     grid-template-columns: 2fr 2fr 2fr;
+    column-gap: 10px;
+    row-gap: 10px;
+    margin-bottom: 10px;
+}
+
+.department-container .grid-common {
+    min-height: 120px;
 }
 
 .department-container a {
@@ -220,9 +227,8 @@
 }
 
 .team-table {
-    color: var(--text-color);
-    table-layout: fixed;
     width: 100%;
+    color: var(--text-color);
     border-collapse: collapse;
     border-radius: var(--inner-radius);
     border-right: 1px solid #cccccc7b;
@@ -325,12 +331,11 @@ td img {
 }
 
 
-/*  RESPONSIVE  */
-
+/*  RESPONSIVE -------------- */
 
 @media screen and (max-width: 1024px) {
     .grid-common table {
-        width:100%
+        width: 100%
     }
 
     .project-table th:nth-child(5),
@@ -342,8 +347,9 @@ td img {
     .project-table th,
     .project-table td {
         box-sizing: border-box;
-        width: calc(100% / 5); /* Divide the width evenly among visible columns */
-        padding: 10px; 
+        width: calc(100% / 5);
+        /* Divide the width evenly among visible columns */
+        padding: 10px;
     }
 
     .project-table th:nth-child(2),
@@ -356,17 +362,37 @@ td img {
     .project-table td:nth-child(3) {
         padding-left: 0px;
     }
-    
-    .project-table th:nth-child(6),
-    .project-table td:nth-child(6) {
-       border-right: 1px solid #cccccc4d;
+
+
+    /* TEAM TABLE --------------------------- */
+    .user-list table {
+        width: 100%
+    }
+
+    .team-table th:nth-child(4),
+    .team-table td:nth-child(4) {
+        width: 0;
+        display: none;
+    }
+
+    .team-table th:nth-child(5),
+    .team-table td:nth-child(5) {
+        width: 50px;
+    }
+
+
+    .team-table th,
+    .team-table td {
+        box-sizing: border-box;
+        width: calc(100% / 5);
+        padding: 10px;
     }
 }
 
 @media screen and (max-width: 992px) {
-    
+
     .grid-common table {
-        width:100%
+        width: 100%
     }
 
     .project-table th:nth-child(6),
@@ -378,31 +404,50 @@ td img {
     .project-table th,
     .project-table td {
         box-sizing: border-box;
-        width: calc(100% / 4); 
-        padding: 10px; 
+        width: calc(100% / 4);
+        padding: 10px;
     }
 
     .project-table th:nth-child(2),
     .project-table td:nth-child(2) {
         margin-right: 0px;
-        /* Adjust the margin as needed */
     }
 
     .project-table th:nth-child(3),
     .project-table td:nth-child(3) {
         padding-left: 0px;
     }
-    
-    .project-table th:nth-child(5),
-    .project-table td:nth-child(5) {
-       border-right: 1px solid #cccccc4d;
+
+    /* TEAM TABLE --------------------------- */
+    .user-list table {
+        width: 100%
     }
+
+    .team-table th:nth-child(4),
+    .team-table td:nth-child(4) {
+        width: 0;
+        display: none;
+    }
+
+    .team-table th:nth-child(5),
+    .team-table td:nth-child(5) {
+        width: 0;
+        display: none;
+    }
+
+    .team-table th,
+    .team-table td {
+        box-sizing: border-box;
+        width: calc(100% / 4);
+        padding: 10px;
+    }
+
 }
 
 @media screen and (max-width: 768px) {
-    
+
     .grid-common table {
-        width:100%
+        width: 100%
     }
 
     .project-table th:nth-child(6),
@@ -420,8 +465,8 @@ td img {
     .project-table th,
     .project-table td {
         box-sizing: border-box;
-        width: calc(100% / 3); 
-        padding: 10px; 
+        width: calc(100% / 3);
+        padding: 10px;
     }
 
     .project-table th:nth-child(2),
@@ -434,17 +479,18 @@ td img {
     .project-table td:nth-child(3) {
         padding-left: 0px;
     }
-    
+
     .project-table th:nth-child(5),
     .project-table td:nth-child(5) {
-       border-right: 1px solid #cccccc4d;
+        border-right: 1px solid #cccccc4d;
     }
+
 }
 
 @media screen and (max-width: 430px) {
- 
+
     .grid-common table {
-        width:100%
+        width: 100%
     }
 
     .project-table th:nth-child(2),
@@ -468,8 +514,8 @@ td img {
     .project-table th,
     .project-table td {
         box-sizing: border-box;
-        width: calc(100% / 1); 
-        padding: 10px; 
+        width: calc(100% / 1);
+        padding: 10px;
     }
 
     .project-table th:nth-child(2),
@@ -482,70 +528,113 @@ td img {
     .project-table td:nth-child(3) {
         padding-left: 0px;
     }
-    
+
     .project-table th:nth-child(5),
     .project-table td:nth-child(5) {
-       border-right: 1px solid #cccccc4d;
+        border-right: 1px solid #cccccc4d;
     }
-}
 
+    .user-list-item {
+        min-width: 300px;
+    }
 
+    .project-breakdown {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: flex-start;
+        max-width: 200px;
+    }
 
-/* 
-@media screen and (max-width: 1200px) {
- 
-} */
-/* 
-@media screen and (max-width: 1024px){
-    th,
-    td {
-        padding: 10px;
+    .stat-label {
         text-align: left;
-        border-bottom: 1px solid #cccccc4d;
-        overflow: hidden;
-        white-space: nowrap;
-    }
-
-    .team-table th {
         padding: 5px;
     }
 
-    .user-info td {
-        padding: 5px;
-    }
-
-    .user-info td a {
-        max-width: 100px !important;
-        overflow: hidden;
-        white-space: normal;
-        text-overflow: ellipsis;
-        display: inline-block; 
-    }
-}
-
-@media screen and (max-width: 992px) {
-    th,
-    td {
-        padding: 10px;
+    .project-stat-wrapper {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: flex-start;
         text-align: left;
-        border-bottom: 1px solid #cccccc4d;
-        overflow: hidden;
-        white-space: nowrap;
+    }
+
+    /* TEAM TABLE --------------------------- */
+    .user-list table {
+        width: 100%
+    }
+
+    .team-table th:nth-child(2),
+    .team-table td:nth-child(2) {
+        width: 0;
+        display: none;
+    }
+
+    .team-table th:nth-child(4),
+    .team-table td:nth-child(4) {
+        width: 0;
+        display: none;
+    }
+
+    .team-table th:nth-child(5),
+    .team-table td:nth-child(5) {
+        width: 0;
+        display: none;
+    }
+
+    .team-table th:nth-child(6),
+    .team-table td:nth-child(6) {
+        width: 0;
+        display: none;
+    }
+
+    .team-table th,
+    .team-table td {
+        box-sizing: border-box;
+        width: calc(100% / 2);
+        padding: 10px;
     }
 
 }
 
-@media screen and (max-width: 768px) {
-
-
-}
-
-@media screen and (max-width: 430px) {
-
-
-}
 
 @media screen and (max-width: 390px) {
 
+    /* TEAM TABLE --------------------------- */
 
-} */
+    .user-list table {
+        width: 100%
+    }
+
+    .team-table th:nth-child(2),
+    .team-table td:nth-child(2) {
+        width: 0;
+        display: none;
+    }
+
+    .team-table th:nth-child(4),
+    .team-table td:nth-child(4) {
+        width: 0;
+        display: none;
+    }
+
+    .team-table th:nth-child(5),
+    .team-table td:nth-child(5) {
+        width: 0;
+        display: none;
+    }
+
+    .team-table th:nth-child(6),
+    .team-table td:nth-child(6) {
+        width: 0;
+        display: none;
+    }
+
+    .team-table th,
+    .team-table td {
+        box-sizing: border-box;
+        width: calc(100% / 2);
+        padding: 10px;
+    }
+
+}

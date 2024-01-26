@@ -5,8 +5,8 @@ import { useMyProjects } from "../../hooks/useMyProjects";
 import { categories } from "../../util/categories";
 import { Link } from "react-router-dom";
 import { tableImgs } from "../../util/images";
-
-
+ 
+ 
 // components
 import UserInfoCell from "./UserInfoCell";
 import DepartmentCard from "./DepartmentCard";
@@ -270,13 +270,13 @@ export default function TeamDash() {
           <h2>All Users</h2>
           <div className="table-container">
             <table className="team-table">
-              {/* <colgroup>
+              <colgroup>
                 <col style={{ width: "20%" }} /> 
                 <col style={{ width: "15%" }} />
                 <col style={{ width: "25%" }} />
                 <col style={{ width: "15%" }} />
                 <col style={{ width: "10%" }} />
-              </colgroup> */}
+              </colgroup>
               <tr>
                 <th>
                   <div className="header-segment">
