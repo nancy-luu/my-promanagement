@@ -4,7 +4,7 @@ import { statusHelper } from '../../util/statusHelper';
 // components
 import Avatar from "../../components/Avatar";
 
-// styles
+// styles 
 import "./ProjectsDash.css";
  
 export default function ProjectInfo ({ project }) {

@@ -1,7 +1,6 @@
 import { useState, useContext } from 'react'
 import { SidebarContext } from '../../context/SidebarContext';
 import { navbarImgs } from '../../util/images';
-import { Link } from 'react-router-dom'
 import { useLogout } from '../../hooks/useLogout'
 import { useAuthContext } from "../../hooks/useAuthContext";
 import { useCollection } from "../../hooks/useCollection";

@@ -1,7 +1,6 @@
 import { useState, useEffect, useMemo } from "react";
 import { useCollection } from "../../hooks/useCollection";
 import { useAuthContext } from "../../hooks/useAuthContext";
-import { NavLink } from "react-router-dom";
 import { tableImgs } from "../../util/images";
 
 // components
@@ -210,13 +209,10 @@ const handleDepartmentSort = () => {
 
   return (
     <div className="main-content-container">
-        <div className="projects-dash-navbar">
-          <NavLink to="/createProject">
-            <button className="newproject-btn btn">New Project</button>
-          </NavLink>
+        <div className="project-top-btns">
           {documents && (
             <ProjectFilter currFilter={currFilter} changeFilter={changeFilter} />
-          )}
+            )}
         </div>
         <div className="project-stats-comments-container">
             <ProjectsStats
@@ -292,7 +288,7 @@ const handleDepartmentSort = () => {
                   </div>
                 </th>
                 <th>
-                  <div className="header-segment">
+                  <div className="header-segment-department">
                     Department
                     <img 
                       className="sort-icon"
@@ -311,7 +307,7 @@ const handleDepartmentSort = () => {
               </tbody>
           </table>
         </div>
-      </div>
+      </div> 
     </div>
   );
 };

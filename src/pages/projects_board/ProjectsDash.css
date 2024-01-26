@@ -2,30 +2,29 @@
     row-gap: 10px;
     box-sizing: border-box;
 }
- 
+
 input[type=text]:focus,
 input[type=date]:focus,
-textarea[type=text]:focus
-{
+textarea[type=text]:focus {
     outline: 2px solid orange;
 }
- 
+
 /* NAV BAR ------------------- */
 
-.projects-dash-navbar {
+.project-top-btns {
+    width: 100%;
     display: flex;
     margin-bottom: 10px;
 }
 
-.projects-dash-navbar button{
-    margin-right: 10px; 
-}
-
 .project-filter nav {
     display: flex;
-    /* padding: 10px; */
-    background-color: var(--background-color);
-    border-radius: 4px;
+}
+
+.project-filter nav a,
+.project-filter div a {
+    text-decoration: none;
+    margin-right: 10px;
 }
 
 .project-filter p {
@@ -36,7 +35,7 @@ textarea[type=text]:focus
 .project-filter button {
     border-radius: var(--outer-radius);
     background: linear-gradient(to bottom, #2929297f, #2929297f) padding-box,
-      linear-gradient(to top, #6262623b, #03000e22) border-box;
+        linear-gradient(to top, #6262623b, #03000e22) border-box;
     border-style: none;
     padding: 5px 20px;
     margin-right: 10px;
@@ -46,6 +45,7 @@ textarea[type=text]:focus
     color: var(--text-color);
     cursor: pointer;
 }
+
 .project-filter button:hover {
     background: #82828241;
 }
@@ -56,6 +56,10 @@ textarea[type=text]:focus
     border-bottom: 3px solid var(--primary-color);
     border-bottom-left-radius: 0px;
     border-bottom-right-radius: 0px;
+}
+
+.project-filter-drop-down-wrapper {
+    display: none;
 }
 
 
@@ -84,7 +88,7 @@ textarea[type=text]:focus
     padding: 10px;
     border-radius: var(--inner-radius);
     background: linear-gradient(to bottom, #29292938, #03000e22) padding-box,
-    linear-gradient(to top, #5e5e5e75, #03000e22) border-box;
+        linear-gradient(to top, #5e5e5e75, #03000e22) border-box;
     border-top: solid 1px rgba(115, 115, 115, 0.5);
     border-left: solid 1px rgba(115, 115, 115, 0.5);
     border-right: solid 1px rgba(115, 115, 115, 0.5);
@@ -126,13 +130,13 @@ textarea[type=text]:focus
     padding: 20px;
     border-radius: var(--outer-radius);
     background: linear-gradient(to bottom, #2929297f, #2929297f) padding-box,
-      linear-gradient(to top, #6262623b, #03000e22) border-box;
+        linear-gradient(to top, #6262623b, #03000e22) border-box;
     border-style: solid;
     border: .75px solid rgba(79, 79, 79, 0.444);
 }
 
 .project-list-body-body {
-    display:flex;
+    display: flex;
     flex-direction: column;
 }
 
@@ -156,7 +160,7 @@ textarea[type=text]:focus
     color: var(--text-color);
 }
 
-.project-info .avatar{
+.project-info .avatar {
     width: 30px;
     height: 30px;
     margin-right: 5px;
@@ -207,8 +211,6 @@ textarea[type=text]:focus
 /*  TABLE --------------------------------------- */
 .project-table {
     color: var(--text-color);
-    table-layout: fixed;
-    width: 100%;
     border-collapse: collapse;
     border-radius: var(--inner-radius);
     border-right: 1px solid #cccccc4d;
@@ -249,3 +251,106 @@ td .Complete {
     background-color: green;
 }
 
+
+
+
+/* RESPONSIVE ----------------------------------------- */
+
+@media screen and (max-width: 1200px) {}
+
+@media screen and (max-width: 1024px) {
+
+}
+
+@media screen and (max-width: 992px) {
+
+    .nav-wrapper {
+        display: none;
+    }
+
+    .project-filter-drop-down-wrapper {
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+    }
+
+    .project-filter-drop-down {
+        min-width: 150px; 
+    }
+}
+
+@media screen and (max-width: 768px) {
+
+
+    .project-stats-comments-container {
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 10px;
+        gap: 0px;
+    }
+
+    .project-top-btns {
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+    }
+
+    .newproject-btn-sm {
+        height: 100%;
+        margin-right: 10px;
+    }
+
+    .newproject-btn {
+        display: none;
+    }
+
+    .project-filter nav {
+        display: none;
+    }
+
+    .project-filter-drop-down {
+        min-width: 550px !important;
+        z-index: auto !important;
+    }
+
+}
+
+@media screen and (max-width: 430px) {
+
+    .project-stats-comments-container {
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 10px;
+        gap: 0px;
+    }
+
+    .project-top-btns {
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+    }
+
+    .newproject-btn-sm {
+        height: 100%;
+        margin-right: 10px;
+    }
+
+    .newproject-btn {
+        display: none;
+    }
+
+    .project-filter nav {
+        display: none;
+    }
+
+    .project-filter-drop-down {
+        min-width: 290px !important;
+        z-index: auto !important;
+    }
+
+}
+
+@media screen and (max-width: 390px) {
+    
+
+}

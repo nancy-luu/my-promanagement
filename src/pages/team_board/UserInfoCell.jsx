@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import { tableImgs } from "../../util/images";
 
 // components
-import Avatar from "../../components/Avatar";
+import Avatar from "../../components/Avatar"; 
 
 // styles and images
 import "./Team.css";
@@ -35,7 +35,7 @@ const UserInfoCell = ({ user, uniqueTeamMembersObject, projectDocuments, collabo
           </div>
         </Link>
       </td>
-      <td>
+      <td className="user-status">
         <Link to={`/team/user/${user.id}`}>
             {user.online ? (
               <div className="active">• Active</div>
@@ -44,22 +44,22 @@ const UserInfoCell = ({ user, uniqueTeamMembersObject, projectDocuments, collabo
             )}
         </Link>
       </td>
-      <td>
-        <Link to={`/team/user/${user.id}`}>
-            <p>{user.role}</p>
-        </Link>
-      </td>
-      <td>
-        <Link to={`/team/user/${user.id}`}>
-            <p>{user.department.label}</p>
-        </Link>
-      </td>
-      <td>
+        <td className="user-role">
+          <Link to={`/team/user/${user.id}`}>
+              <p>{user.role}</p>
+          </Link>
+        </td>
+        <td className="user-department">
+          <Link to={`/team/user/${user.id}`}>
+              <p>{user.department.label}</p>
+          </Link>
+        </td>
+      <td className="user-project">
         <Link to={`/team/user/${user.id}`}>
             <p>{projectCount ? projectCount : "-"}</p>
         </Link>
       </td>
-      <td className="check-icon">
+      <td className="user-check">
         <Link to={`/team/user/${user.id}`}>
             <div className="check-wrapper">
               {collaboratorIds.includes(user.id) ? (

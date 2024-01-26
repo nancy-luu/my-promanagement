@@ -10,7 +10,7 @@ import "./Sidebar.css";
 import { set } from "date-fns";
 
 
-export default function Sidebar({ }) {
+export default function Sidebar() {
   const [activeLinkIdx] = useState(1);
   const [sidebarClass, setSidebarClass] = useState("");
   const { isSidebarOpen } = useContext(SidebarContext);

@@ -268,95 +268,97 @@ export default function TeamDash() {
       <div className="users-container">
         <div className="user-list">
           <h2>All Users</h2>
-          <table className="team-table">
-            <colgroup>
-              <col style={{ width: "20%" }} /> 
-              <col style={{ width: "15%" }} />
-              <col style={{ width: "25%" }} />
-              <col style={{ width: "15%" }} />
-              <col style={{ width: "10%" }} />
-            </colgroup>
-            <tr>
-              <th>
-                <div className="header-segment">
-                  Name
-                  <img
-                    className="sort-icon"
-                    src={tableImgs.sortIcon}
-                    alt="sort icon"
-                    onClick={handleNameSort}
+          <div className="table-container">
+            <table className="team-table">
+              {/* <colgroup>
+                <col style={{ width: "20%" }} /> 
+                <col style={{ width: "15%" }} />
+                <col style={{ width: "25%" }} />
+                <col style={{ width: "15%" }} />
+                <col style={{ width: "10%" }} />
+              </colgroup> */}
+              <tr>
+                <th>
+                  <div className="header-segment">
+                    Name
+                    <img
+                      className="sort-icon"
+                      src={tableImgs.sortIcon}
+                      alt="sort icon"
+                      onClick={handleNameSort}
+                    />
+                  </div>
+                </th>
+                <th>
+                  <div className="header-segment">
+                    Status
+                    <img
+                      className="sort-icon"
+                      src={tableImgs.sortIcon}
+                      alt="sort icon"
+                      onClick={handleOnlineSort}
+                    />
+                  </div>
+                </th>
+                <th>
+                  <div className="header-segment">
+                    Role
+                    <img
+                      className="sort-icon"
+                      src={tableImgs.sortIcon}
+                      alt="sort icon"
+                      onClick={handleRoleSort}
+                    />
+                  </div>
+                </th>
+                <th>
+                  <div className="header-segment">
+                    Department
+                    <img
+                      className="sort-icon"
+                      src={tableImgs.sortIcon}
+                      alt="sort icon"
+                      onClick={handleDepartmentSort}
+                    />
+                  </div>
+                </th>
+                <th>
+                  <div className="header-segment">
+                    Projects
+                    <img
+                      className="sort-icon"
+                      src={tableImgs.sortIcon}
+                      alt="sort icon"
+                      onClick={handleProjectSort}
+                    />
+                  </div>
+                </th>
+                <th>
+                  <div className="header-segment">
+                    Collaborator
+                    <img
+                      className="sort-icon"
+                      src={tableImgs.sortIcon}
+                      alt="sort icon"
+                      onClick={handleCollaboratorSort}
+                    />
+                  </div>
+                </th>
+              </tr>
+              <tbody>
+                {error ? <div className="error">{error}</div> : <></>}
+                {sortedUserDocuments && sortedUserDocuments.map((user) => (
+                  <UserInfoCell
+                    key={user.id}
+                    user={user}
+                    uniqueTeamMembersObject={uniqueTeamMembersObject}
+                    projectDocuments={projectDocuments}
+                    collaboratorIds={collaboratorIds}
                   />
-                </div>
-              </th>
-              <th>
-                <div className="header-segment">
-                  Status
-                  <img
-                    className="sort-icon"
-                    src={tableImgs.sortIcon}
-                    alt="sort icon"
-                    onClick={handleOnlineSort}
-                  />
-                </div>
-              </th>
-              <th>
-                <div className="header-segment">
-                  Role
-                  <img
-                    className="sort-icon"
-                    src={tableImgs.sortIcon}
-                    alt="sort icon"
-                    onClick={handleRoleSort}
-                  />
-                </div>
-              </th>
-              <th>
-                <div className="header-segment">
-                  Department
-                  <img
-                    className="sort-icon"
-                    src={tableImgs.sortIcon}
-                    alt="sort icon"
-                    onClick={handleDepartmentSort}
-                  />
-                </div>
-              </th>
-              <th>
-                <div className="header-segment">
-                  Projects
-                  <img
-                    className="sort-icon"
-                    src={tableImgs.sortIcon}
-                    alt="sort icon"
-                    onClick={handleProjectSort}
-                  />
-                </div>
-              </th>
-              <th>
-                <div className="header-segment">
-                  Collaborator
-                  <img
-                    className="sort-icon"
-                    src={tableImgs.sortIcon}
-                    alt="sort icon"
-                    onClick={handleCollaboratorSort}
-                  />
-                </div>
-              </th>
-            </tr>
-            <tbody>
-              {error ? <div className="error">{error}</div> : <></>}
-              {sortedUserDocuments && sortedUserDocuments.map((user) => (
-                <UserInfoCell
-                  key={user.id}
-                  user={user}
-                  uniqueTeamMembersObject={uniqueTeamMembersObject}
-                  projectDocuments={projectDocuments}
-                  collaboratorIds={collaboratorIds}
-                />
-              ))}
-            </tbody>
-          </table>
+                ))}
+              </tbody>
+            </table>
+          </div>
         </div>
       </div>
     </div>

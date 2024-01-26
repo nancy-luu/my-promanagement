@@ -6,6 +6,7 @@
     border-bottom: .75px solid rgb(72, 72, 72);
     background-color: #03000ebb; 
     backdrop-filter: blur(20px);
+    z-index: 2;
 }
 
 .content-top-left,
@@ -48,7 +49,7 @@
     border-bottom: .75px solid rgb(72, 72, 72);
     background-color: #03000ebb; 
     backdrop-filter: blur(20px);
-    z-index: 2; 
+    z-index: 3; 
     position: sticky;
     top: 0;
 }
@@ -146,7 +147,7 @@ input {
     backdrop-filter: blur(20px);
     overflow: hidden;
     overflow-y: auto;
-    z-index: 1;
+    z-index: 7;
     margin-right:30px;
 }
 
@@ -162,6 +163,7 @@ input {
 }
 
 
+/* RESPONSIVE */
 
 
 @media screen and (min-width: 1500px) {
@@ -178,16 +180,23 @@ input {
     }
 }
 
+@media screen and (min-width: 768px) {
+    .search-inputs {
+        margin-right: 20px;
+    }
+}
+
 @media screen and (max-width: 430px) {
     .main-content-top{
         display: flex;
         justify-content: start;
-        min-width: 430px;
+        max-width: 430px;
     }
 
     .search-inputs{
         width: 70%;
     }
+
     .user-content h4{
         display: none;
     }
@@ -213,7 +222,7 @@ input {
     }
 
     .search-inputs{
-        width: 70%;
+        width: 50%;
     }
     .user-content h4{
         display: none;

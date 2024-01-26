@@ -38,7 +38,7 @@
     border-style: solid;
     border: .75px solid rgba(79, 79, 79, 0.444);
     padding: 14px 28px;
-    border-radius: 10px;
+    border-radius: 20px;
     max-width: 600px;
     min-width: 300px;
     transition: transform 0.3s ease; 

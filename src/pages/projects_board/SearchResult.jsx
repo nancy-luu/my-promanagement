@@ -3,7 +3,9 @@ import { Link } from "react-router-dom";
 
 const SearchResult = ({ query, clearInput }) => {
   return (
-      <div className="search-result" style={{ display: query.length > 0 ? 'block' : 'none', position: 'absolute', top: '100%', zIndex: 2 }}>
+      <div className="search-result" 
+        style={{ display: query.length > 0 ? 'block' : 'none', top: '100%' }}
+        >
         {query.length !== 0 && (
           <div className="search-option">
             {query &&

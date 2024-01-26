@@ -18,7 +18,7 @@
     color: var(--primary-color)
 }
 
-.team-avatars{
+.team-avatars {
     display: flex;
     gap: 5px;
     margin-top: 5px;
@@ -34,7 +34,7 @@
     display: table-row;
 }
 
-.user-name-wrapper{
+.user-name-wrapper {
     display: flex;
     align-items: center;
 }
@@ -76,7 +76,7 @@
     border-radius: var(--inner-radius);
     color: var(--text-color);
     font-size: 14px;
-    min-width: 500px; 
+    min-width: 500px;
 }
 
 .team-member-detail {
@@ -86,7 +86,7 @@
     border-bottom: 0.75px solid #ffffff25;
 }
 
-.team-member-name-role{
+.team-member-name-role {
     display: flex;
     flex-direction: column;
 }
@@ -98,7 +98,7 @@
 }
 
 /* DepartmentInfo Component ---------------------- */
-.department-header{
+.department-header {
     margin-top: 10px;
     margin-left: 20px;
 }
@@ -106,18 +106,22 @@
 .department-info-wrapper {
     display: flex;
     flex-direction: column;
-    align-items: center;  /* Center horizontally */
-    height: 100%;  /* Ensure full height */
+    align-items: center;
+    /* Center horizontally */
+    height: 100%;
+    /* Ensure full height */
 }
 
 
 /* Team Members Component ------------------------- */
-.team-member-card-wrapper{
+.team-member-card-wrapper {
     display: flex;
     flex-direction: column;
-    align-items: center;  /* Center horizontally */
-    justify-content: center;  /* Center vertically */
-    max-width: 100px; 
+    align-items: center;
+    /* Center horizontally */
+    justify-content: center;
+    /* Center vertically */
+    max-width: 100px;
 }
 
 .team-member-card-wrapper a {
@@ -131,12 +135,12 @@
     padding: 20px;
     border-radius: var(--outer-radius);
     background: linear-gradient(to bottom, #2929297f, #2929297f) padding-box,
-      linear-gradient(to top, #6262623b, #03000e22) border-box;
+        linear-gradient(to top, #6262623b, #03000e22) border-box;
     border-style: solid;
     border: .75px solid rgba(79, 79, 79, 0.444);
 }
 
-.user-container{
+.user-container {
     display: flex;
     justify-content: flex-start;
     align-items: center;
@@ -204,13 +208,17 @@
     background-color: var(--primary-color);
 }
 
-.stat-label .complete-pt{
+.stat-label .complete-pt {
     background-color: var(--third-color);
 }
 
 
 
 /*  TABLE --------------------------------------- */
+.table-container {
+    overflow-x: auto;
+}
+
 .team-table {
     color: var(--text-color);
     table-layout: fixed;
@@ -257,6 +265,7 @@ td {
     border-bottom: 1px solid #cccccc4d;
 }
 
+
 th {
     border-top: 1px solid #cccccc4d;
     border-bottom: 1px solid #cccccc4d;
@@ -275,6 +284,11 @@ th img:hover {
     opacity: 1;
 }
 
+td {
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
 
 td .user-name-text {
     margin-left: 10px;
@@ -309,3 +323,229 @@ td img {
 .header-segment {
     display: flex;
 }
+
+
+/*  RESPONSIVE  */
+
+
+@media screen and (max-width: 1024px) {
+    .grid-common table {
+        width:100%
+    }
+
+    .project-table th:nth-child(5),
+    .project-table td:nth-child(5) {
+        width: 0;
+        display: none;
+    }
+
+    .project-table th,
+    .project-table td {
+        box-sizing: border-box;
+        width: calc(100% / 5); /* Divide the width evenly among visible columns */
+        padding: 10px; 
+    }
+
+    .project-table th:nth-child(2),
+    .project-table td:nth-child(2) {
+        margin-right: 0px;
+        /* Adjust the margin as needed */
+    }
+
+    .project-table th:nth-child(3),
+    .project-table td:nth-child(3) {
+        padding-left: 0px;
+    }
+    
+    .project-table th:nth-child(6),
+    .project-table td:nth-child(6) {
+       border-right: 1px solid #cccccc4d;
+    }
+}
+
+@media screen and (max-width: 992px) {
+    
+    .grid-common table {
+        width:100%
+    }
+
+    .project-table th:nth-child(6),
+    .project-table td:nth-child(6) {
+        width: 0;
+        display: none;
+    }
+
+    .project-table th,
+    .project-table td {
+        box-sizing: border-box;
+        width: calc(100% / 4); 
+        padding: 10px; 
+    }
+
+    .project-table th:nth-child(2),
+    .project-table td:nth-child(2) {
+        margin-right: 0px;
+        /* Adjust the margin as needed */
+    }
+
+    .project-table th:nth-child(3),
+    .project-table td:nth-child(3) {
+        padding-left: 0px;
+    }
+    
+    .project-table th:nth-child(5),
+    .project-table td:nth-child(5) {
+       border-right: 1px solid #cccccc4d;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    
+    .grid-common table {
+        width:100%
+    }
+
+    .project-table th:nth-child(6),
+    .project-table td:nth-child(6) {
+        width: 0;
+        display: none;
+    }
+
+    .project-table th:nth-child(4),
+    .project-table td:nth-child(4) {
+        width: 0;
+        display: none;
+    }
+
+    .project-table th,
+    .project-table td {
+        box-sizing: border-box;
+        width: calc(100% / 3); 
+        padding: 10px; 
+    }
+
+    .project-table th:nth-child(2),
+    .project-table td:nth-child(2) {
+        margin-right: 0px;
+        /* Adjust the margin as needed */
+    }
+
+    .project-table th:nth-child(3),
+    .project-table td:nth-child(3) {
+        padding-left: 0px;
+    }
+    
+    .project-table th:nth-child(5),
+    .project-table td:nth-child(5) {
+       border-right: 1px solid #cccccc4d;
+    }
+}
+
+@media screen and (max-width: 430px) {
+ 
+    .grid-common table {
+        width:100%
+    }
+
+    .project-table th:nth-child(2),
+    .project-table td:nth-child(2) {
+        width: 0;
+        display: none;
+    }
+
+    .project-table th:nth-child(3),
+    .project-table td:nth-child(3) {
+        width: 0;
+        display: none;
+    }
+
+    .project-table th:nth-child(4),
+    .project-table td:nth-child(4) {
+        width: 0;
+        display: none;
+    }
+
+    .project-table th,
+    .project-table td {
+        box-sizing: border-box;
+        width: calc(100% / 1); 
+        padding: 10px; 
+    }
+
+    .project-table th:nth-child(2),
+    .project-table td:nth-child(2) {
+        margin-right: 0px;
+        /* Adjust the margin as needed */
+    }
+
+    .project-table th:nth-child(3),
+    .project-table td:nth-child(3) {
+        padding-left: 0px;
+    }
+    
+    .project-table th:nth-child(5),
+    .project-table td:nth-child(5) {
+       border-right: 1px solid #cccccc4d;
+    }
+}
+
+
+
+/* 
+@media screen and (max-width: 1200px) {
+ 
+} */
+/* 
+@media screen and (max-width: 1024px){
+    th,
+    td {
+        padding: 10px;
+        text-align: left;
+        border-bottom: 1px solid #cccccc4d;
+        overflow: hidden;
+        white-space: nowrap;
+    }
+
+    .team-table th {
+        padding: 5px;
+    }
+
+    .user-info td {
+        padding: 5px;
+    }
+
+    .user-info td a {
+        max-width: 100px !important;
+        overflow: hidden;
+        white-space: normal;
+        text-overflow: ellipsis;
+        display: inline-block; 
+    }
+}
+
+@media screen and (max-width: 992px) {
+    th,
+    td {
+        padding: 10px;
+        text-align: left;
+        border-bottom: 1px solid #cccccc4d;
+        overflow: hidden;
+        white-space: nowrap;
+    }
+
+}
+
+@media screen and (max-width: 768px) {
+
+
+}
+
+@media screen and (max-width: 430px) {
+
+
+}
+
+@media screen and (max-width: 390px) {
+
+
+} */

@@ -18,7 +18,7 @@ export default function BookmarkedProjects({ myProjects }) {
   const [bookmarkedIds, setBookmarkedIds] = useState([]);
   const [bookmarkedProjectsList, setBookmarkedMarkedProjectsList] = useState(
     []
-  );
+  ); 
    
   useEffect(() => {
     if (userData && userData.bookmarkedProjects) {

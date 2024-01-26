@@ -104,25 +104,27 @@
 
 @media screen and (max-width: 430px) {
     .sidebar {
-      min-height: 100vh; 
-    }
-    .sidebar-change {
-      margin-left: -75px;
-    }
-    .nav-link:hover {
-        background: #55555544;
-        padding: 10px;
-        border-radius: 50%;
-        transition: var(--transition-default);
-    }    
+        min-height: 100vh; 
+        margin-left: -100px;
+      }
+      .sidebar-change {
+        margin-left: 0px;
+      }
+      .nav-link:hover {
+          background: #55555544;
+          padding: 10px;
+          border-radius: 50%;
+          transition: var(--transition-default);
+      }     
 }
 
 @media screen and (max-width: 390px) {
     .sidebar {
       min-height: 100vh; 
+      margin-left: -100px;
     }
     .sidebar-change {
-      margin-left: -100px;
+      margin-left: 0px;
     }
     .nav-link:hover {
         background: #55555544;
