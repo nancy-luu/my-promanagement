@@ -1,6 +1,7 @@
 .auth-form {
     transition: var(--transition-default);
     min-width: 350px;
+    max-width: 350px;
 }
 
 .home-text h1 {

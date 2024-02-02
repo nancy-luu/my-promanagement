@@ -50,16 +50,15 @@
     justify-content: center;
     align-items: center;
     padding: 20px;
+    min-height: 420px;
     background: linear-gradient(to bottom, #2929297f, #29292927) padding-box,
     linear-gradient(to top, #29292927, #03000e22) border-box;
     border: .75px solid rgba(79, 79, 79, 0.444);
     border-style: solid;
     border-top-right-radius: 20px;
     border-bottom-right-radius: 20px;
-    min-height: 420px;
     z-index: 2;
     backdrop-filter: blur(2rem);
-    display: flex;
 }
 
 .switch-login {
@@ -71,7 +70,17 @@
 }
 
 
+
 /* Responsiveness */
+
+@media screen and (max-width: 1440){
+
+    .home-content {
+        max-width: 500px;
+    }
+
+}
+
 
 @media screen and (max-width: 800px){
 
