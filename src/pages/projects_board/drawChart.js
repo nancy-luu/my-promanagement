@@ -12,8 +12,8 @@ const drawChart = (element, data) => {
     .select(element)
     .append("svg")
     .attr("preserveAspectRatio", "xMidYMid meet")
-    .attr("height", "150")
-    .attr("width", "150")
+    .attr("height", "180")
+    .attr("width", "180")
     .attr("viewBox", `0 0 ${boxSize} ${boxSize}`)
     .append("g")
     .attr("transform", `translate(${boxSize / 2}, ${boxSize / 2})`);

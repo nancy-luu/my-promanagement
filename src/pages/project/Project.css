@@ -14,7 +14,6 @@
     width: 100%;
 }
 
-
 /* PROJECT SUMMARY ---------------------------------- */
 
 .project-summary {
@@ -30,16 +29,23 @@
     flex-direction: column;
 }
 
+.project-breakdown {
+    gap: 20px;
+}
+
+.project-breakdown p {
+    margin: 0px !important;    
+}
+
 .project-breakdown h4 {
     margin-bottom: 5px;
 }
 
 .project-breakdown > * {
-    margin-right: 10px;
     align-items: center;
 }
 
-.project-breakdown .due-date-section p {
+.due-date-section p {
     display: inline-block;
     padding: 5px 10px;
     border-radius: 30px;
@@ -201,5 +207,14 @@
 @media screen and (max-width: 480px) {
     .project-details {
         max-width: 100%; /* Adjust maximum width for smaller screens */
+    }
+}
+
+
+/* Media query for even smaller screens */
+@media screen and (max-width: 390px) {
+    .project-breakdown{
+        display: flex;
+        flex-direction: column;
     }
 }

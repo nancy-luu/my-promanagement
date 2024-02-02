@@ -1,23 +1,40 @@
 import { useState, useEffect } from 'react'
 import { projectAuth, projectStorage, projectFirestore } from '../firebase/config'
 import { useAuthContext } from './useAuthContext'
+import { useHistory } from "react-router-dom"
+
 
 export const useSignup = () => {
   const [isCancelled, setIsCancelled] = useState(false)
   const [error, setError] = useState(null)
   const [isPending, setIsPending] = useState(false)
   const { dispatch } = useAuthContext()
+  const history = useHistory();
+
 
   const signup = async (email, password, displayName, thumbnail, department, role) => {
     setError(null)
     setIsPending(true)
   
-    try {
-      // signup
-      const res = await projectAuth.createUserWithEmailAndPassword(email, password)
+    const passwordRegex = /^(?=.*[A-Z])(?=.*\d).{8,}$/;
 
-      if (!res) {
-        throw new Error('Could not complete signup')
+    if (!passwordRegex.test(password)) {
+      setError('Password error');
+      setIsPending(false);
+      return; // Return early if password requirements are not met
+    }
+
+    if(thumbnail === null){
+      setError('Choose image')
+      setIsPending(false);
+      return;
+    }
+  
+    try {
+      const res = await projectAuth.createUserWithEmailAndPassword(email, password);
+  
+      if (!res.user) {
+        throw new Error('Could not complete signup');
       }
 
       //upload user thumbnail--------------------------------
@@ -41,11 +58,13 @@ export const useSignup = () => {
         displayName,
         photoURL: imgUrl,
         department,
-        role
+        role,
+        bookmarkedProjects: []
       })
 
       // dispatch login action
       dispatch({ type: 'LOGIN', payload: res.user })
+      history.push('/dashboard')
 
       if (!isCancelled) {
         setIsPending(false)

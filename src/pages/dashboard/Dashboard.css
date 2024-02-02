@@ -1,50 +1,116 @@
-.dashboard-container {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: repeat(6, auto);
-    grid-area: main;
-    grid-gap: 10px;
-    margin: 20px auto;
-    max-width: 1160px;
-    width: 100%;
-    min-height: 100vh;
-    align-items: stretch;
-    justify-items: stretch;
-    /* background-color: rgba(234, 78, 78, 0.205); */
+.main-content-container {
+  row-gap: 10px;
+  box-sizing: border-box;
 }
 
-.overview {
-    grid-area: overview;
-    align-self: stretch;
+.content-grid-one {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: 1fr;
+  column-gap: 10px;
+  margin-bottom: 10px;
 }
 
-.small-cal {
-    grid-area: calendar;
-    align-self: stretch;
+.content-grid-two {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: 1fr;
+  column-gap: 10px;
 }
 
-.tasks {
-    grid-area: tasks;
+.subgrid-two {
+  display: grid;
+  row-gap: 10px;
 }
 
-.comments {
-    grid-area: comments;
+
+/* RESPONSIVE ----------------------------------------- */
+
+@media screen and (max-width: 1200px) {
+  .content-grid-one,
+  .content-grid-two {
+    column-gap: 12px;
+  }
+  .main-content-holder,
+  .subgrid-two {
+    row-gap: 12px;
+  }
 }
 
-.my-projects {
-    grid-area: projects;
+@media screen and (max-width: 1024px){
+  .content-grid-one {
+    grid-template-columns: repeat(2, 1fr);
+    row-gap: 12px;
+  }
+
+  .content-grid-two {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .content-grid-one .grid-one-item:nth-child(3) {
+    grid-column: span 2;
+  }
+  .content-grid-two .grid-one-item:nth-child(3) {
+    grid-column: span 2;
+  }
+  .content-grid-two {
+    row-gap: 12px;
+  }
 }
 
-.collabs {
-    grid-area: collabs;
+@media screen and (max-width: 992px) {
+  .content-grid-one {
+    grid-template-columns: repeat(2, 1fr);
+    row-gap: 12px;
+  }
+  .content-grid-two {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .content-grid-one .grid-one-item:nth-child(3) {
+    grid-column: span 2;
+  }
+  .content-grid-two .grid-one-item:nth-child(3) {
+    grid-column: span 2;
+  }
+  .content-grid-two {
+    row-gap: 12px;
+  }
 }
 
-.dashboard-container {
-grid-template-areas:
-    "overview  tasks comments"
-    "overview  tasks comments"
-    "overview  tasks comments"
-    "calendar projects collabs"
-    "calendar projects collabs"
-    "calendar projects collabs"
+@media screen and (max-width: 768px) {
+  .main-content-container > * {
+    grid-column: span 1;  
+    row-gap: 10px;
+  }
+  
+  .content-grid-one {
+    display: block;
+    grid-template-columns: 1fr;
+    row-gap: 10px;
+  }
+
+  .content-grid-two {
+    display: block;
+    grid-template-columns: 1fr;
+    row-gap: 10px;
+  }
+
+  .content-grid-one > * {
+    grid-column: span 1; /* Make all direct children span one column */
+    column-gap: 10px;
+  }
+
+  .content-grid-one .subgrid-two {
+    grid-column: span 1; /* Make all direct children span one column */
+  }
+  
+  .content-grid-two > * {
+    grid-column: span 1; /* Make all direct children span one column */
+    border: 1px solid white;
+  }
+
+  .grid-one-item {
+    margin-top: 10px;
+  }
+
 }

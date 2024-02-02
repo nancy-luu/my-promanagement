@@ -3,7 +3,6 @@
 }
 
 .calendar-dash-container {
-    margin: 10px;
     color: white;
     font-family: Poppins, sans-serif !important;
     /* font-size: bold; */
@@ -15,6 +14,7 @@
 
 .big-calendar-container {
     padding: 20px;
+    margin-top: 10px;
     border-radius: var(--inner-radius);
     background: linear-gradient(to bottom, #29292938, #03000e22) padding-box,
     linear-gradient(to top, #5e5e5eaa, #03000e22) border-box;
@@ -35,14 +35,16 @@
     background: rgba(79, 79, 79, 0.444) !important;
 }
 
-
 .rbc-header {
     background: rgba(50, 17, 168, 0.612);
     font-family: Poppins, sans-serif;
     font-weight: bold;
+    color: var(--text-color);
 }
-.rbc-header.rbc-today {
-    background: rgba(115, 115, 115, 0.5) !important;
+
+
+.rbc-today {
+    background-color:rgba(110, 104, 134, 0.212) !important;
 }
 
 .rbc-month-view {
@@ -63,12 +65,17 @@
     /* !important to override */
 }
 
+.rbc-event-content a {
+    text-decoration: none !important;
+}
+
 .event-display-container {
     display: flex;
 }
 
-.rbc-today {
-    background-color: rgba(148, 148, 148, 0) !important;
+.rbc-day-bg .rbc-today {
+    background-color: red !important;
+    color: var(--primary-color) !important;
 }
 
 .rbc-show-more {
@@ -82,6 +89,16 @@
 
 .rbc-day-slot .rbc-events-container {
     margin-right: 0px !important;
+}
+
+.rbc-toolbar-label {
+    color: var(--text-color) !important;
+    font-weight: bold !important;
+}
+
+.rbc-label{
+    color: var(--text-color) !important;
+
 }
 
 .rbc-toolbar button {
@@ -142,21 +159,24 @@
     margin: 0px 10px;
 }
 
+.rbc-date-cell {
+    color: var(--text-color)
+}
+
 
 /* CREATE EVENT FORM ------------------------------------ */
 .create-event-wrapper{
-    display: grid;
-    grid-template-columns: 1fr 1fr
+    display: flex;
+    max-width: 100%;
+    justify-content: center;
+    align-items: center;
 }
 
 .create-event-container {
     margin: 10px;
     padding: 20px;
-    border-radius: var(--outer-radius);
-    background: linear-gradient(to bottom, #2929297f, #2929297f) padding-box,
-    linear-gradient(to top, #6262623b, #03000e22) border-box;
-    border-style: solid;
-    border: .75px solid rgba(79, 79, 79, 0.444);
+    max-width: 600px;
+    min-width: 400px;
 }
 
 
@@ -218,7 +238,7 @@
     color: white !important;
 }
 
-
+ 
 .flatpickr-time input:hover,
 .flatpickr-time-separator:hover,
 .flatpickr-am-pm:hover {
@@ -227,4 +247,35 @@
 
 .flatpickr-am-pm {
     background-color: var(--primary-background-color) !important;
+}
+
+
+@media screen and (max-width: 430px) {
+    .big-calendar-container{
+        width: 370px;
+    }
+
+  .rbc-toolbar{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+}
+
+@media screen and (max-width: 390px) {
+    .big-calendar-container{
+        width: 330px;
+    }
+
+  .rbc-toolbar{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .start-end-input-container{
+    display: flex;
+    flex-direction: column;
+  }
+  
 }

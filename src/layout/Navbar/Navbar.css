@@ -1,0 +1,241 @@
+.main-content-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px;
+    border-bottom: .75px solid rgb(72, 72, 72);
+    background-color: #03000ebb; 
+    backdrop-filter: blur(20px);
+    z-index: 2;
+}
+
+.content-top-left,
+.content-top-right {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    flex: 1;
+}
+
+.content-top-left {
+    justify-content: flex-start;
+}
+
+.content-top-right {
+    justify-content: flex-end;
+}
+
+.content-top-right {
+    padding-right: 10px;
+}
+
+.sidebar-toggler {
+    padding-left: 10px;
+    width: 30px;
+    height: 30px;
+}
+
+.user-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+.navbar {
+    width: 100%;
+    padding: 10px;
+    box-sizing: border-box;
+    border-bottom: .75px solid rgb(72, 72, 72);
+    background-color: #03000ebb; 
+    backdrop-filter: blur(20px);
+    z-index: 3; 
+    position: sticky;
+    top: 0;
+}
+
+.left-nav-container {
+    display: flex;
+    align-items: center;
+}
+
+.left-nav-container .avatar {
+    margin-right: 10px;
+}
+
+.left-nav-container h4 {
+    margin-right: 20px;
+}
+
+.navbar ul {
+    display: flex;
+    margin: 0 auto;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.navbar .logo {
+    font-weight: bold;
+    color: var(--heading-color);
+    letter-spacing: 1px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: auto;
+}
+
+.navbar .logo img {
+    filter: invert(25%);
+    width: 30px;
+    margin-top: -8px;
+}
+
+.navbar a {
+    color: var(--heading-color);
+    text-decoration: none;
+    margin-right: 20px;
+}
+
+input {
+    margin: 0px;
+}
+
+.search-bar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    z-index: 1;
+}
+
+.search-container {
+    display: flex;
+    align-items: center;
+    margin-right: 10px;
+}
+
+.search-inputs {
+    display: flex;
+    background-color: white;
+    border-radius: 5px;
+    width: 300px;
+    align-items: center;
+} 
+
+.search-inputs img{
+    padding: 5px;
+    margin-left: 2px;
+    width: 20px;
+    height: 20px;
+   background-color: white;
+   border-radius: 5px;
+}
+
+.search-result {
+    display: flex;
+    justify-content: flex-top;
+    position: absolute;
+    width: 250px;
+    height: 200px;
+    bottom: -250px;
+    padding: 10px;
+    background-color: #03000edd;
+    backdrop-filter: blur(20px);
+    border-style: solid;
+    border: .75px solid rgba(224, 224, 224, 0.444);
+    border-radius: 5px;
+    backdrop-filter: blur(20px);
+    overflow: hidden;
+    overflow-y: auto;
+    z-index: 7;
+    margin-right:30px;
+}
+
+.search-option a {
+    text-decoration: none;
+    color: var(--text-color);
+    transition: color 0.3s ease;
+    margin: 5px 0px;
+}
+
+.search-option a:hover {
+    color: orange;
+}
+
+
+/* RESPONSIVE */
+
+
+@media screen and (min-width: 1500px) {
+    .main-content {
+        flex: 1;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    
+    .main-content-top {
+        padding: 0px;
+      width: 100%;
+    }
+}
+
+@media screen and (min-width: 768px) {
+    .search-inputs {
+        margin-right: 20px;
+    }
+}
+
+@media screen and (max-width: 430px) {
+    .main-content-top{
+        display: flex;
+        justify-content: start;
+        max-width: 430px;
+    }
+
+    .search-inputs{
+        width: 70%;
+    }
+
+    .user-content h4{
+        display: none;
+    }
+    .search-icon{
+        display: none;
+    }
+
+    .content-top-right{
+        gap: 10px;
+    }
+
+    .user-content{
+        display: none;
+    }
+
+} 
+
+@media screen and (max-width: 390px) {
+    .main-content-top{
+        display: flex;
+        justify-content: start;
+        min-width: 150px;
+    }
+
+    .search-inputs{
+        width: 50%;
+    }
+    .user-content h4{
+        display: none;
+    }
+    .search-icon{
+        display: none;
+    }
+
+    .content-top-right{
+        gap: 10px;
+    }
+
+    .user-content{
+        display: none;
+    }
+} 

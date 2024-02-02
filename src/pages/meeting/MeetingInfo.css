@@ -1,24 +1,20 @@
+.meeting-info-wrapper {
+    display: flex;
+    max-width: 100%;
+    justify-content: center;
+    align-items: center;
+}
+
 .meeting-info-container {
     display: flex;
     flex-direction: column;
-    border-radius: var(--outer-radius);
-    background: linear-gradient(to bottom, #2929297f, #2929297f) padding-box,
-    linear-gradient(to top, #6262623b, #03000e22) border-box;
-    border-style: solid;
-    border: .75px solid rgba(79, 79, 79, 0.444);
-    padding: 5px 0px;
-    margin: 10px;
-}
+} 
 
 .meeting-info-container > * {
     padding-top: 10px;
     padding-bottom: 10px;
 }
 
-.meeting-info-wrapper {
-    display: grid;
-    grid-template-columns: 1fr 1fr
-}
 
 .meetings-container{
     display: flex;

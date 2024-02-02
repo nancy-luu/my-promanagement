@@ -1,0 +1,107 @@
+/* .small-calendar-container {
+    width: 100%;
+} */
+
+.month-name-form {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 10px 10px 20px;
+    border-bottom: solid 1px #ffffff25;
+}
+
+.cal-arrow-form {
+    display: flex;
+}
+
+.cal-arrow-form h4 {
+    transition: color 0.3s ease;
+}
+.cal-arrow-form h4:hover {
+    color: var(--primary-color)
+}
+
+.cal-arrow-left,
+.cal-arrow-right {
+    width: 20px;
+    height: 20px;
+    padding: 0px 5px;
+    filter: grayscale(1);
+    transition: filter 0.3s ease;
+    cursor: pointer;
+    z-index: 0;
+}
+
+
+.cal-arrow-left:hover,
+.cal-arrow-right:hover {
+    cursor: pointer;
+    filter: grayscale(0);
+}
+
+.cal-arrow-right {
+    transform: rotateY(180deg);
+}
+
+
+.day-name-form {
+    display: grid;
+    grid-template-columns: repeat(7, minmax(0, 1fr)); 
+}
+
+.day-name {
+    width: 20px;
+    height: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+}
+
+.days-form {
+    display: grid;
+    grid-template-columns: repeat(7, minmax(0, 1fr));
+}
+
+.day,
+.day-outside-month,
+.day-current {
+    width: 20px;
+    height: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    border-radius: 50%;
+}
+
+.day {
+    border-radius: 50%;
+    cursor: pointer;
+    color: var(--text-color);
+}
+.day:hover{
+    color: var(--text-color);
+    transition: color 0.3s ease, background-color 0.3s ease, border-radius 0.3s ease;
+    background-color: var( --bg-secondary-color);
+    border-radius: 50%;
+    font: bold;
+}
+
+.day-outside-month{
+    color: rgb(106, 106, 106);
+}
+
+.day-current {
+    color: var(--bg-color);
+    background-color: var( --primary-color);
+    border-radius: 50%;
+}
+
+
+.day-selected {
+    color: var(--text-color);
+    background-color: var( --bg-secondary-color);
+    border-radius: 50%;
+    font: bold;
+}

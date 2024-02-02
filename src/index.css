@@ -20,8 +20,6 @@
   --transition-default: all 300ms ease-in-out;
 }
 
-
-
 /* base styles */
 body {
   font-family: Poppins, sans-serif;
@@ -91,6 +89,10 @@ input, textarea {
   border-radius: 4px;
 }
 
+textarea {
+  max-height: 200px;
+}
+
 input[type="text"]:focus,
 input[type="email"]:focus,
 input[type="password"]:focus {
@@ -99,10 +101,6 @@ input[type="password"]:focus {
     outline: none;
 }
 
-
-textarea {
-  min-height: 160px;
-}
 .error {
   color: rgb(255, 255, 255);
   background: rgb(233, 148, 148);

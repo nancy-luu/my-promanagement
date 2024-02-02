@@ -1,14 +1,11 @@
 .auth-form {
-    min-width: 400px;
-    max-width: 500px;
-    margin: 50px auto;
-    padding: 20px;
-    box-sizing: border-box;
-    border-radius: var(--outer-radius);
-    background: linear-gradient(to bottom, #2929297f, #2929297f) padding-box,
-      linear-gradient(to top, #6262623b, #03000e22) border-box;
-    border-style: solid;
-    border: .75px solid rgba(79, 79, 79, 0.444);
+    transition: var(--transition-default);
+    min-width: 350px;
+    max-width: 350px;
+}
+
+.home-text h1 {
+    color: var(--primary-color)
 }
 
 .auth-form h2 {
@@ -22,33 +19,50 @@
 .form-container {
     display: flex;
     flex-direction: row;
+    gap: 20px;
 }
 
 .form-container .form-left,
 .form-container .form-right {
-  flex: 1; /* Equal distribution of space */
+    flex: 1; 
 }
 
-.form-container .form-left {
-    padding-right: 10px; /* Adjust padding as needed */
-}
-
-.upload-image-container {
+.signin-option{
     display: flex;
-    justify-content: flex-start;
-    align-items: center;
+    gap: 10px;
+    margin-top: 10px;
 }
-.upload-image-container .btn{
-    margin-right: 5px;
+
+.get-started-container {
+    width: 100%;
+}
+
+.error-container {
+    margin-top: 10px;
+}
+
+.auth-form button{
+    width: 100%;
 }
 
 .category-select {
     width: 100%;
 }
 
-/* Responsive */
-@media (max-width: 600px) {
+
+@media screen and (max-width: 800px){
+
     .auth-form {
-        max-width: 95%; /* Adjust max-width for smaller screens */
+        width: 100%;
     }
+
+}
+
+
+@media screen and (max-width: 430px){
+
+    .auth-form {
+       min-width: 200px;
+    }
+
 }

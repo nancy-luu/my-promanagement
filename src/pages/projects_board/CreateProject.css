@@ -1,0 +1,43 @@
+.create-project-wrapper{
+    display: flex;
+    max-width: 100%;
+    justify-content: center;
+    align-items: center;
+}
+
+.create-form {
+    max-width: 600px;
+    min-width: 400px;
+    margin: 10px;
+    padding: 20px;
+    border-radius: 5px;
+}
+
+.category-assign-container {
+    display: grid;
+    gap: 10px;
+    grid-template-columns: 1fr 1fr
+}
+
+.category-assign-container label {
+    margin: 0px;
+}
+
+.category-select {
+    margin-right: 10px;
+}
+
+.assigned-user-option {
+    display: flex;
+    align-items: center;
+}
+
+.assigned-user-option img {
+    width: 30px;
+    height: 30px;
+}
+
+.assigned-user-option p {
+    padding-left: 10px;
+    color: black;
+}

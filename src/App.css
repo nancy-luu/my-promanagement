@@ -1,14 +1,77 @@
-body {
+html, body, #root {
+  height: 100%;
   margin: 0;
+  padding: 0;
 }
 
 .app {
-  display: flex;
-  min-height: 100vh; /* Ensure the content stretches to fill the screen */
+  height: 100%;
+  min-height: 100vh;
 }
-
+ 
 .main {
   display: flex;
+}
 
-  /* overflow: hidden; Hide any overflowing content */
+.accessed-app {
+  display: flex;
+  width: 100%;;
+}
+
+/* Common for grid items */
+
+.grid-common {
+  padding: 12px;
+  border-radius: var(--outer-radius);
+  background: linear-gradient(to bottom, #2929297f, #2929297f) padding-box,
+  linear-gradient(to top, #6262626a, #03000e22) border-box;
+  border-style: solid;
+  border: .75px solid rgba(79, 79, 79, 0.605);
+}
+
+.inner-common {
+  padding: 10px;
+  margin: 10px 0px;
+  color: var(--text-color);
+  border-radius: var(--inner-radius);
+  background: linear-gradient(to bottom, #29292938, #03000e22) padding-box,
+  linear-gradient(to top, #5e5e5e75, #03000e22) border-box;
+  border-top: solid 1px rgba(115, 115, 115, 0.5);
+  border-left: solid 1px rgba(115, 115, 115, 0.5);
+  border-right: solid 1px rgba(115, 115, 115, 0.5);
+}
+
+.inner-common:hover {
+  padding: 10px;
+  margin: 10px 0px;
+  color: var(--text-color);
+  border-radius: var(--inner-radius);
+  background: linear-gradient(to bottom, #7d7c7c38, #03000e22) padding-box,
+  linear-gradient(to top, #5e5e5e75, #03000e22) border-box;
+  border-top: solid 1px rgba(115, 115, 115, 0.5);
+  border-left: solid 1px rgba(115, 115, 115, 0.5);
+  border-right: solid 1px rgba(115, 115, 115, 0.5);
+}
+
+.nothing-to-display {
+  display: flex;
+  align-items: center;  
+  gap: 5px;
+  margin-top: 10px;
+}
+
+.nothing-to-display p{
+  color: var(--text-color);
+}
+
+.nothing-to-display a{
+  font-weight: bold;
+  text-decoration: underline;
+  color: var(--text-color);
+}
+
+.nothing-to-display a:hover{
+  font-weight: bold;
+  text-decoration: underline;
+  color: var(--primary-color);
 }
