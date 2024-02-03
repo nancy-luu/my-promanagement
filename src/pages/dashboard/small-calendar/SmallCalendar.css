@@ -108,14 +108,14 @@
 }
 
 .has-meeting-dot {
-    position: absolute; /* Position the dot absolutely within the .day container */
-    bottom: 1px; /* Adjust the value to position the dot below the text */
-    left: 50%; /* Center the dot horizontally */
-    transform: translateX(-50%); /* Center the dot horizontally */
+    position: absolute; 
+    bottom: 1px; 
+    left: 50%;
+    transform: translateX(-50%);
     content: '';
     background-color: var(--primary-color);
-    width: 8px; /* Adjust the width and height as needed */
+    width: 8px;
     height: 8px;
-    border-radius: 50%; /* Creates a circular dot */
-    display: inline-block; /* Ensures the dot takes up space */
+    border-radius: 50%;
+    display: inline-block;
 }

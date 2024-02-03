@@ -22,15 +22,16 @@ const MeetingsList = ({ dateForComparison, selectedDateObj, calendarDays, myMeet
     }
   }, [myMeetings, dateForComparison]);
 
+  let firstThreeMeetings = meetingToRender.slice(0, 3);
 
   return (
     <div className="grid-one-item grid-common grid-c1">
       <h3>Schedule for {selectedDateObj.month} {selectedDateObj.day}, {selectedDateObj.year}</h3>
       <div className="meetings-wrapper">
-        {meetingToRender.length > 0 ? (
+        {firstThreeMeetings.length > 0 ? (
           <>
-            {meetingToRender && meetingToRender.map(m => 
-              <Link to={`meetings/${m.id}`}>
+            {firstThreeMeetings && firstThreeMeetings.map(m => 
+              <Link className="meeting-link" to={`meetings/${m.id}`}>
                 <Meeting 
                   // thisMonth={thisMonth} 
                   meeting={m}
@@ -39,6 +40,7 @@ const MeetingsList = ({ dateForComparison, selectedDateObj, calendarDays, myMeet
               </Link>
               )
             }
+            {meetingToRender.length > 3? <Link className="and-more-link" to={`/calendar`}>...and more</Link> : <></>}
           </>
           ):(
           <>
@@ -48,7 +50,6 @@ const MeetingsList = ({ dateForComparison, selectedDateObj, calendarDays, myMeet
           </div>
           </>
         )}
-        {/* {meetingToRender.length === 0 && <p>No meetings</p>} */}
       </div>
     </div>
   )

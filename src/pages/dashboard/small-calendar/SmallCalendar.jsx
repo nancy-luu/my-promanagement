@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { dashboardImgs } from "../../../util/images";
 import { generateDate, months } from "../../../util/generateDate";
 import { classNameHelper } from "../../../util/classNameHelper";
@@ -10,10 +10,15 @@ const SmallCalendar = ({dateForComparison,setDateForComparison, currentDate, sel
   const days = ["S", "M", "T", "W", "T", "F", "S"];
 
   const [thisMonth, setThisMonth] = useState(currentDate);
-const [calendarDays, setCalendarDays] = useState(generateDate(thisMonth.month(), thisMonth.year(), myMeetings));
+const [calendarDays, setCalendarDays] = useState(generateDate(currentDate.month(), currentDate.year(), myMeetings));
     const [selectedDay, setSelectedDay] = useState();
   const [selectedMonth, setSelectedMonth] = useState();
   const [selectedYear, setSelectedYear] = useState();  
+
+  useEffect(() => {
+    setCalendarDays(generateDate(thisMonth.month(), thisMonth.year(), myMeetings));
+  }, [thisMonth, myMeetings]);
+
 
   console.log(myMeetings)
   
