@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useMyProjects } from "../../hooks/useMyProjects";
+import { useMyMeetings } from '../../hooks/useMyMeetings'
 import { generateDate, months } from "../../util/generateDate";
 import dayjs from "dayjs";
 
@@ -11,6 +12,7 @@ import NewCommentsList from "./new-comments/NewCommentsList";
 import Collaborators from "./collaborators/Collaborators";
 import MeetingsList from "./meeting-list/MeetingsList";
 import BookmarkedProjects from "./bookmark/BookmarkedProjects";
+
  
 // styles
 import "./Dashboard.css";
@@ -27,6 +29,7 @@ const Dashboard = () => {
   });
  
   const { myProjects } = useMyProjects();
+  const { myMeetings } = useMyMeetings();
 
   return (
     <div className="main-content-container">
@@ -46,11 +49,13 @@ const Dashboard = () => {
           selectedDateObj={selectedDateObj}
           setSelectedDateObj={setSelectedDateObj}
           months={months}
+          myMeetings={myMeetings}
         />
         <MeetingsList
           dateForComparison={dateForComparison}
           selectedDateObj={selectedDateObj}
           calendarDays={calendarDays}
+          myMeetings={myMeetings}
         />
         <Collaborators />
       </div>

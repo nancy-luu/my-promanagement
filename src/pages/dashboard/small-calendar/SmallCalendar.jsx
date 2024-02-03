@@ -6,14 +6,16 @@ import { classNameHelper } from "../../../util/classNameHelper";
 // styles and images
 import "./SmallCalendar.css";
 
-const SmallCalendar = ({dateForComparison,setDateForComparison, currentDate, selectedDateObj, setSelectedDateObj}) => {
+const SmallCalendar = ({dateForComparison,setDateForComparison, currentDate, selectedDateObj, setSelectedDateObj, myMeetings}) => {
   const days = ["S", "M", "T", "W", "T", "F", "S"];
 
   const [thisMonth, setThisMonth] = useState(currentDate);
-  const [calendarDays, setCalendarDays] = useState(generateDate());
-  const [selectedDay, setSelectedDay] = useState();
+const [calendarDays, setCalendarDays] = useState(generateDate(thisMonth.month(), thisMonth.year(), myMeetings));
+    const [selectedDay, setSelectedDay] = useState();
   const [selectedMonth, setSelectedMonth] = useState();
   const [selectedYear, setSelectedYear] = useState();  
+
+  console.log(myMeetings)
   
   const changeCalendar = (x) => {
     let newMonth = thisMonth.month() + x;
@@ -29,12 +31,12 @@ const SmallCalendar = ({dateForComparison,setDateForComparison, currentDate, sel
     }
 
     setThisMonth(thisMonth.month(newMonth).year(newYear));
-    setCalendarDays(generateDate(newMonth, newYear));
+    setCalendarDays(generateDate(newMonth, newYear, myMeetings));
   }
 
   const returnToToday = () => {
     setThisMonth(currentDate); 
-    setCalendarDays(generateDate(currentDate.month()));
+    setCalendarDays(generateDate(currentDate.month(), currentDate.year(), myMeetings));
     return;
   }
 
@@ -54,6 +56,9 @@ const SmallCalendar = ({dateForComparison,setDateForComparison, currentDate, sel
 
     return;
   }
+
+  console.log("CALENDAR DAYS")
+  console.log(calendarDays)
 
   return (
     <div className="grid-one-item grid-common grid-c1">
@@ -84,7 +89,7 @@ const SmallCalendar = ({dateForComparison,setDateForComparison, currentDate, sel
                 })}
             </div>
             <div className="days-form">
-                {calendarDays.map(({ date, currentMonth, today }, index) => {
+                {calendarDays.map(({ date, currentMonth, today, hasMeeting }, index) => {
 
                     const isSelected =
                     date.$D === selectedDay &&
@@ -102,10 +107,9 @@ const SmallCalendar = ({dateForComparison,setDateForComparison, currentDate, sel
                                 isSelected ? "day-selected" : ""
                             )}
                             onClick={(e) => changeSelectedDate(date)}
-                            // onClick={(e) => console.log(date)}
-
                             >
                             {date.date()}
+                            {hasMeeting? <div className="has-meeting-dot"></div> : <></>}
                             </div>
                         :
                             <div

@@ -76,6 +76,7 @@
 }
 
 .day {
+    position: relative;
     border-radius: 50%;
     cursor: pointer;
     color: var(--text-color);
@@ -104,4 +105,17 @@
     background-color: var( --bg-secondary-color);
     border-radius: 50%;
     font: bold;
+}
+
+.has-meeting-dot {
+    position: absolute; /* Position the dot absolutely within the .day container */
+    bottom: 1px; /* Adjust the value to position the dot below the text */
+    left: 50%; /* Center the dot horizontally */
+    transform: translateX(-50%); /* Center the dot horizontally */
+    content: '';
+    background-color: var(--primary-color);
+    width: 8px; /* Adjust the width and height as needed */
+    height: 8px;
+    border-radius: 50%; /* Creates a circular dot */
+    display: inline-block; /* Ensures the dot takes up space */
 }

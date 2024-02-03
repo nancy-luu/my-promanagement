@@ -1,17 +1,9 @@
 import dayjs from "dayjs";
 
-export const generateDate = ( 
-    
-    month = dayjs().month(),
-    
-    year = dayjs().year()
-
-) => {
+export const generateDate = ( month = dayjs().month(), year = dayjs().year(), myMeetings) => {
 
     const firstDateOfMonth = dayjs().year(year).month(month).startOf("month");
-
     const lastDateOfMonth = dayjs().year(year).month(month).endOf("month");
-
     const arrayOfDate = [];
 
     // dates before calendar start
@@ -22,17 +14,23 @@ export const generateDate = (
         })
     }
 
-
-    // gettign every day of current month into arrayOfDate
+    const checkIfDayHasMeeting = (date, myMeetings) => {
+        if (myMeetings) {
+            return myMeetings.some(meeting => dayjs(meeting.start).isSame(date, 'day'));
+        }
+    };
+ 
+    // getting every day of current month into arrayOfDate
     for(let i = firstDateOfMonth.date(); i <= lastDateOfMonth.date(); i++) {
+        const currentDate = firstDateOfMonth.date(i);
         arrayOfDate.push({
             currentMonth: true,
             date: firstDateOfMonth.date(i),
-            // check if one of the days matches dayjs current day
-            // today: firstDateOfMonth.date(i).toDate().toDateString() === dayjs().toDate().toDateString(),
-            today: firstDateOfMonth.date(i).isSame(dayjs(), 'day')
+            today: firstDateOfMonth.date(i).isSame(dayjs(), 'day'),
+            hasMeeting: checkIfDayHasMeeting(currentDate, myMeetings),
         });
     }
+
 
     // getting days after current month end to fill up the rest of the 42 cells in the calendar 
     const remainingDays = 42 - arrayOfDate.length;

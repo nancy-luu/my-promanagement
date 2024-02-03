@@ -1,9 +1,10 @@
 .sidebar {
     width: 250px;
-    background: linear-gradient(to bottom, #2929297f, #2929297f) padding-box,
-    linear-gradient(to top, #6262623b, #03000e22) border-box;
     min-height: 100vh; 
     transition: var(--transition-default);
+    background: linear-gradient(to bottom, #2929297f, #2929297f) padding-box,
+    linear-gradient(to top, #6262623b, #03000e22) border-box;
+    border-right: .75px solid rgb(72, 72, 72);
 }
 
 .navigation {

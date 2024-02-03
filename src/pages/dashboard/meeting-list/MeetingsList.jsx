@@ -1,5 +1,4 @@
 import { useState, useEffect } from "react"
-import { useMyMeetings } from '../../../hooks/useMyMeetings'
 import dayjs from 'dayjs';
 import { Link } from "react-router-dom";
 
@@ -9,9 +8,8 @@ import Meeting from './Meeting'
 // styles
 import './Meeting.css'
 
-const MeetingsList = ({ dateForComparison, selectedDateObj, calendarDays }) => {
+const MeetingsList = ({ dateForComparison, selectedDateObj, calendarDays, myMeetings }) => {
   const [meetingToRender, setMeetingToRender] = useState([]);
-  const { myMeetings } = useMyMeetings();
  
 
   useEffect(() => {
