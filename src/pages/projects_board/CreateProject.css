@@ -41,3 +41,16 @@
     padding-left: 10px;
     color: black;
 }
+
+
+/*  RESPONSIVE ----------------------- */
+
+@media screen and (max-width: 430px) {
+    .create-form {
+        max-width: 300px;
+        min-width: 200px;
+        margin: 10px;
+        padding: 20px;
+        border-radius: 5px;
+    }
+}

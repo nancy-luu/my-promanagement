@@ -11,7 +11,7 @@ const SearchResult = ({ query, clearInput }) => {
             {query &&
               query.slice(0, 15).map((value, key) => (
                 <div className="search-item">
-                  <Link to={`projects/${value.docId}`} key={key} onClick={clearInput}>
+                  <Link to={`/projects/${value.docId}`} key={key} onClick={clearInput}>
                   • {value.name}
                   </Link>
                 </div>

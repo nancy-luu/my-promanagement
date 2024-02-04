@@ -17,9 +17,25 @@
 }
 
 .completed-stack,
-.progress-stack {
-  padding-right: 20px;
+.progress-stack,
+.open-stack {
+  padding-left: 10px;
+  padding-right: 10px;
 }
+
+.completed-stack h4{
+  border-bottom: solid 5px var(--third-color)
+}
+
+.progress-stack h4{
+  border-bottom: solid 5px var(--primary-color)
+}
+
+.open-stack h4{
+  border-bottom: solid 5px var(--secondary-color)
+}
+
+
 
 .bookmarks-container{
   margin-top: 10px;

@@ -21,7 +21,7 @@ const Overview = () => {
                 <h4>In Progress</h4>
                 <h1>{inProgressProjects.length ? inProgressProjects.length : '-'}</h1>
             </div>
-            <div className="total-stack">
+            <div className="open-stack">
                 <h4>Open</h4>
                 <h1>{openProjects.length ? openProjects.length : '-'}</h1>
             </div>
