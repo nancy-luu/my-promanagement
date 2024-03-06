@@ -12,6 +12,15 @@ import projects from "../assets/sidebar/projects_icon.png";
 import calendar from "../assets/sidebar/calendar.png";
 import team from "../assets/sidebar/team.png";
 
+import dashOrange from "../assets/sidebar/dash-orange.png";
+import dashWhite from "../assets/sidebar/dash-white.png";
+import calOrange from "../assets/sidebar/cal-orange.png";
+import calWhite from "../assets/sidebar/cal-white.png";
+import projOrange from "../assets/sidebar/proj-orange.png";
+import projWhite from "../assets/sidebar/proj-white.png";
+import teamOrange from "../assets/sidebar/team-orange.png";
+import teamWhite from "../assets/sidebar/team-white.png";
+
 
 import add from "../assets/dashboard/add-icon.png";
 import calArrow from "../assets/dashboard/cal-arrow-hover.png";
@@ -36,7 +45,7 @@ export const navbarImgs = {
 }
 
 export const sideBarImgs = {
-    logo, dashboard, projects, calendar, team
+    logo, dashboard, projects, calendar, team, dashOrange, dashWhite, calOrange, calWhite, projOrange, projWhite, teamOrange, teamWhite
 }
 
 

@@ -1,6 +1,5 @@
 import { useReducer, useEffect, useState } from "react"
 import { projectFirestore, timestamp } from "../firebase/config"
-import { cleanDigitSectionValue } from "@mui/x-date-pickers/internals/hooks/useField/useField.utils"
 
 let initialState = {
   document: null,

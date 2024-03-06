@@ -19,7 +19,7 @@ const Content = ( ) => {
   return (
     <div className="main-content">
       <Navbar />
-      <div className="main-content-body">
+      <div className="main-content-body"> 
         <Switch>
           <Route path="/dashboard">
             <Dashboard />

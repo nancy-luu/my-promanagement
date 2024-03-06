@@ -73,7 +73,7 @@ const BigCalendar = () => {
         <Calendar
           localizer={localizer}
           events={myMeetings}
-          defaultView={"month"}
+          defaultView={"week"}
           views={["month", "week", "day"]}
           style={{ height: 550 }}
           min={minTime.toDate()}

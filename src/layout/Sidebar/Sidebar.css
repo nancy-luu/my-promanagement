@@ -11,6 +11,10 @@
     margin-top: 10px;
 }
 
+.nav-list {
+    position: relative;
+}
+
 .logo-container {
     display: flex;
     flex-direction: column;
