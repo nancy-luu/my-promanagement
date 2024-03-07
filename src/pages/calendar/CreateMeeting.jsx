@@ -73,7 +73,7 @@ const CreateMeeting = () => {
             displayName: user.displayName,
             photoURL: user.photoURL,
             id: user.uid,
-            accepted: false
+            accepted: true
         },
         ...filteredGuests.map((g) => ({
             displayName: g.value.displayName,
