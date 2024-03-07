@@ -30,13 +30,20 @@ const CreateMeeting = () => {
     const [formError, setFormError] = useState(null);
 
     useEffect(() => {
-        if (documents) {
-          const options = documents.map((user) => {
-            return { value: user, label: user.displayName, img: user.photoURL };
+      if (documents) {
+          const filteredOptions = documents.filter((doc) => doc.id !== user.uid);
+          
+          const options = filteredOptions.map((user) => {
+              return { value: user, label: user.displayName, img: user.photoURL };
           });
-          setUsers(options); 
-        }
-    }, [documents]);
+          
+          setUsers(options);
+  
+          // Prepopulate guests with the current user
+          setGuests([{ value: user, label: user.displayName, img: user.photoURL }]);
+      }
+    }, [documents, user]);
+  
 
 
     const handleSubmitMeeting = async (e) => {
@@ -59,15 +66,23 @@ const CreateMeeting = () => {
         id: user.uid,
       };
 
-      const guestsInvitedList = guests.map((g) => {
-        return {
-          displayName: g.value.displayName,
-          photoURL: g.value.photoURL,
-          id: g.value.id,
-          accepted: false
-        }
-      })
+      const filteredGuests = guests.filter(g => g.value.displayName !== user.displayName);
 
+    const guestsInvitedList = [
+        {
+            displayName: user.displayName,
+            photoURL: user.photoURL,
+            id: user.uid,
+            accepted: false
+        },
+        ...filteredGuests.map((g) => ({
+            displayName: g.value.displayName,
+            photoURL: g.value.photoURL,
+            id: g.value.id,
+            accepted: false
+        }))
+    ];
+    
       const meeting = {
         title,
         start,
@@ -85,6 +100,8 @@ const CreateMeeting = () => {
         console.log(meeting)
         history.push(`/calendar`);
       }
+
+      console.log(guestsInvitedList)
     }
 
   return (
