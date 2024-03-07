@@ -1,5 +1,5 @@
 import { useState, useEffect, useContext } from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useLocation } from "react-router-dom";
 import { navigationLinks } from "../../util/navlinks";
 import { SidebarContext } from "../../context/SidebarContext";
 import { sideBarImgs } from '../../util/images';
@@ -9,12 +9,16 @@ import "./Sidebar.css";
 
 export default function Sidebar() {
   const [sidebarClass, setSidebarClass] = useState("");
-  const [selectedLink, setSelectedLink] = useState(1);
+  const [selectedLink, setSelectedLink] = useState(null);
   const { isSidebarOpen } = useContext(SidebarContext);
+  const location = useLocation();
+
 
   useEffect(() => {
+    const matchedLink = navigationLinks.find(nav => nav.path === location.pathname);
+    setSelectedLink(matchedLink ? matchedLink.id : null);
     setSidebarClass(isSidebarOpen ? "sidebar-change" : "");
-  }, [isSidebarOpen]);
+  }, [isSidebarOpen, location]);
 
   const handleSelected = (navId) => {
     setSelectedLink(navId);

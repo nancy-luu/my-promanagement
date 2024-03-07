@@ -18,7 +18,10 @@ const MeetingsList = ({ dateForComparison, selectedDateObj, calendarDays, myMeet
         const startAsDayjs = dayjs(meeting.start); // Convert meeting.start to Day.js object
         return startAsDayjs.isSame(dateForComparison, 'day'); // Compare Day.js objects
       });
-      setMeetingToRender(filteredMeetings);
+
+      const sortedMeetings = filteredMeetings.sort((a, b) => a.start - b.start);
+
+      setMeetingToRender(sortedMeetings);
     }
   }, [myMeetings, dateForComparison]);
 

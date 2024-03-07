@@ -73,6 +73,10 @@
     display: flex;
 }
 
+.event-display-container h5{
+    color: white;
+}
+
 .rbc-day-bg .rbc-today {
     background-color: red !important;
     color: var(--primary-color) !important;
@@ -108,7 +112,7 @@
 
 .rbc-toolbar button:active,
 .rbc-toolbar button.rbc-active {
-    background-color: rgba(255, 153, 0, 0.937) !important;
+    background-color: #FF6525 !important;
 }
 
 .rbc-current-time-indicator {

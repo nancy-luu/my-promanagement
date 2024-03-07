@@ -53,8 +53,11 @@
     border-bottom: 1px solid #ffffff25;
 }
 
-.meeting-container:hover{
+.meeting-wrapper:hover .meeting-container{
     border-bottom: 1px solid var(--primary-color);
+}
+.meeting-wrapper:hover h4.meeting-title {
+    color: var(--primary-color);
 }
 
 .meeting-detail {
