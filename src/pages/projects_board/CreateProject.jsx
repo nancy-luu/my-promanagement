@@ -26,8 +26,10 @@ export default function CreateProject() {
   const { user } = useAuthContext();
 
   // first time we save to projects if it doesnt exist it will be created
-  const { addDocument, response } = useFirestore("projects");
+  const { addDocument, response, getDocumentId } = useFirestore("projects");
   const history = useHistory();
+
+  console.log(getDocumentId())
 
   useEffect(() => {
     if (documents) {
@@ -38,6 +40,13 @@ export default function CreateProject() {
     }
   }, [documents]);
 
+  useEffect(() => {
+    if (response.documentId && !response.error) {
+      console.log("Document ID:", response.documentId);
+      history.push(`/projects/${response.documentId}`);
+    }
+  }, [response.documentId, response.error, history]);
+  
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -77,19 +86,13 @@ export default function CreateProject() {
       isCompleted: isCompleted,
     };
 
-    // waits to add document before moving on
-    await addDocument(project);
-
-    // if there is no response the user will be redirected the the dashboard
-    if (!response.error) {
-      console.log("this is the response id: " + response.id);
-      console.log(dueDate)
-      history.push(`/projects`);
+    try {
+      await addDocument(project);
+    } catch (error) {
+      console.error("Error adding document:", error);
+      setFormError("An error occurred while adding the document.");
     }
   };
-
-  console.log("\n");
-  console.log(users);
 
   return (
     <div className="create-project-wrapper">
@@ -105,6 +108,7 @@ export default function CreateProject() {
               value={name}
             ></input>
           </label>
+          <div className="category-assign-container">
           <label>
             <input
               required
@@ -114,7 +118,6 @@ export default function CreateProject() {
               value={dueDate}
             ></input>
           </label>
-          <div className="category-assign-container">
             <label>
               <Select
                 className="category-select"
@@ -138,6 +141,7 @@ export default function CreateProject() {
                 placeholder="Category"
               />
             </label>
+          </div>
             <label>
               <Select
                 isMulti
@@ -164,7 +168,6 @@ export default function CreateProject() {
                 placeholder="Assign To"
               />
             </label>
-          </div>
           <label>
             <textarea
               required

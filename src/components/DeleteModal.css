@@ -54,3 +54,14 @@
 .btn-group .btn {
     margin: 5px;
 } */
+
+.modal-btn-group {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.delete-icon {
+    width: 20px;
+} 

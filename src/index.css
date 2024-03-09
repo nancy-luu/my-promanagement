@@ -87,6 +87,7 @@ input, textarea {
   box-sizing: border-box;
   border: 1px solid #ddd;
   border-radius: 4px;
+  font-family: Poppins, sans-serif;
 }
 
 textarea {

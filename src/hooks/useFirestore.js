@@ -13,7 +13,8 @@ const firestoreReducer = (state, action) => {
     case 'IS_PENDING':
       return { isPending: true, document: null, success: false, error: null }
     case 'ADDED_DOCUMENT':
-      return { isPending: false, document: action.payload, success: true, error: null }
+      return { isPending: false, document: action.payload, success: true, error: null, documentId: action.payload.id, 
+      }
     case 'DELETED_DOCUMENT':
       return { isPending: false, document: null, success: true, error: null }
     case 'ERROR':
@@ -28,6 +29,7 @@ const firestoreReducer = (state, action) => {
 export const useFirestore = (collection) => {
   const [response, dispatch] = useReducer(firestoreReducer, initialState)
   const [isCancelled, setIsCancelled] = useState(false)
+  const [documentId, setDocumentId] = useState(null);
 
   // collection ref
   const ref = projectFirestore.collection(collection)
@@ -44,14 +46,20 @@ export const useFirestore = (collection) => {
     dispatch({ type: 'IS_PENDING' })
 
     try {
+      console.log("Adding document:", doc);
       const createdAt = timestamp.fromDate(new Date())
       const addedDocument = await ref.add({ ...doc, createdAt })
+      console.log("Document added successfully:", addedDocument.id);
       dispatchIfNotCancelled({ type: 'ADDED_DOCUMENT', payload: addedDocument })
+      // Set documentId after successfully adding the document
+      setDocumentId(addedDocument.id);
     }
     catch (err) {
       dispatchIfNotCancelled({ type: 'ERROR', payload: err.message })
     }
   }
+
+  const getDocumentId = () => documentId;
 
     // update a document's comments
     const updateDocumentSummary = async (id, updates) => {
@@ -204,7 +212,9 @@ export const useFirestore = (collection) => {
   }, [])
 
   return { 
-    addDocument, 
+    addDocument,
+    getDocumentId,
+    documentId: response.documentId, 
     updateDocumentComments, 
     updateDocumentSummary, 
     markAsCompleted, 

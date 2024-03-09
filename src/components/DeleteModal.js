@@ -1,6 +1,8 @@
 import { useState } from 'react'
 import { useFirestore } from '../hooks/useFirestore'
 import { useHistory } from 'react-router-dom'
+import { meetingImgs } from "../util/images";
+
 
 //styles
 import "./DeleteModal.css"
@@ -22,14 +24,14 @@ const DeleteModal = ({ project }) => {
 
   return (
       <>
-          <button className="btn" onClick={toggleModal}>X</button>
+          <img src={meetingImgs.trash} className="btn delete-icon" onClick={toggleModal}/>
 
           <div className={`modal ${appear ? 'active' : ''}`}>
               <div className="modal-content">
                   <p>Are you sure you want to delete this project?</p>
-                  <div className="btn-group">  
+                  <div className="modal-btn-group">  
                     <button className="btn" onClick={toggleModal}>Cancel</button>
-                    <button className="btn" onClick={handleDelete}>Delete</button>
+                    <button className="btn" onClick={handleDelete}>Yes</button>
                   </div>
               </div>
           </div>

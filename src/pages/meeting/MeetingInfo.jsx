@@ -105,16 +105,19 @@ const MeetingInfo = () => {
   }
 
   const handleDeclineMeeting = () => {
-    removeUserFromMeeting(meeting.id, user.uid);
-
-    if (!response.error) {
-      console.log(response)
-      console.log("this is the response id: " + response.document.id);
-      console.log(meeting)
-      history.push(`/calendar`);
+    if (meeting) {
+      removeUserFromMeeting(meeting.id, user.uid);
+  
+      if (!response.error) {
+        console.log(response)
+        console.log(meeting)
+        history.push(`/calendar`);
+      }
+    } else {
+      console.error("Meeting data is null.");
     }
   }
-
+  
   const handleShowGuests = () => {
     if(!showGuests){
       setShowGuests(true)
@@ -176,7 +179,7 @@ const MeetingInfo = () => {
               {guestsInvited.map(guest => 
                 <div className="single-guest-container">
                   <div className="guest-image-container">
-                    <Avatar src={guest.photoURL}/>
+                    <Avatar src={guest.photoURL} userId={guest.id}/>
                     {guest.accepted && <img className="check-icon" src={meetingImgs.attending} alt="check icon"></img>}
                   </div>
                   <div className="guests-name">

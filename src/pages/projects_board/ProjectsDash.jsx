@@ -227,7 +227,7 @@ const handleDepartmentSort = () => {
         </div>
       <div className="collection-container">
         <div className="grid-common">
-        {sortedProjects && sortedProjects.length === 0 ? <p>*No projects to display*</p> : <h3>All Projects</h3> }
+        {sortedProjects && sortedProjects.length === 0 ? <p>*No projects to display*</p> : <h3>{`${currFilter.slice(0, 1).toUpperCase()}${currFilter.slice(1)}`} Projects</h3> }
           <table className="project-table">
               <colgroup>
                 <col style={{ width: "25%" }} /> 
@@ -288,7 +288,7 @@ const handleDepartmentSort = () => {
                   </div>
                 </th>
                 <th>
-                  <div className="header-segment-department">
+                  <div className="header-segment">
                     Department
                     <img 
                       className="sort-icon"

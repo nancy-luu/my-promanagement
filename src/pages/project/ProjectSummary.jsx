@@ -16,11 +16,9 @@ import './Project.css';
 export default function ProjectSummary({ project }) {
   const { markAsCompleted } = useFirestore("projects");
   const { user } = useAuthContext(); // to get current user
-  const history = useHistory();
 
   const handleComplete = (e) => {
     markAsCompleted(project.id);
-    history.push("/projects"); // sending to main page once deleted
   };
  
   return (
@@ -51,7 +49,7 @@ export default function ProjectSummary({ project }) {
           <div className="users-avatars">
             {project.assignedUsersList.map((user) => (
               <div key={user.id}>
-                <Avatar src={user.photoURL} />
+                <Avatar src={user.photoURL} userId={user.id}/>
               </div>
             ))}
           </div>
@@ -59,7 +57,7 @@ export default function ProjectSummary({ project }) {
         <div className="description-section">
         <h4>Description:</h4>
         <p className="details">{project.details}</p>
-          <div className="project-buttons">
+          <d iv className="project-buttons">
             {!project.isCompleted && (
               <>
                 {user.uid === project.createdBy.id && (
@@ -74,14 +72,14 @@ export default function ProjectSummary({ project }) {
                     Complete
                   </button>
                 )}
-                {user.uid === project.createdBy.id && (
-                  <>
-                    <DeleteModal project={project} />
-                  </>
-                )}
               </>
             )}
-          </div>
+            {user.uid === project.createdBy.id && (
+              <>
+                <DeleteModal project={project} />
+              </>
+            )}
+          </d>
         </div>
       </div>
   );
