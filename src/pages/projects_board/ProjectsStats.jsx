@@ -20,20 +20,20 @@ const ProjectsStats = ({ currFilter, setCurrFilter, changeFilter, projects, erro
         <h3 className="status-title">Status</h3>
         <div className="status-form">
           <div className="percent-container">
-              <h4>Completed:</h4>
+              <h4>Open:</h4>
               <div className="bullet-container">
-                <div className="complete-pt"></div>
-                <p>{formattedCompletedPercent}%</p>
+                <div className="open-pt"></div>
+                <p>{formattedOpenPercent}%</p>
               </div>
               <h4>In Progress:</h4>
               <div className="bullet-container">
                 <div className="progress-pt"></div>
                 <p>{formattedInProgressPercent}%</p>
               </div>
-              <h4>Open:</h4>
+              <h4>Completed:</h4>
               <div className="bullet-container">
-                <div className="open-pt"></div>
-                <p>{formattedOpenPercent}%</p>
+                <div className="complete-pt"></div>
+                <p>{formattedCompletedPercent}%</p>
               </div>
           </div>
           <div className="chart-container">
