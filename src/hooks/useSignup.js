@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import { projectAuth, projectStorage, projectFirestore } from '../firebase/config'
+import { projectAuth, projectStorage, projectFirestore, timestamp } from '../firebase/config'
 import { useAuthContext } from './useAuthContext'
 import { useHistory } from "react-router-dom"
 
@@ -55,6 +55,7 @@ export const useSignup = () => {
       // setting a new document for every user that signs up
       await projectFirestore.collection('users').doc(res.user.uid).set({
         online: true,
+        createdAt: timestamp.fromDate(new Date()),
         displayName,
         photoURL: imgUrl,
         department,
