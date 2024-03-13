@@ -40,7 +40,7 @@ export default function Navbar({ OpenSideBar }) {
             </div>
             <div>
                 {!isPending && <button className="btn" onClick={logout}>Logout</button>}
-                {isPending && <button className="btn" disable>Logging out..</button>}
+                {isPending && <button className="btn" disable="true">Logging out..</button>}
             </div>
       </div>
     </div>
