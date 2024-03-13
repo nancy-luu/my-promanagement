@@ -3,6 +3,8 @@ import 'firebase/firestore';
 import 'firebase/auth';
 import 'firebase/storage'
 
+console.log(process.env.REACT_APP_API_ID)
+
 
 // object that is used to connect firebase to the backend
 const firebaseConfig = {

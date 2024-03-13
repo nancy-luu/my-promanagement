@@ -266,6 +266,18 @@
   }
 }
 
+@media screen and (max-width: 414px) {
+    .big-calendar-container{
+        width: 330px;
+    }
+
+  .rbc-toolbar{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+}
+
 @media screen and (max-width: 390px) {
     .big-calendar-container{
         width: 300px;
