@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { Link } from "react-router-dom";
 import Select from "react-select";
 
@@ -14,8 +13,6 @@ const filterList = [
 ];
 
 export default function ProjectFilter({ currFilter, changeFilter }) {
-  const [isDropdownOpen, setIsDropdownOpen] = useState(true);
-  const [selectedFilter, setSelectedFilter] = useState();
 
   const handleClick = (newFilter) => {
     changeFilter(newFilter);

@@ -96,16 +96,16 @@
   }
 
   .content-grid-one > * {
-    grid-column: span 1; /* Make all direct children span one column */
+    grid-column: span 1; 
     column-gap: 10px;
   }
 
   .content-grid-one .subgrid-two {
-    grid-column: span 1; /* Make all direct children span one column */
+    grid-column: span 1; 
   }
   
   .content-grid-two > * {
-    grid-column: span 1; /* Make all direct children span one column */
+    grid-column: span 1; 
     border: 1px solid white;
   }
 

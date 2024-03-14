@@ -36,7 +36,6 @@ const MeetingsList = ({ dateForComparison, selectedDateObj, calendarDays, myMeet
             {firstThreeMeetings && firstThreeMeetings.map(m => 
               <Link className="meeting-link" to={`meetings/${m.id}`}>
                 <Meeting 
-                  // thisMonth={thisMonth} 
                   meeting={m}
                   calendarDays={calendarDays} 
                 />

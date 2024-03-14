@@ -28,7 +28,6 @@ const BigCalendar = () => {
   const EventDisplay = ({ event }) => (
     <Link to={`/meetings/${event.id}`}>
       <div className="event-display-container">
-        {/* <h5>{(dayjs(event.start)).format('h:mm A')}</h5> */}
         <h5>{event.title}</h5>
       </div>
     </Link>

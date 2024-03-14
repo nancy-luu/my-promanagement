@@ -18,9 +18,6 @@ const [calendarDays, setCalendarDays] = useState(generateDate(currentDate.month(
   useEffect(() => {
     setCalendarDays(generateDate(thisMonth.month(), thisMonth.year(), myMeetings));
   }, [thisMonth, myMeetings]);
-
-
-  console.log(myMeetings)
   
   const changeCalendar = (x) => {
     let newMonth = thisMonth.month() + x;
@@ -61,9 +58,6 @@ const [calendarDays, setCalendarDays] = useState(generateDate(currentDate.month(
 
     return;
   }
-
-  console.log("CALENDAR DAYS")
-  console.log(calendarDays)
 
   return (
     <div className="grid-one-item grid-common grid-c1">

@@ -1,14 +1,10 @@
-import { useState } from "react";
-import { useAuthContext } from '../../../hooks/useAuthContext'
-import { useCollection } from '../../../hooks/useCollection'
 import { useMyProjects } from '../../../hooks/useMyProjects';
 
 // styles
 import './Overview.css'
 
 const Overview = () => {    
-    const { openProjects, completedProject, inProgressProjects, projectCount, myProjects } = useMyProjects();
-    const [openModal, setOpenModal] = useState(false);
+    const { openProjects, completedProject, inProgressProjects } = useMyProjects();
     
   return (
     <div className="grid-one-item grid-common grid-c1">

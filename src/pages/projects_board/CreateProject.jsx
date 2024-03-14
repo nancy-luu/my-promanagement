@@ -25,11 +25,9 @@ export default function CreateProject() {
   const { documents } = useCollection("users");
   const { user } = useAuthContext();
 
-  // first time we save to projects if it doesnt exist it will be created
   const { addDocument, response, getDocumentId } = useFirestore("projects");
   const history = useHistory();
 
-  console.log(getDocumentId())
 
   useEffect(() => {
     if (documents) {

@@ -15,7 +15,6 @@ export default function ProjectComments({ project }) {
     const handleSubmit = async (e) => {
         e.preventDefault()
 
-        // update object that will be added to the spread comments array in updateDocument
         const commentToAdd = {
             displayName: user.displayName,
             photoURL : user.photoURL,
@@ -29,7 +28,7 @@ export default function ProjectComments({ project }) {
         })
 
         if(!response.error){
-            setNewComment('') // updating the text area to be empty string 
+            setNewComment('')
         }
     }
 

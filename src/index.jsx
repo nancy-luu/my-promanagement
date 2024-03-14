@@ -8,7 +8,7 @@ import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs'
 
 // styles
 import './index.css';
-import { SidebarContext, SidebarProvider } from './context/SidebarContext';
+import { SidebarProvider } from './context/SidebarContext';
 
 
 ReactDOM.render(

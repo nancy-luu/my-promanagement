@@ -15,22 +15,17 @@ const Collaborators = () => {
 
   const { myProjects } = useMyProjects();
 
-  // getting all the names of assigned user for each project
-  // flatMap flattens these arrays of display names into a single array instead of multiple arrays
+
   const assignedUsersDisplayNames = myProjects.flatMap((projectDoc) =>
     projectDoc.assignedUsersList.map((userObj) => userObj.displayName)
   );
 
-  // taking out user's name from the list
   const teamMembers = Array.from(assignedUsersDisplayNames).filter(
     (displayName) => displayName !== user.displayName
   );
 
-  // creating a list of nonrepeated names
   const uniqueTeamMembers = [...new Set(teamMembers)];
-  // console.log(uniqueTeamMembers)
 
-  // getting the full team members object by filtering through user Docs
   const uniqueTeamMembersObject = userDocuments
     ? userDocuments.filter((user) =>
         uniqueTeamMembers.includes(user.displayName)

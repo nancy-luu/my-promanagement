@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { BrowserRouter, Route, Switch, Redirect } from "react-router-dom";
+import { BrowserRouter, Route, Switch } from "react-router-dom";
 import { useAuthContext } from "./hooks/useAuthContext";
 
 // components
@@ -7,7 +7,6 @@ import Sidebar from "./layout/Sidebar/Sidebar";
 import Content from "./layout/Content/Content";
 import Home from "./pages/home/Home";
 import BackToTop from "./components/BackToTop";
-// import Footer from "./components/Footer";
 
 //styles
 import "./App.css";
@@ -19,8 +18,6 @@ function App() {
   const OpenSideBar = () => {
     setSidebarToggle(!sidebarToggle)
   }
-  console.log('user:', user);
-  console.log('authIsReady:', authIsReady);
 
   return (
     <div className="app">

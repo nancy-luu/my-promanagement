@@ -10,7 +10,6 @@ import './Project.css';
 
 
 export default function Project() {
-  // getting id from router param
   const { id } = useParams();
   const { error, document } = useDocument('projects', id)
 

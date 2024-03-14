@@ -155,8 +155,6 @@ const ProjectsDash = () => {
         case "owner":
           return sortedByOwner;
         case "department":
-          console.log("DEPARTMENT PROJECTS")
-          console.log(sortedByDepartment)
           return sortedByDepartment;
         default:
           return sortedProjectsCopy;

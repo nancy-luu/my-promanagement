@@ -9,7 +9,7 @@ const BackToTop = () => {
 
   useEffect(() => {
     window.addEventListener("scroll", () => {
-      if (window.scrollY > 50) { // Adjust the threshold to show the button
+      if (window.scrollY > 50) { 
         setBackToTop(true);
       } else {
         setBackToTop(false);
@@ -25,7 +25,7 @@ const BackToTop = () => {
   };
 
   const scrollableStyle = {
-    overflowY: backToTop ? "hidden" : "auto", // Hide the scrollbar when BackToTop button is visible
+    overflowY: backToTop ? "hidden" : "auto",
   };
 
   return (

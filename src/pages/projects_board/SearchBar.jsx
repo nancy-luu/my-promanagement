@@ -29,7 +29,6 @@ const SearchBar = ({ data, query, setQuery }) => {
 
   const handleClickOutside = (event) => {
     if (searchRef.current && !searchRef.current.contains(event.target)) {
-      // Clicked outside the search bar, close the search results
       setInputValue("")
       setQuery([]);
     }

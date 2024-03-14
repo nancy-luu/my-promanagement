@@ -8,7 +8,6 @@ export const useDocument = (collection, id) => {
     useEffect(() => {
         const ref = projectFirestore.collection(collection).doc(id);
 
-        // represents the documents of the documents with all the data and id
         const unsubscribe = ref.onSnapshot((snapshot) => {
             if(snapshot.data()) {
                 setDocument({...snapshot.data(), id: snapshot.id})
@@ -22,7 +21,6 @@ export const useDocument = (collection, id) => {
             setError('Document not found')
         })
 
-        // clean up function
         return () => unsubscribe();
 
     }, [collection, id])

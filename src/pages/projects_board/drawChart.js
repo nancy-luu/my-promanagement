@@ -32,7 +32,6 @@ const drawChart = (element, data) => {
         .attr("d", arcGenerator)
         .style("stroke", "rgba(79, 79, 79, 0.444)")
         .style("stroke-width", 5)
-        // adding colors from colors array above 
         .style("fill", (d, i) => colors[i % data.length])
         .transition()
         .duration(700)

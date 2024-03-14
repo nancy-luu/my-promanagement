@@ -39,20 +39,14 @@ export const useSignup = () => {
 
       //upload user thumbnail--------------------------------
       const uploadPath = `thumbnails/${res.user.uid}/${thumbnail.name}` // uid --> unique id of user
-        // where the user will be stored
       const img = await projectStorage.ref(uploadPath).put(thumbnail)
-        // uloaded the image and storing the response of the upload
       const imgUrl = await img.ref.getDownloadURL()
-        // taking the ref and getting the downloadURL 
-        // and storing into the imgUrl constant to use below
+
 
 
       // add display name to user
       await res.user.updateProfile({ displayName, photoURL: imgUrl })
 
-      // create a use document
-      // makes a reference to a user in the users document with the res uid
-      // setting a new document for every user that signs up
       await projectFirestore.collection('users').doc(res.user.uid).set({
         online: true,
         createdAt: timestamp.fromDate(new Date()),

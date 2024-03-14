@@ -3,7 +3,6 @@ import { projectAuth } from '../firebase/config'
 
 export const AuthContext = createContext()
 
-// updates state depending on different dispatch actions 
 export const authReducer = (state, action) => {
   switch (action.type) {
     case 'LOGIN':
@@ -29,8 +28,6 @@ export const AuthContextProvider = ({ children }) => {
       unsub()
     })
   }, [])
-
-  // console.log('AuthContext state:', state)
   
   return (
     <AuthContext.Provider value={{ ...state, dispatch }}>

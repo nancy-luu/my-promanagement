@@ -49,7 +49,6 @@ const CreateMeeting = () => {
     const handleSubmitMeeting = async (e) => {
         e.preventDefault();
         setFormError(null)
-        // console.log(title, start, end, description, guests)
 
         if(!start || !end){
             setFormError("Please choose a start and end for your meeting.")
@@ -97,11 +96,9 @@ const CreateMeeting = () => {
       if (!response.error) {
         console.log(response)
         console.log("this is the response id: " + response.id);
-        console.log(meeting)
         history.push(`/calendar`);
       }
 
-      console.log(guestsInvitedList)
     }
 
   return (

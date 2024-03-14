@@ -38,10 +38,8 @@ export default function BookmarkedProjects({ myProjects }) {
   const handleCheckboxChange = (projectId) => {
     setCheckedProjects((prevCheckedProjects) => {
       if (prevCheckedProjects.includes(projectId)) {
-        // If the project is already checked, remove it
         return prevCheckedProjects.filter((id) => id !== projectId);
       } else {
-        // If the project is not checked and the length is less than 3, add it
         if (prevCheckedProjects.length < 3) {
           return [...prevCheckedProjects, projectId];
         }

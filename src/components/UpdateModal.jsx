@@ -15,9 +15,8 @@ const UpdateModal = ({ project }) => {
   const dueDateTimestamp = project.dueDate;
   const convertedDueDate = dueDateTimestamp.toDate();
 
-  // Function to format the date as "YYYY-MM-DD"
   const formatDate = (date) => {
-    if (!date) return ""; // Handle case where dueDate is not defined
+    if (!date) return ""; 
     const formattedDate = new Date(date);
     const year = formattedDate.getFullYear();
     const month = String(formattedDate.getMonth() + 1).padStart(2, "0");
@@ -28,12 +27,10 @@ const UpdateModal = ({ project }) => {
   };
   const formattedDueDate = formatDate(convertedDueDate);
 
-  // Formating category to read with Capitalization
   const formattedCategory =
     [...project.category][0].toUpperCase() +
     [...project.category].slice(1).join("");
 
-  // states
   const [appear, setAppear] = useState(false);
   const [name, setName] = useState(project.name);
   const [details, setDetails] = useState(project.details);
@@ -52,7 +49,6 @@ const UpdateModal = ({ project }) => {
   console.log(project)
 
   
-  // formatting for Assigned User Select Options
   useEffect(() => {
     if (documents) {
       const options = documents.map((user) => {
@@ -70,7 +66,6 @@ const UpdateModal = ({ project }) => {
 
   }, [documents, assignedUsers]);
 
-  //   formatting for Assigned User Select Default State
   useEffect(() => {
     if (project) {
       const formattedAssignedUsers = project.assignedUsersList.map((user) => {
@@ -105,7 +100,6 @@ const UpdateModal = ({ project }) => {
         return;
       }
   
-      // creating a simplified array of objects from useAuthContext with the following properties
       const assignedUsersList = assignedUsers.map((u) => {
         return {
           displayName: u.value.displayName,
@@ -122,7 +116,6 @@ const UpdateModal = ({ project }) => {
         assignedUsersList: assignedUsersList,
       });
   
-      // Check the update result
       if (updateResult && updateResult.error) {
         console.error("Error updating document:", updateResult.error);
         setFormError("An error occurred while updating the document.");
@@ -137,7 +130,6 @@ const UpdateModal = ({ project }) => {
         history.push(`/projects/${project.id}`);
       }
     } catch (error) {
-      // Handle other potential errors that may occur
       console.error("An unexpected error occurred:", error);
       setFormError("An unexpected error occurred.");
     }

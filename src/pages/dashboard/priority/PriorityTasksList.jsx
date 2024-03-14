@@ -11,11 +11,9 @@ import './PriorityTask.css'
 const PriorityTasks = () => {
   const { myProjects } = useMyProjects();
 
-
   const excludesCompleteProjects = myProjects.filter((p) => p.isCompleted !== true);
   const sortedProjects = [...excludesCompleteProjects].sort((a, b) => a.dueDate - b.dueDate);
   const topProjects= sortedProjects.slice(0, 3);
-  // console.log(sortedProjects.forEach(project => console.log(project.dueDate.toDate().toDateString())))
 
 
   return (
