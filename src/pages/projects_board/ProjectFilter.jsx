@@ -28,7 +28,7 @@ export default function ProjectFilter({ currFilter, changeFilter }) {
       <div className="nav-wrapper">
         <nav>
           <Link to="/createProject" className="newproject-btn btn">
-            New Project
+            Create New Project
           </Link>
           {filterList.map((f) => (
             <button
@@ -42,7 +42,7 @@ export default function ProjectFilter({ currFilter, changeFilter }) {
         </nav>
       </div>
       <div className="project-filter-drop-down-wrapper">
-        <Link to="/createProject" className="newproject-btn-sm btn">+</Link>
+        <Link to="/createProject" className="newproject-btn-sm btn">Create New Project</Link>
         <Select
           className="project-filter-drop-down"
           value={{

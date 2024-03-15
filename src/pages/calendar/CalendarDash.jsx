@@ -13,11 +13,16 @@ const CalendarDash = () => {
 
   return (
     <div className="main-content-container">
-      <NavLink exact to="/createMeeting">
-        <button className="btn" onClick={handleAddEvent}>
-          Schedule Meeting
-        </button>
-      </NavLink>
+      <div className="mobile-title">
+        <h1>Calendar</h1>
+      </div>
+      <div className="button-wrapper">
+        <NavLink exact to="/createMeeting">
+          <button className="btn" onClick={handleAddEvent}>
+            Schedule Meeting
+          </button>
+        </NavLink>
+      </div>
       <div className="big-calendar-container">
         <BigCalendar />
       </div>

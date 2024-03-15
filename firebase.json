@@ -5,7 +5,6 @@
   },
   "hosting": {
     "public": "build",
-    "site": "promanagement",
     "ignore": [
       "firebase.json",
       "**/.*",

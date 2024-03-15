@@ -23,6 +23,9 @@
   row-gap: 10px;
 }
 
+.mobile-title{
+  display: none;
+}
 
 /* RESPONSIVE ----------------------------------------- */
 
@@ -113,4 +116,11 @@
     margin-top: 10px;
   }
 
+}
+
+
+@media screen and (max-width: 430px) {
+  .mobile-title{
+    display: inline-block;
+  }
 }

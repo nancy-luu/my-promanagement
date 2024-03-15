@@ -254,6 +254,9 @@ export default function TeamDash() {
 
   return (
     <div className="team-dash">
+      <div className="mobile-title">
+        <h1>Team</h1>
+      </div>
       <div className="department-container">
         {categories.map((category) => (
           <Link to={`/team/${category.label}`}>

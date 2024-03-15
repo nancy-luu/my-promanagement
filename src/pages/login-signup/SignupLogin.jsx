@@ -60,10 +60,10 @@ export default function SignupLogin() {
     }
 
     // 10000 bytes
-    if (selected.size > 100000) {
-      setThumbnailError("File size must be less than 100kb");
-      return;
-    }
+    // if (selected.size > 100000) {
+    //   setThumbnailError("File size must be less than 100kb");
+    //   return;
+    // }
 
     // resetting thumb nail error if it was set before
     setThumbnailError(null);

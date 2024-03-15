@@ -3,6 +3,10 @@
     box-sizing: border-box;
 }
 
+.mobile-title {
+    display: none;
+}
+
 input[type=text]:focus,
 input[type=date]:focus,
 textarea[type=text]:focus {
@@ -15,6 +19,7 @@ textarea[type=text]:focus {
     width: 100%;
     display: flex;
     margin-bottom: 10px;
+    justify-content: center;
 }
 
 .project-filter nav {
@@ -37,7 +42,7 @@ textarea[type=text]:focus {
     background: linear-gradient(to bottom, #2929297f, #2929297f) padding-box,
         linear-gradient(to top, #6262623b, #03000e22) border-box;
     border-style: none;
-    padding: 5px 20px;
+    padding: 5px 10px;
     margin-right: 10px;
     border-radius: 4px;
     font-family: inherit;
@@ -257,7 +262,30 @@ td .Complete {
 
 /* RESPONSIVE ----------------------------------------- */
 
+@media screen and (max-width: 1024px) {
+
+    .main-content-container {
+        max-width: 910px;
+    }
+
+    .nav-wrapper nav{
+        max-width: 890px;
+    }
+    
+    .mobile-title {
+        width: 100%;
+        display: none;
+        display: flex;
+        justify-content: center;
+        margin-bottom: 10px;
+    }  
+}
+
 @media screen and (max-width: 992px) {
+    .mobile-title {
+        display: flex;
+        justify-content: center;
+    }    
 
     .nav-wrapper {
         display: none;
@@ -266,11 +294,11 @@ td .Complete {
     .project-filter-drop-down-wrapper {
         display: flex;
         align-items: center;
-        justify-content: flex-start;
+        justify-content: center;
     }
 
     .project-filter-drop-down {
-        min-width: 150px; 
+        min-width: 550px !important;
     }
 }
 
@@ -286,7 +314,7 @@ td .Complete {
 
     .project-top-btns {
         display: flex;
-        justify-content: flex-start;
+        justify-content: center;
         align-items: center;
     }
 
@@ -321,7 +349,7 @@ td .Complete {
 
     .project-top-btns {
         display: flex;
-        justify-content: flex-start;
+        justify-content: center;
         align-items: center;
     }
 
@@ -338,14 +366,32 @@ td .Complete {
         display: none;
     }
 
+    .project-filter-drop-down-wrapper {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .newproject-btn-sm {
+        display:flex;
+        width: 60%;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 5px;
+    }
+
     .project-filter-drop-down {
-        min-width: 290px !important;
+        min-width: 300px !important;
         z-index: auto !important;
     }
 
 }
 
 @media screen and (max-width: 390px) {
-    
+    .project-filter-drop-down {
+        min-width: 290px !important;
+        z-index: auto !important;
+    }
 
 }

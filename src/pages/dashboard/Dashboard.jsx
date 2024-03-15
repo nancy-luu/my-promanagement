@@ -33,6 +33,9 @@ const Dashboard = () => {
 
   return (
     <div className="main-content-container">
+      <div className="mobile-title">
+        <h1>Dashboard</h1>
+      </div>
       <div className="content-grid-one">
         <div className="subgrid-two">
           <Overview />

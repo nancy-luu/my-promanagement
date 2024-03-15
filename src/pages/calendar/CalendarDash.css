@@ -2,6 +2,20 @@
     --calendar-line: 1px solid rgba(115, 115, 115, 0.5);
 }
 
+.main-content-container {
+    row-gap: 10px;
+    box-sizing: border-box;
+}
+
+.mobile-title {
+    display: none;
+}
+
+.button-wrapper{
+    width:100%;
+    display: flex;
+}
+
 .calendar-dash-container {
     color: white;
     font-family: Poppins, sans-serif !important;
@@ -178,7 +192,7 @@
     margin: 10px;
     padding: 20px;
     max-width: 600px;
-    min-width: 400px;
+    min-width: 300px;
 }
 
 
@@ -253,8 +267,25 @@
 
 
 @media screen and (max-width: 430px) {
+
+    .button-wrapper{
+        width:100%;
+        display: flex;
+        justify-content: center;
+    }
+
+    .create-event-container{
+        width: 200px;
+    }
+
+    .start-end-input-container{
+        display: flex;
+        flex-direction: column;
+    }
+
     .big-calendar-container{
-        width: 350px;
+        margin-left: 10px;
+        width: 320px;
     }
 
   .rbc-toolbar{
@@ -266,7 +297,7 @@
 
 @media screen and (max-width: 414px) {
     .big-calendar-container{
-        width: 330px;
+        width: 300px;
     }
 
   .rbc-toolbar{

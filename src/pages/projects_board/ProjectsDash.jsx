@@ -207,6 +207,9 @@ const handleDepartmentSort = () => {
 
   return (
     <div className="main-content-container">
+        <div className="mobile-title">
+          <h1>Projects</h1>
+        </div>
         <div className="project-top-btns">
           {documents && (
             <ProjectFilter currFilter={currFilter} changeFilter={changeFilter} />

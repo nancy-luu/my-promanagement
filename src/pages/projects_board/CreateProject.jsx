@@ -95,7 +95,7 @@ export default function CreateProject() {
   return (
     <div className="create-project-wrapper">
       <div className="create-form grid-common">
-        <h2 className="page-title">Start a new Project:</h2>
+        <h2 className="page-title">Start New Project:</h2>
         <form onSubmit={handleSubmit}>
           <label>
             <input
@@ -109,6 +109,7 @@ export default function CreateProject() {
           <div className="category-assign-container">
           <label>
             <input
+              className="date-input"
               required
               placeholder="Due Date"
               type="date"
