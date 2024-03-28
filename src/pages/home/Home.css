@@ -57,7 +57,7 @@
     border-style: solid;
     border-top-right-radius: 20px;
     border-bottom-right-radius: 20px;
-    z-index: 2;
+    /* z-index: 2; */
     backdrop-filter: blur(2rem);
 }
 

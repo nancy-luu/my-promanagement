@@ -6,6 +6,7 @@ import Select from "react-select";
 
 // styles
 import "./login-signup.css";
+import WelcomeModal from "../../components/WelcomeModal";
 
 export default function SignupLogin() {
   const [switchLogin, setSwitchLogin] = useState(true);
@@ -76,9 +77,6 @@ export default function SignupLogin() {
     setSwitchLogin(!switchLogin)
     setErrorSignup(null);
   }
-
-
-  console.log(errorSignup)
 
 
   return (

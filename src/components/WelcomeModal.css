@@ -1,0 +1,36 @@
+.modal-content {
+    text-align: center;
+    padding: 30px;
+    background: #03000eee;
+}
+
+.modal, .overlay {
+    width: 100vw;
+    height: 100vh;
+    visibility: hidden; 
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+    backdrop-filter: blur(10px);
+}
+
+.modal-btn-group {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.modal-content h1 {
+    color: var(--primary-color)
+}
+
+.modal-content p {
+    margin: 10px 0px;
+}
+
+.modal-content a {
+    color: var(--text-color)
+}
+
+.modal-content a:hover {
+    color: var(--primary-color)
+}

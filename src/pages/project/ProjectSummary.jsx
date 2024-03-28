@@ -37,7 +37,7 @@ export default function ProjectSummary({ project }) {
             <div className="project-category">
               {[...project.category][0].toUpperCase() +
                 [...project.category].slice(1).join("")}
-            </div>
+            </div> 
           </div>
           <div className="status-section">
             <h4>Status</h4>
@@ -57,7 +57,7 @@ export default function ProjectSummary({ project }) {
         <div className="description-section">
         <h4>Description:</h4>
         <p className="details">{project.details}</p>
-          <d iv className="project-buttons">
+          <div className="project-buttons">
             {!project.isCompleted && (
               <>
                 {user.uid === project.createdBy.id && (
@@ -79,7 +79,7 @@ export default function ProjectSummary({ project }) {
                 <DeleteModal project={project} />
               </>
             )}
-          </d>
+          </div>
         </div>
       </div>
   );

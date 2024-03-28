@@ -24,7 +24,7 @@ const DeleteModal = ({ project }) => {
 
   return (
       <>
-          <img src={meetingImgs.trash} className="btn delete-icon" onClick={toggleModal}/>
+          <img src={meetingImgs.trash} alt="delete icon" className="btn delete-icon" onClick={toggleModal}/>
 
           <div className={`modal ${appear ? 'active' : ''}`}>
               <div className="modal-content">
