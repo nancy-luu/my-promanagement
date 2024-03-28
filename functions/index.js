@@ -95,7 +95,7 @@ admin.initializeApp();
 //     }
 // });
 
-exports.deleteMeetingsAfterTimestamp = onSchedule("every 10 minutes", async (event) => {
+exports.deleteMeetingsAfterTimestamp = onSchedule("every 24 hours", async (event) => {
     const db = admin.firestore();
     
     const collections = [
