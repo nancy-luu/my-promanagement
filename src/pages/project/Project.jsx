@@ -1,5 +1,7 @@
 import { useParams } from 'react-router-dom'
 import { useDocument } from '../../hooks/useDocument'
+import { useAuthContext } from "../../hooks/useAuthContext";
+
 
 // components
 import ProjectSummary from './ProjectSummary';
@@ -12,6 +14,7 @@ import './Project.css';
 export default function Project() {
   const { id } = useParams();
   const { error, document } = useDocument('projects', id)
+  const { user } = useAuthContext(); 
 
   if (error){
     return <div className="error">{error}</div>
