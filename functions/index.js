@@ -95,7 +95,7 @@ admin.initializeApp();
 //     }
 // });
 
-exports.deleteDocumentsAfterTimestamp = onSchedule("every 24 hours", async (event) => {
+exports.deleteDocumentsEveryTwentyFourHours = onSchedule("every 24 hours", async (event) => {
     const db = admin.firestore();
     
     const collections = [
